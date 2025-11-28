@@ -32,100 +32,628 @@
 
 ## Chapter 1: Why Transformers?
 
-*[To be written - covers the problem transformers solve, intuition about sequence modeling, why attention is powerful]*
+### The Problem: Sequence Modeling
 
-### Learning Objectives
+Imagine you're reading a sentence: "The cat sat on the mat." To understand this, you need to:
+- Remember that "cat" is the subject
+- Connect "sat" to "cat" (the cat did the sitting)
+- Understand "on the mat" describes where the cat sat
 
-- Understand the problem of sequence modeling
-- See why RNNs have limitations
-- Understand the core idea of attention
-- Connect to real-world applications
+This is **sequence modeling**: understanding how elements in a sequence relate to each other.
 
-### Key Concepts
+**Real-world applications:**
+- **Language translation**: "Hello" → "Hola" (but context matters!)
+- **Text generation**: Given "The weather is", predict "nice" or "terrible"
+- **Question answering**: "Who wrote Hamlet?" requires understanding context
+- **Code completion**: IDE suggests next token based on previous code
 
-- Sequence-to-sequence tasks
-- Long-range dependencies
-- Parallel computation
-- Attention as a mechanism
+### The Challenge: Long-Range Dependencies
+
+In the sentence "The cat that I saw yesterday sat on the mat", the word "sat" must connect to "cat" even though many words separate them. This is a **long-range dependency**.
+
+**Why this is hard:**
+- Information must flow across many positions
+- Context from early in the sequence affects later predictions
+- Traditional models struggle with this
+
+### Previous Solutions: RNNs and Their Limitations
+
+**Recurrent Neural Networks (RNNs)** were the previous solution:
+- Process sequence one token at a time
+- Maintain hidden state that carries information forward
+- Can theoretically handle long sequences
+
+**But RNNs have problems:**
+1. **Sequential bottleneck**: Must process tokens one-by-one (can't parallelize)
+2. **Vanishing gradients**: Information gets lost over long sequences
+3. **Forgetting**: Early context fades as sequence gets longer
+
+**Example of RNN limitation:**
+```
+Input: "The cat that I saw yesterday in the park near my house sat on the mat"
+RNN state: [cat] → [saw] → [yesterday] → [park] → [house] → [sat] → [mat]
+                    ↑                                    ↑
+              "cat" info                            "cat" info is weak!
+```
+
+By the time we reach "sat", the RNN has forgotten much about "cat".
+
+### The Transformer Solution: Attention
+
+**Transformers solve this with attention:**
+- Every position can directly attend to every other position
+- No sequential bottleneck - all positions processed in parallel
+- Information flows directly where needed
+
+**Key insight:** Instead of forcing information through a sequential chain, let each position "look" at all other positions and decide what's relevant.
+
+**Example with attention:**
+```
+Position "sat" can directly attend to:
+- "cat" (high attention - subject)
+- "mat" (high attention - object)
+- "yesterday" (medium attention - time context)
+- "the" (low attention - not very informative)
+```
+
+### Why Attention is Powerful
+
+1. **Direct connections**: No information loss through sequential processing
+2. **Parallel computation**: All positions computed simultaneously (fast on GPUs)
+3. **Interpretable**: Can see what the model is "paying attention to"
+4. **Scalable**: Works well with very long sequences
+
+### Real-World Impact
+
+Transformers power:
+- **GPT models**: ChatGPT, GPT-4 (text generation)
+- **BERT**: Google search, language understanding
+- **Code models**: GitHub Copilot, Codex
+- **Translation**: Google Translate
+- **Image models**: Vision transformers (ViT)
+
+### The Core Innovation
+
+The transformer's innovation isn't a single breakthrough, but a combination:
+1. **Self-attention**: Each position attends to all positions
+2. **Parallel processing**: No sequential dependency
+3. **Scaled dot-product**: Efficient attention computation
+4. **Stacked layers**: Multiple attention layers for complex patterns
+
+### Learning Objectives Recap
+
+- ✓ Understand sequence modeling challenges
+- ✓ See why RNNs struggle with long-range dependencies
+- ✓ Understand how attention solves these problems
+- ✓ Connect to real-world transformer applications
+
+### Key Concepts Recap
+
+- **Sequence-to-sequence tasks**: Input sequence → output sequence
+- **Long-range dependencies**: Connections across many positions
+- **Parallel computation**: All positions processed simultaneously
+- **Attention mechanism**: Direct connections between positions
 
 ---
 
 ## Chapter 2: The Matrix Core
 
-*[To be written - covers why matrices, linear transformations, vector spaces, matrix operations]*
+### Why Matrices?
 
-### Learning Objectives
+Neural networks are fundamentally built on **matrix operations**. Every layer, every transformation, every computation involves matrices. But why?
 
-- Understand why matrices are fundamental to neural networks
-- Master basic matrix operations
-- See how linear transformations work
-- Understand gradient flow through matrices
+**The answer:** Matrices are the mathematical tool that lets us:
+1. Transform data efficiently
+2. Learn patterns from examples
+3. Compute gradients for training
+4. Parallelize on GPUs/TPUs
 
-### Key Concepts
+### What is a Matrix?
 
-- Matrix multiplication
-- Linear transformations
-- Vector spaces
-- Transpose operations
-- Why matrices enable learning
+A **matrix** is a rectangular array of numbers. For our 2×2 case:
 
-### Mathematical Foundations
+$$A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$$
 
-- Matrix notation and operations
-- Dot products and similarity
-- Matrix derivatives
+**Why 2×2?** Small enough to compute by hand, but captures all the essential operations.
+
+### Matrix Multiplication: The Core Operation
+
+**Matrix multiplication** is how neural networks transform data.
+
+For matrices $A$ (2×2) and $B$ (2×2):
+
+$$C = AB = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} e & f \\ g & h \end{bmatrix} = \begin{bmatrix} ae+bg & af+bh \\ ce+dg & cf+dh \end{bmatrix}$$
+
+**What this means:**
+- Each element of $C$ is a **weighted combination** of elements from $A$ and $B$
+- The weights come from the matrix structure itself
+- This is how networks "mix" information
+
+**Example:**
+```
+A = [1, 0]    B = [0.5, 0.5]
+    [0, 1]        [0.5, 0.5]
+
+C = A × B = [0.5, 0.5]
+            [0.5, 0.5]
+```
+
+The identity matrix $A$ doesn't change $B$ - this is like a "pass-through" layer.
+
+### Linear Transformations
+
+**Matrix multiplication = linear transformation**
+
+When we multiply a vector by a matrix, we:
+- **Rotate** the vector in space
+- **Scale** its components
+- **Project** it to a new space
+
+**Example:**
+```
+Vector: [1, 0]  (pointing in x-direction)
+Matrix: [0, -1]  (rotation matrix)
+        [1,  0]
+
+Result: [0, 1]  (now pointing in y-direction - rotated 90°!)
+```
+
+**Why this matters for learning:**
+- Different matrices = different transformations
+- Learning = finding the right transformation
+- Weights in matrices are what get updated during training
+
+### Vector Spaces
+
+**Vectors** are points in space. For 2D:
+- $[1, 0]$ = point at (1, 0)
+- $[0, 1]$ = point at (0, 1)
+- $[0.5, 0.5]$ = point at (0.5, 0.5)
+
+**Vector space** = all possible points/vectors
+
+**Why this matters:**
+- Embeddings live in vector spaces
+- Attention computes similarity in vector space
+- Learning = moving points in space to create patterns
+
+### Dot Products: Measuring Similarity
+
+**Dot product** of two vectors measures how "aligned" they are:
+
+$$\mathbf{a} \cdot \mathbf{b} = a_1 b_1 + a_2 b_2$$
+
+**Properties:**
+- **High dot product** = vectors point in similar direction = similar
+- **Low dot product** = vectors point in different directions = different
+- **Zero dot product** = vectors are perpendicular = unrelated
+
+**Example:**
+```
+[1, 0] · [1, 0] = 1×1 + 0×0 = 1    (same direction)
+[1, 0] · [0, 1] = 1×0 + 0×1 = 0    (perpendicular)
+[1, 0] · [-1, 0] = 1×(-1) + 0×0 = -1  (opposite direction)
+```
+
+**In attention:** Dot product between Query and Key measures how relevant they are!
+
+### Transpose: Changing Perspective
+
+**Transpose** swaps rows and columns:
+
+$$A^T = \begin{bmatrix} a & c \\ b & d \end{bmatrix}$$
+
+**Why transpose?**
+- Matrix multiplication requires compatible dimensions
+- $A \times B$ works if $A$ has $n$ columns and $B$ has $n$ rows
+- Transpose lets us align dimensions: $A \times B^T$
+
+**In attention:** We compute $Q \times K^T$ to get all pairwise dot products at once!
+
+### Why Matrices Enable Learning
+
+**1. Expressiveness:**
+- Linear transformations can represent any linear relationship
+- With non-linearities (ReLU), can approximate any function
+- Multiple layers = composition of transformations = complex patterns
+
+**2. Gradient Flow:**
+- Matrix operations have clean derivatives
+- Chain rule works beautifully: $\frac{d}{dW}(f(g(x))) = \frac{df}{dg} \frac{dg}{dW}$
+- Enables backpropagation
+
+**3. Parallelization:**
+- GPUs have "tensor cores" optimized for matrix multiply
+- Can process thousands of operations simultaneously
+- Makes training feasible
+
+**4. Composition:**
+- Stack matrices: $f(g(x))$ where $f$ and $g$ are matrix operations
+- Each layer adds complexity
+- Deep networks = many composed transformations
+
+### Matrix Calculus Basics
+
+**For $C = AB$:**
+- $\frac{\partial L}{\partial A} = \frac{\partial L}{\partial C} B^T$
+- $\frac{\partial L}{\partial B} = A^T \frac{\partial L}{\partial C}$
+
+**Why this matters:**
+- Backpropagation needs these rules
+- Gradients flow backward through matrix operations
+- Enables training
+
+### Learning Objectives Recap
+
+- ✓ Understand why matrices are fundamental
+- ✓ Master matrix multiplication
+- ✓ See how linear transformations work
+- ✓ Understand gradient flow through matrices
+
+### Key Concepts Recap
+
+- **Matrix multiplication**: Core operation for transformations
+- **Linear transformations**: How matrices change vectors
+- **Vector spaces**: Where embeddings and computations live
+- **Transpose**: Tool for dimension alignment
+- **Matrices enable learning**: Expressiveness + gradients + parallelization
 
 ---
 
 ## Chapter 3: Embeddings: Tokens to Vectors
 
-*[To be written - covers token embeddings, why continuous math, vector representations]*
+### The Problem: Discrete vs. Continuous
 
-### Learning Objectives
+**Tokens** (words, characters, subwords) are **discrete**:
+- "cat" is just a symbol
+- No mathematical relationship between "cat" and "dog"
+- Can't do arithmetic: "cat" + "dog" = ???
 
-- Understand why we need embeddings
-- See how discrete tokens become continuous vectors
-- Understand embedding spaces
-- Learn about learned vs. fixed embeddings
+**Neural networks** need **continuous** values:
+- Matrix operations require numbers
+- Gradients need smooth functions
+- Learning needs measurable similarity
 
-### Key Concepts
+**Solution:** Convert discrete tokens to continuous vectors = **embeddings**
 
-- Token vocabulary
-- Embedding matrices
-- Vector representations
-- Semantic spaces
+### What are Embeddings?
 
-### Mathematical Foundations
+**Embeddings** map each token to a vector (point in space):
 
-- One-hot encoding
-- Embedding lookup
-- Embedding dimensions
+```
+Token "cat" → Vector [0.3, 0.7, -0.2, ...]
+Token "dog" → Vector [0.4, 0.6, -0.1, ...]
+Token "mat" → Vector [-0.1, 0.2, 0.8, ...]
+```
+
+**Key insight:** Similar tokens should have similar vectors!
+
+### One-Hot Encoding: The Starting Point
+
+**One-hot encoding** is the simplest embedding:
+- Vocabulary size = $V$
+- Each token gets a vector of length $V$
+- Only one element is 1, rest are 0
+
+**Example (vocab: A, B, C, D):**
+```
+A → [1, 0, 0, 0]
+B → [0, 1, 0, 0]
+C → [0, 0, 1, 0]
+D → [0, 0, 0, 1]
+```
+
+**Problems with one-hot:**
+- Vectors are orthogonal (no similarity)
+- Dimension = vocabulary size (huge for large vocabs!)
+- No semantic relationships
+
+### Learned Embeddings: The Solution
+
+**Learned embeddings** are vectors that get updated during training:
+- Start random
+- Learn to capture semantic relationships
+- Similar meanings → similar vectors
+
+**Example (learned):**
+```
+"cat" → [0.3, 0.7, -0.2]
+"dog" → [0.4, 0.6, -0.1]  (similar to "cat"!)
+"mat" → [-0.1, 0.2, 0.8]  (different from "cat")
+```
+
+**How it works:**
+- Embedding matrix: $E \in \mathbb{R}^{V \times d}$
+- $V$ = vocabulary size
+- $d$ = embedding dimension (e.g., 2 for our examples, 768 for BERT)
+- Lookup: token $i$ → row $i$ of $E$
+
+### Embedding Dimensions
+
+**Dimension choice:**
+- **Too small**: Can't capture enough information
+- **Too large**: Overfitting, slow computation
+- **Sweet spot**: Balance capacity and efficiency
+
+**Our examples:** $d = 2$ (hand-calculable!)
+**Real models:** $d = 768$ (BERT), $d = 12,288$ (GPT-3)
+
+### Semantic Spaces
+
+**Embeddings create a "semantic space":**
+- Tokens with similar meanings are close together
+- Tokens with different meanings are far apart
+- Relationships emerge: "king" - "man" + "woman" ≈ "queen"
+
+**Example in 2D:**
+```
+A = [1, 0]  (corner of space)
+B = [0, 1]  (different corner)
+C = [1, 1]  (combination)
+D = [0, 0]  (origin)
+```
+
+### Fixed vs. Learned Embeddings
+
+**Fixed embeddings** (our examples):
+- Pre-defined, don't change
+- Simple for learning
+- Example: A=[1,0], B=[0,1]
+
+**Learned embeddings** (real models):
+- Updated during training
+- Capture task-specific semantics
+- Much more powerful
+
+**In our examples:** We use fixed embeddings to focus on attention and training mechanics.
+
+### Embedding Lookup
+
+**Process:**
+1. Token index: "cat" → index 42
+2. Lookup: $E[42]$ → vector $[0.3, 0.7, -0.2, ...]$
+3. Use vector in computations
+
+**Mathematically:**
+$$\text{embedding}(i) = E[i]$$
+
+Where $E$ is the embedding matrix and $i$ is the token index.
+
+### Why Embeddings Matter
+
+**1. Enable computation:**
+- Can't do math on "cat"
+- Can do math on $[0.3, 0.7, -0.2]$
+
+**2. Capture relationships:**
+- Similar tokens → similar vectors
+- Enables attention to find relevant tokens
+
+**3. Learnable:**
+- Embeddings adapt to task
+- Better embeddings = better model
+
+### Learning Objectives Recap
+
+- ✓ Understand why embeddings are needed
+- ✓ See how discrete tokens become vectors
+- ✓ Understand embedding spaces and dimensions
+- ✓ Know difference between fixed and learned embeddings
+
+### Key Concepts Recap
+
+- **Token vocabulary**: Set of all possible tokens
+- **Embedding matrices**: Map tokens to vectors
+- **Vector representations**: Continuous, learnable
+- **Semantic spaces**: Where meaning lives
+
+### Mathematical Foundations Recap
+
+- **One-hot encoding**: Simple but limited
+- **Embedding lookup**: $E[i]$ for token $i$
+- **Embedding dimensions**: Balance capacity and efficiency
 
 ---
 
 ## Chapter 4: Attention Intuition
 
-*[To be written - covers Query/Key/Value metaphor, attention as search, relevance computation]*
+### The Core Question
 
-### Learning Objectives
+When processing a sequence, each position needs to ask:
+> **"Which other positions contain information relevant to me?"**
 
-- Understand the Query/Key/Value metaphor
-- See attention as a search mechanism
-- Understand how relevance is computed
-- Connect to information retrieval
+**Example:** In "The cat sat on the mat"
+- Position "sat" needs to know about "cat" (subject)
+- Position "mat" needs to know about "sat" (verb)
+- Position "the" (first) is less relevant to "mat"
 
-### Key Concepts
+**Attention** is the mechanism that answers this question.
 
-- Query: "What am I looking for?"
-- Key: "What do I have to offer?"
-- Value: "What is my actual content?"
-- Attention weights as probabilities
+### The Query/Key/Value Metaphor
 
-### Intuitive Explanation
+Think of attention like a **library search system**:
 
-- Search engine analogy
-- Database query analogy
-- Information retrieval perspective
+#### Query (Q): "What am I looking for?"
+
+**Query** represents what information a position needs:
+- "sat" needs: "What is the subject?"
+- "mat" needs: "What verb describes location?"
+
+**In vectors:** Query is a learned representation of "what I'm searching for"
+
+#### Key (K): "What do I have to offer?"
+
+**Key** represents what information each position contains:
+- "cat" offers: "I am a noun, I am the subject"
+- "sat" offers: "I am a verb, I describe action"
+- "the" offers: "I am an article, I'm not very informative"
+
+**In vectors:** Key is a learned representation of "what I advertise"
+
+#### Value (V): "What is my actual content?"
+
+**Value** is the actual information to retrieve:
+- Once we decide "cat" is relevant, we retrieve its value
+- Value contains the semantic content we actually use
+
+**In vectors:** Value is what gets weighted and combined
+
+### The Search Process
+
+**Step 1: Match Query to Keys**
+```
+Query "sat": "I need the subject"
+Key "cat": "I am a noun, I am the subject"  ← Match!
+Key "the": "I am an article"                ← No match
+```
+
+**Step 2: Compute Relevance Scores**
+- High score = Query matches Key = relevant
+- Low score = Query doesn't match Key = not relevant
+
+**Step 3: Convert to Probabilities (Softmax)**
+- Scores → probabilities (attention weights)
+- Sum to 1.0 (probability distribution)
+
+**Step 4: Retrieve Values**
+- Weighted sum of values
+- High attention weight → more contribution from that value
+
+### Search Engine Analogy
+
+**Google Search:**
+1. **Query**: Your search terms ("transformer attention")
+2. **Keys**: Keywords on web pages
+3. **Relevance**: How well keywords match query
+4. **Values**: Actual webpage content
+5. **Result**: Weighted combination of relevant pages
+
+**Transformer Attention:**
+1. **Query**: What position needs
+2. **Keys**: What each position offers
+3. **Relevance**: Dot product (similarity)
+4. **Values**: Actual content to retrieve
+5. **Output**: Weighted combination of values
+
+**Same idea, different domain!**
+
+### Database Query Analogy
+
+**SQL Query:**
+```sql
+SELECT content FROM pages 
+WHERE keywords MATCH "transformer attention"
+ORDER BY relevance DESC
+```
+
+**Attention:**
+```
+SELECT values FROM positions
+WHERE keys MATCH query
+WEIGHT BY attention_scores
+```
+
+**Attention is like a learned, differentiable database query!**
+
+### Why Three Components (Q, K, V)?
+
+**Why not just one?** Because they serve different purposes:
+
+1. **Q and K determine relevance** (what to attend to)
+2. **V provides content** (what to retrieve)
+
+**Separation allows:**
+- Learning what to search for (Q)
+- Learning what to advertise (K)
+- Learning what content to provide (V)
+
+**Example:** A position might:
+- Search for "subject" (Q)
+- Advertise "I'm a noun" (K)
+- Provide "cat" meaning (V)
+
+All three are learned separately!
+
+### Attention Weights as Probabilities
+
+**Attention weights** are probabilities:
+- Each position gets a weight
+- Weights sum to 1.0
+- Higher weight = more attention
+
+**Example:**
+```
+Position "sat" attending to:
+- "cat": 0.6  (60% attention - subject!)
+- "the": 0.1  (10% attention - not very relevant)
+- "on": 0.2   (20% attention - preposition)
+- "mat": 0.1  (10% attention - object)
+Sum: 1.0 ✓
+```
+
+**Interpretation:** "sat" pays 60% attention to "cat" because it's the subject.
+
+### How Relevance is Computed
+
+**Dot product** measures alignment:
+
+$$\text{score} = Q \cdot K = \sum_i Q_i K_i$$
+
+**Why dot product?**
+- High when Q and K point in similar direction
+- Low when they point in different directions
+- Zero when perpendicular (unrelated)
+
+**After dot product:**
+1. Scale by $\sqrt{d_k}$ (prevents large values)
+2. Apply softmax (convert to probabilities)
+3. Use as weights for values
+
+### Information Retrieval Perspective
+
+**Classic IR:** Given query, find relevant documents
+
+**Attention:** Given query vector, find relevant position vectors
+
+**Both:**
+- Compute similarity (dot product)
+- Rank by relevance
+- Retrieve and combine content
+
+**Difference:** Attention is **learned** - the model discovers what "relevant" means!
+
+### The Magic: Learned Relevance
+
+**Fixed relevance** (like keyword matching):
+- "cat" always matches "cat"
+- Can't learn new relationships
+
+**Learned relevance** (attention):
+- Model learns what makes positions relevant
+- "cat" might become relevant to "feline" even if they don't share words
+- Adapts to task
+
+**This is why transformers are powerful!**
+
+### Learning Objectives Recap
+
+- ✓ Understand Q/K/V metaphor
+- ✓ See attention as search mechanism
+- ✓ Understand relevance computation
+- ✓ Connect to information retrieval
+
+### Key Concepts Recap
+
+- **Query**: "What am I looking for?"
+- **Key**: "What do I have to offer?"
+- **Value**: "What is my actual content?"
+- **Attention weights**: Probabilities of relevance
+
+### Intuitive Explanations Recap
+
+- **Search engine**: Query matches keywords, retrieves pages
+- **Database query**: SELECT WHERE MATCH, ORDER BY relevance
+- **Information retrieval**: Find relevant content, combine it
 
 ---
 
