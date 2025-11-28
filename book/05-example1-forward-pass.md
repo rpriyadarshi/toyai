@@ -32,7 +32,7 @@ Given input sequence "A B", predict the next token. We'll compute probabilities 
 
 ### Hand Calculation Guide
 
-See `worksheets/example1_worksheet.md` for step-by-step template.
+See [worksheet](../worksheets/example1_worksheet.md) for step-by-step template.
 
 ### Theory
 
@@ -71,7 +71,7 @@ Properties:
 
 ### Code Implementation
 
-See `examples/example1_forward_only/main.cpp`
+See [code](../examples/example1_forward_only/main.cpp)
 
 ### Exercises
 

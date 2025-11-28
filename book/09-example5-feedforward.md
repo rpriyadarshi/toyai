@@ -52,7 +52,7 @@ Why?
 
 ### Hand Calculation Guide
 
-See `worksheets/example5_worksheet.md`
+See [worksheet](../worksheets/example5_worksheet.md)
 
 ### Theory
 
@@ -68,7 +68,7 @@ Without residuals, gradients can vanish in deep networks. Residuals provide "hig
 
 ### Code Implementation
 
-See `examples/example5_feedforward/main.cpp`
+See [code](../examples/example5_feedforward/main.cpp)
 
 ### Exercises
 

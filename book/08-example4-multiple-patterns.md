@@ -52,7 +52,7 @@ For each epoch:
 
 ### Hand Calculation Guide
 
-See `worksheets/example4_worksheet.md`
+See [worksheet](../worksheets/example4_worksheet.md)
 
 ### Theory
 
@@ -71,7 +71,7 @@ With proper learning rate:
 
 ### Code Implementation
 
-See `examples/example4_multiple_patterns/main.cpp`
+See [code](../examples/example4_multiple_patterns/main.cpp)
 
 ### Exercises
 

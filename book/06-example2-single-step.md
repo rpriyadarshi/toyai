@@ -60,7 +60,7 @@ Where $\eta$ is the learning rate.
 
 ### Hand Calculation Guide
 
-See `worksheets/example2_worksheet.md`
+See [worksheet](../worksheets/example2_worksheet.md)
 
 ### Theory
 
@@ -83,7 +83,7 @@ With small learning rate, we take small steps toward the minimum.
 
 ### Code Implementation
 
-See `examples/example2_single_step/main.cpp`
+See [code](../examples/example2_single_step/main.cpp)
 
 ### Exercises
 

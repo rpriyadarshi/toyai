@@ -59,7 +59,7 @@ This means each output depends on all inputs (through the normalization).
 
 ### Hand Calculation Guide
 
-See `worksheets/example3_worksheet.md`
+See [worksheet](../worksheets/example3_worksheet.md)
 
 ### Theory
 
@@ -80,7 +80,7 @@ The computation forms a directed acyclic graph (DAG):
 
 ### Code Implementation
 
-See `examples/example3_full_backprop/main.cpp`
+See [code](../examples/example3_full_backprop/main.cpp)
 
 ### Exercises
 

@@ -61,7 +61,7 @@ Full pipeline:
 
 ### Hand Calculation Guide
 
-See `worksheets/example6_worksheet.md`
+See [worksheet](../worksheets/example6_worksheet.md)
 
 ### Theory
 
@@ -82,7 +82,7 @@ Each layer learns increasingly abstract features:
 
 ### Code Implementation
 
-See `examples/example6_complete/main.cpp`
+See [code](../examples/example6_complete/main.cpp)
 
 ### Exercises
 
