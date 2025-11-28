@@ -36,6 +36,7 @@
 *.exe
 *.out
 *.app
+transformer_2x2
 
 # debug information files
 *.dwo
