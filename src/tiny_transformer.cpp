@@ -176,7 +176,10 @@ Matrix2x2 softmax_rows(const Matrix2x2& m) {
     
     for (int i = 0; i < 2; i++) {
         // Find max for numerical stability
-        // WHY: exp(x) can overflow; exp(x - max) keeps values manageable
+        // WHY: exp(x) can overflow for large x (e.g., exp(1000) = infinity).
+        // Subtracting max ensures the largest exponent is exp(0)=1.
+        // This prevents overflow while preserving relative differences:
+        // softmax(x - c) = softmax(x) for any constant c.
         double max_val = std::max(m.data[i][0], m.data[i][1]);
         
         // Compute exp(x - max) for each element
@@ -598,13 +601,16 @@ public:
          * 
          * WHY THESE FORMS?
          * 
-         * The chain rule for matrix products propagates gradients
-         * through the "other" operand (transposed appropriately).
+         * For matrix multiplication C = A × B, gradients follow:
+         * dL/dA = dL/dC × B^T
+         * dL/dB = A^T × dL/dC
          * 
-         * Q and K both contribute to every attention score,
-         * so both receive gradient from all scores.
+         * Since forward was Scores = Q × K^T, we have A=Q, B=K^T.
+         * For dL/dQ: we need dL/dScores × (K^T)^T = dL/dScores × K
+         * For dL/dK^T: we need Q^T × dL/dScores
+         * Converting dL/dK^T to dL/dK: (Q^T × dL/dScores)^T = dL/dScores^T × Q
          */
-        Matrix2x2 dL_dQ = dL_dScores * cached_K;  // Note: K, not K^T, because we're undoing the transpose
+        Matrix2x2 dL_dQ = dL_dScores * cached_K;  // Uses K (not K^T) because (K^T)^T = K
         Matrix2x2 dL_dK = dL_dScores.transpose() * cached_Q;
         
         if (verbose) {

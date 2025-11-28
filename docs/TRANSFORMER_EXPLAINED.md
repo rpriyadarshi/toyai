@@ -211,14 +211,29 @@ dL/dOutput = y_pred - y_true = [0.7-1, 0.3-0] = [-0.3, 0.3]
 ```
 
 **Step B: Gradient w.r.t. V (through Attention × V)**
+
+For matrix multiplication Output = Attention × V, the gradient rule gives us:
 ```
 dL/dV = Attention^T × dL/dOutput
 ```
 
-Using our attention weights [0.33, 0.67] and gradient [-0.3, 0.3]:
+**WHY the transpose?** In matrix calculus, if C = A × B, then:
+- dL/dA = dL/dC × B^T (gradient routes through B transposed)
+- dL/dB = A^T × dL/dC (gradient routes through A transposed)
+
+Using our 2x2 attention weights and output gradient:
 ```
-dL/dV[0] = 0.33 × [-0.3, 0.3] = [-0.099, 0.099]
-dL/dV[1] = 0.67 × [-0.3, 0.3] = [-0.201, 0.201]
+Attention = [0.33  0.67]    dL/dOutput = [-0.3  0.3]
+            [0.67  0.33]                 [-0.3  0.3]
+
+Attention^T = [0.33  0.67]
+              [0.67  0.33]
+
+dL/dV = Attention^T × dL/dOutput
+      = [0.33×(-0.3) + 0.67×(-0.3)   0.33×0.3 + 0.67×0.3]
+        [0.67×(-0.3) + 0.33×(-0.3)   0.67×0.3 + 0.33×0.3]
+      = [-0.3   0.3]
+        [-0.3   0.3]
 ```
 
 **Step C: Gradient w.r.t. W_V**
