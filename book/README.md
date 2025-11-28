@@ -1,0 +1,50 @@
+# Book Structure
+
+This directory contains the complete book split into individual chapter files for easier navigation and reading.
+
+## File Organization
+
+### Index
+- **`00-index.md`** - Table of contents and navigation hub
+
+### Part I: Foundations
+- **`01-why-transformers.md`** - Why transformers? Problem, RNNs, attention
+- **`02-matrix-core.md`** - Matrix operations, transformations, calculus
+- **`03-embeddings.md`** - Tokens to vectors, semantic spaces
+- **`04-attention-intuition.md`** - Query/Key/Value, search metaphor
+
+### Part II: Progressive Examples
+- **`05-example1-forward-pass.md`** - Minimal forward pass (no training)
+- **`06-example2-single-step.md`** - Single training step
+- **`07-example3-full-backprop.md`** - Complete backpropagation
+- **`08-example4-multiple-patterns.md`** - Batch training
+- **`09-example5-feedforward.md`** - Feed-forward layers
+- **`10-example6-complete.md`** - Complete transformer
+
+### Appendices
+- **`appendix-a-matrix-calculus.md`** - Matrix calculus reference
+- **`appendix-b-hand-calculation-tips.md`** - Hand calculation guide
+- **`appendix-c-common-mistakes.md`** - Common mistakes and solutions
+
+### Conclusion
+- **`conclusion.md`** - Summary and next steps
+
+## Navigation
+
+Each chapter file includes navigation links at the bottom:
+- Link to index
+- Link to previous chapter
+- Link to next chapter
+
+## Reading Order
+
+1. Start with `00-index.md` for overview
+2. Read foundations (01-04) in order
+3. Work through examples (05-10) sequentially
+4. Refer to appendices as needed
+5. End with conclusion
+
+## Alternative: Single File
+
+If you prefer a single continuous document, see `../BOOK.md` in the parent directory (this is the original combined version).
+
