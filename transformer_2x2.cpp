@@ -11,6 +11,20 @@
  * Purpose: Demystify WHY transformers work, not just HOW
  * 
  * ============================================================================
+ * FILE STRUCTURE
+ * ============================================================================
+ * 
+ * Line ~60:   Matrix2x2 class      - Basic matrix operations
+ * Line ~250:  softmaxRows()        - Row-wise softmax function
+ * Line ~290:  softmaxBackward()    - Softmax gradient computation
+ * Line ~320:  AttentionResult      - Forward pass data structure
+ * Line ~370:  scaledDotProductAttention()  - Core attention mechanism
+ * Line ~400:  AttentionGradients   - Backward pass data structure
+ * Line ~460:  scaledDotProductAttentionBackward() - Attention gradients
+ * Line ~500:  SimpleAttentionLayer - Complete trainable layer
+ * Line ~650:  main()               - Demo: forward pass, training, backprop trace
+ * 
+ * ============================================================================
  * THE BIG PICTURE: WHAT IS GENERATIVE AI'S MATRIX CORE?
  * ============================================================================
  * 
@@ -117,7 +131,7 @@ public:
         Matrix2x2 result;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                result.data[i][j] = 0.0;
+                // Note: result is already initialized to 0.0 by constructor
                 for (int k = 0; k < 2; k++) {
                     result.data[i][j] += data[i][k] * other.data[k][j];
                 }
@@ -439,7 +453,7 @@ AttentionGradients scaledDotProductAttentionBackward(
      * STEP 4: Gradient through Q × K^T
      * 
      * - dL/dQ = dRawScores × K  (not K^T!)
-     * - dL/dK = dRawScores^T × Q  then transpose, or equivalently: Q^T × dRawScores^T
+     * - dL/dK = dRawScores^T × Q  (which equals the transpose of Q^T × dRawScores)
      * 
      * WHY? For C = A × B^T:
      * - dL/dA = dL/dC × B
@@ -710,8 +724,9 @@ int main() {
     std::cout << "STEP 3: Scale Scores\n";
     std::cout << "====================\n\n";
     
-    double dk = 2.0;  // dimension of keys
-    double scale_factor = 1.0 / std::sqrt(dk);
+    // d_k = dimension of keys (2 for our 2x2 matrices)
+    constexpr double D_K = 2.0;
+    double scale_factor = 1.0 / std::sqrt(D_K);
     std::cout << "Scale factor = 1/√d_k = 1/√2 ≈ " << scale_factor << "\n\n";
     
     Matrix2x2 scaledScores = scores.scale(scale_factor);
