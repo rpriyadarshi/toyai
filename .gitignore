@@ -36,7 +36,41 @@
 *.exe
 *.out
 *.app
-transformer_2x2
 
-# debug information files
+# CMake build directory
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# Compiled examples
+examples/example1_forward_only/example1
+examples/example2_single_step/example2
+examples/example3_full_backprop/example3
+examples/example4_multiple_patterns/example4
+examples/example5_feedforward/example5
+examples/example6_complete/example6
+
+# Generated documentation (from conversion script)
+BOOK.docx
+BOOK.pdf
+*.docx
+*.pdf
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Debug information files
 *.dwo
+*.dSYM/
+
+# OS files
+.DS_Store
+Thumbs.db
