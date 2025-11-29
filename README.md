@@ -16,14 +16,35 @@ This is a **complete learning system** that takes you from understanding basic c
 
 ## 📚 The Book
 
-**`BOOK.md`** is your primary learning resource. It contains:
+The book is organized in two ways:
 
+### Individual Chapters (`book/` directory)
+- **Modular format**: Each chapter is a separate file for easy navigation
+- **Start with**: `book/00-index.md` for table of contents
+- **Read online**: View chapters directly in your editor or on GitHub
+
+### Complete PDF Book
+Generate a professional, downloadable PDF with all content:
+
+```bash
+python3 scripts/build_book.py
+```
+
+This creates `output/Understanding_Transformers_Complete.pdf` containing:
 - **Part I: Foundations** - Why transformers? Matrix operations, embeddings, attention intuition
 - **Part II: Progressive Examples** - 6 examples from simple forward pass to complete transformer
-- **Full Theory** - Mathematical derivations, proofs, and intuitive explanations
-- **Hand-Calculation Guides** - Step-by-step worksheets for each example
+- **Appendices** - Reference materials
+- **Worksheets** - All hand-calculation guides
+- **Code Examples** - Complete C++ implementations
 
-The book is written in Markdown (convertible to Word/PDF) and serves as the single source of truth.
+The PDF includes:
+- Professional formatting with table of contents
+- Working internal links
+- Code syntax highlighting
+- Mathematical formulas properly rendered
+- All content in one downloadable file
+
+See `scripts/UPDATE_BOOK.md` for details on updating the book.
 
 ## 🏗️ Structure
 

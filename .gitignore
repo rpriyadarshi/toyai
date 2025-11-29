@@ -60,6 +60,10 @@ BOOK.pdf
 *.docx
 *.pdf
 
+# Book build output
+output/
+!output/Understanding_Transformers_Complete.pdf
+
 # IDE files
 .vscode/
 .idea/
