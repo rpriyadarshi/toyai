@@ -166,6 +166,80 @@ graph TB
     style TRange fill:#fff9c4
 ```
 
+**Activation Function Graphs:**
+
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- ReLU Graph -->
+  <g transform="translate(50, 50)">
+    <text x="100" y="-10" font-family="Arial" font-size="14" font-weight="bold">ReLU: f(x) = max(0, x)</text>
+    <!-- Axes -->
+    <line x1="0" y1="100" x2="200" y2="100" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="100" x2="0" y2="0" stroke="#333" stroke-width="2"/>
+    <!-- Axis labels -->
+    <text x="200" y="115" font-family="Arial" font-size="12">x</text>
+    <text x="-15" y="5" font-family="Arial" font-size="12">f(x)</text>
+    <!-- ReLU function: flat at 0 for x<0, then y=x for x>=0 -->
+    <line x1="0" y1="100" x2="0" y2="100" stroke="#2563eb" stroke-width="3"/>
+    <line x1="0" y1="100" x2="200" y2="0" stroke="#2563eb" stroke-width="3"/>
+    <!-- Grid lines -->
+    <line x1="50" y1="0" x2="50" y2="100" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="100" y1="0" x2="100" y2="100" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="150" y1="0" x2="150" y2="100" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="75" x2="200" y2="75" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="50" x2="200" y2="50" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="25" x2="200" y2="25" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <!-- Origin -->
+    <circle cx="0" cy="100" r="3" fill="#333"/>
+    <text x="-10" y="105" font-family="Arial" font-size="10">0</text>
+  </g>
+  
+  <!-- Sigmoid Graph -->
+  <g transform="translate(300, 50)">
+    <text x="100" y="-10" font-family="Arial" font-size="14" font-weight="bold">Sigmoid: f(x) = 1/(1+e⁻ˣ)</text>
+    <!-- Axes -->
+    <line x1="0" y1="100" x2="200" y2="100" stroke="#333" stroke-width="2"/>
+    <line x1="100" y1="0" x2="100" y2="200" stroke="#333" stroke-width="2"/>
+    <!-- Axis labels -->
+    <text x="200" y="115" font-family="Arial" font-size="12">x</text>
+    <text x="95" y="-10" font-family="Arial" font-size="12">f(x)</text>
+    <!-- Sigmoid curve (S-shaped) -->
+    <path d="M 0,200 Q 50,180 100,100 T 200,0" stroke="#dc2626" stroke-width="3" fill="none"/>
+    <!-- Grid lines -->
+    <line x1="50" y1="0" x2="50" y2="200" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="150" y1="0" x2="150" y2="200" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="50" x2="200" y2="50" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="150" x2="200" y2="150" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <!-- Key points -->
+    <circle cx="100" cy="100" r="3" fill="#dc2626"/>
+    <text x="105" y="95" font-family="Arial" font-size="10">(0, 0.5)</text>
+    <text x="0" y="195" font-family="Arial" font-size="10">0</text>
+    <text x="190" y="10" font-family="Arial" font-size="10">1</text>
+  </g>
+  
+  <!-- Tanh Graph -->
+  <g transform="translate(550, 50)">
+    <text x="100" y="-10" font-family="Arial" font-size="14" font-weight="bold">Tanh: f(x) = tanh(x)</text>
+    <!-- Axes -->
+    <line x1="0" y1="100" x2="200" y2="100" stroke="#333" stroke-width="2"/>
+    <line x1="100" y1="0" x2="100" y2="200" stroke="#333" stroke-width="2"/>
+    <!-- Axis labels -->
+    <text x="200" y="115" font-family="Arial" font-size="12">x</text>
+    <text x="95" y="-10" font-family="Arial" font-size="12">f(x)</text>
+    <!-- Tanh curve (S-shaped, centered at 0) -->
+    <path d="M 0,200 Q 50,150 100,100 T 200,0" stroke="#16a34a" stroke-width="3" fill="none"/>
+    <!-- Grid lines -->
+    <line x1="50" y1="0" x2="50" y2="200" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="150" y1="0" x2="150" y2="200" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="50" x2="200" y2="50" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="150" x2="200" y2="150" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <!-- Key points -->
+    <circle cx="100" cy="100" r="3" fill="#16a34a"/>
+    <text x="105" y="95" font-family="Arial" font-size="10">(0, 0)</text>
+    <text x="0" y="195" font-family="Arial" font-size="10">-1</text>
+    <text x="190" y="10" font-family="Arial" font-size="10">+1</text>
+  </g>
+</svg>
+
 **Why it matters:** A single perceptron is limited, but stacking many perceptrons creates powerful networks.
 
 ---
@@ -381,6 +455,40 @@ graph LR
     style HighLoss fill:#ffcdd2
 ```
 
+**Cross-Entropy Loss Curve:**
+
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(80, 50)">
+    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold">Cross-Entropy Loss: L = -log(P(target))</text>
+    <!-- Axes -->
+    <line x1="0" y1="300" x2="400" y2="300" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="300" x2="0" y2="0" stroke="#333" stroke-width="2"/>
+    <!-- Axis labels -->
+    <text x="400" y="320" font-family="Arial" font-size="14">Predicted Probability P(target)</text>
+    <text x="-60" y="150" font-family="Arial" font-size="14" transform="rotate(-90, -60, 150)">Loss L</text>
+    <!-- Loss curve: L = -log(p) -->
+    <path d="M 0,300 Q 50,250 100,200 T 200,100 T 300,50 T 400,20" stroke="#dc2626" stroke-width="3" fill="none"/>
+    <!-- Grid lines -->
+    <line x1="100" y1="0" x2="100" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="200" y1="0" x2="200" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="300" y1="0" x2="300" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="100" x2="400" y2="100" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="200" x2="400" y2="200" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <!-- Key points -->
+    <circle cx="60" cy="200" r="4" fill="#16a34a"/>
+    <text x="65" y="195" font-family="Arial" font-size="11">P=0.6, L=0.51</text>
+    <circle cx="20" cy="280" r="4" fill="#dc2626"/>
+    <text x="25" y="275" font-family="Arial" font-size="11">P=0.05, L=3.0</text>
+    <!-- Labels -->
+    <text x="0" y="310" font-family="Arial" font-size="11">0</text>
+    <text x="390" y="310" font-family="Arial" font-size="11">1</text>
+    <text x="-10" y="305" font-family="Arial" font-size="11">0</text>
+    <text x="-20" y="25" font-family="Arial" font-size="11">High</text>
+    <!-- Arrow indicating direction -->
+    <text x="200" y="340" font-family="Arial" font-size="12" fill="#666">Lower probability → Higher loss</text>
+  </g>
+</svg>
+
 **Why it matters:** Loss tells us how well the model is learning. We minimize it during training.
 
 **See it in action:** [Example 2: Single Training Step](07-example2-single-step.md) shows how loss is computed and used.
@@ -492,6 +600,43 @@ graph TD
     style Check fill:#fff9c4
     style Stop fill:#c8e6c9
 ```
+
+**Gradient Descent Path (Loss Over Iterations):**
+
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(80, 50)">
+    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold">Gradient Descent: Loss Decreases Over Time</text>
+    <!-- Axes -->
+    <line x1="0" y1="300" x2="400" y2="300" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="300" x2="0" y2="0" stroke="#333" stroke-width="2"/>
+    <!-- Axis labels -->
+    <text x="400" y="320" font-family="Arial" font-size="14">Training Iteration</text>
+    <text x="-50" y="150" font-family="Arial" font-size="14" transform="rotate(-90, -50, 150)">Loss</text>
+    <!-- Loss curve decreasing over iterations -->
+    <path d="M 0,50 Q 100,80 200,120 T 400,180" stroke="#2563eb" stroke-width="3" fill="none"/>
+    <!-- Gradient descent steps (zigzag path) -->
+    <circle cx="0" cy="50" r="5" fill="#dc2626"/>
+    <text x="5" y="45" font-family="Arial" font-size="10">Start</text>
+    <circle cx="100" cy="80" r="4" fill="#16a34a"/>
+    <circle cx="200" cy="120" r="4" fill="#16a34a"/>
+    <circle cx="300" cy="150" r="4" fill="#16a34a"/>
+    <circle cx="400" cy="180" r="5" fill="#2563eb"/>
+    <text x="405" y="175" font-family="Arial" font-size="10">Min</text>
+    <!-- Grid lines -->
+    <line x1="100" y1="0" x2="100" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="200" y1="0" x2="200" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="300" y1="0" x2="300" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="100" x2="400" y2="100" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="200" x2="400" y2="200" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <!-- Labels -->
+    <text x="0" y="310" font-family="Arial" font-size="11">0</text>
+    <text x="390" y="310" font-family="Arial" font-size="11">N</text>
+    <text x="-10" y="305" font-family="Arial" font-size="11">High</text>
+    <text x="-15" y="25" font-family="Arial" font-size="11">Low</text>
+    <!-- Arrow showing convergence -->
+    <text x="200" y="340" font-family="Arial" font-size="12" fill="#666">Loss decreases as weights are updated</text>
+  </g>
+</svg>
 
 **Example:**
 ```
@@ -783,6 +928,43 @@ Epoch 3: Process batches 1-32 again
 ```
 
 **Why it matters:** Models typically need multiple **epochs** to learn. Each **epoch** gives the model another chance to see all training data and improve.
+
+**Training Loss Over Epochs:**
+
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(80, 50)">
+    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold">Training Progress: Loss Decreases Over Epochs</text>
+    <!-- Axes -->
+    <line x1="0" y1="300" x2="400" y2="300" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="300" x2="0" y2="0" stroke="#333" stroke-width="2"/>
+    <!-- Axis labels -->
+    <text x="400" y="320" font-family="Arial" font-size="14">Epoch</text>
+    <text x="-50" y="150" font-family="Arial" font-size="14" transform="rotate(-90, -50, 150)">Average Loss</text>
+    <!-- Loss curve decreasing over epochs (smooth decay) -->
+    <path d="M 0,50 Q 100,80 200,120 Q 300,160 400,200" stroke="#2563eb" stroke-width="3" fill="none"/>
+    <!-- Epoch markers -->
+    <circle cx="0" cy="50" r="4" fill="#dc2626"/>
+    <text x="5" y="45" font-family="Arial" font-size="10">Epoch 1</text>
+    <circle cx="100" cy="80" r="3" fill="#16a34a"/>
+    <circle cx="200" cy="120" r="3" fill="#16a34a"/>
+    <circle cx="300" cy="160" r="3" fill="#16a34a"/>
+    <circle cx="400" cy="200" r="4" fill="#2563eb"/>
+    <text x="405" y="195" font-family="Arial" font-size="10">Epoch N</text>
+    <!-- Grid lines -->
+    <line x1="100" y1="0" x2="100" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="200" y1="0" x2="200" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="300" y1="0" x2="300" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="100" x2="400" y2="100" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="200" x2="400" y2="200" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <!-- Labels -->
+    <text x="0" y="310" font-family="Arial" font-size="11">1</text>
+    <text x="390" y="310" font-family="Arial" font-size="11">N</text>
+    <text x="-10" y="305" font-family="Arial" font-size="11">High</text>
+    <text x="-15" y="25" font-family="Arial" font-size="11">Low</text>
+    <!-- Convergence note -->
+    <text x="200" y="340" font-family="Arial" font-size="12" fill="#666">Model learns and improves with each epoch</text>
+  </g>
+</svg>
 
 ---
 
