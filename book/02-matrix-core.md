@@ -121,6 +121,89 @@ $$A^T = \begin{bmatrix} a & c \\ b & d \end{bmatrix}$$
 
 **In attention:** We compute $Q \times K^T$ to get all pairwise dot products at once!
 
+### Matrix Inverse: The "Undo" Operation
+
+**Matrix inverse** is like division for matrices. If $A \times B = I$ (identity), then $B$ is the inverse of $A$, written as $A^{-1}$.
+
+**For a 2×2 matrix:**
+
+$$A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$$
+
+The inverse is:
+
+$$A^{-1} = \frac{1}{ad - bc} \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$$
+
+**Key concept:** The term $ad - bc$ is called the **determinant** of $A$, written as $\det(A)$.
+
+**Important:** The inverse only exists if $\det(A) \neq 0$. If $\det(A) = 0$, the matrix is **singular** (not invertible).
+
+**Physical Analogy:** Think of matrix inverse like **undoing a transformation**:
+- If you rotate a vector 90° clockwise, the inverse rotates it 90° counter-clockwise
+- If you scale by 2, the inverse scales by 0.5
+- The inverse "undoes" what the original matrix did
+
+**Example:**
+
+```mermaid
+graph LR
+    V["Vector<br/>[1, 0]"] -->|A| T["Transformed<br/>[0, 1]"]
+    T -->|A⁻¹| V2["Back to<br/>[1, 0]"]
+    A["A = [0, -1]<br/>   [1,  0]<br/>Rotate 90°"] -->|×| T
+    T -->|×| Ainv["A⁻¹ = [0,  1]<br/>      [-1, 0]<br/>Rotate -90°"]
+    
+    style V fill:#e1f5ff
+    style T fill:#fff4e1
+    style V2 fill:#e8f5e9
+    style A fill:#f3e5f5
+    style Ainv fill:#f3e5f5
+```
+
+**Hand Calculation Example:**
+
+Let's compute the inverse of:
+
+$$A = \begin{bmatrix} 2 & 1 \\ 1 & 1 \end{bmatrix}$$
+
+**Step 1:** Compute determinant:
+$$\det(A) = ad - bc = (2)(1) - (1)(1) = 2 - 1 = 1$$
+
+**Step 2:** Apply formula:
+$$A^{-1} = \frac{1}{1} \begin{bmatrix} 1 & -1 \\ -1 & 2 \end{bmatrix} = \begin{bmatrix} 1 & -1 \\ -1 & 2 \end{bmatrix}$$
+
+**Step 3:** Verify:
+$$A \times A^{-1} = \begin{bmatrix} 2 & 1 \\ 1 & 1 \end{bmatrix} \begin{bmatrix} 1 & -1 \\ -1 & 2 \end{bmatrix} = \begin{bmatrix} 2-1 & -2+2 \\ 1-1 & -1+2 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = I$$
+
+✓ It works! $A \times A^{-1} = I$ (identity matrix).
+
+**Why Matrix Inverse Matters (Even Though Transformers Don't Use It):**
+
+1. **Understanding Linear Systems:**
+   - Solving $Ax = b$ gives $x = A^{-1}b$
+   - Helps understand when systems have unique solutions
+
+2. **Understanding Matrix Properties:**
+   - Invertible matrices are "full rank" (all information preserved)
+   - Singular matrices lose information (can't be inverted)
+
+3. **Mathematical Foundation:**
+   - Inverse is fundamental to linear algebra
+   - Understanding inverses helps understand other concepts
+
+**Why Transformers Don't Use Matrix Inverse:**
+
+Transformers use:
+- **Matrix multiplication** (forward transformations)
+- **Transpose** (for dimension alignment)
+- **Element-wise operations** (additions, multiplications)
+
+But **NOT** matrix inverse because:
+- Inversion is computationally expensive ($O(n^3)$ for $n \times n$ matrices)
+- Transformers learn weights through gradient descent, not by inverting matrices
+- Weights are updated iteratively, not computed directly
+- The forward pass only needs multiplication, not inversion
+
+**Key Takeaway:** Matrix inverse is a fundamental concept to understand, but transformers solve problems through learning (gradient descent) rather than analytical solutions (matrix inversion).
+
 ### Why Matrices Enable Learning
 
 **1. Expressiveness:**
@@ -160,6 +243,7 @@ $$A^T = \begin{bmatrix} a & c \\ b & d \end{bmatrix}$$
 - ✓ Master matrix multiplication
 - ✓ See how linear transformations work
 - ✓ Understand gradient flow through matrices
+- ✓ Understand matrix inverse (even though transformers don't use it)
 
 ### Key Concepts Recap
 
@@ -167,6 +251,7 @@ $$A^T = \begin{bmatrix} a & c \\ b & d \end{bmatrix}$$
 - **Linear transformations**: How matrices change vectors
 - **Vector spaces**: Where embeddings and computations live
 - **Transpose**: Tool for dimension alignment
+- **Matrix inverse**: The "undo" operation (fundamental concept, not used in transformers)
 - **Matrices enable learning**: Expressiveness + gradients + parallelization
 
 ---
