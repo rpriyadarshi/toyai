@@ -29,6 +29,51 @@ Train on "A B" → "C" with all weights trainable: $W_Q$, $W_K$, $W_V$, $W_O$
 8. **Context → V**: $\frac{\partial L}{\partial V}$
 9. **V → $W_V$**: $\frac{\partial L}{\partial W_V}$
 
+### Backpropagation Flow
+
+```mermaid
+graph TD
+    Loss["Loss<br/>L"] --> GradLogits["∂L/∂logits"]
+    GradLogits --> GradWO["∂L/∂WO<br/>Update WO"]
+    GradLogits --> GradContext["∂L/∂context"]
+    GradContext --> GradWeights["∂L/∂weights<br/>(attention)"]
+    GradContext --> GradV["∂L/∂V"]
+    GradV --> GradWV["∂L/∂WV<br/>Update WV"]
+    GradWeights --> GradScores["∂L/∂scores<br/>(softmax backward)"]
+    GradScores --> GradQ["∂L/∂Q"]
+    GradScores --> GradK["∂L/∂K"]
+    GradQ --> GradWQ["∂L/∂WQ<br/>Update WQ"]
+    GradK --> GradWK["∂L/∂WK<br/>Update WK"]
+    
+    style Loss fill:#ffcdd2
+    style GradWO fill:#e8f5e9
+    style GradWV fill:#e8f5e9
+    style GradWQ fill:#e8f5e9
+    style GradWK fill:#e8f5e9
+```
+
+### Gradient Computation Flow
+
+```mermaid
+graph LR
+    Forward["Forward Pass<br/>Compute all values"] --> Loss["Loss<br/>L"]
+    Loss --> Backward["Backward Pass<br/>Compute gradients"]
+    Backward --> Chain["Chain Rule<br/>∂L/∂x = ∂L/∂y × ∂y/∂x"]
+    Chain --> GradWO["Gradient WO"]
+    Chain --> GradWQ["Gradient WQ"]
+    Chain --> GradWK["Gradient WK"]
+    Chain --> GradWV["Gradient WV"]
+    GradWO --> Update["Update All<br/>W_new = W_old - η×grad"]
+    GradWQ --> Update
+    GradWK --> Update
+    GradWV --> Update
+    
+    style Forward fill:#e1f5ff
+    style Loss fill:#ffcdd2
+    style Backward fill:#fff4e1
+    style Update fill:#e8f5e9
+```
+
 ### Matrix Calculus
 
 #### Matrix Multiplication Gradient

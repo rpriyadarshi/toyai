@@ -27,6 +27,27 @@ We'll update only the output projection matrix $W_O$ in this example to keep it 
 3. **Compute Gradients**: Calculate how to change weights
 4. **Update Weights**: Actually change $W_O$ using gradient descent
 
+### Training Step Flow
+
+```mermaid
+graph TD
+    Start["Start<br/>Input: 'A B'<br/>Target: 'C'"] --> Forward["Forward Pass<br/>Compute prediction"]
+    Forward --> Logits["Logits<br/>[1.0, 2.0, 0.5, 0.3]"]
+    Logits --> Probs["Probabilities<br/>[0.1, 0.8, 0.05, 0.05]"]
+    Probs --> Loss["Loss<br/>L = -log(0.05)<br/>= 3.0"]
+    Loss --> GradLogits["Gradient w.r.t. Logits<br/>∂L/∂logits"]
+    GradLogits --> GradWO["Gradient w.r.t. WO<br/>∂L/∂WO"]
+    GradWO --> Update["Update Weights<br/>WO_new = WO_old - η×grad"]
+    Update --> End["End<br/>WO updated"]
+    
+    style Start fill:#e1f5ff
+    style Forward fill:#fff4e1
+    style Loss fill:#ffcdd2
+    style GradWO fill:#f3e5f5
+    style Update fill:#e8f5e9
+    style End fill:#c8e6c9
+```
+
 ### Loss Function
 
 Cross-entropy loss for next-token prediction:

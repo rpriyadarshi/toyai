@@ -30,6 +30,34 @@ Given input sequence "A B", predict the next token. We'll compute probabilities 
 6. **Output Logits**: Project context to vocabulary space
 7. **Probabilities**: Apply softmax to get final predictions
 
+### Forward Pass Flow
+
+```mermaid
+graph LR
+    Input["Input<br/>'A B'"] --> Tokenize["Tokenize<br/>['A', 'B']"]
+    Tokenize --> Embed["Embeddings<br/>[0.1,0.2]<br/>[0.3,0.7]"]
+    Embed --> QKV["Q/K/V<br/>Projections"]
+    QKV --> Q["Q<br/>Queries"]
+    QKV --> K["K<br/>Keys"]
+    QKV --> V["V<br/>Values"]
+    Q --> Scores["Scores<br/>Q·K^T"]
+    K --> Scores
+    Scores --> Scale["Scale<br/>÷√d_k"]
+    Scale --> Softmax1["Softmax<br/>Attention Weights"]
+    Softmax1 --> Context["Context<br/>Weighted Sum<br/>of V"]
+    V --> Context
+    Context --> WO["Output<br/>Projection<br/>WO"]
+    WO --> Logits["Logits<br/>Raw Scores"]
+    Logits --> Softmax2["Softmax<br/>Probabilities"]
+    Softmax2 --> Output["Output<br/>[0.1,0.8,0.05,0.05]"]
+    
+    style Input fill:#e1f5ff
+    style Embed fill:#fff4e1
+    style QKV fill:#f3e5f5
+    style Context fill:#e8f5e9
+    style Output fill:#c8e6c9
+```
+
 ### Hand Calculation Guide
 
 See [worksheet](../worksheets/example1_worksheet.md) for step-by-step template.
