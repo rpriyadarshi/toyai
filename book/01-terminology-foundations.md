@@ -14,9 +14,34 @@
 
 ## The Building Blocks: From Words to Predictions
 
+### Tokenization
+
+**What it is:** Tokenization is the process of breaking text into discrete units called tokens.
+
+**Physical Analogy:** Think of tokenization like **cutting a sentence into individual words**:
+- Input: "The cat sat on the mat."
+- After tokenization: ["The", "cat", "sat", "on", "the", "mat", "."]
+- Each piece is now a separate token
+
+**Different Tokenization Strategies:**
+- **Word-level**: Split by spaces → ["The", "cat", "sat"]
+- **Subword-level**: Split into smaller pieces → ["The", "cat", "sa", "t"] (handles unknown words)
+- **Character-level**: Split into individual characters → ["T", "h", "e", " ", "c", "a", "t"]
+
+**Why it matters:** Transformers can't process raw text - they need discrete tokens to work with. Tokenization converts continuous text into a sequence of discrete symbols.
+
+**Example:**
+```
+Input text: "Hello world!"
+Tokenized: ["Hello", "world", "!"]
+Result: 3 tokens ready for processing
+```
+
+---
+
 ### Token
 
-**What it is:** A token is the smallest unit of input that a transformer processes.
+**What it is:** A token is the smallest unit of input that a transformer processes. It's the result of tokenization.
 
 **Physical Analogy:** Think of a token like a **word on a Scrabble tile**. Each tile represents one piece of information:
 - "cat" = one token
@@ -24,11 +49,202 @@
 - "!" = one token (punctuation is also a token)
 
 **In Transformers:**
-- Tokens can be words, subwords, or characters
+- Tokens can be words, subwords, or characters (depending on tokenization strategy)
 - Vocabulary = all possible tokens (like all Scrabble tiles in the bag)
 - Example vocabulary: {A, B, C, D, "cat", "dog", "the", ...}
 
-**Why it matters:** Transformers process sequences of tokens, not raw text.
+**Why it matters:** Transformers process sequences of tokens, not raw text. Tokenization creates these tokens.
+
+---
+
+### Vocabulary
+
+**What it is:** The vocabulary is the complete set of all possible tokens that a transformer can recognize and process.
+
+**Physical Analogy:** Think of vocabulary like a **dictionary** or **Scrabble tile bag**:
+- Contains all possible words/tokens the model knows
+- Limited size (e.g., 50,000 tokens for GPT models)
+- Each token has a unique ID/index
+
+**In Transformers:**
+- Vocabulary size = $V$ (e.g., 50,000)
+- Each token maps to an index: "cat" → 1234, "dog" → 5678
+- Output projection predicts probability for each vocabulary token
+- Unknown words are handled via subword tokenization
+
+**Example:**
+```
+Vocabulary: {0: "<pad>", 1: "the", 2: "cat", 3: "sat", 4: "on", 5: "mat", ...}
+Token "cat" → Index 2
+Token "dog" → Index 6 (if in vocabulary)
+```
+
+**Why it matters:** The model can only predict tokens that exist in its vocabulary. Vocabulary size determines model capacity and memory requirements.
+
+---
+
+### Token Encoding (Token to Integer)
+
+**What it is:** Token encoding is the process of converting tokens (strings) into integer IDs that the model can process.
+
+**Physical Analogy:** Think of token encoding like **assigning a student ID number to each student**:
+- Student name (token) → Student ID (integer)
+- "John Smith" → 12345
+- Each student has a unique ID number
+- The ID is used to look up student records
+
+**In Transformers:**
+- Token (string) → Integer ID (index in vocabulary)
+- Uses vocabulary mapping: "cat" → 2, "dog" → 6
+- Not hashing! Hashing is one-way and can have collisions
+- Encoding is a **lookup table** (bidirectional, no collisions)
+
+**The Process:**
+1. Tokenization: "The cat sat" → ["The", "cat", "sat"]
+2. Token encoding: ["The", "cat", "sat"] → [1, 2, 3] (integer IDs)
+3. These integers are used for embedding lookup
+
+**Example:**
+```
+Vocabulary mapping:
+  "The" → 1
+  "cat" → 2
+  "sat" → 3
+  "on" → 4
+  "the" → 5
+  "mat" → 6
+
+Input tokens: ["The", "cat", "sat"]
+Encoded: [1, 2, 3]
+```
+
+**Why not hashing?**
+- **Hashing**: One-way function, can have collisions (two tokens → same hash)
+- **Encoding**: Lookup table, unique mapping, reversible
+- Transformers need unique, reversible mappings
+
+**Why it matters:** Neural networks work with integers, not strings. Token encoding converts tokens to integers for processing.
+
+---
+
+### Embedding Lookup (Integer to Vector)
+
+**What it is:** Embedding lookup is the process of converting integer token IDs into vector representations using an embedding matrix.
+
+**Physical Analogy:** Think of embedding lookup like **using a student ID to retrieve their file from a filing cabinet**:
+- Student ID (integer) → Student file (vector of information)
+- ID 12345 → File with [grades, attendance, address, ...]
+- Each ID maps to a specific file location
+
+**In Transformers:**
+- Integer ID → Index into embedding matrix → Vector
+- Embedding matrix $E$ has shape $[V, d]$ where:
+  - $V$ = vocabulary size
+  - $d$ = embedding dimension
+- Lookup: `vector = E[token_id]`
+
+**The Process:**
+1. Token encoding: ["The", "cat", "sat"] → [1, 2, 3]
+2. Embedding lookup: 
+   - ID 1 → E[1] = [0.1, 0.2, ...] (vector for "The")
+   - ID 2 → E[2] = [0.3, 0.7, ...] (vector for "cat")
+   - ID 3 → E[3] = [0.5, 0.1, ...] (vector for "sat")
+
+**Mathematical Definition:**
+$$\text{embedding}(i) = E[i]$$
+
+Where:
+- $i$ = token integer ID
+- $E$ = embedding matrix of shape $[V, d]$
+- $E[i]$ = the $i$-th row of the embedding matrix (a vector of dimension $d$)
+
+**Example:**
+```
+Embedding matrix E (V=6, d=2):
+  E[0] = [0.0, 0.0]  (padding token)
+  E[1] = [0.1, 0.2]  ("The")
+  E[2] = [0.3, 0.7]  ("cat")
+  E[3] = [0.5, 0.1]  ("sat")
+  E[4] = [0.2, 0.3]  ("on")
+  E[5] = [0.1, 0.2]  ("the")
+  E[6] = [0.4, 0.5]  ("mat")
+
+Token "cat" → ID 2 → E[2] = [0.3, 0.7]
+```
+
+**Why it matters:** This is how discrete tokens become continuous vectors that neural networks can process. The embedding matrix is learned during training.
+
+---
+
+### Sequence
+
+**What it is:** A sequence is an ordered list of tokens that the transformer processes together.
+
+**Physical Analogy:** Think of a sequence like a **sentence** or **paragraph**:
+- Ordered: position matters ("cat sat" ≠ "sat cat")
+- Fixed length: sequences have maximum length (e.g., 512 tokens)
+- Context: tokens relate to each other based on position
+
+**In Transformers:**
+- Input sequence: ["The", "cat", "sat", "on", "the", "mat"]
+- Each position in the sequence gets processed
+- Attention allows tokens to relate to all other positions
+- Maximum sequence length is a model hyperparameter
+
+**Example:**
+```
+Sequence: ["The", "cat", "sat"]
+Length: 3 tokens
+Position 0: "The"
+Position 1: "cat"  
+Position 2: "sat"
+```
+
+**Why it matters:** Transformers process entire sequences in parallel, unlike RNNs which process one token at a time. Sequence length affects computational cost.
+
+**Complete Flow from Text to Sequence:**
+```
+Text: "The cat sat"
+  ↓ Tokenization
+Tokens: ["The", "cat", "sat"]
+  ↓ Token Encoding
+IDs: [1, 2, 3]
+  ↓ Embedding Lookup
+Vectors: [[0.1, 0.2], [0.3, 0.7], [0.5, 0.1]]
+  ↓ Sequence
+Sequence: Matrix of shape [3, 2] (3 tokens, 2 dimensions)
+```
+
+---
+
+### Chunking
+
+**What it is:** Chunking is the process of splitting long documents or sequences into smaller, manageable pieces (chunks).
+
+**Physical Analogy:** Think of chunking like **dividing a long book into chapters**:
+- Long document → Multiple smaller chunks
+- Each chunk fits within model's sequence length limit
+- Chunks can overlap to preserve context
+
+**Why We Need It:**
+- Transformers have maximum sequence length (e.g., 512, 2048, 4096 tokens)
+- Long documents exceed this limit
+- Chunking breaks documents into processable pieces
+
+**Chunking Strategies:**
+- **Fixed-size**: Split every N tokens → [chunk1, chunk2, chunk3]
+- **Sentence-based**: Split at sentence boundaries → preserves meaning
+- **Overlapping**: Chunks share some tokens → maintains context across boundaries
+
+**Example:**
+```
+Long document: 5000 tokens
+Max sequence length: 512 tokens
+Chunking: Split into 10 chunks of ~500 tokens each
+Result: Process each chunk separately, then combine results
+```
+
+**Why it matters:** Enables processing documents longer than model's sequence limit. Critical for document Q&A, summarization, and long-form generation.
 
 ---
 
@@ -96,6 +312,152 @@ Output: [0, 1]        (now pointing up ↑)
 - Learning = finding the right transformation matrices
 
 **Why it matters:** Every layer in a transformer is a matrix multiplication.
+
+---
+
+### Dimension
+
+**What it is:** Dimension is the size or length of a vector or matrix axis.
+
+**Physical Analogy:** Think of dimension like **the number of measurements** needed to describe something:
+- 2D: (x, y) coordinates on a map
+- 3D: (x, y, z) coordinates in space
+- Higher dimensions: More measurements/features
+
+**In Transformers:**
+- **Embedding dimension** ($d$): Size of each token's vector (e.g., 128, 512, 768)
+- **Vocabulary dimension** ($V$): Number of tokens in vocabulary (e.g., 50,000)
+- **Sequence dimension**: Number of tokens in sequence (e.g., 512)
+- **Matrix dimensions**: Rows × Columns (e.g., $W_Q$ is $[d, d]$ for 2×2 matrices)
+
+**Example:**
+```
+Token embedding: [0.3, 0.7]  (dimension = 2)
+Embedding matrix E: [V, d] = [4, 2]  (4 tokens, 2 dimensions each)
+Attention matrix: [sequence_length, sequence_length] = [2, 2]
+```
+
+**Why it matters:** Dimensions determine the shape of all computations. Understanding dimensions is crucial for matrix operations.
+
+---
+
+### Parameter
+
+**What it is:** A parameter is a value in the model that gets learned (updated) during training.
+
+**Physical Analogy:** Think of parameters like **adjustable knobs on a machine**:
+- Each knob controls some aspect of the machine's behavior
+- During training, we adjust knobs to make the machine work better
+- Once trained, knobs are fixed at their learned values
+
+**In Transformers:**
+- **Weights**: Values in matrices (e.g., $W_Q$, $W_K$, $W_V$, $W_O$)
+- **Biases**: Offset values added to computations
+- **Embedding parameters**: Values in embedding matrix
+- **All learnable values** in the model
+
+**Example:**
+```
+Weight matrix W = [0.1, 0.2]  (these 4 numbers are parameters)
+                 [0.3, 0.4]
+Bias vector b = [0.05, 0.1]   (these 2 numbers are parameters)
+Total parameters: 4 + 2 = 6 parameters
+```
+
+**Why it matters:** Parameters are what the model "learns". More parameters = more capacity but more memory and computation.
+
+---
+
+### Weight
+
+**What it is:** A weight is a parameter (number) in a matrix that determines how inputs are transformed.
+
+**Physical Analogy:** Think of weights like **the strength of connections** in a network:
+- High weight = strong connection (input has big influence)
+- Low weight = weak connection (input has small influence)
+- Negative weight = inhibitory connection (opposes the input)
+
+**In Transformers:**
+- Weights are the values inside matrices ($W_Q$, $W_K$, $W_V$, $W_O$)
+- Each weight determines how much one input affects one output
+- Weights are learned during training
+
+**Example:**
+```
+Weight matrix W = [0.8, 0.2]  (weights)
+                 [0.3, 0.7]
+
+Input [1.0, 0.0] × W = [0.8, 0.2]
+  (weight 0.8 connects input[0] to output[0])
+  (weight 0.2 connects input[1] to output[0])
+```
+
+**Why it matters:** Weights encode what the model has learned. They determine how information flows through the network.
+
+---
+
+### Bias
+
+**What it is:** A bias is a parameter (number) that's added to a computation to shift the result.
+
+**Physical Analogy:** Think of bias like a **baseline or offset**:
+- Like setting a scale to zero before weighing
+- Or adjusting a thermostat's baseline temperature
+- Shifts the entire computation up or down
+
+**In Transformers:**
+- Bias is added after matrix multiplication: `output = input × W + bias`
+- Each output dimension has its own bias value
+- Biases are learned during training
+
+**Example:**
+```
+Input: [0.3, 0.7]
+Weight W: [0.5, 0.2]
+         [0.1, 0.8]
+Bias b: [0.1, -0.2]
+
+Output = [0.3, 0.7] × W + b
+       = [0.29, 0.56] + [0.1, -0.2]
+       = [0.39, 0.36]
+```
+
+**Why it matters:** Bias allows the model to learn offsets and thresholds. Without bias, the model is constrained to pass through the origin.
+
+---
+
+### Hyperparameter
+
+**What it is:** A hyperparameter is a configuration setting that controls how the model is trained or structured, but is NOT learned during training.
+
+**Physical Analogy:** Think of hyperparameters like **settings on a machine before you start it**:
+- Learning rate: How fast the machine adjusts
+- Batch size: How many items processed at once
+- Number of layers: How many processing stages
+- These are set BEFORE training, not learned DURING training
+
+**In Transformers:**
+- **Learning rate**: How large weight updates are
+- **Batch size**: Number of sequences processed together
+- **Sequence length**: Maximum tokens per sequence
+- **Embedding dimension**: Size of token vectors
+- **Number of layers**: How many transformer blocks
+- **Vocabulary size**: Number of tokens
+
+**Example:**
+```
+Hyperparameters (set before training):
+  Learning rate: 0.001
+  Batch size: 32
+  Sequence length: 512
+  Embedding dimension: 768
+  Number of layers: 12
+
+Parameters (learned during training):
+  All weights and biases in matrices
+```
+
+**Why it matters:** Hyperparameters control training behavior and model capacity. Choosing good hyperparameters is crucial for model performance.
 
 ---
 
@@ -262,6 +624,40 @@ Output Logits: [0.27×2.0+0.55×1.0, 0.27×0.5+0.55×2.0, 0.27×1.0+0.55×0.5, 0
 
 ---
 
+### Logits
+
+**What it is:** Logits are the raw, unnormalized scores output by the model before applying softmax.
+
+**Physical Analogy:** Think of logits like **raw test scores before grading on a curve**:
+- Raw scores: [85, 90, 75, 80] (logits)
+- After curve (softmax): [0.2, 0.5, 0.1, 0.2] (probabilities)
+- Logits can be any real numbers (positive, negative, large, small)
+- Probabilities must be 0-1 and sum to 1
+
+**In Transformers:**
+- **Output projection (WO)** produces logits (one per vocabulary token)
+- Logits are raw scores: [2.3, -0.5, 1.8, 0.2]
+- Softmax converts logits to probabilities: [0.6, 0.05, 0.3, 0.05]
+
+**Example:**
+```
+Context vector: [0.27, 0.55]
+Output projection (WO): [2.0, 1.0]
+                        [0.5, 2.0]
+                        [1.0, 0.5]
+                        [0.1, 0.2]
+
+Logits = Context × WO = [1.09, 1.235, 0.545, 0.137]
+        (raw scores for tokens A, B, C, D)
+
+After softmax: [0.35, 0.45, 0.15, 0.05]
+        (probabilities - sum to 1.0)
+```
+
+**Why it matters:** Logits are the model's raw predictions. Softmax converts them to interpretable probabilities. Gradients flow through logits during backpropagation.
+
+---
+
 ### Softmax Loss (Cross-Entropy Loss)
 
 **What it is:** A measure of how wrong the model's prediction is compared to the target.
@@ -314,6 +710,152 @@ Interpretation:
 
 ---
 
+### Learning Rate
+
+**What it is:** The learning rate is a hyperparameter that controls how large each weight update is during training.
+
+**Physical Analogy:** Think of learning rate like **step size when walking downhill**:
+- Large steps (high learning rate): Fast progress, but might overshoot the bottom
+- Small steps (low learning rate): Slow progress, but more precise
+- Too large: You jump over the valley (divergence)
+- Too small: You take forever to reach the bottom (slow convergence)
+
+**In Transformers:**
+- Learning rate ($\eta$ or `lr`) is typically between 0.0001 and 0.01
+- Used in gradient descent: $W_{\text{new}} = W_{\text{old}} - \eta \times \text{gradient}$
+- Often scheduled (starts high, decreases over time)
+
+**Example:**
+```
+Gradient: -0.5 (should increase weight)
+Learning rate: 0.1 (small steps)
+
+Weight update: W_new = W_old - 0.1 × (-0.5)
+              = W_old + 0.05  (small increase)
+
+If learning rate was 1.0:
+Weight update: W_new = W_old - 1.0 × (-0.5)
+              = W_old + 0.5  (large increase - might overshoot!)
+```
+
+**Why it matters:** Learning rate is one of the most important hyperparameters. Too high = unstable training, too low = slow training.
+
+---
+
+### Gradient Descent
+
+**What it is:** Gradient descent is an optimization algorithm that uses gradients to iteratively update parameters to minimize loss.
+
+**Physical Analogy:** Think of gradient descent like **walking downhill blindfolded**:
+- You can't see the bottom, but you can feel which way is downhill (gradient)
+- Take a step in that direction (weight update)
+- Repeat until you reach the bottom (minimum loss)
+- Step size = learning rate
+
+**In Transformers:**
+1. Compute loss
+2. Compute gradients (which direction to move)
+3. Update weights: $W_{\text{new}} = W_{\text{old}} - \eta \times \frac{\partial L}{\partial W}$
+4. Repeat for many iterations
+
+**Mathematical Definition:**
+$$W_{\text{new}} = W_{\text{old}} - \eta \cdot \nabla_W L$$
+
+Where:
+- $W$: Weight matrix
+- $\eta$: Learning rate
+- $\nabla_W L$: Gradient of loss w.r.t. weights
+
+**Example:**
+```
+Initial weight: W = 0.5
+Loss: 2.0
+Gradient: ∂L/∂W = -0.3 (negative = should increase W)
+Learning rate: η = 0.1
+
+Update: W_new = 0.5 - 0.1 × (-0.3)
+       = 0.5 + 0.03
+       = 0.53
+
+New loss: 1.8 (lower - improved!)
+```
+
+**Why it matters:** Gradient descent is the fundamental algorithm that enables neural networks to learn. Without it, we couldn't update parameters to reduce loss.
+
+---
+
+### Forward Pass
+
+**What it is:** The forward pass is the process of computing predictions by passing input data through the network from input to output.
+
+**Physical Analogy:** Think of forward pass like **following a recipe step-by-step**:
+- Start with ingredients (input tokens)
+- Process through each step (each layer)
+- End with final dish (prediction)
+- Data flows in one direction: Input → Layer 1 → Layer 2 → ... → Output
+
+**In Transformers:**
+1. **Tokenization**: Text → Tokens
+2. **Token Encoding**: Tokens → Integer IDs
+3. **Embedding Lookup**: Integer IDs → Vectors
+4. **Q/K/V Projections**: Vectors → Q, K, V (using weight matrices)
+5. **Attention**: Q, K, V → Context Vector (using attention dot product and softmax)
+6. **Output Projection**: Context → Logits (using weight matrix WO)
+7. **Softmax**: Logits → Probabilities
+
+**Example:**
+```
+Forward Pass:
+Input: "The cat"
+  → Tokenize: ["The", "cat"]
+  → Encode: [1, 2]
+  → Embed: [[0.1, 0.2], [0.3, 0.7]]
+  → Q/K/V: Query, Key, Value vectors
+  → Attention: [0.4, 0.6] (context vector)
+  → Logits: [1.0, 2.0, 0.5, 0.3]
+  → Probabilities: [0.1, 0.8, 0.05, 0.05]
+```
+
+**Why it matters:** Forward pass is how the model makes predictions. It's the first step in both inference and training.
+
+---
+
+### Backward Pass (Backpropagation)
+
+**What it is:** The backward pass is the process of computing gradients by propagating the loss backward through the network from output to input.
+
+**Physical Analogy:** Think of backward pass like **tracing back the cause of a mistake**:
+- You made an error (high loss)
+- Work backwards: "What caused this error?"
+- Check each step: "Did this layer contribute to the error?"
+- Calculate how much each parameter should change
+
+**In Transformers:**
+1. Compute loss at output
+2. Compute gradient w.r.t. output (logits)
+3. Propagate gradient backward through each layer:
+   - Loss → Logits → Output Projection → Context Vector
+   - Context Vector → Attention Weights → Attention Scores → Q, K, V
+   - Q, K, V → Q/K/V Maps → Embeddings
+4. Compute gradient for each parameter (weight, bias)
+5. Use gradients to update parameters
+
+**Example:**
+```
+Backward Pass:
+Loss: 0.5 (prediction was wrong)
+  → Gradient w.r.t. logits: [-0.2, 0.8, -0.3, -0.3]
+  → Gradient w.r.t. context: [0.1, 0.2]
+  → Gradient w.r.t. attention weights: [0.05, 0.15]
+  → Gradient w.r.t. Q, K, V: [computed via chain rule]
+  → Gradient w.r.t. W_Q, W_K, W_V, W_O: [computed]
+  → Update: W_new = W_old - learning_rate × gradient
+```
+
+**Why it matters:** Backward pass enables learning. Without it, we couldn't compute how to update parameters to reduce loss. This is what **backpropagation** does - it's the algorithm that performs the backward pass.
+
+---
+
 ### Weight Update
 
 **What it is:** The process of changing matrix values (weights) based on gradients to improve predictions.
@@ -351,6 +893,207 @@ Loss: 0.1 (low - good predictions!)
 
 ---
 
+### Batch
+
+**What it is:** A batch is a group of sequences processed together during training.
+
+**Physical Analogy:** Think of a batch like **grading multiple papers at once**:
+- Instead of grading one paper, grade 32 papers together
+- More efficient (parallel processing)
+- Average the results across all papers
+
+**In Training:**
+- Batch size = number of sequences processed together (e.g., 32, 64, 128)
+- All sequences in batch processed in parallel
+- Gradients averaged across batch
+- Loss averaged across batch
+
+**Example:**
+```
+Batch size: 4
+Batch: [
+  ["The", "cat", "sat"],
+  ["The", "dog", "ran"],
+  ["A", "bird", "flew"],
+  ["A", "fish", "swam"]
+]
+Process all 4 sequences together, average gradients
+```
+
+**Why it matters:** Batching enables efficient GPU utilization and stable gradient estimates. Larger batches = more stable but require more memory.
+
+---
+
+### Epoch
+
+**What it is:** An epoch is one complete pass through the entire training dataset.
+
+**Physical Analogy:** Think of an epoch like **reading an entire textbook once**:
+- Start at page 1, read through to the end
+- That's one epoch
+- Multiple epochs = reading the book multiple times to learn better
+
+**In Training:**
+- Dataset: 10,000 sequences
+- Batch size: 32
+- Batches per epoch: 10,000 ÷ 32 = 313 batches
+- One epoch = process all 313 batches
+- Training: Repeat for multiple epochs (e.g., 10 epochs)
+
+**Example:**
+```
+Dataset: 1000 sequences
+Batch size: 32
+Epoch 1: Process batches 1-32 (all 1000 sequences)
+Epoch 2: Process batches 1-32 again (same sequences, different order)
+Epoch 3: Process batches 1-32 again
+... (until model converges)
+```
+
+**Why it matters:** Models typically need multiple epochs to learn. Each epoch gives the model another chance to see all training data and improve.
+
+---
+
+### Layer
+
+**What it is:** A layer is a computational unit in a neural network that transforms its input to produce output.
+
+**Physical Analogy:** Think of a layer like a **factory assembly line station**:
+- Input arrives → Layer processes it → Output goes to next layer
+- Each layer does a specific job (embedding, attention, feed-forward)
+- Multiple layers = multiple processing steps
+
+**In Transformers:**
+- **Embedding Layer**: Token → Vector
+- **Attention Layer**: Finds relevant information
+- **Feed-Forward Layer**: Adds non-linearity
+- **Output Layer**: Vector → Vocabulary predictions
+
+**Example:**
+```
+Input: Token "cat"
+Layer 1 (Embedding): "cat" → [0.3, 0.7, -0.2]
+Layer 2 (Attention): [0.3, 0.7, -0.2] → [0.4, 0.6, -0.1] (with context)
+Layer 3 (Feed-Forward): [0.4, 0.6, -0.1] → [0.5, 0.5, 0.0]
+Layer 4 (Output): [0.5, 0.5, 0.0] → [0.1, 0.8, 0.05, 0.05] (vocab probs)
+```
+
+**Why it matters:** Layers enable complex transformations. Stacking layers allows learning hierarchical patterns.
+
+---
+
+### Activation Function
+
+**What it is:** An activation function is a non-linear function applied to layer outputs to introduce non-linearity into the network.
+
+**Physical Analogy:** Think of activation like a **filter that shapes the signal**:
+- Without activation: network is just linear transformations (limited)
+- With activation: network can learn complex, non-linear patterns
+- Different activations = different "shapes" of transformation
+
+**Common Activation Functions:**
+- **ReLU**: $f(x) = \max(0, x)$ - Keeps positive, zeros negative
+- **Sigmoid**: $f(x) = \frac{1}{1+e^{-x}}$ - Squashes to 0-1 range
+- **Tanh**: $f(x) = \tanh(x)$ - Squashes to -1 to 1 range
+- **GELU**: Smooth version of ReLU
+
+**Example:**
+```
+Input: [1.0, -0.5, 2.0]
+ReLU: [1.0, 0.0, 2.0]  (negative becomes 0)
+Sigmoid: [0.73, 0.38, 0.88]  (all between 0-1)
+```
+
+**Why it matters:** Without activation functions, neural networks are just linear transformations and can't learn complex patterns. Activation enables non-linearity.
+
+---
+
+### Feed-Forward Network (FFN)
+
+**What it is:** A feed-forward network is a layer that applies two linear transformations with an activation function in between.
+
+**Physical Analogy:** Think of FFN like a **two-stage processing pipeline**:
+- Stage 1: Expand (increase dimensions)
+- Stage 2: Compress (reduce back to original dimensions)
+- Activation in between adds non-linearity
+
+**Structure:**
+```
+FFN(x) = ReLU(xW₁ + b₁)W₂ + b₂
+```
+
+Where:
+- $W₁$: First weight matrix (expands dimensions)
+- $b₁$: First bias
+- ReLU: Activation function
+- $W₂$: Second weight matrix (compresses dimensions)
+- $b₂$: Second bias
+
+**Example:**
+```
+Input: [0.3, 0.7] (dimension 2)
+W₁: 2×4 matrix → Output: [0.5, 0.2, 0.8, 0.1] (expanded to 4)
+ReLU: [0.5, 0.2, 0.8, 0.1] (no negatives)
+W₂: 4×2 matrix → Output: [0.4, 0.6] (back to dimension 2)
+```
+
+**Why it matters:** FFNs add non-linearity and capacity to transformers. They enable learning complex feature combinations.
+
+---
+
+### Layer Normalization
+
+**What it is:** Layer normalization is a technique that normalizes the inputs to a layer by adjusting the mean and variance.
+
+**Physical Analogy:** Think of layer normalization like **standardizing test scores**:
+- Raw scores vary widely (0-100)
+- Normalize: subtract mean, divide by standard deviation
+- Result: scores centered around 0 with consistent scale
+
+**Mathematical Definition:**
+$$\text{LayerNorm}(x) = \gamma \frac{x - \mu}{\sigma} + \beta$$
+
+Where:
+- $\mu$: mean of the features
+- $\sigma$: standard deviation of the features
+- $\gamma, \beta$: learnable scale and shift parameters
+
+**Example:**
+```
+Input: [1.0, 3.0, 2.0]
+Mean (μ): 2.0
+Std (σ): 0.82
+Normalized: [(1.0-2.0)/0.82, (3.0-2.0)/0.82, (2.0-2.0)/0.82]
+         = [-1.22, 1.22, 0.0]
+```
+
+**Why it matters:** Layer normalization stabilizes training, enables larger learning rates, and helps with gradient flow in deep networks.
+
+---
+
+### Residual Connection
+
+**What it is:** A residual connection (also called skip connection) adds the input of a layer directly to its output.
+
+**Physical Analogy:** Think of residual connection like a **shortcut or bypass**:
+- Main path: Input → Layer → Output
+- Shortcut: Input → (directly to output)
+- Final: Output = Layer(Input) + Input
+
+**Mathematical Definition:**
+$$\text{Output} = \text{Layer}(x) + x$$
+
+**Example:**
+```
+Input: [0.3, 0.7]
+Layer output: [0.1, 0.2]
+Residual: [0.3, 0.7] + [0.1, 0.2] = [0.4, 0.9]
+```
+
+**Why it matters:** Residual connections enable training of very deep networks by allowing gradients to flow directly through the shortcut. They prevent the "vanishing gradient" problem in deep networks.
+
+---
+
 ## Complete Flow: From Token to Prediction
 
 **Here's how all these components work together:**
@@ -367,6 +1110,8 @@ graph LR
     Update -.->|"Improves"| QKV
     Update -.->|"Improves"| WO
     
+    style Text fill:#e1f5ff
+    style Tokenize fill:#e1f5ff
     style Token fill:#e1f5ff
     style Embed fill:#fff4e1
     style Ctx fill:#e8f5e9
@@ -376,20 +1121,21 @@ graph LR
 ```
 
 **Step-by-step:**
-1. **Token** "cat" enters
-2. **Embedding** converts to vector `[0.3, 0.7, -0.2]`
-3. **Q/K/V Maps** transform embedding into three views:
+1. **Tokenization** breaks text "The cat sat" into tokens: ["The", "cat", "sat"]
+2. **Token** "cat" enters (one token from the sequence)
+3. **Embedding** converts to vector `[0.3, 0.7, -0.2]`
+4. **Q/K/V Maps** transform embedding into three views:
    - WQ → Query (what I need)
    - WK → Key (what I offer)
    - WV → Value (my content)
-4. **Attention** computes Q·K (dot product) to find relevant tokens
-5. **Softmax** converts attention scores to probabilities
-6. **Context Vector** = weighted sum of all Values
-7. **Output Projection (WO)** transforms context to vocabulary scores
-8. **Softmax** converts scores to prediction probabilities
-9. **Loss** compares prediction to target
-10. **Gradient** shows how to improve
-11. **Weight Update** changes matrices to reduce loss
+5. **Attention** computes Q·K (dot product) to find relevant tokens
+6. **Softmax** converts attention scores to probabilities
+7. **Context Vector** = weighted sum of all Values
+8. **Output Projection (WO)** transforms context to vocabulary scores (logits)
+9. **Softmax** converts logits to prediction probabilities
+10. **Loss** compares prediction to target
+11. **Backward Pass**: **Gradient** computation flows backward through network
+12. **Weight Update** changes parameters (weights, biases) to reduce loss
 
 ---
 
@@ -397,7 +1143,13 @@ graph LR
 
 | Component | Physical Analogy | Why It Exists |
 |-----------|-----------------|---------------|
+| **Tokenization** | Cutting sentence into words | Converts text → discrete tokens |
 | **Token** | Scrabble tile | Smallest unit of information |
+| **Vocabulary** | Dictionary/Scrabble bag | Complete set of all possible tokens |
+| **Token Encoding** | Student ID assignment | Converts token (string) → integer ID |
+| **Embedding Lookup** | Filing cabinet retrieval | Converts integer ID → vector (using embedding matrix) |
+| **Sequence** | Sentence/paragraph | Ordered list of tokens processed together |
+| **Chunking** | Dividing book into chapters | Splits long documents into processable pieces |
 | **Embedding** | GPS coordinates | Convert symbols → numbers (math-ready) |
 | **Vector** | Point on a map | Represents meaning in semantic space |
 | **Matrix** | Transformation machine | Transforms vectors (rotates, scales, shifts) |
@@ -409,9 +1161,22 @@ graph LR
 | **Softmax** | Pie division | Converts scores → probabilities (sums to 1) |
 | **Context Vector** | Blended smoothie | Weighted combination of all relevant information |
 | **Output Projection (WO)** | Translator | Converts meaning → vocabulary predictions |
+| **Logits** | Raw test scores | Unnormalized scores before softmax |
 | **Softmax Loss** | Game score | Measures prediction error (lower = better) |
 | **Gradient** | Compass (uphill) | Shows direction to reduce loss |
+| **Learning Rate** | Step size downhill | Controls how large weight updates are |
+| **Gradient Descent** | Walking downhill | Optimization algorithm to minimize loss |
+| **Forward Pass** | Following recipe | Computing predictions (input → output) |
+| **Backward Pass** | Tracing error | Computing gradients (output → input) |
+| **Backpropagation** | Tracing error backward | Algorithm to compute gradients through network |
 | **Weight Update** | Radio tuning | Changes matrices to improve predictions |
+| **Batch** | Grading multiple papers | Group of sequences processed together |
+| **Epoch** | Reading entire textbook once | One complete pass through training data |
+| **Layer** | Factory assembly station | Computational unit that transforms input |
+| **Activation Function** | Signal filter/shape | Introduces non-linearity into network |
+| **Feed-Forward Network (FFN)** | Two-stage pipeline | Adds non-linearity and capacity |
+| **Layer Normalization** | Standardizing scores | Normalizes layer inputs for stability |
+| **Residual Connection** | Shortcut/bypass | Enables training of deep networks |
 
 ---
 
