@@ -1,4 +1,4 @@
-## Appendix C: Common Mistakes and Solutions
+## Appendix D: Common Mistakes and Solutions
 
 ### Mistake 1: Forgetting Scaling Factor
 
@@ -27,5 +27,5 @@
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Appendix B](appendix-b-hand-calculation-tips.md) | [Next: Conclusion →](conclusion.md)
+- [← Index](00-index.md) | [← Previous: Appendix C](appendix-c-hand-calculation-tips.md) | [Next: Conclusion →](conclusion.md)
 ---

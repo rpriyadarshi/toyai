@@ -18,6 +18,16 @@ Build complete transformer with:
 
 ### Model Architecture
 
+This example implements the complete transformer architecture as shown in [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Complete Transformer Architecture". All components are included.
+
+**Complete Components:**
+- **Multiple Transformer Blocks**: Each block has Attention + FFN
+- **Layer Normalization**: Normalizes inputs to each layer
+- **Residual Connections**: Enables training of deep networks
+- **Complete Training Pipeline**: Forward + Backward + Updates
+
+**Model Architecture Diagram:**
+
 ```mermaid
 graph LR
     I["Input"] --> E["Embed"]
@@ -39,6 +49,8 @@ graph LR
     style R4 fill:#ffebee
     style P fill:#c8e6c9
 ```
+
+**This is the complete transformer!** All previous examples built up to this. See Chapter 1 for the full architecture diagram with all components labeled.
 
 ### Layer Normalization
 

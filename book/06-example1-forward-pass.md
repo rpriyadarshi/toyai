@@ -14,11 +14,44 @@ Given input sequence "A B", predict the next token. We'll compute probabilities 
 
 ### Model Architecture
 
+This example demonstrates a minimal transformer architecture focusing on the forward pass only. For the complete transformer architecture with all components, see [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Complete Transformer Architecture".
+
+**Components in this example:**
 - Fixed token embeddings
 - Fixed Q, K, V projection matrices
 - Scaled dot-product attention
 - Output projection to vocabulary
 - Softmax to get probabilities
+
+**Model Architecture Diagram:**
+
+```mermaid
+graph LR
+    Input["Input<br/>'A B'"] --> Tokenize["Tokenization<br/>['A', 'B']"]
+    Tokenize --> Encode["Token Encoding<br/>[0, 1]"]
+    Encode --> Embed["Embedding Lookup<br/>Vectors"]
+    Embed --> QKV["Q/K/V Projections<br/>WQ, WK, WV"]
+    QKV --> Q["Q<br/>Queries"]
+    QKV --> K["K<br/>Keys"]
+    QKV --> V["V<br/>Values"]
+    Q --> Attn["Attention<br/>Q·K^T / √d_k"]
+    K --> Attn
+    Attn --> Soft1["Softmax<br/>Attention Weights"]
+    Soft1 --> Ctx["Context Vector<br/>Weighted Sum of V"]
+    V --> Ctx
+    Ctx --> WO["Output Projection<br/>WO"]
+    WO --> Logits["Logits<br/>Raw Scores"]
+    Logits --> Soft2["Softmax<br/>Probabilities"]
+    Soft2 --> Output["Output<br/>[0.1, 0.8, 0.05, 0.05]"]
+    
+    style Input fill:#e1f5ff
+    style Embed fill:#fff4e1
+    style QKV fill:#f3e5f5
+    style Ctx fill:#e8f5e9
+    style Output fill:#c8e6c9
+```
+
+**Note:** This is a simplified forward-only architecture. The complete transformer (shown in Chapter 1) includes multiple transformer blocks, feed-forward networks, layer normalization, and residual connections.
 
 ### Step-by-Step Computation
 

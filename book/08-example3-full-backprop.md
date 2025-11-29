@@ -14,8 +14,42 @@ Train on "A B" → "C" with all weights trainable: $W_Q$, $W_K$, $W_V$, $W_O$
 
 ### Model Architecture
 
-- All projection matrices are trainable
+This example demonstrates complete backpropagation through all components. For the complete transformer architecture, see [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Complete Transformer Architecture".
+
+**Components:**
+- **All projection matrices are trainable**: $W_Q$, $W_K$, $W_V$, $W_O$
 - Complete gradient flow through attention mechanism
+- Full backward pass from loss to all weights
+
+**Model Architecture Diagram:**
+
+```mermaid
+graph LR
+    Input["Input<br/>'A B'"] --> Forward["Forward Pass"]
+    Forward --> Loss["Loss<br/>L"]
+    Target["Target<br/>'C'"] --> Loss
+    Loss --> Backward["Backward Pass<br/>Complete Gradient Flow"]
+    Backward --> GradWO["∂L/∂WO<br/>Update WO"]
+    Backward --> GradWQ["∂L/∂WQ<br/>Update WQ"]
+    Backward --> GradWK["∂L/∂WK<br/>Update WK"]
+    Backward --> GradWV["∂L/∂WV<br/>Update WV"]
+    GradWO --> Update["Weight Updates<br/>All matrices"]
+    GradWQ --> Update
+    GradWK --> Update
+    GradWV --> Update
+    
+    style Loss fill:#ffcdd2
+    style Backward fill:#fff4e1
+    style GradWO fill:#e8f5e9
+    style GradWQ fill:#e8f5e9
+    style GradWK fill:#e8f5e9
+    style GradWV fill:#e8f5e9
+    style Update fill:#c8e6c9
+```
+
+**Key Difference from Example 2:**
+- Example 2: Only $W_O$ trainable (simple gradient flow)
+- Example 3: All weights trainable (complete gradient flow through attention)
 
 ### Backpropagation Steps
 

@@ -13,7 +13,7 @@ This book has been split into individual chapter files for easier navigation.
 ### Quick Links
 
 **Part I: Foundations**
-- [Chapter 1: Core Terminology and Foundations](book/01-terminology-foundations.md) - **START HERE!**
+- [Chapter 1: Neural Network Fundamentals](book/01-neural-network-fundamentals.md) - **START HERE!** Complete foundation with all concepts
 - [Chapter 2: The Matrix Core](book/02-matrix-core.md)
 - [Chapter 3: Embeddings: Tokens to Vectors](book/03-embeddings.md)
 - [Chapter 4: Attention Intuition](book/04-attention-intuition.md)
@@ -29,8 +29,9 @@ This book has been split into individual chapter files for easier navigation.
 
 **Appendices**
 - [Appendix A: Matrix Calculus Reference](book/appendix-a-matrix-calculus.md)
-- [Appendix B: Hand Calculation Tips](book/appendix-b-hand-calculation-tips.md)
-- [Appendix C: Common Mistakes and Solutions](book/appendix-c-common-mistakes.md)
+- [Appendix B: Terminology Reference](book/appendix-b-terminology-reference.md) - Quick reference for all terminology
+- [Appendix C: Hand Calculation Tips](book/appendix-c-hand-calculation-tips.md)
+- [Appendix D: Common Mistakes and Solutions](book/appendix-d-common-mistakes.md)
 
 **Conclusion**
 - [Conclusion](book/conclusion.md)

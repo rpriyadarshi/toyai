@@ -8,7 +8,7 @@
 
 ### Part I: Foundations
 
-1. [Core Terminology and Foundations](01-terminology-foundations.md) - **START HERE!** All concepts explained with physical analogies
+1. [Neural Network Fundamentals](01-neural-network-fundamentals.md) - **START HERE!** Complete foundation: from perceptrons to transformers, all concepts with physical analogies
 2. [The Matrix Core](02-matrix-core.md) - Matrix operations, the foundation of all computations
 3. [Embeddings: Tokens to Vectors](03-embeddings.md) - How discrete tokens become continuous vectors
 4. [Attention Intuition](04-attention-intuition.md) - Query/Key/Value and the attention mechanism
@@ -26,8 +26,9 @@
 ### Appendices
 
 - [A: Matrix Calculus Reference](appendix-a-matrix-calculus.md)
-- [B: Hand Calculation Tips](appendix-b-hand-calculation-tips.md)
-- [C: Common Mistakes and Solutions](appendix-c-common-mistakes.md)
+- [B: Terminology Reference](appendix-b-terminology-reference.md) - Quick reference for all terminology with physical analogies
+- [C: Hand Calculation Tips](appendix-c-hand-calculation-tips.md)
+- [D: Common Mistakes and Solutions](appendix-d-common-mistakes.md)
 
 ### Additional Resources
 
@@ -48,5 +49,5 @@
 **Navigation**: Use the table of contents above to jump to any chapter.
 ---
 **Navigation:**
-- [← Index](00-index.md) | [Next: Core Terminology and Foundations →](01-terminology-foundations.md)
+- [← Index](00-index.md) | [Next: Neural Network Fundamentals →](01-neural-network-fundamentals.md)
 ---

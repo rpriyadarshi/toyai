@@ -19,8 +19,38 @@ Learn all patterns simultaneously.
 
 ### Model Architecture
 
-- Same as Example 3
-- But process multiple examples
+This example demonstrates batch training with multiple patterns. For the complete transformer architecture, see [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Complete Transformer Architecture".
+
+**Components:**
+- Same architecture as Example 3
+- **Batch processing**: Multiple examples processed together
+- **Gradient averaging**: Gradients averaged across batch
+
+**Model Architecture Diagram:**
+
+```mermaid
+graph LR
+    Batch["Batch<br/>Multiple Examples"] --> Forward["Forward Pass<br/>All Examples"]
+    Forward --> Loss1["Loss 1<br/>Example 1"]
+    Forward --> Loss2["Loss 2<br/>Example 2"]
+    Forward --> Loss3["Loss 3<br/>Example 3"]
+    Loss1 --> Grad1["Gradient 1"]
+    Loss2 --> Grad2["Gradient 2"]
+    Loss3 --> Grad3["Gradient 3"]
+    Grad1 --> Avg["Average Gradients<br/>∇L = (∇L₁ + ∇L₂ + ∇L₃) / 3"]
+    Grad2 --> Avg
+    Grad3 --> Avg
+    Avg --> Update["Weight Update<br/>All Weights"]
+    
+    style Batch fill:#e1f5ff
+    style Forward fill:#fff4e1
+    style Avg fill:#f3e5f5
+    style Update fill:#e8f5e9
+```
+
+**Key Difference from Example 3:**
+- Example 3: Single example per training step
+- Example 4: Multiple examples per batch (batch training)
 
 ### Batch Training
 

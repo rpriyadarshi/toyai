@@ -1,7 +1,7 @@
 ## Chapter 5: Why Transformers?
 
 **Prerequisites:** You should have read:
-- Chapter 1: Core Terminology and Foundations (all terms explained)
+- Chapter 1: Neural Network Fundamentals (all concepts explained with physical analogies)
 - Chapter 2: The Matrix Core (matrix operations)
 - Chapter 3: Embeddings (tokens to vectors)
 - Chapter 4: Attention Intuition (Q/K/V, attention mechanism)

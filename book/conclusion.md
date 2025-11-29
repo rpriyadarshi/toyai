@@ -22,5 +22,5 @@ The principles you've learned apply to GPT, BERT, and all transformer-based mode
 *This book is a living document. As you work through examples, refer back to relevant chapters. Each example builds on previous ones, creating a complete understanding.*
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Appendix C](appendix-c-common-mistakes.md)
+- [← Index](00-index.md) | [← Previous: Appendix D](appendix-d-common-mistakes.md)
 ---

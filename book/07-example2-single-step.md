@@ -16,9 +16,40 @@ We'll update only the output projection matrix $W_O$ in this example to keep it 
 
 ### Model Architecture
 
-- Same as Example 1
-- But $W_O$ is now trainable
-- $W_Q$, $W_K$, $W_V$ remain fixed
+This example extends Example 1 by adding training. For the complete transformer architecture, see [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Complete Transformer Architecture".
+
+**Components:**
+- Same forward pass as Example 1
+- **$W_O$ is now trainable** (highlighted in diagram)
+- $W_Q$, $W_K$, $W_V$ remain fixed (not updated)
+- Loss computation and gradient flow
+
+**Model Architecture Diagram:**
+
+```mermaid
+graph LR
+    Input["Input<br/>'A B'"] --> Forward["Forward Pass<br/>(Same as Example 1)"]
+    Forward --> Logits["Logits"]
+    Logits --> Loss["Loss<br/>L = -log(P(target))"]
+    Target["Target<br/>'C'"] --> Loss
+    Loss --> Grad["Gradient<br/>∂L/∂WO"]
+    Grad --> Update["Weight Update<br/>WO_new = WO_old - η×grad"]
+    Update -.->|"Updated"| WO["WO<br/>(Trainable)"]
+    Forward -.->|"Fixed"| WQ["WQ<br/>(Fixed)"]
+    Forward -.->|"Fixed"| WK["WK<br/>(Fixed)"]
+    Forward -.->|"Fixed"| WV["WV<br/>(Fixed)"]
+    
+    style WO fill:#e8f5e9
+    style Update fill:#c8e6c9
+    style Loss fill:#ffcdd2
+    style WQ fill:#f5f5f5
+    style WK fill:#f5f5f5
+    style WV fill:#f5f5f5
+```
+
+**Key Difference from Example 1:**
+- Example 1: Forward pass only (no training)
+- Example 2: Forward pass + Loss + Gradient + Weight update (only WO)
 
 ### Training Process
 

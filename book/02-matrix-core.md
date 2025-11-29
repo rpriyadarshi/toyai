@@ -257,5 +257,5 @@ But **NOT** matrix inverse because:
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Core Terminology](01-terminology-foundations.md) | [Next: Embeddings →](03-embeddings.md)
+- [← Index](00-index.md) | [← Previous: Neural Network Fundamentals](01-neural-network-fundamentals.md) | [Next: Embeddings →](03-embeddings.md)
 ---

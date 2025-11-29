@@ -8,7 +8,7 @@ This directory contains the complete book split into individual chapter files fo
 - **`00-index.md`** - Table of contents and navigation hub
 
 ### Part I: Foundations
-- **`01-terminology-foundations.md`** - **START HERE!** Core terminology with physical analogies
+- **`01-neural-network-fundamentals.md`** - **START HERE!** Complete foundation: from perceptrons to transformers, all concepts with physical analogies
 - **`02-matrix-core.md`** - Matrix operations, transformations, calculus
 - **`03-embeddings.md`** - Tokens to vectors, semantic spaces
 - **`04-attention-intuition.md`** - Query/Key/Value, search metaphor
@@ -24,8 +24,9 @@ This directory contains the complete book split into individual chapter files fo
 
 ### Appendices
 - **`appendix-a-matrix-calculus.md`** - Matrix calculus reference
-- **`appendix-b-hand-calculation-tips.md`** - Hand calculation guide
-- **`appendix-c-common-mistakes.md`** - Common mistakes and solutions
+- **`appendix-b-terminology-reference.md`** - Quick reference for all terminology with physical analogies
+- **`appendix-c-hand-calculation-tips.md`** - Hand calculation guide
+- **`appendix-d-common-mistakes.md`** - Common mistakes and solutions
 
 ### Conclusion
 - **`conclusion.md`** - Summary and next steps

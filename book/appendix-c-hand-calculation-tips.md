@@ -1,4 +1,4 @@
-## Appendix B: Hand Calculation Tips
+## Appendix C: Hand Calculation Tips
 
 ### Organization
 
@@ -25,5 +25,5 @@
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Appendix A](appendix-a-matrix-calculus.md) | [Next: Appendix C →](appendix-c-common-mistakes.md)
+- [← Index](00-index.md) | [← Previous: Appendix B](appendix-b-terminology-reference.md) | [Next: Appendix D →](appendix-d-common-mistakes.md)
 ---

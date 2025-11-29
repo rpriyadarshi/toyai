@@ -15,6 +15,14 @@ Add a feed-forward network after attention:
 
 ### Model Architecture
 
+This example adds feed-forward networks and residual connections. For the complete transformer architecture, see [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Complete Transformer Architecture".
+
+**New Components:**
+- **Feed-Forward Network (FFN)**: Two linear transformations with ReLU activation
+- **Residual Connection**: Adds input to FFN output (enables deep networks)
+
+**Model Architecture Diagram:**
+
 ```mermaid
 graph LR
     I["Input"] --> E["Embeddings"] --> A["Attention"] --> FF["FFN<br/>ReLU(xW₁+b₁)W₂+b₂"]
@@ -28,6 +36,10 @@ graph LR
     style R fill:#ffebee
     style O fill:#e8f5e9
 ```
+
+**Key Difference from Example 3:**
+- Example 3: Attention → Output Projection
+- Example 5: Attention → FFN → Residual → Output Projection
 
 ### Feed-Forward Network
 
