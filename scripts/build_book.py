@@ -177,8 +177,11 @@ numbersections: true
 header-includes:
   - \\usepackage{hyperref}
   - \\usepackage{bookmark}
+  - \\usepackage{enumitem}
   - \\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, bookmarksopen=true, bookmarksopenlevel=2}
   - \\bookmarksetup{startatroot}
+  - \\setlist{nosep,leftmargin=*,itemsep=0.5em}
+  - \\renewenvironment{itemize}{\\begin{list}{$\\bullet$}{\\setlength{\\leftmargin}{1.5em}\\setlength{\\itemsep}{0.3em}\\setlength{\\parsep}{0pt}\\setlength{\\topsep}{0.5em}}}{\\end{list}}
   - \\AtBeginDocument{\\pdfbookmark[0]{Title Page}{titlepage}}
   - \\let\\oldmaketitle\\maketitle
   - \\renewcommand\\maketitle{\\oldmaketitle}
@@ -339,7 +342,7 @@ def generate_pdf(md_file):
             str(md_file),
             '-o', str(pdf_file),
             f'--pdf-engine={pdf_engine}',
-            '--from=markdown+tex_math_dollars+raw_tex',
+            '--from=markdown+tex_math_dollars+raw_tex+lists_without_preceding_blankline',
             '--to=pdf',
             '-V', 'geometry:margin=1in',
             '-V', 'fontsize=11pt',
