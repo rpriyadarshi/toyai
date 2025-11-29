@@ -176,12 +176,23 @@ linestretch: 1.2
 numbersections: true
 header-includes:
   - \\usepackage{hyperref}
-  - \\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+  - \\usepackage{bookmark}
+  - \\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, bookmarksopen=true, bookmarksopenlevel=2}
+  - \\bookmarksetup{startatroot}
+  - \\AtBeginDocument{\\pdfbookmark[0]{Title Page}{titlepage}}
+  - \\let\\oldmaketitle\\maketitle
+  - \\renewcommand\\maketitle{\\oldmaketitle}
+  - \\let\\oldtoc\\tableofcontents
+  - \\renewcommand\\tableofcontents{\\cleardoublepage\\phantomsection\\pdfbookmark[0]{Table of Contents}{toc}\\oldtoc}
 ---
 
 \\frontmatter
 
+\\begingroup
+\\hypersetup{bookmarks=false}
+\\addtocontents{toc}{}
 # Understanding Transformers: From First Principles to Mastery
+\\endgroup
 
 **A Progressive Learning System with Hand-Calculable Examples**
 
