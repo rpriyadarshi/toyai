@@ -80,7 +80,7 @@ toyai-1/
 
 ### 1. Read the Book
 
-Start with **`BOOK.md`**. Read Part I (Foundations) to understand the core concepts.
+Start with **`book/00-index.md`** or **`BOOK.md`**. Read Part I (Foundations, Chapters 1-5) to understand the core concepts. **Chapter 1: Core Terminology and Foundations** explains all terminology with physical analogies - start there!
 
 ### 2. Work Through Examples
 
@@ -111,7 +111,12 @@ make
 
 ## 📖 Learning Path
 
-1. **Read BOOK.md Chapter 1-4** (Foundations)
+1. **Read Foundations (Chapters 1-5)** - Start with terminology, then matrix operations, embeddings, attention, and why transformers
+   - Chapter 1: Core Terminology and Foundations (**START HERE!**)
+   - Chapter 2: The Matrix Core
+   - Chapter 3: Embeddings: Tokens to Vectors
+   - Chapter 4: Attention Intuition
+   - Chapter 5: Why Transformers?
 2. **Study Example 1** - Read chapter, understand code, do worksheet
 3. **Study Example 2** - Add training concepts
 4. **Study Example 3** - Master backpropagation
