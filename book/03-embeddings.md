@@ -18,10 +18,22 @@
 
 **Embeddings** map each token to a vector (point in space):
 
-```
-Token "cat" → Vector [0.3, 0.7, -0.2, ...]
-Token "dog" → Vector [0.4, 0.6, -0.1, ...]
-Token "mat" → Vector [-0.1, 0.2, 0.8, ...]
+```mermaid
+graph LR
+    T1["'cat'"] --> E["E<br/>V×d"]
+    T2["'dog'"] --> E
+    T3["'mat'"] --> E
+    E --> V1["[0.3,0.7,-0.2...]<br/>'cat'"]
+    E --> V2["[0.4,0.6,-0.1...]<br/>'dog'<br/>Similar!"]
+    E --> V3["[-0.1,0.2,0.8...]<br/>'mat'<br/>Different"]
+    
+    style T1 fill:#e1f5ff
+    style T2 fill:#e1f5ff
+    style T3 fill:#e1f5ff
+    style E fill:#f3e5f5
+    style V1 fill:#e8f5e9
+    style V2 fill:#c8e6c9
+    style V3 fill:#ffcdd2
 ```
 
 **Key insight:** Similar tokens should have similar vectors!
@@ -34,11 +46,19 @@ Token "mat" → Vector [-0.1, 0.2, 0.8, ...]
 - Only one element is 1, rest are 0
 
 **Example (vocab: A, B, C, D):**
-```
-A → [1, 0, 0, 0]
-B → [0, 1, 0, 0]
-C → [0, 0, 1, 0]
-D → [0, 0, 0, 1]
+
+```mermaid
+graph LR
+    A["A→[1,0,0,0]"] --> P["Problems:<br/>Orthogonal<br/>Huge dim<br/>No semantics"]
+    B["B→[0,1,0,0]"] --> P
+    C["C→[0,0,1,0]"] --> P
+    D["D→[0,0,0,1]"] --> P
+    
+    style A fill:#e1f5ff
+    style B fill:#e1f5ff
+    style C fill:#e1f5ff
+    style D fill:#e1f5ff
+    style P fill:#ffcdd2
 ```
 
 **Problems with one-hot:**
@@ -54,10 +74,17 @@ D → [0, 0, 0, 1]
 - Similar meanings → similar vectors
 
 **Example (learned):**
-```
-"cat" → [0.3, 0.7, -0.2]
-"dog" → [0.4, 0.6, -0.1]  (similar to "cat"!)
-"mat" → [-0.1, 0.2, 0.8]  (different from "cat")
+
+```mermaid
+graph LR
+    L1["'cat'<br/>[0.3,0.7,-0.2]"] --> S["Semantic Space<br/>'cat' & 'dog' close<br/>'mat' far"]
+    L2["'dog'<br/>[0.4,0.6,-0.1]<br/>Similar!"] --> S
+    L3["'mat'<br/>[-0.1,0.2,0.8]<br/>Different"] --> S
+    
+    style L1 fill:#e8f5e9
+    style L2 fill:#c8e6c9
+    style L3 fill:#ffcdd2
+    style S fill:#fff4e1
 ```
 
 **How it works:**
@@ -84,11 +111,19 @@ D → [0, 0, 0, 1]
 - Relationships emerge: "king" - "man" + "woman" ≈ "queen"
 
 **Example in 2D:**
-```
-A = [1, 0]  (corner of space)
-B = [0, 1]  (different corner)
-C = [1, 1]  (combination)
-D = [0, 0]  (origin)
+
+```mermaid
+graph LR
+    A["A=[1,0]<br/>Right"] --> R["Relations:<br/>A⊥B<br/>C=A+B<br/>D=origin"]
+    B["B=[0,1]<br/>Up"] --> R
+    C["C=[1,1]<br/>Combo"] --> R
+    D["D=[0,0]<br/>Origin"] --> R
+    
+    style A fill:#e1f5ff
+    style B fill:#e1f5ff
+    style C fill:#fff4e1
+    style D fill:#f3e5f5
+    style R fill:#e8f5e9
 ```
 
 ### Fixed vs. Learned Embeddings

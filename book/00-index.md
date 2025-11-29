@@ -8,19 +8,20 @@
 
 ### Part I: Foundations
 
-1. [Why Transformers?](01-why-transformers.md)
-2. [The Matrix Core](02-matrix-core.md)
-3. [Embeddings: Tokens to Vectors](03-embeddings.md)
-4. [Attention Intuition](04-attention-intuition.md)
+1. [Core Terminology and Foundations](01-terminology-foundations.md) - **START HERE!** All concepts explained with physical analogies
+2. [The Matrix Core](02-matrix-core.md) - Matrix operations, the foundation of all computations
+3. [Embeddings: Tokens to Vectors](03-embeddings.md) - How discrete tokens become continuous vectors
+4. [Attention Intuition](04-attention-intuition.md) - Query/Key/Value and the attention mechanism
+5. [Why Transformers?](05-why-transformers.md) - The problem transformers solve and why they're needed
 
 ### Part II: Progressive Examples
 
-5. [Example 1: Minimal Forward Pass](05-example1-forward-pass.md)
-6. [Example 2: Single Training Step](06-example2-single-step.md)
-7. [Example 3: Full Backpropagation](07-example3-full-backprop.md)
-8. [Example 4: Multiple Patterns](08-example4-multiple-patterns.md)
-9. [Example 5: Feed-Forward Layers](09-example5-feedforward.md)
-10. [Example 6: Complete Transformer](10-example6-complete.md)
+6. [Example 1: Minimal Forward Pass](06-example1-forward-pass.md)
+7. [Example 2: Single Training Step](07-example2-single-step.md)
+8. [Example 3: Full Backpropagation](08-example3-full-backprop.md)
+9. [Example 4: Multiple Patterns](09-example4-multiple-patterns.md)
+10. [Example 5: Feed-Forward Layers](10-example5-feedforward.md)
+11. [Example 6: Complete Transformer](11-example6-complete.md)
 
 ### Appendices
 
@@ -47,5 +48,5 @@
 **Navigation**: Use the table of contents above to jump to any chapter.
 ---
 **Navigation:**
-- [← Index](00-index.md) | [Next: Why Transformers? →](01-why-transformers.md)
+- [← Index](00-index.md) | [Next: Core Terminology and Foundations →](01-terminology-foundations.md)
 ---

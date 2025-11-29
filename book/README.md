@@ -8,18 +8,19 @@ This directory contains the complete book split into individual chapter files fo
 - **`00-index.md`** - Table of contents and navigation hub
 
 ### Part I: Foundations
-- **`01-why-transformers.md`** - Why transformers? Problem, RNNs, attention
+- **`01-terminology-foundations.md`** - **START HERE!** Core terminology with physical analogies
 - **`02-matrix-core.md`** - Matrix operations, transformations, calculus
 - **`03-embeddings.md`** - Tokens to vectors, semantic spaces
 - **`04-attention-intuition.md`** - Query/Key/Value, search metaphor
+- **`05-why-transformers.md`** - Why transformers? Problem, RNNs, attention
 
 ### Part II: Progressive Examples
-- **`05-example1-forward-pass.md`** - Minimal forward pass (no training)
-- **`06-example2-single-step.md`** - Single training step
-- **`07-example3-full-backprop.md`** - Complete backpropagation
-- **`08-example4-multiple-patterns.md`** - Batch training
-- **`09-example5-feedforward.md`** - Feed-forward layers
-- **`10-example6-complete.md`** - Complete transformer
+- **`06-example1-forward-pass.md`** - Minimal forward pass (no training)
+- **`07-example2-single-step.md`** - Single training step
+- **`08-example3-full-backprop.md`** - Complete backpropagation
+- **`09-example4-multiple-patterns.md`** - Batch training
+- **`10-example5-feedforward.md`** - Feed-forward layers
+- **`11-example6-complete.md`** - Complete transformer
 
 ### Appendices
 - **`appendix-a-matrix-calculus.md`** - Matrix calculus reference
@@ -39,8 +40,8 @@ Each chapter file includes navigation links at the bottom:
 ## Reading Order
 
 1. Start with `00-index.md` for overview
-2. Read foundations (01-04) in order
-3. Work through examples (05-10) sequentially
+2. Read foundations (01-05) in order
+3. Work through examples (06-11) sequentially
 4. Refer to appendices as needed
 5. End with conclusion
 

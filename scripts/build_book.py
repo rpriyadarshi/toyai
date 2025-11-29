@@ -17,6 +17,8 @@ import os
 import sys
 import subprocess
 import re
+import hashlib
+import tempfile
 from pathlib import Path
 from datetime import datetime
 
@@ -31,18 +33,19 @@ def get_chapter_order():
     return [
         # Part I: Foundations
         "00-index.md",
-        "01-why-transformers.md",
-        "02-matrix-core.md",
-        "03-embeddings.md",
-        "04-attention-intuition.md",
+        "01-terminology-foundations.md",  # Terminology FIRST - explains all concepts
+        "02-matrix-core.md",              # Matrix operations - foundation for everything
+        "03-embeddings.md",               # Tokens to vectors
+        "04-attention-intuition.md",      # Attention mechanism
+        "05-why-transformers.md",         # Why transformers (moved from 01)
         
         # Part II: Examples
-        "05-example1-forward-pass.md",
-        "06-example2-single-step.md",
-        "07-example3-full-backprop.md",
-        "08-example4-multiple-patterns.md",
-        "09-example5-feedforward.md",
-        "10-example6-complete.md",
+        "06-example1-forward-pass.md",    # Renumbered from 05
+        "07-example2-single-step.md",     # Renumbered from 06
+        "08-example3-full-backprop.md",   # Renumbered from 07
+        "09-example4-multiple-patterns.md", # Renumbered from 08
+        "10-example5-feedforward.md",     # Renumbered from 09
+        "11-example6-complete.md",        # Renumbered from 10
         
         # Appendices
         "appendix-a-matrix-calculus.md",
@@ -124,6 +127,66 @@ def read_code_example(example_num):
         content = f.read()
     
     return content
+
+def convert_mermaid_to_images(content, output_dir):
+    """Convert Mermaid diagrams to images and replace in content"""
+    # DISABLED: Skip Mermaid conversion for now (only needed for PDF)
+    # Mermaid diagrams will remain as code blocks in Markdown
+    # This can be re-enabled when PDF generation is needed
+    return content
+    
+    # BELOW CODE IS DISABLED - uncomment when PDF generation is needed
+    # The code below converts Mermaid diagrams to PNG images for PDF rendering
+    # For now, we keep Mermaid as code blocks which work fine in Markdown viewers
+    """
+    print("  Converting Mermaid diagrams to images...")
+    
+    mermaid_dir = output_dir / "mermaid_images"
+    mermaid_dir.mkdir(exist_ok=True)
+    
+    mermaid_pattern = r'```mermaid\n(.*?)```'
+    
+    def replace_mermaid(match):
+        mermaid_code = match.group(1)
+        mermaid_code = re.sub(r",?\s*['\"]?fontSize['\"]?:\s*['\"]?\d+px", "", mermaid_code)
+        mermaid_code = re.sub(r"'themeVariables':\s*\{\s*\}", "", mermaid_code)
+        mermaid_code = re.sub(r",\s*'themeVariables':\s*\{\s*\}", "", mermaid_code)
+        
+        mermaid_hash = hashlib.md5(mermaid_code.encode()).hexdigest()[:8]
+        image_filename = f"mermaid_{mermaid_hash}.png"
+        image_path = mermaid_dir / image_filename
+        
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.mmd', delete=False) as tmp_file:
+            tmp_file.write(mermaid_code)
+            tmp_mmd = tmp_file.name
+        
+        try:
+            puppeteer_config = OUTPUT_DIR / "puppeteer-config.json"
+            with open(puppeteer_config, 'w') as f:
+                f.write('{"args": ["--no-sandbox", "--disable-setuid-sandbox"]}\n')
+            
+            result = subprocess.run([
+                'mmdc', '-i', tmp_mmd, '-o', str(image_path),
+                '-w', '2400', '-H', '1800', '-b', 'white', '-s', '4',
+                '--puppeteerConfigFile', str(puppeteer_config)
+            ], capture_output=True, text=True, timeout=30)
+            
+            if result.returncode == 0 and image_path.exists():
+                rel_path = f"mermaid_images/{image_filename}"
+                return f'![Mermaid Diagram]({rel_path})'
+            else:
+                return match.group(0)
+        except Exception as e:
+            return match.group(0)
+        finally:
+            try:
+                os.unlink(tmp_mmd)
+            except:
+                pass
+    
+    content = re.sub(mermaid_pattern, replace_mermaid, content, flags=re.DOTALL)
+    return content
+    """
 
 def fix_links_for_pdf(content):
     """Fix links to work in PDF format"""
@@ -221,7 +284,7 @@ header-includes:
             is_example = chapter_file.startswith('0') and 'example' in chapter_file.lower()
             example_num = None
             if is_example:
-                # Extract example number from filename (e.g., "05-example1-forward-pass.md" -> 1)
+                # Extract example number from filename (e.g., "06-example1-forward-pass.md" -> 1)
                 match = re.search(r'example(\d+)', chapter_file)
                 if match:
                     example_num = int(match.group(1))
@@ -312,6 +375,9 @@ header-includes:
     # Combine everything
     full_book = ''.join(book_content)
     
+    # Convert Mermaid diagrams to images BEFORE writing
+    full_book = convert_mermaid_to_images(full_book, OUTPUT_DIR)
+    
     # Write to file
     output_md = OUTPUT_DIR / "COMPLETE_BOOK.md"
     with open(output_md, 'w', encoding='utf-8') as f:
@@ -364,10 +430,19 @@ def generate_pdf(md_file):
             # Use system fonts that are typically available
             # XeLaTeX will use default fonts if these aren't found
             cmd.extend([
-                '-V', 'mainfont=Liberation Serif',
-                '-V', 'sansfont=Liberation Sans',
-                '-V', 'monofont=Liberation Mono',
+            '-V', 'mainfont=Liberation Serif',
+            '-V', 'sansfont=Liberation Sans',
+            '-V', 'monofont=Liberation Mono',
             ])
+        
+        # Add LaTeX packages for better code/diagram rendering
+        header_includes = r'''
+\usepackage{fancyvrb}
+\usepackage{adjustbox}
+\fvset{fontsize=\normalsize}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},formatcom=\color[rgb]{0,0,0}}
+'''
+        cmd.extend(['-H', '/dev/stdin'])
         
         result = subprocess.run(cmd, capture_output=True, text=True)
         
@@ -420,10 +495,10 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description='Build complete book from chapters')
-    parser.add_argument('--format', choices=['pdf', 'html', 'both'], default='pdf',
-                       help='Output format (default: pdf)')
-    parser.add_argument('--no-pdf', action='store_true',
-                       help='Skip PDF generation (just create Markdown)')
+    parser.add_argument('--pdf', action='store_true',
+                       help='Generate PDF (requires pandoc and LaTeX)')
+    parser.add_argument('--html', action='store_true',
+                       help='Generate HTML (requires pandoc)')
     
     args = parser.parse_args()
     
@@ -439,23 +514,24 @@ def main():
         print("✗ Failed to build book")
         sys.exit(1)
     
-    # Generate output formats
-    if not args.no_pdf:
-        if args.format in ['pdf', 'both']:
-            generate_pdf(md_file)
-        
-        if args.format in ['html', 'both']:
-            generate_html(md_file)
+    # Generate output formats only if explicitly requested
+    if args.pdf:
+        generate_pdf(md_file)
+    
+    if args.html:
+        generate_html(md_file)
     
     print("\n" + "=" * 70)
     print("Book build complete!")
     print("=" * 70)
     print(f"\nOutput files in: {OUTPUT_DIR}")
     print(f"  - COMPLETE_BOOK.md (source)")
-    if not args.no_pdf and args.format in ['pdf', 'both']:
+    if args.pdf:
         print(f"  - Understanding_Transformers_Complete.pdf")
-    if args.format in ['html', 'both']:
+    if args.html:
         print(f"  - Understanding_Transformers_Complete.html")
+    if not args.pdf and not args.html:
+        print("\nNote: PDF/HTML generation skipped. Use --pdf or --html to generate.")
     print()
 
 if __name__ == '__main__':

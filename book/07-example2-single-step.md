@@ -96,5 +96,5 @@ See [code](../examples/example2_single_step/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 1: Forward Pass](05-example1-forward-pass.md) | [Next: Example 3: Full Backprop →](07-example3-full-backprop.md)
+- [← Index](00-index.md) | [← Previous: Example 1: Forward Pass](06-example1-forward-pass.md) | [Next: Example 3: Full Backprop →](08-example3-full-backprop.md)
 ---

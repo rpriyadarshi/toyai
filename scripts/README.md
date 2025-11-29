@@ -17,17 +17,17 @@ Compiles all chapter files into a complete, professionally formatted book.
 ### Usage
 
 ```bash
-# Generate PDF (default)
+# Generate Markdown only (default - fast, no dependencies)
 python3 scripts/build_book.py
 
-# Generate HTML
-python3 scripts/build_book.py --format html
+# Generate PDF (requires pandoc and LaTeX)
+python3 scripts/build_book.py --pdf
+
+# Generate HTML (requires pandoc)
+python3 scripts/build_book.py --html
 
 # Generate both PDF and HTML
-python3 scripts/build_book.py --format both
-
-# Just create Markdown (skip PDF generation)
-python3 scripts/build_book.py --no-pdf
+python3 scripts/build_book.py --pdf --html
 ```
 
 ### Output

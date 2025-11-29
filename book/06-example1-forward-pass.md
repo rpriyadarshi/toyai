@@ -83,5 +83,5 @@ See [code](../examples/example1_forward_only/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Attention Intuition](04-attention-intuition.md) | [Next: Example 2: Single Step →](06-example2-single-step.md)
+- [← Index](00-index.md) | [← Previous: Why Transformers?](05-why-transformers.md) | [Next: Example 2: Single Step →](07-example2-single-step.md)
 ---

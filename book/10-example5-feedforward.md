@@ -15,10 +15,18 @@ Add a feed-forward network after attention:
 
 ### Model Architecture
 
-```
-Input → Embeddings → Attention → Feed-Forward → Output
-                              ↓
-                         Residual connection
+```mermaid
+graph LR
+    I["Input"] --> E["Embeddings"] --> A["Attention"] --> FF["FFN<br/>ReLU(xW₁+b₁)W₂+b₂"]
+    A -.->|Residual| R["x + FFN(x)"]
+    FF --> R --> O["Output"]
+    
+    style I fill:#e1f5ff
+    style E fill:#fff4e1
+    style A fill:#e8f5e9
+    style FF fill:#f3e5f5
+    style R fill:#ffebee
+    style O fill:#e8f5e9
 ```
 
 ### Feed-Forward Network
@@ -81,5 +89,5 @@ See [code](../examples/example5_feedforward/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 4: Multiple Patterns](08-example4-multiple-patterns.md) | [Next: Example 6: Complete →](10-example6-complete.md)
+- [← Index](00-index.md) | [← Previous: Example 4: Multiple Patterns](09-example4-multiple-patterns.md) | [Next: Example 6: Complete →](11-example6-complete.md)
 ---

@@ -43,6 +43,39 @@ Think of attention like a **library search system**:
 
 ### The Search Process
 
+**Attention Flow Diagram:**
+
+```mermaid
+graph LR
+    W3["'sat'"] --> Q["Query<br/>Need: subject"]
+    W2["'cat'"] --> K1["Key<br/>Offer: subject"]
+    W2 --> V1["Value<br/>'cat'"]
+    W1["'the'"] --> K2["Key<br/>Offer: article"]
+    W1 --> V2["Value<br/>'the'"]
+    
+    Q --> Score1["Q·K₁<br/>High!"]
+    K1 --> Score1
+    Q --> Score2["Q·K₂<br/>Low"]
+    K2 --> Score2
+    
+    Score1 --> SM["Softmax"]
+    Score2 --> SM
+    
+    SM --> AttW1["0.6<br/>60%"]
+    SM --> AttW2["0.1<br/>10%"]
+    
+    AttW1 --> Out["Context<br/>0.6×V₁+0.1×V₂"]
+    AttW2 --> Out
+    V1 --> Out
+    V2 --> Out
+    
+    style Q fill:#e1f5ff
+    style K1 fill:#fff4e1
+    style V1 fill:#e8f5e9
+    style Score1 fill:#c8e6c9
+    style Out fill:#e8f5e9
+```
+
 **Step 1: Match Query to Keys**
 ```
 Query "sat": "I need the subject"
@@ -124,6 +157,27 @@ All three are learned separately!
 - Weights sum to 1.0
 - Higher weight = more attention
 
+**Attention Weights Visualization:**
+
+```mermaid
+graph LR
+    Q["Query: 'sat'<br/>Needs: subject"] --> A1["'cat'<br/>0.6 (60%)<br/>Subject!"]
+    Q --> A2["'the'<br/>0.1 (10%)<br/>Low"]
+    Q --> A3["'on'<br/>0.2 (20%)<br/>Preposition"]
+    Q --> A4["'mat'<br/>0.1 (10%)<br/>Object"]
+    A1 --> Out["Context<br/>Strong 'cat' signal"]
+    A2 --> Out
+    A3 --> Out
+    A4 --> Out
+    
+    style Q fill:#e1f5ff
+    style A1 fill:#c8e6c9
+    style A2 fill:#ffcdd2
+    style A3 fill:#fff9c4
+    style A4 fill:#ffcdd2
+    style Out fill:#e8f5e9
+```
+
 **Example:**
 ```
 Position "sat" attending to:
@@ -201,5 +255,5 @@ $$\text{score} = Q \cdot K = \sum_i Q_i K_i$$
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Embeddings](03-embeddings.md) | [Next: Example 1: Forward Pass →](05-example1-forward-pass.md)
+- [← Index](00-index.md) | [← Previous: Embeddings](03-embeddings.md) | [Next: Why Transformers? →](05-why-transformers.md)
 ---

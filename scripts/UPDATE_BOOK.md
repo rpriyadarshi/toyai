@@ -104,7 +104,7 @@ Edit `scripts/build_book.py` to:
 
 ```bash
 # 1. Edit a chapter
-vim book/05-example1-forward-pass.md
+vim book/06-example1-forward-pass.md
 
 # 2. Update worksheet
 vim worksheets/example1_worksheet.md

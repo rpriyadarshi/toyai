@@ -18,13 +18,26 @@ Build complete transformer with:
 
 ### Model Architecture
 
-```
-Input → Embeddings
-     → Transformer Block 1 (Attention + FFN + LayerNorm + Residuals)
-     → Transformer Block 2 (Attention + FFN + LayerNorm + Residuals)
-     → Output Projection
-     → Softmax
-     → Probabilities
+```mermaid
+graph LR
+    I["Input"] --> E["Embed"]
+    E --> A1["Attn1"] --> LN1["LN1"] -->|+Res| R1["Res1"]
+    R1 --> FF1["FFN1"] --> LN2["LN2"] -->|+Res| R2["Res2"]
+    R2 --> A2["Attn2"] --> LN3["LN3"] -->|+Res| R3["Res3"]
+    R3 --> FF2["FFN2"] --> LN4["LN4"] -->|+Res| R4["Res4"]
+    R4 --> OP["Output"] --> SM["Softmax"] --> P["Probs"]
+    
+    style I fill:#e1f5ff
+    style E fill:#fff4e1
+    style A1 fill:#e8f5e9
+    style A2 fill:#e8f5e9
+    style FF1 fill:#f3e5f5
+    style FF2 fill:#f3e5f5
+    style R1 fill:#ffebee
+    style R2 fill:#ffebee
+    style R3 fill:#ffebee
+    style R4 fill:#ffebee
+    style P fill:#c8e6c9
 ```
 
 ### Layer Normalization
@@ -95,5 +108,5 @@ See [code](../examples/example6_complete/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 5: Feed-Forward](09-example5-feedforward.md) | [Next: Conclusion →](conclusion.md)
+- [← Index](00-index.md) | [← Previous: Example 5: Feed-Forward](10-example5-feedforward.md) | [Next: Appendix A →](appendix-a-matrix-calculus.md)
 ---

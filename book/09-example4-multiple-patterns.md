@@ -40,14 +40,25 @@ This averages gradients across examples.
 
 ### Training Loop
 
-```
-For each epoch:
-    For each batch:
-        Forward pass (all examples)
-        Compute losses
-        Backward pass (all examples)
-        Average gradients
-        Update weights
+```mermaid
+graph TD
+    Start["Start"] --> Epoch["Epoch"]
+    Epoch --> Batch["Batch"]
+    Batch --> Forward["Forward"]
+    Forward --> Loss["Loss"]
+    Loss --> Backward["Backward"]
+    Backward --> Avg["Avg Gradients"]
+    Avg --> Update["Update Weights"]
+    Update -->|More?| Batch
+    Update -->|Done| CheckEpoch["More epochs?"]
+    CheckEpoch -->|Yes| Epoch
+    CheckEpoch -->|No| End["Complete"]
+    
+    style Start fill:#e8f5e9
+    style End fill:#e8f5e9
+    style Forward fill:#e1f5ff
+    style Backward fill:#fff4e1
+    style Update fill:#f3e5f5
 ```
 
 ### Hand Calculation Guide
@@ -84,5 +95,5 @@ See [code](../examples/example4_multiple_patterns/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 3: Full Backprop](07-example3-full-backprop.md) | [Next: Example 5: Feed-Forward →](09-example5-feedforward.md)
+- [← Index](00-index.md) | [← Previous: Example 3: Full Backprop](08-example3-full-backprop.md) | [Next: Example 5: Feed-Forward →](10-example5-feedforward.md)
 ---

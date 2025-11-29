@@ -32,12 +32,15 @@ $$C = AB = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} e & f \\
 - This is how networks "mix" information
 
 **Example:**
-```
-A = [1, 0]    B = [0.5, 0.5]
-    [0, 1]        [0.5, 0.5]
 
-C = A × B = [0.5, 0.5]
-            [0.5, 0.5]
+```mermaid
+graph LR
+    A["A = [1,0]<br/>   [0,1]<br/>Identity"] -->|×| C["C = A×B<br/>= [0.5,0.5]<br/>   [0.5,0.5]<br/>B unchanged!"]
+    B["B = [0.5,0.5]<br/>   [0.5,0.5]"] -->|×| C
+    
+    style A fill:#e1f5ff
+    style B fill:#fff4e1
+    style C fill:#e8f5e9
 ```
 
 The identity matrix $A$ doesn't change $B$ - this is like a "pass-through" layer.
@@ -52,12 +55,14 @@ When we multiply a vector by a matrix, we:
 - **Project** it to a new space
 
 **Example:**
-```
-Vector: [1, 0]  (pointing in x-direction)
-Matrix: [0, -1]  (rotation matrix)
-        [1,  0]
 
-Result: [0, 1]  (now pointing in y-direction - rotated 90°!)
+```mermaid
+graph LR
+    V["[1,0]<br/>→ x-direction"] -->|×| M["[0,-1]<br/>[1, 0]<br/>Rotate 90°"] -->|→| R["[0,1]<br/>↑ y-direction<br/>Rotated!"]
+    
+    style V fill:#e1f5ff
+    style M fill:#f3e5f5
+    style R fill:#e8f5e9
 ```
 
 **Why this matters for learning:**
@@ -91,10 +96,14 @@ $$\mathbf{a} \cdot \mathbf{b} = a_1 b_1 + a_2 b_2$$
 - **Zero dot product** = vectors are perpendicular = unrelated
 
 **Example:**
-```
-[1, 0] · [1, 0] = 1×1 + 0×0 = 1    (same direction)
-[1, 0] · [0, 1] = 1×0 + 0×1 = 0    (perpendicular)
-[1, 0] · [-1, 0] = 1×(-1) + 0×0 = -1  (opposite direction)
+
+```mermaid
+graph LR
+    D1["[1,0]·[1,0]=1<br/>Same →→<br/>High!"] --> D2["[1,0]·[0,1]=0<br/>Perp →↑<br/>Zero"] --> D3["[1,0]·[-1,0]=-1<br/>Opposite →←<br/>Low"]
+    
+    style D1 fill:#c8e6c9
+    style D2 fill:#fff9c4
+    style D3 fill:#ffcdd2
 ```
 
 **In attention:** Dot product between Query and Key measures how relevant they are!
@@ -163,5 +172,5 @@ $$A^T = \begin{bmatrix} a & c \\ b & d \end{bmatrix}$$
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Why Transformers?](01-why-transformers.md) | [Next: Embeddings →](03-embeddings.md)
+- [← Index](00-index.md) | [← Previous: Core Terminology](01-terminology-foundations.md) | [Next: Embeddings →](03-embeddings.md)
 ---

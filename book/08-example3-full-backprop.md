@@ -93,5 +93,5 @@ See [code](../examples/example3_full_backprop/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 2: Single Step](06-example2-single-step.md) | [Next: Example 4: Multiple Patterns →](08-example4-multiple-patterns.md)
+- [← Index](00-index.md) | [← Previous: Example 2: Single Step](07-example2-single-step.md) | [Next: Example 4: Multiple Patterns →](09-example4-multiple-patterns.md)
 ---
