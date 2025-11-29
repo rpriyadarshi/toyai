@@ -29,6 +29,27 @@
 
 **Why they matter:** Neural networks can learn complex patterns from data. They're the foundation of modern AI, including transformers.
 
+**Neural Network Structure:**
+
+```mermaid
+graph LR
+    Input["Input<br/>Raw Data"] --> L1["Layer 1<br/>Processing Station"]
+    L1 --> L2["Layer 2<br/>Processing Station"]
+    L2 --> L3["Layer 3<br/>Processing Station"]
+    L3 --> Output["Output<br/>Prediction"]
+    
+    Train["Training Examples"] -.->|"Adjusts"| L1
+    Train -.->|"Adjusts"| L2
+    Train -.->|"Adjusts"| L3
+    
+    style Input fill:#e1f5ff
+    style L1 fill:#fff4e1
+    style L2 fill:#fff4e1
+    style L3 fill:#fff4e1
+    style Output fill:#c8e6c9
+    style Train fill:#f3e5f5
+```
+
 **See it in action:** [Example 1: Minimal Forward Pass](06-example1-forward-pass.md) shows how a simple network makes predictions.
 
 ---
@@ -89,6 +110,62 @@ Output: 1.15 (decision made!)
 - **Sigmoid**: $f(x) = \frac{1}{1+e^{-x}}$ - Squashes to 0-1 range
 - **Tanh**: $f(x) = \tanh(x)$ - Squashes to -1 to 1 range
 
+**Perceptron Diagram:**
+
+```mermaid
+graph LR
+    X1["x₁<br/>Input 1"] -->|w₁| Sum["Σ<br/>Weighted Sum<br/>w·x + b"]
+    X2["x₂<br/>Input 2"] -->|w₂| Sum
+    X3["x₃<br/>Input 3"] -->|w₃| Sum
+    Bias["b<br/>Bias"] --> Sum
+    Sum --> Act["f()<br/>Activation<br/>Function"]
+    Act --> Y["y<br/>Output"]
+    
+    style X1 fill:#e1f5ff
+    style X2 fill:#e1f5ff
+    style X3 fill:#e1f5ff
+    style Bias fill:#fff4e1
+    style Sum fill:#f3e5f5
+    style Act fill:#e8f5e9
+    style Y fill:#c8e6c9
+```
+
+**Activation Function Behavior:**
+
+```mermaid
+graph TB
+    subgraph ReLU["ReLU: f(x) = max(0, x)"]
+        RInput["Input x"] --> RCheck{"x ≥ 0?"}
+        RCheck -->|"Yes"| ROutput1["Output: x<br/>(Pass through)"]
+        RCheck -->|"No"| ROutput2["Output: 0<br/>(Zero out)"]
+        ROutput1 --> RRange["Range: [0, +∞)"]
+        ROutput2 --> RRange
+    end
+    
+    subgraph Sigmoid["Sigmoid: f(x) = 1/(1+e⁻ˣ)"]
+        SInput["Input x"] --> SOutput["Output: 1/(1+e⁻ˣ)"]
+        SOutput --> SRange["Range: (0, 1)<br/>S-shaped curve"]
+        SNote["Properties:<br/>• x = 0 → 0.5<br/>• x → -∞ → 0<br/>• x → +∞ → 1"]
+    end
+    
+    subgraph Tanh["Tanh: f(x) = tanh(x)"]
+        TInput["Input x"] --> TOutput["Output: tanh(x)"]
+        TOutput --> TRange["Range: (-1, 1)<br/>S-shaped curve"]
+        TNote["Properties:<br/>• x = 0 → 0<br/>• x → -∞ → -1<br/>• x → +∞ → +1"]
+    end
+    
+    style RInput fill:#e1f5ff
+    style ROutput1 fill:#c8e6c9
+    style ROutput2 fill:#ffcdd2
+    style RRange fill:#fff9c4
+    style SInput fill:#e1f5ff
+    style SOutput fill:#e8f5e9
+    style SRange fill:#fff9c4
+    style TInput fill:#e1f5ff
+    style TOutput fill:#e8f5e9
+    style TRange fill:#fff9c4
+```
+
 **Why it matters:** A single perceptron is limited, but stacking many perceptrons creates powerful networks.
 
 ---
@@ -118,6 +195,81 @@ Input Layer: Receives token "cat"
 Hidden Layer 1: Converts to vector [0.3, 0.7, -0.2]
 Hidden Layer 2: Processes to [0.4, 0.6, -0.1]
 Output Layer: Produces [0.1, 0.8, 0.05, 0.05] (probabilities)
+```
+
+**Multi-Layer Network Diagram:**
+
+```mermaid
+graph TB
+    subgraph Input["Input Layer"]
+        I1["Neuron 1"]
+        I2["Neuron 2"]
+        I3["Neuron 3"]
+    end
+    
+    subgraph Hidden1["Hidden Layer 1"]
+        H1["Neuron 1"]
+        H2["Neuron 2"]
+        H3["Neuron 3"]
+        H4["Neuron 4"]
+    end
+    
+    subgraph Hidden2["Hidden Layer 2"]
+        H5["Neuron 1"]
+        H6["Neuron 2"]
+        H7["Neuron 3"]
+    end
+    
+    subgraph Output["Output Layer"]
+        O1["Neuron 1"]
+        O2["Neuron 2"]
+        O3["Neuron 3"]
+        O4["Neuron 4"]
+    end
+    
+    I1 --> H1
+    I1 --> H2
+    I1 --> H3
+    I1 --> H4
+    I2 --> H1
+    I2 --> H2
+    I2 --> H3
+    I2 --> H4
+    I3 --> H1
+    I3 --> H2
+    I3 --> H3
+    I3 --> H4
+    
+    H1 --> H5
+    H1 --> H6
+    H1 --> H7
+    H2 --> H5
+    H2 --> H6
+    H2 --> H7
+    H3 --> H5
+    H3 --> H6
+    H3 --> H7
+    H4 --> H5
+    H4 --> H6
+    H4 --> H7
+    
+    H5 --> O1
+    H5 --> O2
+    H5 --> O3
+    H5 --> O4
+    H6 --> O1
+    H6 --> O2
+    H6 --> O3
+    H6 --> O4
+    H7 --> O1
+    H7 --> O2
+    H7 --> O3
+    H7 --> O4
+    
+    style Input fill:#e1f5ff
+    style Hidden1 fill:#fff4e1
+    style Hidden2 fill:#fff4e1
+    style Output fill:#c8e6c9
 ```
 
 **Why it matters:** Layers enable complex transformations. Stacking layers allows learning hierarchical patterns.
@@ -158,6 +310,24 @@ ReLU: [0.5, 0.2, 0.8, 0.1] (no negatives)
 W₂: 4×2 matrix → Output: [0.4, 0.6] (back to dimension 2)
 ```
 
+**Feed-Forward Network Structure:**
+
+```mermaid
+graph LR
+    Input["Input<br/>[0.3, 0.7]<br/>dim=2"] --> W1["W₁<br/>2×4 Matrix<br/>Expand"]
+    W1 --> B1["+b₁<br/>Bias"]
+    B1 --> ReLU["ReLU<br/>Activation<br/>max(0, x)"]
+    ReLU --> W2["W₂<br/>4×2 Matrix<br/>Compress"]
+    W2 --> B2["+b₂<br/>Bias"]
+    B2 --> Output["Output<br/>[0.4, 0.6]<br/>dim=2"]
+    
+    style Input fill:#e1f5ff
+    style W1 fill:#fff4e1
+    style ReLU fill:#e8f5e9
+    style W2 fill:#fff4e1
+    style Output fill:#c8e6c9
+```
+
 **Why it matters:** FFNs add non-linearity and capacity to transformers. They enable learning complex feature combinations.
 
 **See it in action:** [Example 5: Feed-Forward Layers](10-example5-feedforward.md) demonstrates FFN computation.
@@ -192,6 +362,23 @@ Loss = -log(0.6) = 0.51  (model predicted C with 60% confidence - good!)
 
 If prediction was: [0.8, 0.1, 0.05, 0.05]
 Loss = -log(0.05) = 3.0  (model predicted wrong - bad!)
+```
+
+**Loss Function Visualization:**
+
+```mermaid
+graph LR
+    Target["Target<br/>'C'<br/>[0,0,1,0]"] --> Compare["Compare"]
+    Prediction["Prediction<br/>[0.1,0.2,0.6,0.1]"] --> Compare
+    Compare --> Loss["Loss<br/>L = -log(0.6)<br/>= 0.51"]
+    
+    HighPred["Wrong Prediction<br/>[0.8,0.1,0.05,0.05]"] --> HighLoss["High Loss<br/>L = -log(0.05)<br/>= 3.0"]
+    
+    style Target fill:#e1f5ff
+    style Prediction fill:#c8e6c9
+    style Loss fill:#fff9c4
+    style HighPred fill:#ffcdd2
+    style HighLoss fill:#ffcdd2
 ```
 
 **Why it matters:** Loss tells us how well the model is learning. We minimize it during training.
@@ -230,6 +417,20 @@ Interpretation:
 - Magnitude 0.3 means the slope is moderate
 - Update: W_new = W_old - learning_rate × gradient
          = 0.5 - 0.1 × (-0.3) = 0.5 + 0.03 = 0.53
+```
+
+**Gradient Visualization:**
+
+```mermaid
+graph LR
+    Loss["Loss<br/>L = 2.0"] --> Grad["Gradient<br/>∂L/∂W = -0.3"]
+    Grad -->|"Negative =<br/>Go DOWN"| Direction["Direction<br/>Increase W<br/>to reduce loss"]
+    Direction --> Update["Update<br/>W_new = 0.5 + 0.03<br/>= 0.53"]
+    
+    style Loss fill:#ffcdd2
+    style Grad fill:#fff4e1
+    style Direction fill:#e8f5e9
+    style Update fill:#c8e6c9
 ```
 
 ### The Learning Rate
@@ -274,6 +475,23 @@ Where:
 2. Compute **gradients** (which direction to move)
 3. Update **weights**: $W_{\text{new}} = W_{\text{old}} - \eta \times \frac{\partial L}{\partial W}$
 4. Repeat for many iterations
+
+**Gradient Descent Visualization:**
+
+```mermaid
+graph TD
+    Start["Start<br/>W = 0.5<br/>Loss = 2.0"] --> Compute["Compute Gradient<br/>∂L/∂W = -0.3"]
+    Compute --> Step["Take Step<br/>W_new = 0.5 - 0.1×(-0.3)<br/>= 0.53"]
+    Step --> Check["Check Loss<br/>Loss = 1.8<br/>(Lower!)"]
+    Check -->|"Not at bottom"| Compute
+    Check -->|"At minimum"| Stop["Stop<br/>Optimal W found"]
+    
+    style Start fill:#e1f5ff
+    style Compute fill:#fff4e1
+    style Step fill:#e8f5e9
+    style Check fill:#fff9c4
+    style Stop fill:#c8e6c9
+```
 
 **Example:**
 ```
@@ -322,6 +540,24 @@ The **forward pass** is the process of computing predictions by passing input da
 6. **Output Projection**: Context → **Logits** (using **weight** matrix WO)
 7. **Softmax**: **Logits** → Probabilities
 
+**Forward Pass Flow:**
+
+```mermaid
+graph LR
+    Input["Input<br/>'The cat'"] --> L1["Layer 1<br/>Embedding"]
+    L1 --> L2["Layer 2<br/>Q/K/V"]
+    L2 --> L3["Layer 3<br/>Attention"]
+    L3 --> L4["Layer 4<br/>Output"]
+    L4 --> Output["Output<br/>Probabilities"]
+    
+    style Input fill:#e1f5ff
+    style L1 fill:#fff4e1
+    style L2 fill:#f3e5f5
+    style L3 fill:#e8f5e9
+    style L4 fill:#fff4e1
+    style Output fill:#c8e6c9
+```
+
 **Example:**
 ```
 Forward Pass:
@@ -353,6 +589,22 @@ The **backward pass** (also called **backpropagation**) is the process of comput
 4. Compute **gradient** for each **parameter** (**weight**, **bias**)
 5. Use **gradients** to update **parameters**
 
+**Backward Pass Flow:**
+
+```mermaid
+graph RL
+    Loss["Loss<br/>L = 0.5"] --> L4["Layer 4<br/>∂L/∂WO"]
+    L4 --> L3["Layer 3<br/>∂L/∂Attention"]
+    L3 --> L2["Layer 2<br/>∂L/∂WQ, WK, WV"]
+    L2 --> L1["Layer 1<br/>∂L/∂Embedding"]
+    
+    style Loss fill:#ffcdd2
+    style L4 fill:#fff4e1
+    style L3 fill:#fff4e1
+    style L2 fill:#fff4e1
+    style L1 fill:#fff4e1
+```
+
 **Example:**
 ```
 Backward Pass:
@@ -380,6 +632,25 @@ The **training loop** combines **forward pass**, **loss** computation, **backwar
 2. **Loss**: Measure error
 3. **Backward Pass**: Compute **gradients**
 4. **Weight Update**: Change **parameters** using **gradient descent**
+
+**Training Loop Diagram:**
+
+```mermaid
+graph TD
+    Start["Start Training"] --> Forward["1. Forward Pass<br/>Compute Prediction"]
+    Forward --> Loss["2. Compute Loss<br/>Measure Error"]
+    Loss --> Backward["3. Backward Pass<br/>Compute Gradients"]
+    Backward --> Update["4. Weight Update<br/>W_new = W_old - η×grad"]
+    Update -->|"Repeat"| Forward
+    Update -->|"Converged"| Stop["Stop<br/>Model Trained"]
+    
+    style Start fill:#e1f5ff
+    style Forward fill:#fff4e1
+    style Loss fill:#ffcdd2
+    style Backward fill:#f3e5f5
+    style Update fill:#e8f5e9
+    style Stop fill:#c8e6c9
+```
 
 **Physical Analogy:** Like **learning to play a musical instrument**:
 - Play a note (forward pass)
@@ -450,6 +721,36 @@ Batch: [
   ["A", "fish", "swam"]
 ]
 Process all 4 sequences together, average gradients
+```
+
+**Batch Training Diagram:**
+
+```mermaid
+graph TD
+    Batch["Batch<br/>4 Examples"] --> P1["Process<br/>Example 1"]
+    Batch --> P2["Process<br/>Example 2"]
+    Batch --> P3["Process<br/>Example 3"]
+    Batch --> P4["Process<br/>Example 4"]
+    
+    P1 --> G1["Gradient 1"]
+    P2 --> G2["Gradient 2"]
+    P3 --> G3["Gradient 3"]
+    P4 --> G4["Gradient 4"]
+    
+    G1 --> Avg["Average Gradients<br/>∇L = (∇L₁+∇L₂+∇L₃+∇L₄)/4"]
+    G2 --> Avg
+    G3 --> Avg
+    G4 --> Avg
+    
+    Avg --> Update["Update Weights<br/>Once per Batch"]
+    
+    style Batch fill:#e1f5ff
+    style P1 fill:#fff4e1
+    style P2 fill:#fff4e1
+    style P3 fill:#fff4e1
+    style P4 fill:#fff4e1
+    style Avg fill:#f3e5f5
+    style Update fill:#e8f5e9
 ```
 
 **Why it matters:** Batching enables efficient GPU utilization and stable **gradient** estimates. Larger **batches** = more stable but require more memory.
