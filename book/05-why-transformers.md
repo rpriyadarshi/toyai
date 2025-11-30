@@ -276,44 +276,7 @@ graph LR
 
 **Gradient Decay Curve (Vanishing Gradient Problem):**
 
-<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(80, 50)">
-    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold">Gradient Vanishes Over Time Steps</text>
-    <!-- Axes -->
-    <line x1="0" y1="300" x2="400" y2="300" stroke="#333" stroke-width="2"/>
-    <line x1="0" y1="300" x2="0" y2="0" stroke="#333" stroke-width="2"/>
-    <!-- Axis labels -->
-    <text x="400" y="320" font-family="Arial" font-size="14">Time Step (Backward)</text>
-    <text x="-50" y="150" font-family="Arial" font-size="14" transform="rotate(-90, -50, 150)">Gradient Strength</text>
-    <!-- Exponential decay curve: gradient = 0.9^t -->
-    <path d="M 0,0 Q 100,50 200,100 Q 300,180 400,280" stroke="#dc2626" stroke-width="3" fill="none"/>
-    <!-- Key points -->
-    <circle cx="0" cy="0" r="5" fill="#16a34a"/>
-    <text x="5" y="-5" font-family="Arial" font-size="10">t=0: 1.00</text>
-    <circle cx="100" cy="50" r="4" fill="#16a34a"/>
-    <text x="105" y="45" font-family="Arial" font-size="10">t=1: 0.90</text>
-    <circle cx="200" cy="100" r="4" fill="#fff9c4"/>
-    <text x="205" y="95" font-family="Arial" font-size="10">t=2: 0.81</text>
-    <circle cx="300" cy="180" r="4" fill="#ffcdd2"/>
-    <text x="305" y="175" font-family="Arial" font-size="10">t=5: 0.59</text>
-    <circle cx="400" cy="280" r="5" fill="#dc2626"/>
-    <text x="405" y="275" font-family="Arial" font-size="10">t=10: 0.35</text>
-    <!-- Grid lines -->
-    <line x1="100" y1="0" x2="100" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="200" y1="0" x2="200" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="300" y1="0" x2="300" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="0" y1="100" x2="400" y2="100" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="0" y1="200" x2="400" y2="200" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <!-- Labels -->
-    <text x="0" y="310" font-family="Arial" font-size="11">0</text>
-    <text x="390" y="310" font-family="Arial" font-size="11">10</text>
-    <text x="-10" y="305" font-family="Arial" font-size="11">1.0</text>
-    <text x="-20" y="25" font-family="Arial" font-size="11">0.0</text>
-    <!-- Warning zone -->
-    <rect x="300" y="150" width="100" height="150" fill="#ffebee" opacity="0.3"/>
-    <text x="300" y="320" font-family="Arial" font-size="11" fill="#dc2626">Gradient too weak to learn!</text>
-  </g>
-</svg>
+![Gradient Vanishes Over Time Steps](images/gradient-decay-vanishing.svg)
 
 **When gradients vanish:**
 - The RNN **cannot learn** to connect "sat" to "cat"
