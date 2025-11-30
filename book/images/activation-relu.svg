@@ -1,0 +1,74 @@
+<svg width="280" height="350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .input-box { fill: #e1f5ff; stroke: #2563eb; stroke-width: 2; rx: 6; }
+      .check-box { fill: #fff4e1; stroke: #f59e0b; stroke-width: 2; rx: 6; }
+      .output-yes { fill: #c8e6c9; stroke: #16a34a; stroke-width: 2; rx: 6; }
+      .output-no { fill: #ffcdd2; stroke: #dc2626; stroke-width: 2; rx: 6; }
+      .range-box { fill: #fff9c4; stroke: #f59e0b; stroke-width: 2; rx: 6; }
+      .box-label { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; fill: #1e293b; }
+      .box-text { font-family: Arial, sans-serif; font-size: 11px; fill: #64748b; }
+      .arrow { stroke: #2563eb; stroke-width: 2; fill: none; marker-end: url(#arrow-blue); }
+      .arrow-yes { stroke: #16a34a; stroke-width: 2; fill: none; marker-end: url(#arrow-green); }
+      .arrow-no { stroke: #dc2626; stroke-width: 2; fill: none; marker-end: url(#arrow-red); }
+      .title { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; }
+      .formula { font-family: 'Courier New', monospace; font-size: 12px; fill: #dc2626; }
+    </style>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#16a34a"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#dc2626"/>
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="140" y="20" class="title" text-anchor="middle">ReLU</text>
+  <text x="140" y="38" class="formula" text-anchor="middle">f(x) = max(0, x)</text>
+  
+  <!-- Input -->
+  <g transform="translate(90, 68)">
+    <rect x="0" y="0" width="100" height="40" class="input-box"/>
+    <text x="50" y="25" class="box-label" text-anchor="middle">Input x</text>
+  </g>
+  
+  <!-- Decision Check -->
+  <g transform="translate(90, 138)">
+    <rect x="0" y="0" width="100" height="50" class="check-box"/>
+    <text x="50" y="20" class="box-label" text-anchor="middle">Check:</text>
+    <text x="50" y="38" class="box-text" text-anchor="middle">x ≥ 0?</text>
+  </g>
+  
+  <!-- Output: Yes (Pass through) -->
+  <g transform="translate(20, 218)">
+    <rect x="0" y="0" width="80" height="50" class="output-yes"/>
+    <text x="40" y="20" class="box-label" text-anchor="middle">Yes</text>
+    <text x="40" y="35" class="box-text" text-anchor="middle">Output: x</text>
+    <text x="40" y="48" class="box-text" text-anchor="middle" font-size="10">(Pass through)</text>
+  </g>
+  
+  <!-- Output: No (Zero out) -->
+  <g transform="translate(180, 218)">
+    <rect x="0" y="0" width="80" height="50" class="output-no"/>
+    <text x="40" y="20" class="box-label" text-anchor="middle">No</text>
+    <text x="40" y="35" class="box-text" text-anchor="middle">Output: 0</text>
+    <text x="40" y="48" class="box-text" text-anchor="middle" font-size="10">(Zero out)</text>
+  </g>
+  
+  <!-- Range -->
+  <g transform="translate(90, 298)">
+    <rect x="0" y="0" width="100" height="20" class="range-box"/>
+    <text x="50" y="14" class="box-text" text-anchor="middle" font-weight="bold">Range: [0, +∞)</text>
+  </g>
+  
+  <!-- Arrows -->
+  <path d="M 140 108 L 140 138" class="arrow"/>
+  <path d="M 140 188 L 60 218" class="arrow-yes"/>
+  <path d="M 140 188 L 220 218" class="arrow-no"/>
+  <path d="M 60 268 L 90 298" class="arrow-yes"/>
+  <path d="M 220 268 L 190 298" class="arrow-no"/>
+</svg>
+

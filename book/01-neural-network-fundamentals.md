@@ -99,39 +99,9 @@ Output: 1.15 (decision made!)
 
 **Activation Function Behavior:**
 
-```mermaid
-graph TB
-    subgraph ReLU["ReLU: f(x) = max(0, x)"]
-        RInput["Input x"] --> RCheck{"x ≥ 0?"}
-        RCheck -->|"Yes"| ROutput1["Output: x<br/>(Pass through)"]
-        RCheck -->|"No"| ROutput2["Output: 0<br/>(Zero out)"]
-        ROutput1 --> RRange["Range: [0, +∞)"]
-        ROutput2 --> RRange
-    end
-    
-    subgraph Sigmoid["Sigmoid: f(x) = 1/(1+e⁻ˣ)"]
-        SInput["Input x"] --> SOutput["Output: 1/(1+e⁻ˣ)"]
-        SOutput --> SRange["Range: (0, 1)<br/>S-shaped curve"]
-        SNote["Properties:<br/>• x = 0 → 0.5<br/>• x → -∞ → 0<br/>• x → +∞ → 1"]
-    end
-    
-    subgraph Tanh["Tanh: f(x) = tanh(x)"]
-        TInput["Input x"] --> TOutput["Output: tanh(x)"]
-        TOutput --> TRange["Range: (-1, 1)<br/>S-shaped curve"]
-        TNote["Properties:<br/>• x = 0 → 0<br/>• x → -∞ → -1<br/>• x → +∞ → +1"]
-    end
-    
-    style RInput fill:#e1f5ff
-    style ROutput1 fill:#c8e6c9
-    style ROutput2 fill:#ffcdd2
-    style RRange fill:#fff9c4
-    style SInput fill:#e1f5ff
-    style SOutput fill:#e8f5e9
-    style SRange fill:#fff9c4
-    style TInput fill:#e1f5ff
-    style TOutput fill:#e8f5e9
-    style TRange fill:#fff9c4
-```
+| | | |
+|:---:|:---:|:---:|
+| ![ReLU Activation Function](images/activation-relu.svg) | ![Sigmoid Activation Function](images/activation-sigmoid.svg) | ![Tanh Activation Function](images/activation-tanh.svg) |
 
 **Activation Function Graphs:**
 

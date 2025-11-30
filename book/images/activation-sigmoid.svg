@@ -1,0 +1,59 @@
+<svg width="280" height="350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .input-box { fill: #e1f5ff; stroke: #2563eb; stroke-width: 2; rx: 6; }
+      .output-box { fill: #e8f5e9; stroke: #16a34a; stroke-width: 2; rx: 6; }
+      .range-box { fill: #fff9c4; stroke: #f59e0b; stroke-width: 2; rx: 6; }
+      .props-box { fill: #f3e5f5; stroke: #9333ea; stroke-width: 2; rx: 6; }
+      .box-label { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; fill: #1e293b; }
+      .box-text { font-family: Arial, sans-serif; font-size: 11px; fill: #64748b; }
+      .arrow { stroke: #2563eb; stroke-width: 2; fill: none; marker-end: url(#arrow-blue); }
+      .arrow-green { stroke: #16a34a; stroke-width: 2; fill: none; marker-end: url(#arrow-green); }
+      .title { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; }
+      .formula { font-family: 'Courier New', monospace; font-size: 11px; fill: #dc2626; }
+    </style>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#16a34a"/>
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="140" y="20" class="title" text-anchor="middle">Sigmoid</text>
+  <text x="140" y="38" class="formula" text-anchor="middle">f(x) = 1/(1+e⁻ˣ)</text>
+  
+  <!-- Input -->
+  <g transform="translate(90, 68)">
+    <rect x="0" y="0" width="100" height="40" class="input-box"/>
+    <text x="50" y="25" class="box-label" text-anchor="middle">Input x</text>
+  </g>
+  
+  <!-- Output -->
+  <g transform="translate(90, 138)">
+    <rect x="0" y="0" width="100" height="50" class="output-box"/>
+    <text x="50" y="22" class="box-label" text-anchor="middle">Output:</text>
+    <text x="50" y="38" class="box-text" text-anchor="middle" font-size="10">1/(1+e⁻ˣ)</text>
+  </g>
+  
+  <!-- Range -->
+  <g transform="translate(90, 218)">
+    <rect x="0" y="0" width="100" height="40" class="range-box"/>
+    <text x="50" y="18" class="box-label" text-anchor="middle">Range: (0, 1)</text>
+    <text x="50" y="33" class="box-text" text-anchor="middle" font-size="10">S-shaped curve</text>
+  </g>
+  
+  <!-- Properties -->
+  <g transform="translate(20, 288)">
+    <rect x="0" y="0" width="240" height="50" class="props-box"/>
+    <text x="120" y="18" class="box-label" text-anchor="middle">Properties:</text>
+    <text x="120" y="33" class="box-text" text-anchor="middle" font-size="10">• x = 0 → 0.5  • x → -∞ → 0  • x → +∞ → 1</text>
+  </g>
+  
+  <!-- Arrows -->
+  <path d="M 140 108 L 140 138" class="arrow"/>
+  <path d="M 140 188 L 140 218" class="arrow-green"/>
+  <path d="M 140 258 L 140 288" class="arrow-green"/>
+</svg>
+
