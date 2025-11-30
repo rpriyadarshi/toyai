@@ -1,0 +1,116 @@
+<svg width="1000" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .input-box { fill: #e1f5ff; stroke: #2563eb; stroke-width: 2.5; rx: 8; }
+      .layer-box { fill: #fff4e1; stroke: #f59e0b; stroke-width: 2.5; rx: 8; }
+      .output-box { fill: #c8e6c9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .train-box { fill: #f3e5f5; stroke: #9333ea; stroke-width: 2.5; rx: 8; }
+      .box-label { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #1e293b; }
+      .box-subtitle { font-family: Arial, sans-serif; font-size: 12px; fill: #64748b; }
+      .arrow-main { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow-blue); }
+      .arrow-train { stroke: #9333ea; stroke-width: 2; fill: none; stroke-dasharray: 5,5; marker-end: url(#arrow-purple); opacity: 0.7; }
+      .arrow-label { font-family: Arial, sans-serif; font-size: 11px; fill: #64748b; }
+    </style>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#9333ea"/>
+    </marker>
+  </defs>
+  
+  <!-- Input Box -->
+  <g transform="translate(50, 150)">
+    <rect x="0" y="0" width="120" height="100" class="input-box"/>
+    <text x="60" y="35" class="box-label" text-anchor="middle">Input</text>
+    <text x="60" y="55" class="box-subtitle" text-anchor="middle">Raw Data</text>
+    <text x="60" y="75" class="box-subtitle" text-anchor="middle" fill="#2563eb">→ Processing</text>
+  </g>
+  
+  <!-- Layer 1 -->
+  <g transform="translate(220, 150)">
+    <rect x="0" y="0" width="140" height="100" class="layer-box"/>
+    <text x="70" y="35" class="box-label" text-anchor="middle">Layer 1</text>
+    <text x="70" y="55" class="box-subtitle" text-anchor="middle">Processing Station</text>
+    <text x="70" y="75" class="box-subtitle" text-anchor="middle" fill="#f59e0b">→ Refining</text>
+  </g>
+  
+  <!-- Layer 2 -->
+  <g transform="translate(410, 150)">
+    <rect x="0" y="0" width="140" height="100" class="layer-box"/>
+    <text x="70" y="35" class="box-label" text-anchor="middle">Layer 2</text>
+    <text x="70" y="55" class="box-subtitle" text-anchor="middle">Processing Station</text>
+    <text x="70" y="75" class="box-subtitle" text-anchor="middle" fill="#f59e0b">→ Refining</text>
+  </g>
+  
+  <!-- Layer 3 -->
+  <g transform="translate(600, 150)">
+    <rect x="0" y="0" width="140" height="100" class="layer-box"/>
+    <text x="70" y="35" class="box-label" text-anchor="middle">Layer 3</text>
+    <text x="70" y="55" class="box-subtitle" text-anchor="middle">Processing Station</text>
+    <text x="70" y="75" class="box-subtitle" text-anchor="middle" fill="#f59e0b">→ Finalizing</text>
+  </g>
+  
+  <!-- Output Box -->
+  <g transform="translate(790, 150)">
+    <rect x="0" y="0" width="120" height="100" class="output-box"/>
+    <text x="60" y="35" class="box-label" text-anchor="middle">Output</text>
+    <text x="60" y="55" class="box-subtitle" text-anchor="middle">Prediction</text>
+    <text x="60" y="75" class="box-subtitle" text-anchor="middle" fill="#16a34a">✓ Result</text>
+  </g>
+  
+  <!-- Main Data Flow Arrows -->
+  <path d="M 170 200 L 220 200" class="arrow-main"/>
+  <path d="M 360 200 L 410 200" class="arrow-main"/>
+  <path d="M 550 200 L 600 200" class="arrow-main"/>
+  <path d="M 740 200 L 790 200" class="arrow-main"/>
+  
+  <!-- Training Examples Box (Top) -->
+  <g transform="translate(350, 30)">
+    <rect x="0" y="0" width="200" height="80" class="train-box"/>
+    <text x="100" y="30" class="box-label" text-anchor="middle">Training Examples</text>
+    <text x="100" y="50" class="box-subtitle" text-anchor="middle">Learn from data</text>
+    <text x="100" y="70" class="box-subtitle" text-anchor="middle" fill="#9333ea">Adjusts weights</text>
+  </g>
+  
+  <!-- Training arrows to each layer -->
+  <path d="M 400 110 Q 400 130 290 150" class="arrow-train"/>
+  <path d="M 400 110 Q 400 130 480 150" class="arrow-train"/>
+  <path d="M 400 110 Q 400 130 670 150" class="arrow-train"/>
+  
+  <!-- Training labels -->
+  <text x="320" y="135" class="arrow-label">Adjusts</text>
+  <text x="440" y="135" class="arrow-label">Adjusts</text>
+  <text x="620" y="135" class="arrow-label">Adjusts</text>
+  
+  <!-- Title -->
+  <text x="500" y="25" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#1e293b">Neural Network Structure: Factory Assembly Line</text>
+  
+  <!-- Legend at bottom -->
+  <g transform="translate(50, 300)">
+    <rect x="0" y="0" width="900" height="80" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+    <text x="450" y="20" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e293b">How It Works</text>
+    
+    <!-- Legend items -->
+    <g transform="translate(50, 35)">
+      <rect x="0" y="0" width="15" height="15" class="input-box"/>
+      <text x="25" y="12" font-family="Arial" font-size="11" fill="#64748b">Input: Raw data enters the network</text>
+    </g>
+    
+    <g transform="translate(50, 55)">
+      <rect x="0" y="0" width="15" height="15" class="layer-box"/>
+      <text x="25" y="12" font-family="Arial" font-size="11" fill="#64748b">Layers: Each station processes and refines the data</text>
+    </g>
+    
+    <g transform="translate(450, 35)">
+      <rect x="0" y="0" width="15" height="15" class="output-box"/>
+      <text x="25" y="12" font-family="Arial" font-size="11" fill="#64748b">Output: Final prediction is produced</text>
+    </g>
+    
+    <g transform="translate(450, 55)">
+      <line x1="0" y1="7" x2="15" y2="7" class="arrow-train" stroke-dasharray="3,3"/>
+      <text x="25" y="12" font-family="Arial" font-size="11" fill="#64748b">Training: Examples adjust weights to improve</text>
+    </g>
+  </g>
+</svg>
+

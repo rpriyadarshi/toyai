@@ -31,24 +31,7 @@
 
 **Neural Network Structure:**
 
-```mermaid
-graph LR
-    Input["Input<br/>Raw Data"] --> L1["Layer 1<br/>Processing Station"]
-    L1 --> L2["Layer 2<br/>Processing Station"]
-    L2 --> L3["Layer 3<br/>Processing Station"]
-    L3 --> Output["Output<br/>Prediction"]
-    
-    Train["Training Examples"] -.->|"Adjusts"| L1
-    Train -.->|"Adjusts"| L2
-    Train -.->|"Adjusts"| L3
-    
-    style Input fill:#e1f5ff
-    style L1 fill:#fff4e1
-    style L2 fill:#fff4e1
-    style L3 fill:#fff4e1
-    style Output fill:#c8e6c9
-    style Train fill:#f3e5f5
-```
+![Neural Network Structure: Factory Assembly Line](images/neural-network-structure.svg)
 
 **See it in action:** [Example 1: Minimal Forward Pass](06-example1-forward-pass.md) shows how a simple network makes predictions.
 
