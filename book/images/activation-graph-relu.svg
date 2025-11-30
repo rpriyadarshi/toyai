@@ -1,7 +1,17 @@
 <svg width="280" height="280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; }
+      .formula { font-family: 'Courier New', monospace; font-size: 12px; fill: #dc2626; }
+    </style>
+  </defs>
+  
+  <!-- Title -->
+  <text x="140" y="20" class="title" text-anchor="middle">ReLU</text>
+  <text x="140" y="38" class="formula" text-anchor="middle">f(x) = max(0, x)</text>
+  
   <!-- ReLU Graph -->
-  <g transform="translate(40, 50)">
-    <text x="100" y="-30" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">ReLU: f(x) = max(0, x)</text>
+  <g transform="translate(40, 70)">
     <!-- Axes -->
     <line x1="0" y1="100" x2="200" y2="100" stroke="#333" stroke-width="2"/>
     <line x1="0" y1="100" x2="0" y2="0" stroke="#333" stroke-width="2"/>
