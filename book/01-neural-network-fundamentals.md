@@ -105,7 +105,9 @@ Output: 1.15 (decision made!)
 
 **Activation Function Graphs:**
 
-![Activation Functions: ReLU, Sigmoid, and Tanh](images/activation-functions.svg)
+| | | |
+|:---:|:---:|:---:|
+| ![ReLU Graph](images/activation-graph-relu.svg) | ![Sigmoid Graph](images/activation-graph-sigmoid.svg) | ![Tanh Graph](images/activation-graph-tanh.svg) |
 
 **Why it matters:** A single perceptron is limited, but stacking many perceptrons creates powerful networks.
 

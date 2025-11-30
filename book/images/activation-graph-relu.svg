@@ -1,0 +1,26 @@
+<svg width="280" height="280" xmlns="http://www.w3.org/2000/svg">
+  <!-- ReLU Graph -->
+  <g transform="translate(40, 50)">
+    <text x="100" y="-30" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">ReLU: f(x) = max(0, x)</text>
+    <!-- Axes -->
+    <line x1="0" y1="100" x2="200" y2="100" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="100" x2="0" y2="0" stroke="#333" stroke-width="2"/>
+    <!-- Axis labels -->
+    <text x="200" y="115" font-family="Arial" font-size="12">x</text>
+    <text x="-15" y="5" font-family="Arial" font-size="12">f(x)</text>
+    <!-- ReLU function: flat at 0 for x<0, then y=x for x>=0 -->
+    <line x1="0" y1="100" x2="0" y2="100" stroke="#2563eb" stroke-width="3"/>
+    <line x1="0" y1="100" x2="200" y2="0" stroke="#2563eb" stroke-width="3"/>
+    <!-- Grid lines -->
+    <line x1="50" y1="0" x2="50" y2="100" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="100" y1="0" x2="100" y2="100" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="150" y1="0" x2="150" y2="100" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="75" x2="200" y2="75" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="50" x2="200" y2="50" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="25" x2="200" y2="25" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <!-- Origin -->
+    <circle cx="0" cy="100" r="3" fill="#333"/>
+    <text x="-10" y="105" font-family="Arial" font-size="10">0</text>
+  </g>
+</svg>
+
