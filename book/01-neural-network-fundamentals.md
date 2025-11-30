@@ -95,23 +95,7 @@ Output: 1.15 (decision made!)
 
 **Perceptron Diagram:**
 
-```mermaid
-graph LR
-    X1["x₁<br/>Input 1"] -->|w₁| Sum["Σ<br/>Weighted Sum<br/>w·x + b"]
-    X2["x₂<br/>Input 2"] -->|w₂| Sum
-    X3["x₃<br/>Input 3"] -->|w₃| Sum
-    Bias["b<br/>Bias"] --> Sum
-    Sum --> Act["f()<br/>Activation<br/>Function"]
-    Act --> Y["y<br/>Output"]
-    
-    style X1 fill:#e1f5ff
-    style X2 fill:#e1f5ff
-    style X3 fill:#e1f5ff
-    style Bias fill:#fff4e1
-    style Sum fill:#f3e5f5
-    style Act fill:#e8f5e9
-    style Y fill:#c8e6c9
-```
+![The Perceptron: Single Neuron Decision-Making Unit](images/perceptron-diagram.svg)
 
 **Activation Function Behavior:**
 
