@@ -1,12 +1,12 @@
-<svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(100, 50)">
-    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold">Semantic Space: Tokens as Points in 2D</text>
+<svg width="600" height="560" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(80, 45)">
+    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Semantic Space: Tokens as Points in 2D</text>
     <!-- Axes -->
     <line x1="0" y1="400" x2="400" y2="400" stroke="#333" stroke-width="2"/>
     <line x1="200" y1="0" x2="200" y2="500" stroke="#333" stroke-width="2"/>
     <!-- Axis labels -->
-    <text x="400" y="420" font-family="Arial" font-size="14">Dimension 1</text>
-    <text x="190" y="-10" font-family="Arial" font-size="14">Dimension 2</text>
+    <text x="200" y="435" font-family="Arial" font-size="14" text-anchor="middle">Dimension 1</text>
+    <text x="30" y="200" font-family="Arial" font-size="14" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90, 30, 200)">Dimension 2</text>
     <!-- Origin -->
     <circle cx="200" cy="400" r="3" fill="#333"/>
     <text x="205" y="405" font-family="Arial" font-size="11">(0,0)</text>
@@ -34,7 +34,7 @@
     <line x1="120" y1="160" x2="160" y2="360" stroke="#dc2626" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
     <text x="140" y="260" font-family="Arial" font-size="10" fill="#dc2626">Far (different)</text>
     <!-- Scale note -->
-    <text x="0" y="480" font-family="Arial" font-size="11" fill="#666">Note: Coordinates scaled for visualization. Similar tokens cluster together.</text>
+    <text x="200" y="450" font-family="Arial" font-size="11" fill="#666" text-anchor="middle">Note: Coordinates scaled for visualization. Similar tokens cluster together.</text>
   </g>
 </svg>
 

@@ -33,15 +33,7 @@ $$C = AB = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} e & f \\
 
 **Example:**
 
-```mermaid
-graph LR
-    A["A = [1,0]<br/>   [0,1]<br/>Identity"] -->|×| C["C = A×B<br/>= [0.5,0.5]<br/>   [0.5,0.5]<br/>B unchanged!"]
-    B["B = [0.5,0.5]<br/>   [0.5,0.5]"] -->|×| C
-    
-    style A fill:#e1f5ff
-    style B fill:#fff4e1
-    style C fill:#e8f5e9
-```
+![Matrix Multiplication: Identity Matrix A × B = B](images/matrix-multiplication-identity.svg)
 
 The identity matrix $A$ doesn't change $B$ - this is like a "pass-through" layer.
 
@@ -56,14 +48,7 @@ When we multiply a vector by a matrix, we:
 
 **Example:**
 
-```mermaid
-graph LR
-    V["[1,0]<br/>→ x-direction"] -->|×| M["[0,-1]<br/>[1, 0]<br/>Rotate 90°"] -->|→| R["[0,1]<br/>↑ y-direction<br/>Rotated!"]
-    
-    style V fill:#e1f5ff
-    style M fill:#f3e5f5
-    style R fill:#e8f5e9
-```
+![Vector Rotation: [1,0] rotated 90° to [0,1]](images/vector-rotation-90deg.svg)
 
 **Why this matters for learning:**
 - Different matrices = different transformations

@@ -1,0 +1,87 @@
+<svg width="500" height="380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .axis { stroke: #666; stroke-width: 1.5; }
+      .axis-label { font-family: Arial, sans-serif; font-size: 14px; }
+      .vector-orig { stroke: #2563eb; stroke-width: 3; marker-end: url(#arrow-blue); }
+      .vector-rot { stroke: #16a34a; stroke-width: 3; marker-end: url(#arrow-green); }
+      .vector-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; }
+      .matrix-box { fill: #f3e5f5; stroke: #333; stroke-width: 2; }
+      .matrix-content { font-family: 'Courier New', monospace; font-size: 16px; }
+      .matrix-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; }
+    </style>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#16a34a"/>
+    </marker>
+  </defs>
+  
+  <!-- Coordinate system (TOP) -->
+  <g transform="translate(250, 100)">
+    <!-- Axes -->
+    <line x1="-80" y1="0" x2="80" y2="0" class="axis"/>
+    <line x1="0" y1="-80" x2="0" y2="80" class="axis"/>
+    
+    <!-- Grid lines -->
+    <line x1="-80" y1="-20" x2="80" y2="-20" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="-80" y1="20" x2="80" y2="20" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="-20" y1="-80" x2="-20" y2="80" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="20" y1="-80" x2="20" y2="80" stroke="#ddd" stroke-width="1" stroke-dasharray="2,2"/>
+    
+    <!-- Origin -->
+    <circle cx="0" cy="0" r="3" fill="#333"/>
+    
+    <!-- Original vector [1,0] -->
+    <line x1="0" y1="0" x2="60" y2="0" class="vector-orig"/>
+    <text x="70" y="-8" class="vector-label" fill="#2563eb">[1,0] → x-direction</text>
+    
+    <!-- Rotated vector [0,1] -->
+    <line x1="0" y1="0" x2="0" y2="-60" class="vector-rot"/>
+    <text x="10" y="-70" class="vector-label" fill="#16a34a">[0,1] ↑ y-direction</text>
+    
+    <!-- Rotation arc -->
+    <path d="M 50 0 A 30 30 0 0 0 0 -50" stroke="#999" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
+    <text x="25" y="-25" font-family="Arial" font-size="12" fill="#666">90°</text>
+    
+    <!-- Axis labels -->
+    <text x="85" y="5" class="axis-label">x</text>
+    <text x="-5" y="-85" class="axis-label">y</text>
+  </g>
+  
+  <!-- Matrix representation (BOTTOM) -->
+  <g transform="translate(50, 240)">
+    <!-- Vector v -->
+    <rect x="0" y="0" width="80" height="50" class="matrix-box"/>
+    <text x="40" y="-5" class="matrix-label" text-anchor="middle">v</text>
+    <text x="40" y="22" class="matrix-content" text-anchor="middle">1</text>
+    <text x="40" y="42" class="matrix-content" text-anchor="middle">0</text>
+  </g>
+  
+  <!-- Multiplication -->
+  <text x="150" y="270" font-family="Arial" font-size="24" font-weight="bold">×</text>
+  
+  <!-- Rotation matrix M -->
+  <g transform="translate(200, 240)">
+    <rect x="0" y="0" width="100" height="70" class="matrix-box"/>
+    <text x="50" y="-5" class="matrix-label" text-anchor="middle">M</text>
+    <text x="50" y="35" class="matrix-content" text-anchor="middle">0  -1</text>
+    <text x="50" y="55" class="matrix-content" text-anchor="middle">1   0</text>
+    <text x="50" y="80" class="axis-label" text-anchor="middle" fill="#666">Rotate 90°</text>
+  </g>
+  
+  <!-- Equals -->
+  <text x="320" y="270" font-family="Arial" font-size="24" font-weight="bold">=</text>
+  
+  <!-- Result vector -->
+  <g transform="translate(360, 240)">
+    <rect x="0" y="0" width="80" height="50" class="matrix-box"/>
+    <text x="40" y="-5" class="matrix-label" text-anchor="middle">Result</text>
+    <text x="40" y="22" class="matrix-content" text-anchor="middle">0</text>
+    <text x="40" y="42" class="matrix-content" text-anchor="middle">1</text>
+    <text x="40" y="80" class="axis-label" text-anchor="middle" fill="#16a34a">Rotated!</text>
+  </g>
+  
+</svg>
+

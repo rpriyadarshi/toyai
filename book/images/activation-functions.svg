@@ -1,7 +1,7 @@
-<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+<svg width="900" height="280" xmlns="http://www.w3.org/2000/svg">
   <!-- ReLU Graph -->
-  <g transform="translate(50, 50)">
-    <text x="100" y="-10" font-family="Arial" font-size="14" font-weight="bold">ReLU: f(x) = max(0, x)</text>
+  <g transform="translate(30, 60)">
+    <text x="100" y="-30" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">ReLU: f(x) = max(0, x)</text>
     <!-- Axes -->
     <line x1="0" y1="100" x2="200" y2="100" stroke="#333" stroke-width="2"/>
     <line x1="0" y1="100" x2="0" y2="0" stroke="#333" stroke-width="2"/>
@@ -24,8 +24,8 @@
   </g>
   
   <!-- Sigmoid Graph -->
-  <g transform="translate(300, 50)">
-    <text x="100" y="-10" font-family="Arial" font-size="14" font-weight="bold">Sigmoid: f(x) = 1/(1+e⁻ˣ)</text>
+  <g transform="translate(310, 60)">
+    <text x="100" y="-30" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Sigmoid: f(x) = 1/(1+e⁻ˣ)</text>
     <!-- Axes -->
     <line x1="0" y1="100" x2="200" y2="100" stroke="#333" stroke-width="2"/>
     <line x1="100" y1="0" x2="100" y2="200" stroke="#333" stroke-width="2"/>
@@ -47,8 +47,8 @@
   </g>
   
   <!-- Tanh Graph -->
-  <g transform="translate(550, 50)">
-    <text x="100" y="-10" font-family="Arial" font-size="14" font-weight="bold">Tanh: f(x) = tanh(x)</text>
+  <g transform="translate(590, 60)">
+    <text x="100" y="-30" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Tanh: f(x) = tanh(x)</text>
     <!-- Axes -->
     <line x1="0" y1="100" x2="200" y2="100" stroke="#333" stroke-width="2"/>
     <line x1="100" y1="0" x2="100" y2="200" stroke="#333" stroke-width="2"/>

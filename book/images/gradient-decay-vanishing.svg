@@ -1,12 +1,12 @@
 <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(80, 50)">
-    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold">Gradient Vanishes Over Time Steps</text>
+  <g transform="translate(80, 60)">
+    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Gradient Vanishes Over Time Steps</text>
     <!-- Axes -->
     <line x1="0" y1="300" x2="400" y2="300" stroke="#333" stroke-width="2"/>
     <line x1="0" y1="300" x2="0" y2="0" stroke="#333" stroke-width="2"/>
     <!-- Axis labels -->
-    <text x="400" y="320" font-family="Arial" font-size="14">Time Step (Backward)</text>
-    <text x="-50" y="150" font-family="Arial" font-size="14" transform="rotate(-90, -50, 150)">Gradient Strength</text>
+    <text x="200" y="335" font-family="Arial" font-size="14" text-anchor="middle">Time Step (Backward)</text>
+    <text x="-35" y="150" font-family="Arial" font-size="14" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90, -35, 150)">Gradient Strength</text>
     <!-- Exponential decay curve: gradient = 0.9^t -->
     <path d="M 0,0 Q 100,50 200,100 Q 300,180 400,280" stroke="#dc2626" stroke-width="3" fill="none"/>
     <!-- Key points -->
@@ -33,7 +33,7 @@
     <text x="-20" y="25" font-family="Arial" font-size="11">0.0</text>
     <!-- Warning zone -->
     <rect x="300" y="150" width="100" height="150" fill="#ffebee" opacity="0.3"/>
-    <text x="300" y="320" font-family="Arial" font-size="11" fill="#dc2626">Gradient too weak to learn!</text>
+    <text x="350" y="320" font-family="Arial" font-size="11" fill="#dc2626" text-anchor="middle">Gradient too weak to learn!</text>
   </g>
 </svg>
 

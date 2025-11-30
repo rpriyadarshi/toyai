@@ -1,12 +1,12 @@
 <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(80, 50)">
-    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold">Loss Decreases as Model Learns Multiple Patterns</text>
+  <g transform="translate(80, 60)">
+    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Loss Decreases as Model Learns Multiple Patterns</text>
     <!-- Axes -->
     <line x1="0" y1="300" x2="400" y2="300" stroke="#333" stroke-width="2"/>
     <line x1="0" y1="300" x2="0" y2="0" stroke="#333" stroke-width="2"/>
     <!-- Axis labels -->
-    <text x="400" y="320" font-family="Arial" font-size="14">Training Iteration</text>
-    <text x="-50" y="150" font-family="Arial" font-size="14" transform="rotate(-90, -50, 150)">Loss</text>
+    <text x="200" y="335" font-family="Arial" font-size="14" text-anchor="middle">Training Iteration</text>
+    <text x="-35" y="150" font-family="Arial" font-size="14" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90, -35, 150)">Loss</text>
     <!-- Loss curve with some noise (realistic training) -->
     <path d="M 0,50 L 20,55 L 40,60 L 60,65 L 80,70 L 100,75 L 120,80 L 140,85 L 160,90 L 180,95 L 200,100 L 220,105 L 240,110 L 260,115 L 280,120 L 300,125 L 320,130 L 340,135 L 360,140 L 380,145 L 400,150" stroke="#2563eb" stroke-width="2" fill="none"/>
     <!-- Smoothed trend line -->

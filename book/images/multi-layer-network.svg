@@ -1,0 +1,136 @@
+<svg width="900" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .layer-box { fill: none; stroke: #333; stroke-width: 2; rx: 5; }
+      .input-layer { fill: #e1f5ff; }
+      .hidden-layer { fill: #fff4e1; }
+      .output-layer { fill: #c8e6c9; }
+      .neuron { fill: white; stroke: #333; stroke-width: 1.5; }
+      .connection { stroke: #999; stroke-width: 0.5; opacity: 0.6; }
+      .layer-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; }
+      .neuron-label { font-family: Arial, sans-serif; font-size: 11px; }
+    </style>
+  </defs>
+  
+  <!-- Input Layer: 3 neurons vertically aligned -->
+  <rect x="50" y="50" width="120" height="180" class="layer-box input-layer"/>
+  <text x="110" y="35" class="layer-label" text-anchor="middle">Input Layer</text>
+  
+  <circle cx="110" cy="90" r="15" class="neuron"/>
+  <text x="110" y="95" class="neuron-label" text-anchor="middle">1</text>
+  
+  <circle cx="110" cy="140" r="15" class="neuron"/>
+  <text x="110" y="145" class="neuron-label" text-anchor="middle">2</text>
+  
+  <circle cx="110" cy="190" r="15" class="neuron"/>
+  <text x="110" y="195" class="neuron-label" text-anchor="middle">3</text>
+  
+  <!-- Hidden Layer 1: 4 neurons vertically aligned -->
+  <rect x="250" y="50" width="160" height="180" class="layer-box hidden-layer"/>
+  <text x="330" y="35" class="layer-label" text-anchor="middle">Hidden Layer 1</text>
+  
+  <circle cx="330" cy="80" r="15" class="neuron"/>
+  <text x="330" y="85" class="neuron-label" text-anchor="middle">1</text>
+  
+  <circle cx="330" cy="120" r="15" class="neuron"/>
+  <text x="330" y="125" class="neuron-label" text-anchor="middle">2</text>
+  
+  <circle cx="330" cy="160" r="15" class="neuron"/>
+  <text x="330" y="165" class="neuron-label" text-anchor="middle">3</text>
+  
+  <circle cx="330" cy="200" r="15" class="neuron"/>
+  <text x="330" y="205" class="neuron-label" text-anchor="middle">4</text>
+  
+  <!-- Hidden Layer 2: 3 neurons vertically aligned -->
+  <rect x="500" y="50" width="120" height="180" class="layer-box hidden-layer"/>
+  <text x="560" y="35" class="layer-label" text-anchor="middle">Hidden Layer 2</text>
+  
+  <circle cx="560" cy="90" r="15" class="neuron"/>
+  <text x="560" y="95" class="neuron-label" text-anchor="middle">1</text>
+  
+  <circle cx="560" cy="140" r="15" class="neuron"/>
+  <text x="560" y="145" class="neuron-label" text-anchor="middle">2</text>
+  
+  <circle cx="560" cy="190" r="15" class="neuron"/>
+  <text x="560" y="195" class="neuron-label" text-anchor="middle">3</text>
+  
+  <!-- Output Layer: 4 neurons vertically aligned -->
+  <rect x="700" y="50" width="160" height="180" class="layer-box output-layer"/>
+  <text x="780" y="35" class="layer-label" text-anchor="middle">Output Layer</text>
+  
+  <circle cx="780" cy="80" r="15" class="neuron"/>
+  <text x="780" y="85" class="neuron-label" text-anchor="middle">1</text>
+  
+  <circle cx="780" cy="120" r="15" class="neuron"/>
+  <text x="780" y="125" class="neuron-label" text-anchor="middle">2</text>
+  
+  <circle cx="780" cy="160" r="15" class="neuron"/>
+  <text x="780" y="165" class="neuron-label" text-anchor="middle">3</text>
+  
+  <circle cx="780" cy="200" r="15" class="neuron"/>
+  <text x="780" y="205" class="neuron-label" text-anchor="middle">4</text>
+  
+  <!-- Connections: Input to Hidden1 -->
+  <!-- I1 to all H1 -->
+  <line x1="125" y1="90" x2="315" y2="80" class="connection"/>
+  <line x1="125" y1="90" x2="315" y2="120" class="connection"/>
+  <line x1="125" y1="90" x2="315" y2="160" class="connection"/>
+  <line x1="125" y1="90" x2="315" y2="200" class="connection"/>
+  <!-- I2 to all H1 -->
+  <line x1="125" y1="140" x2="315" y2="80" class="connection"/>
+  <line x1="125" y1="140" x2="315" y2="120" class="connection"/>
+  <line x1="125" y1="140" x2="315" y2="160" class="connection"/>
+  <line x1="125" y1="140" x2="315" y2="200" class="connection"/>
+  <!-- I3 to all H1 -->
+  <line x1="125" y1="190" x2="315" y2="80" class="connection"/>
+  <line x1="125" y1="190" x2="315" y2="120" class="connection"/>
+  <line x1="125" y1="190" x2="315" y2="160" class="connection"/>
+  <line x1="125" y1="190" x2="315" y2="200" class="connection"/>
+  
+  <!-- Connections: Hidden1 to Hidden2 -->
+  <!-- H1 to all H2 -->
+  <line x1="345" y1="80" x2="545" y2="90" class="connection"/>
+  <line x1="345" y1="80" x2="545" y2="140" class="connection"/>
+  <line x1="345" y1="80" x2="545" y2="190" class="connection"/>
+  <!-- H2 to all H2 -->
+  <line x1="345" y1="120" x2="545" y2="90" class="connection"/>
+  <line x1="345" y1="120" x2="545" y2="140" class="connection"/>
+  <line x1="345" y1="120" x2="545" y2="190" class="connection"/>
+  <!-- H3 to all H2 -->
+  <line x1="345" y1="160" x2="545" y2="90" class="connection"/>
+  <line x1="345" y1="160" x2="545" y2="140" class="connection"/>
+  <line x1="345" y1="160" x2="545" y2="190" class="connection"/>
+  <!-- H4 to all H2 -->
+  <line x1="345" y1="200" x2="545" y2="90" class="connection"/>
+  <line x1="345" y1="200" x2="545" y2="140" class="connection"/>
+  <line x1="345" y1="200" x2="545" y2="190" class="connection"/>
+  
+  <!-- Connections: Hidden2 to Output -->
+  <!-- H1 to all O -->
+  <line x1="575" y1="90" x2="765" y2="80" class="connection"/>
+  <line x1="575" y1="90" x2="765" y2="120" class="connection"/>
+  <line x1="575" y1="90" x2="765" y2="160" class="connection"/>
+  <line x1="575" y1="90" x2="765" y2="200" class="connection"/>
+  <!-- H2 to all O -->
+  <line x1="575" y1="140" x2="765" y2="80" class="connection"/>
+  <line x1="575" y1="140" x2="765" y2="120" class="connection"/>
+  <line x1="575" y1="140" x2="765" y2="160" class="connection"/>
+  <line x1="575" y1="140" x2="765" y2="200" class="connection"/>
+  <!-- H3 to all O -->
+  <line x1="575" y1="190" x2="765" y2="80" class="connection"/>
+  <line x1="575" y1="190" x2="765" y2="120" class="connection"/>
+  <line x1="575" y1="190" x2="765" y2="160" class="connection"/>
+  <line x1="575" y1="190" x2="765" y2="200" class="connection"/>
+  
+  <!-- Data flow arrows (centered vertically) -->
+  <path d="M 170 140 L 240 140" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 410 140 L 500 140" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 620 140 L 700 140" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#2563eb"/>
+    </marker>
+  </defs>
+</svg>
+

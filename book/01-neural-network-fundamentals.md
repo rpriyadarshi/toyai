@@ -203,78 +203,7 @@ Output Layer: Produces [0.1, 0.8, 0.05, 0.05] (probabilities)
 
 **Multi-Layer Network Diagram:**
 
-```mermaid
-graph TB
-    subgraph Input["Input Layer"]
-        I1["Neuron 1"]
-        I2["Neuron 2"]
-        I3["Neuron 3"]
-    end
-    
-    subgraph Hidden1["Hidden Layer 1"]
-        H1["Neuron 1"]
-        H2["Neuron 2"]
-        H3["Neuron 3"]
-        H4["Neuron 4"]
-    end
-    
-    subgraph Hidden2["Hidden Layer 2"]
-        H5["Neuron 1"]
-        H6["Neuron 2"]
-        H7["Neuron 3"]
-    end
-    
-    subgraph Output["Output Layer"]
-        O1["Neuron 1"]
-        O2["Neuron 2"]
-        O3["Neuron 3"]
-        O4["Neuron 4"]
-    end
-    
-    I1 --> H1
-    I1 --> H2
-    I1 --> H3
-    I1 --> H4
-    I2 --> H1
-    I2 --> H2
-    I2 --> H3
-    I2 --> H4
-    I3 --> H1
-    I3 --> H2
-    I3 --> H3
-    I3 --> H4
-    
-    H1 --> H5
-    H1 --> H6
-    H1 --> H7
-    H2 --> H5
-    H2 --> H6
-    H2 --> H7
-    H3 --> H5
-    H3 --> H6
-    H3 --> H7
-    H4 --> H5
-    H4 --> H6
-    H4 --> H7
-    
-    H5 --> O1
-    H5 --> O2
-    H5 --> O3
-    H5 --> O4
-    H6 --> O1
-    H6 --> O2
-    H6 --> O3
-    H6 --> O4
-    H7 --> O1
-    H7 --> O2
-    H7 --> O3
-    H7 --> O4
-    
-    style Input fill:#e1f5ff
-    style Hidden1 fill:#fff4e1
-    style Hidden2 fill:#fff4e1
-    style Output fill:#c8e6c9
-```
+![Multi-Layer Neural Network: Input → Hidden Layers → Output](images/multi-layer-network.svg)
 
 **Why it matters:** Layers enable complex transformations. Stacking layers allows learning hierarchical patterns.
 

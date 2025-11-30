@@ -1,12 +1,12 @@
 <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(80, 50)">
-    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold">Cross-Entropy Loss: L = -log(P(target))</text>
+  <g transform="translate(80, 60)">
+    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Cross-Entropy Loss: L = -log(P(target))</text>
     <!-- Axes -->
     <line x1="0" y1="300" x2="400" y2="300" stroke="#333" stroke-width="2"/>
     <line x1="0" y1="300" x2="0" y2="0" stroke="#333" stroke-width="2"/>
     <!-- Axis labels -->
-    <text x="400" y="320" font-family="Arial" font-size="14">Predicted Probability P(target)</text>
-    <text x="-60" y="150" font-family="Arial" font-size="14" transform="rotate(-90, -60, 150)">Loss L</text>
+    <text x="200" y="335" font-family="Arial" font-size="14" text-anchor="middle">Predicted Probability P(target)</text>
+    <text x="-35" y="150" font-family="Arial" font-size="14" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90, -35, 150)">Loss L</text>
     <!-- Loss curve: L = -log(p) -->
     <path d="M 0,300 Q 50,250 100,200 T 200,100 T 300,50 T 400,20" stroke="#dc2626" stroke-width="3" fill="none"/>
     <!-- Grid lines -->
@@ -26,7 +26,7 @@
     <text x="-10" y="305" font-family="Arial" font-size="11">0</text>
     <text x="-20" y="25" font-family="Arial" font-size="11">High</text>
     <!-- Arrow indicating direction -->
-    <text x="200" y="340" font-family="Arial" font-size="12" fill="#666">Lower probability → Higher loss</text>
+    <text x="200" y="355" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Lower probability → Higher loss</text>
   </g>
 </svg>
 

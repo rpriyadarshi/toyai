@@ -1,12 +1,12 @@
 <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(80, 50)">
-    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold">Gradient Descent: Loss Decreases Over Time</text>
+  <g transform="translate(80, 60)">
+    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Gradient Descent: Loss Decreases Over Time</text>
     <!-- Axes -->
     <line x1="0" y1="300" x2="400" y2="300" stroke="#333" stroke-width="2"/>
     <line x1="0" y1="300" x2="0" y2="0" stroke="#333" stroke-width="2"/>
     <!-- Axis labels -->
-    <text x="400" y="320" font-family="Arial" font-size="14">Training Iteration</text>
-    <text x="-50" y="150" font-family="Arial" font-size="14" transform="rotate(-90, -50, 150)">Loss</text>
+    <text x="200" y="335" font-family="Arial" font-size="14" text-anchor="middle">Training Iteration</text>
+    <text x="-35" y="150" font-family="Arial" font-size="14" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90, -35, 150)">Loss</text>
     <!-- Loss curve decreasing over iterations -->
     <path d="M 0,50 Q 100,80 200,120 T 400,180" stroke="#2563eb" stroke-width="3" fill="none"/>
     <!-- Gradient descent steps (zigzag path) -->
@@ -29,7 +29,7 @@
     <text x="-10" y="305" font-family="Arial" font-size="11">High</text>
     <text x="-15" y="25" font-family="Arial" font-size="11">Low</text>
     <!-- Arrow showing convergence -->
-    <text x="200" y="340" font-family="Arial" font-size="12" fill="#666">Loss decreases as weights are updated</text>
+    <text x="200" y="355" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Loss decreases as weights are updated</text>
   </g>
 </svg>
 

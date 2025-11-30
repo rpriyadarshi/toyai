@@ -1,0 +1,51 @@
+<svg width="700" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .matrix-box { fill: #f9f9f9; stroke: #333; stroke-width: 2; }
+      .matrix-label { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; }
+      .matrix-content { font-family: 'Courier New', monospace; font-size: 18px; }
+      .operator { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; }
+      .result-label { font-family: Arial, sans-serif; font-size: 14px; }
+      .matrix-a { fill: #e1f5ff; }
+      .matrix-b { fill: #fff4e1; }
+      .matrix-c { fill: #e8f5e9; }
+    </style>
+  </defs>
+  
+  <!-- Matrix A (Identity) -->
+  <g transform="translate(50, 50)">
+    <rect x="0" y="0" width="120" height="80" class="matrix-box matrix-a"/>
+    <text x="60" y="-15" class="matrix-label" text-anchor="middle">A</text>
+    <text x="60" y="40" class="matrix-content" text-anchor="middle">1  0</text>
+    <text x="60" y="65" class="matrix-content" text-anchor="middle">0  1</text>
+    <text x="60" y="95" class="result-label" text-anchor="middle">Identity</text>
+  </g>
+  
+  <!-- Multiplication operator -->
+  <text x="200" y="90" class="operator">×</text>
+  
+  <!-- Matrix B -->
+  <g transform="translate(250, 50)">
+    <rect x="0" y="0" width="120" height="80" class="matrix-box matrix-b"/>
+    <text x="60" y="-15" class="matrix-label" text-anchor="middle">B</text>
+    <text x="60" y="40" class="matrix-content" text-anchor="middle">0.5  0.5</text>
+    <text x="60" y="65" class="matrix-content" text-anchor="middle">0.5  0.5</text>
+  </g>
+  
+  <!-- Equals -->
+  <text x="400" y="90" class="operator">=</text>
+  
+  <!-- Result Matrix C -->
+  <g transform="translate(450, 50)">
+    <rect x="0" y="0" width="120" height="80" class="matrix-box matrix-c"/>
+    <text x="60" y="-15" class="matrix-label" text-anchor="middle">C = A×B</text>
+    <text x="60" y="40" class="matrix-content" text-anchor="middle">0.5  0.5</text>
+    <text x="60" y="65" class="matrix-content" text-anchor="middle">0.5  0.5</text>
+    <text x="60" y="95" class="result-label" text-anchor="middle">B unchanged!</text>
+  </g>
+  
+  <!-- Arrow showing pass-through -->
+  <path d="M 170 80 Q 325 60 430 80" stroke="#2563eb" stroke-width="2" fill="none" stroke-dasharray="5,5" opacity="0.7"/>
+  <text x="325" y="50" font-family="Arial" font-size="12" fill="#2563eb" text-anchor="middle">Pass-through</text>
+</svg>
+

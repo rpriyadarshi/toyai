@@ -1,12 +1,12 @@
 <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(80, 50)">
-    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold">Training Progress: Loss Decreases Over Epochs</text>
+  <g transform="translate(80, 60)">
+    <text x="200" y="-20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Training Progress: Loss Decreases Over Epochs</text>
     <!-- Axes -->
     <line x1="0" y1="300" x2="400" y2="300" stroke="#333" stroke-width="2"/>
     <line x1="0" y1="300" x2="0" y2="0" stroke="#333" stroke-width="2"/>
     <!-- Axis labels -->
-    <text x="400" y="320" font-family="Arial" font-size="14">Epoch</text>
-    <text x="-50" y="150" font-family="Arial" font-size="14" transform="rotate(-90, -50, 150)">Average Loss</text>
+    <text x="200" y="335" font-family="Arial" font-size="14" text-anchor="middle">Epoch</text>
+    <text x="-35" y="150" font-family="Arial" font-size="14" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90, -35, 150)">Average Loss</text>
     <!-- Loss curve decreasing over epochs (smooth decay) -->
     <path d="M 0,50 Q 100,80 200,120 Q 300,160 400,200" stroke="#2563eb" stroke-width="3" fill="none"/>
     <!-- Epoch markers -->
@@ -29,7 +29,7 @@
     <text x="-10" y="305" font-family="Arial" font-size="11">High</text>
     <text x="-15" y="25" font-family="Arial" font-size="11">Low</text>
     <!-- Convergence note -->
-    <text x="200" y="340" font-family="Arial" font-size="12" fill="#666">Model learns and improves with each epoch</text>
+    <text x="200" y="355" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Model learns and improves with each epoch</text>
   </g>
 </svg>
 
