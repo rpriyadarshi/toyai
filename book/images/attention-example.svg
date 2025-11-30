@@ -1,0 +1,75 @@
+<svg width="590" height="370" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .query-box { fill: #e1f5ff; stroke: #2563eb; stroke-width: 2.5; rx: 8; }
+      .attention-strong { fill: #c8e6c9; stroke: #4caf50; stroke-width: 3; rx: 8; }
+      .attention-medium { fill: #c8e6c9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .attention-low { fill: #fff9c4; stroke: #f59e0b; stroke-width: 2.5; rx: 8; }
+      .attention-very-low { fill: #ffcdd2; stroke: #dc2626; stroke-width: 2.5; rx: 8; }
+      .context-box { fill: #e8f5e9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .box-label { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; fill: #1e293b; }
+      .box-text { font-family: Arial, sans-serif; font-size: 11px; fill: #64748b; }
+      .arrow { stroke: #2563eb; stroke-width: 2.5; fill: none; marker-end: url(#arrow-blue); }
+    </style>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#2563eb"/>
+    </marker>
+  </defs>
+  
+  <!-- Query -->
+  <g transform="translate(245, 20)">
+    <rect x="0" y="0" width="100" height="70" class="query-box"/>
+    <text x="50" y="25" class="box-label" text-anchor="middle">Query: 'sat'</text>
+    <text x="50" y="45" class="box-text" text-anchor="middle">Needs: subject</text>
+  </g>
+  
+  <!-- Attention boxes -->
+  <g transform="translate(20, 120)">
+    <rect x="0" y="0" width="100" height="80" class="attention-strong"/>
+    <text x="50" y="25" class="box-label" text-anchor="middle">'cat'</text>
+    <text x="50" y="45" class="box-text" text-anchor="middle">0.6 (60%)</text>
+    <text x="50" y="65" class="box-text" text-anchor="middle" font-weight="bold" fill="#16a34a">Subject!</text>
+  </g>
+  
+  <g transform="translate(170, 120)">
+    <rect x="0" y="0" width="100" height="80" class="attention-medium"/>
+    <text x="50" y="25" class="box-label" text-anchor="middle">'mat'</text>
+    <text x="50" y="45" class="box-text" text-anchor="middle">0.2 (20%)</text>
+    <text x="50" y="65" class="box-text" text-anchor="middle">Object</text>
+  </g>
+  
+  <g transform="translate(320, 120)">
+    <rect x="0" y="0" width="100" height="80" class="attention-low"/>
+    <text x="50" y="25" class="box-label" text-anchor="middle">'yesterday'</text>
+    <text x="50" y="45" class="box-text" text-anchor="middle">0.15 (15%)</text>
+    <text x="50" y="65" class="box-text" text-anchor="middle">Context</text>
+  </g>
+  
+  <g transform="translate(470, 120)">
+    <rect x="0" y="0" width="100" height="80" class="attention-very-low"/>
+    <text x="50" y="25" class="box-label" text-anchor="middle">'the'</text>
+    <text x="50" y="45" class="box-text" text-anchor="middle">0.05 (5%)</text>
+    <text x="50" y="65" class="box-text" text-anchor="middle">Low</text>
+  </g>
+  
+  <!-- Context -->
+  <g transform="translate(245, 280)">
+    <rect x="0" y="0" width="100" height="70" class="context-box"/>
+    <text x="50" y="25" class="box-label" text-anchor="middle">Context:</text>
+    <text x="50" y="45" class="box-text" text-anchor="middle">Strong 'cat'</text>
+    <text x="50" y="60" class="box-text" text-anchor="middle">signal!</text>
+  </g>
+  
+  <!-- Arrows from Query to Attention -->
+  <path d="M 295 90 L 70 120" class="arrow"/>
+  <path d="M 295 90 L 220 120" class="arrow"/>
+  <path d="M 295 90 L 370 120" class="arrow"/>
+  <path d="M 295 90 L 520 120" class="arrow"/>
+  
+  <!-- Arrows from Attention to Context -->
+  <path d="M 70 200 L 245 280" class="arrow"/>
+  <path d="M 220 200 L 270 280" class="arrow"/>
+  <path d="M 370 200 L 295 280" class="arrow"/>
+  <path d="M 520 200 L 345 280" class="arrow"/>
+</svg>
+

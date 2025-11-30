@@ -1,0 +1,74 @@
+<svg width="890" height="120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .gradient-strong { fill: #e8f5e9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .gradient-weak { fill: #ffebee; stroke: #dc2626; stroke-width: 2.5; rx: 8; }
+      .box-label { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; fill: #1e293b; }
+      .box-text { font-family: Arial, sans-serif; font-size: 11px; fill: #64748b; }
+      .arrow { stroke: #2563eb; stroke-width: 2.5; fill: none; marker-end: url(#arrow-blue); }
+    </style>
+    <marker id="arrow-blue" markerWidth="6" markerHeight="6" refX="5" refY="2" orient="auto">
+      <polygon points="0 0, 6 2, 0 4" fill="#2563eb"/>
+    </marker>
+  </defs>
+  
+  <!-- Gradient boxes -->
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
+    <text x="40" y="30" class="box-label" text-anchor="middle">1.00</text>
+    <text x="40" y="50" class="box-text" text-anchor="middle">100%</text>
+  </g>
+  
+  <g transform="translate(130, 20)">
+    <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
+    <text x="40" y="30" class="box-label" text-anchor="middle">0.90</text>
+    <text x="40" y="50" class="box-text" text-anchor="middle">90%</text>
+  </g>
+  
+  <g transform="translate(240, 20)">
+    <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
+    <text x="40" y="30" class="box-label" text-anchor="middle">0.81</text>
+    <text x="40" y="50" class="box-text" text-anchor="middle">81%</text>
+  </g>
+  
+  <g transform="translate(350, 20)">
+    <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
+    <text x="40" y="30" class="box-label" text-anchor="middle">0.73</text>
+    <text x="40" y="50" class="box-text" text-anchor="middle">73%</text>
+  </g>
+  
+  <g transform="translate(460, 20)">
+    <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
+    <text x="40" y="30" class="box-label" text-anchor="middle">0.66</text>
+    <text x="40" y="50" class="box-text" text-anchor="middle">66%</text>
+  </g>
+  
+  <g transform="translate(570, 20)">
+    <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
+    <text x="40" y="30" class="box-label" text-anchor="middle">0.59</text>
+    <text x="40" y="50" class="box-text" text-anchor="middle">59%</text>
+  </g>
+  
+  <g transform="translate(680, 20)">
+    <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
+    <text x="40" y="30" class="box-label" text-anchor="middle">0.53</text>
+    <text x="40" y="50" class="box-text" text-anchor="middle">53%</text>
+  </g>
+  
+  <g transform="translate(790, 20)">
+    <rect x="0" y="0" width="80" height="80" class="gradient-weak"/>
+    <text x="40" y="30" class="box-label" text-anchor="middle">0.48</text>
+    <text x="40" y="50" class="box-text" text-anchor="middle">48%</text>
+    <text x="40" y="70" class="box-text" text-anchor="middle" font-weight="bold" fill="#dc2626">TOO WEAK!</text>
+  </g>
+  
+  <!-- Arrows -->
+  <path d="M 100 60 L 130 60" class="arrow"/>
+  <path d="M 210 60 L 240 60" class="arrow"/>
+  <path d="M 320 60 L 350 60" class="arrow"/>
+  <path d="M 430 60 L 460 60" class="arrow"/>
+  <path d="M 540 60 L 570 60" class="arrow"/>
+  <path d="M 650 60 L 680 60" class="arrow"/>
+  <path d="M 760 60 L 790 60" class="arrow"/>
+</svg>
+

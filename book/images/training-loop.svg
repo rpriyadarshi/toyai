@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="215"
+   height="590"
+   version="1.1"
+   id="svg76"
+   sodipodi:docname="training-loop.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview78"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.740678"
+     inkscape:cx="102.259"
+     inkscape:cy="296.72346"
+     inkscape:window-width="3840"
+     inkscape:window-height="2091"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg76" />
+  <defs
+     id="defs10">
+    <style
+       id="style2">
+      .start-box { fill: #e1f5ff; stroke: #2563eb; stroke-width: 2.5; rx: 8; }
+      .forward-box { fill: #fff4e1; stroke: #f59e0b; stroke-width: 2.5; rx: 8; }
+      .loss-box { fill: #ffcdd2; stroke: #dc2626; stroke-width: 2.5; rx: 8; }
+      .backward-box { fill: #f3e5f5; stroke: #9333ea; stroke-width: 2.5; rx: 8; }
+      .update-box { fill: #e8f5e9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .stop-box { fill: #c8e6c9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .box-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; }
+      .box-text { font-family: Arial, sans-serif; font-size: 11px; fill: #64748b; }
+      .arrow { stroke: #2563eb; stroke-width: 2.5; fill: none; marker-end: url(#arrow-blue); }
+      .arrow-loop { stroke: #9333ea; stroke-width: 2; fill: none; stroke-dasharray: 5,5; marker-end: url(#arrow-purple); opacity: 0.7; }
+      .arrow-label { font-family: Arial, sans-serif; font-size: 11px; fill: #64748b; }
+    </style>
+    <marker
+       id="arrow-blue"
+       markerWidth="6"
+       markerHeight="6"
+       refX="5"
+       refY="2"
+       orient="auto">
+      <polygon
+         points="0 0, 6 2, 0 4"
+         fill="#2563eb"
+         id="polygon4" />
+    </marker>
+    <marker
+       id="arrow-purple"
+       markerWidth="6"
+       markerHeight="6"
+       refX="5"
+       refY="2"
+       orient="auto">
+      <polygon
+         points="0 0, 6 2, 0 4"
+         fill="#9333ea"
+         id="polygon7" />
+    </marker>
+  </defs>
+  <!-- Start -->
+  <g
+     transform="translate(20, 20)"
+     id="g16">
+    <rect
+       x="0"
+       y="0"
+       width="150"
+       height="50"
+       class="start-box"
+       id="rect12" />
+    <text
+       x="75"
+       y="30"
+       class="box-label"
+       text-anchor="middle"
+       id="text14">Start Training</text>
+  </g>
+  <!-- Forward -->
+  <g
+     transform="translate(20, 110)"
+     id="g24">
+    <rect
+       x="0"
+       y="0"
+       width="150"
+       height="60"
+       class="forward-box"
+       id="rect18" />
+    <text
+       x="75"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text20">Forward Pass</text>
+    <text
+       x="75"
+       y="45"
+       class="box-text"
+       text-anchor="middle"
+       id="text22">Compute Prediction</text>
+  </g>
+  <!-- Loss -->
+  <g
+     transform="translate(20, 210)"
+     id="g32">
+    <rect
+       x="0"
+       y="0"
+       width="150"
+       height="60"
+       class="loss-box"
+       id="rect26" />
+    <text
+       x="75"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text28">Compute Loss</text>
+    <text
+       x="75"
+       y="45"
+       class="box-text"
+       text-anchor="middle"
+       id="text30">Measure Error</text>
+  </g>
+  <!-- Backward -->
+  <g
+     transform="translate(20, 310)"
+     id="g40">
+    <rect
+       x="0"
+       y="0"
+       width="150"
+       height="60"
+       class="backward-box"
+       id="rect34" />
+    <text
+       x="75"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text36">Backward Pass</text>
+    <text
+       x="75"
+       y="45"
+       class="box-text"
+       text-anchor="middle"
+       id="text38">Compute Gradients</text>
+  </g>
+  <!-- Update -->
+  <g
+     transform="translate(20, 410)"
+     id="g50">
+    <rect
+       x="0"
+       y="0"
+       width="150"
+       height="70"
+       class="update-box"
+       id="rect42" />
+    <text
+       x="75"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text44">Weight Update</text>
+    <text
+       x="75"
+       y="45"
+       class="box-text"
+       text-anchor="middle"
+       font-size="10"
+       id="text46">W_new = W_old</text>
+    <text
+       x="75"
+       y="60"
+       class="box-text"
+       text-anchor="middle"
+       font-size="10"
+       id="text48">- η×grad</text>
+  </g>
+  <!-- Stop -->
+  <g
+     transform="translate(20, 520)"
+     id="g58">
+    <rect
+       x="0"
+       y="0"
+       width="150"
+       height="50"
+       class="stop-box"
+       id="rect52" />
+    <text
+       x="75"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text54">Stop</text>
+    <text
+       x="75"
+       y="42"
+       class="box-text"
+       text-anchor="middle"
+       id="text56">Model Trained</text>
+  </g>
+  <!-- Main vertical flow arrows -->
+  <path
+     d="M 95 70 L 95 110"
+     class="arrow"
+     id="path60" />
+  <path
+     d="M 95 170 L 95 210"
+     class="arrow"
+     id="path62" />
+  <path
+     d="M 95 270 L 95 310"
+     class="arrow"
+     id="path64" />
+  <path
+     d="M 95 370 L 95 410"
+     class="arrow"
+     id="path66" />
+  <!-- Loop arrow: Update → Forward (rounded Manhattan path on right side) -->
+  <!-- Start from right edge of Update box (center vertically), go right, up, then left to Forward -->
+  <path
+     d="M 170 445 L 180 445 Q 195 445 195 440 L 195 145 Q 195 140 180 140 L 170 140"
+     class="arrow-loop"
+     id="path68" />
+  <text
+     x="170.51227"
+     y="292.2782"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text70">Repeat</text>
+  <!-- Converged arrow: Update → Stop (straight down) -->
+  <path
+     d="M 95 480 L 95 520"
+     class="arrow"
+     id="path72" />
+  <text
+     x="128.7756"
+     y="500"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text74">Converged</text>
+</svg>

@@ -1,0 +1,57 @@
+<svg width="740" height="120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .loss-box { fill: #ffcdd2; stroke: #dc2626; stroke-width: 2.5; rx: 8; }
+      .layer-box { fill: #fff4e1; stroke: #f59e0b; stroke-width: 2.5; rx: 8; }
+      .box-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; }
+      .box-text { font-family: Arial, sans-serif; font-size: 11px; fill: #64748b; }
+      .arrow { stroke: #dc2626; stroke-width: 3; fill: none; marker-end: url(#arrow-red); }
+    </style>
+    <marker id="arrow-red" markerWidth="6" markerHeight="6" refX="5" refY="2" orient="auto">
+      <polygon points="0 0, 6 2, 0 4" fill="#dc2626"/>
+    </marker>
+  </defs>
+  
+  <!-- Loss -->
+  <g transform="translate(620, 20)">
+    <rect x="0" y="0" width="100" height="80" class="loss-box"/>
+    <text x="50" y="30" class="box-label" text-anchor="middle">Loss</text>
+    <text x="50" y="55" class="box-text" text-anchor="middle">L = 0.5</text>
+  </g>
+  
+  <!-- Layer 4 -->
+  <g transform="translate(470, 20)">
+    <rect x="0" y="0" width="100" height="80" class="layer-box"/>
+    <text x="50" y="30" class="box-label" text-anchor="middle">Layer 4</text>
+    <text x="50" y="55" class="box-text" text-anchor="middle">∂L/∂WO</text>
+  </g>
+  
+  <!-- Layer 3 -->
+  <g transform="translate(320, 20)">
+    <rect x="0" y="0" width="100" height="80" class="layer-box"/>
+    <text x="50" y="30" class="box-label" text-anchor="middle">Layer 3</text>
+    <text x="50" y="55" class="box-text" text-anchor="middle">∂L/∂Attention</text>
+  </g>
+  
+  <!-- Layer 2 -->
+  <g transform="translate(170, 20)">
+    <rect x="0" y="0" width="100" height="80" class="layer-box"/>
+    <text x="50" y="30" class="box-label" text-anchor="middle">Layer 2</text>
+    <text x="50" y="50" class="box-text" text-anchor="middle" font-size="10">∂L/∂WQ,</text>
+    <text x="50" y="65" class="box-text" text-anchor="middle" font-size="10">WK, WV</text>
+  </g>
+  
+  <!-- Layer 1 -->
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="100" height="80" class="layer-box"/>
+    <text x="50" y="30" class="box-label" text-anchor="middle">Layer 1</text>
+    <text x="50" y="55" class="box-text" text-anchor="middle">∂L/∂Embedding</text>
+  </g>
+  
+  <!-- Arrows (right to left, connecting between blocks) -->
+  <path d="M 620 60 L 570 60" class="arrow"/>
+  <path d="M 470 60 L 420 60" class="arrow"/>
+  <path d="M 320 60 L 270 60" class="arrow"/>
+  <path d="M 170 60 L 120 60" class="arrow"/>
+</svg>
+

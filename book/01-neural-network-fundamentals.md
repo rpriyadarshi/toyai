@@ -517,10 +517,10 @@ The **training loop** combines **forward pass**, **loss** computation, **backwar
 
 ```mermaid
 graph TD
-    Start["Start Training"] --> Forward["1. Forward Pass<br/>Compute Prediction"]
-    Forward --> Loss["2. Compute Loss<br/>Measure Error"]
-    Loss --> Backward["3. Backward Pass<br/>Compute Gradients"]
-    Backward --> Update["4. Weight Update<br/>W_new = W_old - η×grad"]
+    Start["Start Training"] --> Forward["Forward Pass<br/>Compute Prediction"]
+    Forward --> Loss["Compute Loss<br/>Measure Error"]
+    Loss --> Backward["Backward Pass<br/>Compute Gradients"]
+    Backward --> Update["Weight Update<br/>W_new = W_old - η×grad"]
     Update -->|"Repeat"| Forward
     Update -->|"Converged"| Stop["Stop<br/>Model Trained"]
     

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="690"
+   height="120"
+   version="1.1"
+   id="svg55"
+   sodipodi:docname="gradient-visualization.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview57"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="2.1129032"
+     inkscape:cx="310"
+     inkscape:cy="60.816795"
+     inkscape:window-width="3840"
+     inkscape:window-height="2091"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg55" />
+  <defs
+     id="defs7">
+    <style
+       id="style2">
+      .loss-box { fill: #ffcdd2; stroke: #dc2626; stroke-width: 2.5; rx: 8; }
+      .gradient-box { fill: #fff4e1; stroke: #f59e0b; stroke-width: 2.5; rx: 8; }
+      .direction-box { fill: #e8f5e9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .update-box { fill: #c8e6c9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .box-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; }
+      .box-text { font-family: Arial, sans-serif; font-size: 11px; fill: #64748b; }
+      .arrow { stroke: #2563eb; stroke-width: 2.5; fill: none; marker-end: url(#arrow-blue); }
+      .arrow-label { font-family: Arial, sans-serif; font-size: 11px; fill: #dc2626; font-weight: bold; }
+    </style>
+    <marker
+       id="arrow-blue"
+       markerWidth="6"
+       markerHeight="6"
+       refX="5"
+       refY="2"
+       orient="auto">
+      <polygon
+         points="0 0, 6 2, 0 4"
+         fill="#2563eb"
+         id="polygon4" />
+    </marker>
+  </defs>
+  <!-- Loss -->
+  <g
+     transform="translate(20, 20)"
+     id="g15">
+    <rect
+       x="0"
+       y="0"
+       width="100"
+       height="80"
+       class="loss-box"
+       id="rect9" />
+    <text
+       x="50"
+       y="30"
+       class="box-label"
+       text-anchor="middle"
+       id="text11">Loss</text>
+    <text
+       x="50"
+       y="50"
+       class="box-text"
+       text-anchor="middle"
+       id="text13">L = 2.0</text>
+  </g>
+  <!-- Gradient -->
+  <g
+     transform="translate(170, 20)"
+     id="g23">
+    <rect
+       x="0"
+       y="0"
+       width="120"
+       height="80"
+       class="gradient-box"
+       id="rect17" />
+    <text
+       x="60"
+       y="30"
+       class="box-label"
+       text-anchor="middle"
+       id="text19">Gradient</text>
+    <text
+       x="60"
+       y="50"
+       class="box-text"
+       text-anchor="middle"
+       id="text21">∂L/∂W = -0.3</text>
+  </g>
+  <!-- Direction -->
+  <g
+     transform="translate(380, 20)"
+     id="g33">
+    <rect
+       x="0"
+       y="0"
+       width="140"
+       height="80"
+       class="direction-box"
+       id="rect25" />
+    <text
+       x="70"
+       y="30"
+       class="box-label"
+       text-anchor="middle"
+       id="text27">Direction</text>
+    <text
+       x="70"
+       y="50"
+       class="box-text"
+       text-anchor="middle"
+       id="text29">Increase W</text>
+    <text
+       x="70"
+       y="65"
+       class="box-text"
+       text-anchor="middle"
+       id="text31">to reduce loss</text>
+  </g>
+  <!-- Update -->
+  <g
+     transform="translate(570, 20)"
+     id="g43">
+    <rect
+       x="0"
+       y="0"
+       width="100"
+       height="80"
+       class="update-box"
+       id="rect35" />
+    <text
+       x="50"
+       y="30"
+       class="box-label"
+       text-anchor="middle"
+       id="text37">Update</text>
+    <text
+       x="50"
+       y="50"
+       class="box-text"
+       text-anchor="middle"
+       id="text39">W_new = 0.5</text>
+    <text
+       x="50"
+       y="65"
+       class="box-text"
+       text-anchor="middle"
+       id="text41">+ 0.03 = 0.53</text>
+  </g>
+  <!-- Arrows -->
+  <path
+     d="M 120 60 L 170 60"
+     class="arrow"
+     id="path45" />
+  <path
+     d="M 290 60 L 380 60"
+     class="arrow"
+     id="path47" />
+  <text
+     x="334.5267"
+     y="36.092178"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text49">Negative =</text>
+  <text
+     x="334.5267"
+     y="49.092178"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text51">Go DOWN</text>
+  <path
+     d="M 520 60 L 570 60"
+     class="arrow"
+     id="path53" />
+</svg>

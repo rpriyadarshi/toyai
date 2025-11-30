@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="510"
+   height="210"
+   version="1.1"
+   id="svg94"
+   sodipodi:docname="rnn-limitation.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview96"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="2.5686275"
+     inkscape:cx="255"
+     inkscape:cy="120.49236"
+     inkscape:window-width="1452"
+     inkscape:window-height="1233"
+     inkscape:window-x="1332"
+     inkscape:window-y="591"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg94" />
+  <defs
+     id="defs10">
+    <style
+       id="style2">
+      .state-strong { fill: #c8e6c9; stroke: #4caf50; stroke-width: 3; rx: 8; }
+      .state-medium { fill: #fff9c4; stroke: #f59e0b; stroke-width: 2.5; rx: 8; }
+      .state-weak { fill: #ffcdd2; stroke: #f44336; stroke-width: 3; rx: 8; }
+      .box-label { font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #1e293b; }
+      .box-text { font-family: Arial, sans-serif; font-size: 10px; fill: #64748b; }
+      .arrow { stroke: #2563eb; stroke-width: 2.5; fill: none; marker-end: url(#arrow-blue); }
+      .arrow-left { stroke: #2563eb; stroke-width: 2.5; fill: none; marker-end: url(#arrow-blue-left); }
+      .arrow-label { font-family: Arial, sans-serif; font-size: 10px; fill: #64748b; }
+    </style>
+    <marker
+       id="arrow-blue"
+       markerWidth="6"
+       markerHeight="6"
+       refX="5"
+       refY="2"
+       orient="auto">
+      <polygon
+         points="0 0, 6 2, 0 4"
+         fill="#2563eb"
+         id="polygon4" />
+    </marker>
+    <marker
+       id="arrow-blue-left"
+       markerWidth="6"
+       markerHeight="6"
+       refX="5"
+       refY="2"
+       orient="auto">
+      <polygon
+         points="6,2 0,4 0,0"
+         fill="#2563eb"
+         id="polygon7" />
+    </marker>
+  </defs>
+  <!-- Top Row: [cat] → [saw] → [yesterday] → [park] (left to right) -->
+  <g
+     transform="translate(20, 20)"
+     id="g18">
+    <rect
+       x="0"
+       y="0"
+       width="80"
+       height="60"
+       class="state-strong"
+       id="rect12" />
+    <text
+       x="40"
+       y="18"
+       class="box-label"
+       text-anchor="middle"
+       id="text14">[cat]</text>
+    <text
+       x="40"
+       y="32"
+       class="box-text"
+       text-anchor="middle"
+       id="text16">100%</text>
+  </g>
+  <g
+     transform="translate(150, 20)"
+     id="g26">
+    <rect
+       x="0"
+       y="0"
+       width="80"
+       height="60"
+       class="state-medium"
+       id="rect20" />
+    <text
+       x="40"
+       y="18"
+       class="box-label"
+       text-anchor="middle"
+       id="text22">[saw]</text>
+    <text
+       x="40"
+       y="32"
+       class="box-text"
+       text-anchor="middle"
+       id="text24">cat: 50%</text>
+  </g>
+  <g
+     transform="translate(280, 20)"
+     id="g34">
+    <rect
+       x="0"
+       y="0"
+       width="80"
+       height="60"
+       class="state-medium"
+       id="rect28" />
+    <text
+       x="40"
+       y="18"
+       class="box-label"
+       text-anchor="middle"
+       id="text30">[yesterday]</text>
+    <text
+       x="40"
+       y="32"
+       class="box-text"
+       text-anchor="middle"
+       id="text32">cat: 40%</text>
+  </g>
+  <g
+     transform="translate(410, 20)"
+     id="g42">
+    <rect
+       x="0"
+       y="0"
+       width="80"
+       height="60"
+       class="state-medium"
+       id="rect36" />
+    <text
+       x="40"
+       y="18"
+       class="box-label"
+       text-anchor="middle"
+       id="text38">[park]</text>
+    <text
+       x="40"
+       y="32"
+       class="box-text"
+       text-anchor="middle"
+       id="text40">cat: 25%</text>
+  </g>
+  <!-- Bottom Row: [house] → [sat] → [mat] (right to left) -->
+  <g
+     transform="translate(410, 130)"
+     id="g50">
+    <rect
+       x="0"
+       y="0"
+       width="80"
+       height="60"
+       class="state-medium"
+       id="rect44" />
+    <text
+       x="40"
+       y="18"
+       class="box-label"
+       text-anchor="middle"
+       id="text46">[house]</text>
+    <text
+       x="40"
+       y="32"
+       class="box-text"
+       text-anchor="middle"
+       id="text48">cat: 15%</text>
+  </g>
+  <g
+     transform="translate(280, 130)"
+     id="g60">
+    <rect
+       x="0"
+       y="0"
+       width="80"
+       height="60"
+       class="state-weak"
+       id="rect52" />
+    <text
+       x="40"
+       y="18"
+       class="box-label"
+       text-anchor="middle"
+       id="text54">[sat]</text>
+    <text
+       x="40"
+       y="32"
+       class="box-text"
+       text-anchor="middle"
+       id="text56">cat: 8%</text>
+    <text
+       x="40"
+       y="46"
+       class="box-text"
+       text-anchor="middle"
+       font-weight="bold"
+       fill="#dc2626"
+       id="text58">TOO WEAK!</text>
+  </g>
+  <g
+     transform="translate(150, 130)"
+     id="g68">
+    <rect
+       x="0"
+       y="0"
+       width="80"
+       height="60"
+       class="state-weak"
+       id="rect62" />
+    <text
+       x="40"
+       y="18"
+       class="box-label"
+       text-anchor="middle"
+       id="text64">[mat]</text>
+    <text
+       x="40"
+       y="32"
+       class="box-text"
+       text-anchor="middle"
+       id="text66">cat: 5%</text>
+  </g>
+  <!-- Top row arrows (left to right, all 50px) -->
+  <path
+     d="M 100 50 L 150 50"
+     class="arrow"
+     id="path70" />
+  <text
+     x="124.82835"
+     y="38.422771"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text72">Compress</text>
+  <path
+     d="M 230 50 L 280 50"
+     class="arrow"
+     id="path74" />
+  <text
+     x="254.82834"
+     y="38.422771"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text76">Compress</text>
+  <path
+     d="M 360 50 L 410 50"
+     class="arrow"
+     id="path78" />
+  <text
+     x="384.82834"
+     y="38.422771"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text80">Compress</text>
+  <!-- U-turn arrow from [park] to [house] -->
+  <path
+     d="M 450 80 L 450 130"
+     class="arrow"
+     id="path82" />
+  <text
+     x="423.47729"
+     y="105.20939"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text84">Compress</text>
+  <!-- Bottom row arrows (right to left, all 50px) -->
+  <path
+     d="M 410 160 L 360 160"
+     class="arrow-left"
+     id="path86" />
+  <text
+     x="385"
+     y="145"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text88">Compress</text>
+  <path
+     d="M 280 160 L 230 160"
+     class="arrow-left"
+     id="path90" />
+  <text
+     x="255"
+     y="145"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text92">Compress</text>
+</svg>

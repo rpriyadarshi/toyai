@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="590"
+   height="210"
+   version="1.1"
+   id="svg345"
+   sodipodi:docname="cat-journey.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview347"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="2.220339"
+     inkscape:cx="295"
+     inkscape:cy="105.16412"
+     inkscape:window-width="3840"
+     inkscape:window-height="2091"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg345" />
+  <defs
+     id="defs245">
+    <style
+       id="style237">
+      .cat-box { fill: #e8f5e9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .hidden-strong { fill: #e8f5e9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .hidden-weak { fill: #ffebee; stroke: #dc2626; stroke-width: 2.5; rx: 8; }
+      .sat-box { fill: #ffebee; stroke: #dc2626; stroke-width: 2.5; rx: 8; }
+      .box-label { font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #1e293b; }
+      .box-text { font-family: Arial, sans-serif; font-size: 10px; fill: #64748b; }
+      .arrow { stroke: #2563eb; stroke-width: 2.5; fill: none; marker-end: url(#arrow-blue); }
+      .arrow-left { stroke: #2563eb; stroke-width: 2.5; fill: none; marker-end: url(#arrow-blue-9); }
+      .arrow-label { font-family: Arial, sans-serif; font-size: 10px; fill: #64748b; }
+    </style>
+    <marker
+       id="arrow-blue"
+       markerWidth="6"
+       markerHeight="6"
+       refX="5"
+       refY="2"
+       orient="auto">
+      <polygon
+         points="0 0, 6 2, 0 4"
+         fill="#2563eb"
+         id="polygon239" />
+    </marker>
+    <marker
+       id="arrow-blue-9"
+       markerWidth="6"
+       markerHeight="6"
+       refX="5"
+       refY="2"
+       orient="auto">
+      <polygon
+         points="6,2 0,4 0,0 "
+         fill="#2563eb"
+         id="polygon239-3" />
+    </marker>
+  </defs>
+  <!-- Row 1: 'cat' → h₂ → h₃ → h₄ → h₅ -->
+  <!-- 'cat' -->
+  <g
+     transform="translate(20, 20)"
+     id="g253">
+    <rect
+       x="0"
+       y="0"
+       width="70"
+       height="60"
+       class="cat-box"
+       id="rect247" />
+    <text
+       x="35"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text249">'cat'</text>
+    <text
+       x="35"
+       y="45"
+       class="box-text"
+       text-anchor="middle"
+       id="text251">100%</text>
+  </g>
+  <!-- h₂ -->
+  <g
+     transform="translate(140, 20)"
+     id="g259">
+    <rect
+       x="0"
+       y="0"
+       width="70"
+       height="60"
+       class="hidden-strong"
+       id="rect255" />
+    <text
+       x="35"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text257">h₂: 100%</text>
+  </g>
+  <!-- h₃ -->
+  <g
+     transform="translate(260, 20)"
+     id="g265">
+    <rect
+       x="0"
+       y="0"
+       width="70"
+       height="60"
+       class="hidden-strong"
+       id="rect261" />
+    <text
+       x="35"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text263">h₃: 90%</text>
+  </g>
+  <!-- h₄ -->
+  <g
+     transform="translate(380, 20)"
+     id="g271">
+    <rect
+       x="0"
+       y="0"
+       width="70"
+       height="60"
+       class="hidden-strong"
+       id="rect267" />
+    <text
+       x="35"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text269">h₄: 75%</text>
+  </g>
+  <!-- h₅ -->
+  <g
+     transform="translate(500, 20)"
+     id="g277">
+    <rect
+       x="0"
+       y="0"
+       width="70"
+       height="60"
+       class="hidden-strong"
+       id="rect273" />
+    <text
+       x="35"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text275">h₅: 60%</text>
+  </g>
+  <!-- Row 2: h₆ ← h₇ ← h₈ ← h₉ ← 'sat' (right to left, starting from right) -->
+  <!-- h₆ -->
+  <g
+     transform="translate(500, 130)"
+     id="g283">
+    <rect
+       x="0"
+       y="0"
+       width="70"
+       height="60"
+       class="hidden-strong"
+       id="rect279" />
+    <text
+       x="35"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text281">h₆: 40%</text>
+  </g>
+  <!-- h₇ -->
+  <g
+     transform="translate(380, 130)"
+     id="g289">
+    <rect
+       x="0"
+       y="0"
+       width="70"
+       height="60"
+       class="hidden-strong"
+       id="rect285" />
+    <text
+       x="35"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text287">h₇: 25%</text>
+  </g>
+  <!-- h₈ -->
+  <g
+     transform="translate(260, 130)"
+     id="g295">
+    <rect
+       x="0"
+       y="0"
+       width="70"
+       height="60"
+       class="hidden-strong"
+       id="rect291" />
+    <text
+       x="35"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text293">h₈: 15%</text>
+  </g>
+  <!-- h₉ -->
+  <g
+     transform="translate(140, 130)"
+     id="g303">
+    <rect
+       x="0"
+       y="0"
+       width="70"
+       height="60"
+       class="hidden-weak"
+       id="rect297" />
+    <text
+       x="35"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text299">h₉: 8%</text>
+    <text
+       x="35"
+       y="50"
+       class="box-text"
+       text-anchor="middle"
+       font-weight="bold"
+       fill="#dc2626"
+       id="text301">TOO WEAK!</text>
+  </g>
+  <!-- 'sat' -->
+  <g
+     transform="translate(20, 130)"
+     id="g311">
+    <rect
+       x="0"
+       y="0"
+       width="70"
+       height="60"
+       class="sat-box"
+       id="rect305" />
+    <text
+       x="35"
+       y="25"
+       class="box-label"
+       text-anchor="middle"
+       id="text307">'sat'</text>
+    <text
+       x="35"
+       y="45"
+       class="box-text"
+       text-anchor="middle"
+       id="text309">Needs 'cat'</text>
+  </g>
+  <!-- Arrows Row 1: 'cat' → h₂ → h₃ → h₄ → h₅ -->
+  <path
+     d="M 90 50 L 140 50"
+     class="arrow"
+     id="path313" />
+  <path
+     d="M 210 50 L 260 50"
+     class="arrow"
+     id="path315" />
+  <text
+     x="234.6985"
+     y="39.764496"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text317">Compress</text>
+  <path
+     d="M 330 50 L 380 50"
+     class="arrow"
+     id="path319" />
+  <text
+     x="354.69849"
+     y="39.764496"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text321">Compress</text>
+  <path
+     d="M 450 50 L 500 50"
+     class="arrow"
+     id="path323" />
+  <!-- Arrows Row 2: h₆ → h₇ → h₈ → h₉ → 'sat' (right to left flow) -->
+  <!-- From right box's left edge to left box's right edge -->
+  <path
+     d="M 500 160 L 450 160"
+     class="arrow-left"
+     id="path-h6-h7" />
+  <path
+     d="M 380 160 L 330 160"
+     class="arrow-left"
+     id="path-h7-h8" />
+  <path
+     d="M 260 160 L 210 160"
+     class="arrow-left"
+     id="path-h8-h9" />
+  <path
+     d="M 140 160 L 90 160"
+     class="arrow-left"
+     id="path-h9-sat" />
+  <text
+     x="474.69849"
+     y="39.764496"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text325">Compress</text>
+  <!-- U-turn arrow: h₅ down to h₆ (both at rightmost position) -->
+  <path
+     d="M 535 80 L 535 130"
+     class="arrow"
+     id="path327" />
+  <text
+     x="475"
+     y="150"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text-h6-h7">Compress</text>
+  <text
+     x="355"
+     y="150"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text-h7-h8">Compress</text>
+  <text
+     x="235"
+     y="150"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text-h8-h9">Compress</text>
+  <text
+     x="115"
+     y="150"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text-h9-sat">Compress</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .wrong-box { fill: #ffcdd2; stroke: #dc2626; stroke-width: 2.5; rx: 8; }
+      .loss-box { fill: #ffcdd2; stroke: #dc2626; stroke-width: 2.5; rx: 8; }
+      .box-label { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; fill: #1e293b; }
+      .box-text { font-family: Arial, sans-serif; font-size: 11px; fill: #64748b; }
+      .arrow { stroke: #dc2626; stroke-width: 2.5; fill: none; marker-end: url(#arrow-red); }
+    </style>
+    <marker id="arrow-red" markerWidth="6" markerHeight="6" refX="5" refY="2" orient="auto">
+      <polygon points="0 0, 6 2, 0 4" fill="#dc2626"/>
+    </marker>
+  </defs>
+  
+  <!-- Wrong Prediction -->
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="260" height="60" class="wrong-box"/>
+    <text x="130" y="25" class="box-label" text-anchor="middle">Wrong Prediction</text>
+    <text x="130" y="42" class="box-text" text-anchor="middle">[0.8,0.1,0.05,0.05]</text>
+  </g>
+  
+  <!-- High Loss -->
+  <g transform="translate(20, 120)">
+    <rect x="0" y="0" width="260" height="60" class="loss-box"/>
+    <text x="130" y="25" class="box-label" text-anchor="middle">High Loss</text>
+    <text x="130" y="42" class="box-text" text-anchor="middle">L = -log(0.05)</text>
+    <text x="130" y="55" class="box-text" text-anchor="middle" font-weight="bold">= 3.0</text>
+  </g>
+  
+  <!-- Arrow -->
+  <path d="M 150 80 L 150 120" class="arrow"/>
+</svg>
+

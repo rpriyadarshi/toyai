@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="165"
+   height="580"
+   version="1.1"
+   id="svg78"
+   sodipodi:docname="gradient-descent-algorithm.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview80"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.7706897"
+     inkscape:cx="134.97565"
+     inkscape:cy="291.69425"
+     inkscape:window-width="3840"
+     inkscape:window-height="2091"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg78" />
+  <defs
+     id="defs10">
+    <style
+       id="style2">
+      .start-box { fill: #e1f5ff; stroke: #2563eb; stroke-width: 2.5; rx: 8; }
+      .compute-box { fill: #fff4e1; stroke: #f59e0b; stroke-width: 2.5; rx: 8; }
+      .step-box { fill: #e8f5e9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .check-box { fill: #fff9c4; stroke: #f59e0b; stroke-width: 2.5; rx: 8; }
+      .stop-box { fill: #c8e6c9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .box-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; }
+      .box-text { font-family: Arial, sans-serif; font-size: 11px; fill: #64748b; }
+      .arrow { stroke: #2563eb; stroke-width: 2.5; fill: none; marker-end: url(#arrow-blue); }
+      .arrow-loop { stroke: #9333ea; stroke-width: 2; fill: none; stroke-dasharray: 5,5; marker-end: url(#arrow-purple); opacity: 0.7; }
+      .arrow-label { font-family: Arial, sans-serif; font-size: 11px; fill: #64748b; }
+    </style>
+    <marker
+       id="arrow-blue"
+       markerWidth="6"
+       markerHeight="6"
+       refX="5"
+       refY="2"
+       orient="auto">
+      <polygon
+         points="0 0, 6 2, 0 4"
+         fill="#2563eb"
+         id="polygon4" />
+    </marker>
+    <marker
+       id="arrow-purple"
+       markerWidth="6"
+       markerHeight="6"
+       refX="5"
+       refY="2"
+       orient="auto">
+      <polygon
+         points="0 0, 6 2, 0 4"
+         fill="#9333ea"
+         id="polygon7" />
+    </marker>
+  </defs>
+  <!-- Start -->
+  <g
+     transform="translate(20, 20)"
+     id="g20">
+    <rect
+       x="0"
+       y="0"
+       width="100"
+       height="90"
+       class="start-box"
+       id="rect12" />
+    <text
+       x="50"
+       y="30"
+       class="box-label"
+       text-anchor="middle"
+       id="text14">Start</text>
+    <text
+       x="50"
+       y="50"
+       class="box-text"
+       text-anchor="middle"
+       id="text16">W = 0.5</text>
+    <text
+       x="50"
+       y="65"
+       class="box-text"
+       text-anchor="middle"
+       id="text18">Loss = 2.0</text>
+  </g>
+  <!-- Compute -->
+  <g
+     transform="translate(20, 150)"
+     id="g30">
+    <rect
+       x="0"
+       y="0"
+       width="100"
+       height="70"
+       class="compute-box"
+       id="rect22" />
+    <text
+       x="50"
+       y="30"
+       class="box-label"
+       text-anchor="middle"
+       id="text24">Compute</text>
+    <text
+       x="50"
+       y="47"
+       class="box-text"
+       text-anchor="middle"
+       id="text26">Gradient</text>
+    <text
+       x="50"
+       y="60"
+       class="box-text"
+       text-anchor="middle"
+       font-size="10"
+       id="text28">∂L/∂W = -0.3</text>
+  </g>
+  <!-- Step -->
+  <g
+     transform="translate(20, 260)"
+     id="g42">
+    <rect
+       x="0"
+       y="0"
+       width="100"
+       height="80"
+       class="step-box"
+       id="rect32" />
+    <text
+       x="50"
+       y="30"
+       class="box-label"
+       text-anchor="middle"
+       id="text34">Take Step</text>
+    <text
+       x="50"
+       y="47"
+       class="box-text"
+       text-anchor="middle"
+       font-size="10"
+       id="text36">W_new = 0.5</text>
+    <text
+       x="50"
+       y="60"
+       class="box-text"
+       text-anchor="middle"
+       font-size="10"
+       id="text38">- 0.1×(-0.3)</text>
+    <text
+       x="50"
+       y="73"
+       class="box-text"
+       text-anchor="middle"
+       font-size="10"
+       id="text40">= 0.53</text>
+  </g>
+  <!-- Check -->
+  <g
+     transform="translate(20, 380)"
+     id="g52">
+    <rect
+       x="0"
+       y="0"
+       width="100"
+       height="70"
+       class="check-box"
+       id="rect44" />
+    <text
+       x="50"
+       y="30"
+       class="box-label"
+       text-anchor="middle"
+       id="text46">Check Loss</text>
+    <text
+       x="50"
+       y="47"
+       class="box-text"
+       text-anchor="middle"
+       id="text48">Loss = 1.8</text>
+    <text
+       x="50"
+       y="60"
+       class="box-text"
+       text-anchor="middle"
+       font-size="10"
+       id="text50">(Lower!)</text>
+  </g>
+  <!-- Stop -->
+  <g
+     transform="translate(20, 490)"
+     id="g62">
+    <rect
+       x="0"
+       y="0"
+       width="100"
+       height="70"
+       class="stop-box"
+       id="rect54" />
+    <text
+       x="50"
+       y="26.830334"
+       class="box-label"
+       text-anchor="middle"
+       id="text56">Stop</text>
+    <text
+       x="50"
+       y="46.830334"
+       class="box-text"
+       text-anchor="middle"
+       id="text58">Optimal W</text>
+    <text
+       x="50"
+       y="59.830334"
+       class="box-text"
+       text-anchor="middle"
+       id="text60">found</text>
+  </g>
+  <!-- Arrows -->
+  <path
+     d="M 70 110 L 70 150"
+     class="arrow"
+     id="path64" />
+  <path
+     d="M 70 220 L 70 260"
+     class="arrow"
+     id="path66" />
+  <path
+     d="M 70 340 L 70 380"
+     class="arrow"
+     id="path68" />
+  <!-- Loop arrow: Check → Compute (rounded Manhattan path on right side) -->
+  <path
+     d="M 120 415 L 130 415 Q 145 415 145 410 L 145 190 Q 145 185 130 185 L 120 185"
+     class="arrow-loop"
+     id="path70" />
+  <text
+     x="108.28831"
+     y="241.90869"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text72">Not at bottom</text>
+  <path
+     d="M 70 450 L 70 490"
+     class="arrow"
+     id="path74" />
+  <text
+     x="107.29442"
+     y="472.64398"
+     class="arrow-label"
+     text-anchor="middle"
+     id="text76">At minimum</text>
+</svg>
