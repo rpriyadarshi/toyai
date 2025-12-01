@@ -184,21 +184,7 @@ W₂: 4×2 matrix → Output: [0.4, 0.6] (back to dimension 2)
 
 **Feed-Forward Network Structure:**
 
-```mermaid
-graph LR
-    Input["Input<br/>[0.3, 0.7]<br/>dim=2"] --> W1["W₁<br/>2×4 Matrix<br/>Expand"]
-    W1 --> B1["+b₁<br/>Bias"]
-    B1 --> ReLU["ReLU<br/>Activation<br/>max(0, x)"]
-    ReLU --> W2["W₂<br/>4×2 Matrix<br/>Compress"]
-    W2 --> B2["+b₂<br/>Bias"]
-    B2 --> Output["Output<br/>[0.4, 0.6]<br/>dim=2"]
-    
-    style Input fill:#e1f5ff
-    style W1 fill:#fff4e1
-    style ReLU fill:#e8f5e9
-    style W2 fill:#fff4e1
-    style Output fill:#c8e6c9
-```
+![Feed-Forward Network Structure](images/ffn-structure.svg)
 
 **Why it matters:** FFNs add non-linearity and capacity to transformers. They enable learning complex feature combinations.
 
@@ -238,20 +224,9 @@ Loss = -log(0.05) = 3.0  (model predicted wrong - bad!)
 
 **Loss Function Visualization:**
 
-```mermaid
-graph LR
-    Target["Target<br/>'C'<br/>[0,0,1,0]"] --> Compare["Compare"]
-    Prediction["Prediction<br/>[0.1,0.2,0.6,0.1]"] --> Compare
-    Compare --> Loss["Loss<br/>L = -log(0.6)<br/>= 0.51"]
-    
-    HighPred["Wrong Prediction<br/>[0.8,0.1,0.05,0.05]"] --> HighLoss["High Loss<br/>L = -log(0.05)<br/>= 3.0"]
-    
-    style Target fill:#e1f5ff
-    style Prediction fill:#c8e6c9
-    style Loss fill:#fff9c4
-    style HighPred fill:#ffcdd2
-    style HighLoss fill:#ffcdd2
-```
+| | |
+|:---:|:---:|
+| ![Correct Prediction](images/loss-correct.svg) | ![Wrong Prediction](images/loss-wrong.svg) |
 
 **Cross-Entropy Loss Curve:**
 
@@ -297,17 +272,7 @@ Interpretation:
 
 **Gradient Visualization:**
 
-```mermaid
-graph LR
-    Loss["Loss<br/>L = 2.0"] --> Grad["Gradient<br/>∂L/∂W = -0.3"]
-    Grad -->|"Negative =<br/>Go DOWN"| Direction["Direction<br/>Increase W<br/>to reduce loss"]
-    Direction --> Update["Update<br/>W_new = 0.5 + 0.03<br/>= 0.53"]
-    
-    style Loss fill:#ffcdd2
-    style Grad fill:#fff4e1
-    style Direction fill:#e8f5e9
-    style Update fill:#c8e6c9
-```
+![Gradient Visualization](images/gradient-visualization.svg)
 
 ### The Learning Rate
 
@@ -354,20 +319,7 @@ Where:
 
 **Gradient Descent Visualization:**
 
-```mermaid
-graph TD
-    Start["Start<br/>W = 0.5<br/>Loss = 2.0"] --> Compute["Compute Gradient<br/>∂L/∂W = -0.3"]
-    Compute --> Step["Take Step<br/>W_new = 0.5 - 0.1×(-0.3)<br/>= 0.53"]
-    Step --> Check["Check Loss<br/>Loss = 1.8<br/>(Lower!)"]
-    Check -->|"Not at bottom"| Compute
-    Check -->|"At minimum"| Stop["Stop<br/>Optimal W found"]
-    
-    style Start fill:#e1f5ff
-    style Compute fill:#fff4e1
-    style Step fill:#e8f5e9
-    style Check fill:#fff9c4
-    style Stop fill:#c8e6c9
-```
+![Gradient Descent Algorithm](images/gradient-descent-algorithm.svg)
 
 **Gradient Descent Path (Loss Over Iterations):**
 
@@ -422,21 +374,7 @@ The **forward pass** is the process of computing predictions by passing input da
 
 **Forward Pass Flow:**
 
-```mermaid
-graph LR
-    Input["Input<br/>'The cat'"] --> L1["Layer 1<br/>Embedding"]
-    L1 --> L2["Layer 2<br/>Q/K/V"]
-    L2 --> L3["Layer 3<br/>Attention"]
-    L3 --> L4["Layer 4<br/>Output"]
-    L4 --> Output["Output<br/>Probabilities"]
-    
-    style Input fill:#e1f5ff
-    style L1 fill:#fff4e1
-    style L2 fill:#f3e5f5
-    style L3 fill:#e8f5e9
-    style L4 fill:#fff4e1
-    style Output fill:#c8e6c9
-```
+![Forward Pass Flow](images/forward-pass-flow.svg)
 
 **Example:**
 ```
@@ -471,19 +409,7 @@ The **backward pass** (also called **backpropagation**) is the process of comput
 
 **Backward Pass Flow:**
 
-```mermaid
-graph RL
-    Loss["Loss<br/>L = 0.5"] --> L4["Layer 4<br/>∂L/∂WO"]
-    L4 --> L3["Layer 3<br/>∂L/∂Attention"]
-    L3 --> L2["Layer 2<br/>∂L/∂WQ, WK, WV"]
-    L2 --> L1["Layer 1<br/>∂L/∂Embedding"]
-    
-    style Loss fill:#ffcdd2
-    style L4 fill:#fff4e1
-    style L3 fill:#fff4e1
-    style L2 fill:#fff4e1
-    style L1 fill:#fff4e1
-```
+![Backward Pass Flow](images/backward-pass-flow.svg)
 
 **Example:**
 ```
@@ -515,22 +441,7 @@ The **training loop** combines **forward pass**, **loss** computation, **backwar
 
 **Training Loop Diagram:**
 
-```mermaid
-graph TD
-    Start["Start Training"] --> Forward["Forward Pass<br/>Compute Prediction"]
-    Forward --> Loss["Compute Loss<br/>Measure Error"]
-    Loss --> Backward["Backward Pass<br/>Compute Gradients"]
-    Backward --> Update["Weight Update<br/>W_new = W_old - η×grad"]
-    Update -->|"Repeat"| Forward
-    Update -->|"Converged"| Stop["Stop<br/>Model Trained"]
-    
-    style Start fill:#e1f5ff
-    style Forward fill:#fff4e1
-    style Loss fill:#ffcdd2
-    style Backward fill:#f3e5f5
-    style Update fill:#e8f5e9
-    style Stop fill:#c8e6c9
-```
+![Training Loop](images/training-loop.svg)
 
 **Physical Analogy:** Like **learning to play a musical instrument**:
 - Play a note (forward pass)
@@ -605,33 +516,7 @@ Process all 4 sequences together, average gradients
 
 **Batch Training Diagram:**
 
-```mermaid
-graph TD
-    Batch["Batch<br/>4 Examples"] --> P1["Process<br/>Example 1"]
-    Batch --> P2["Process<br/>Example 2"]
-    Batch --> P3["Process<br/>Example 3"]
-    Batch --> P4["Process<br/>Example 4"]
-    
-    P1 --> G1["Gradient 1"]
-    P2 --> G2["Gradient 2"]
-    P3 --> G3["Gradient 3"]
-    P4 --> G4["Gradient 4"]
-    
-    G1 --> Avg["Average Gradients<br/>∇L = (∇L₁+∇L₂+∇L₃+∇L₄)/4"]
-    G2 --> Avg
-    G3 --> Avg
-    G4 --> Avg
-    
-    Avg --> Update["Update Weights<br/>Once per Batch"]
-    
-    style Batch fill:#e1f5ff
-    style P1 fill:#fff4e1
-    style P2 fill:#fff4e1
-    style P3 fill:#fff4e1
-    style P4 fill:#fff4e1
-    style Avg fill:#f3e5f5
-    style Update fill:#e8f5e9
-```
+![Batch Training](images/batch-training.svg)
 
 **Why it matters:** Batching enables efficient GPU utilization and stable **gradient** estimates. Larger **batches** = more stable but require more memory.
 
