@@ -156,22 +156,50 @@ offset_y = 20 - min_y
 - `l dx,dy` (line relative) → `L x+dx,y+dy` (line absolute)
 - `q dx1,dy1 dx2,dy2` (quadratic relative) → `Q x1+dx1,y1+dy1 x2+dx2,y2+dy2` (quadratic absolute)
 
-### Arrow Connection Points
+### Arrow Connection Points - Center-to-Center Algorithm
 
-**Rule**: Arrows should connect to box edges, not centers (unless specifically needed).
+**Critical Rule**: Use the **center-to-center algorithm** for all connector paths to ensure SVG viewers render the same as Inkscape.
 
-**Horizontal Arrows**:
-- From: Right edge center of source box
-- To: Left edge center of target box
-- Example: `M 660,1015 L 710,1015` (from right of box at x=660 to left of box at x=710)
+**The Problem**: Inkscape connectors use `inkscape:connection-start` and `inkscape:connection-end` to dynamically calculate paths based on group bounding boxes. However, the `d` attribute may contain stale coordinates that don't match what Inkscape actually renders. Standard SVG viewers ignore Inkscape attributes and only render the `d` attribute, causing visual mismatches.
 
-**Vertical Arrows**:
-- From: Bottom edge center of source box
-- To: Top edge center of target box
-- Example: `M 560,940 L 560,990` (from bottom at y=940 to top at y=990)
+**The Solution**: Use the center-to-center algorithm:
+1. Calculate the center of the source group's bounding box
+2. Calculate the center of the destination group's bounding box
+3. Draw a line from center to center
+4. Find where this line **exits** the source box boundary
+5. Find where this line **enters** the destination box boundary
+6. Use these intersection points as the start and end of the `d` attribute
+
+**Algorithm Steps**:
+```python
+# For a connector from group A to group B:
+# 1. Get bounding boxes
+bbox_a = get_bbox(group_a)  # {left, right, top, bottom, center_x, center_y}
+bbox_b = get_bbox(group_b)
+
+# 2. Calculate center-to-center line
+x1, y1 = bbox_a['center_x'], bbox_a['center_y']
+x2, y2 = bbox_b['center_x'], bbox_b['center_y']
+
+# 3. Find exit point (where line leaves box A)
+exit_point = line_box_intersection(x1, y1, x2, y2, bbox_a)
+
+# 4. Find entry point (where line enters box B)
+entry_point = line_box_intersection(x2, y2, x1, y1, bbox_b)
+
+# 5. Update d attribute
+d = f"M {exit_point[0]},{exit_point[1]} {entry_point[0]},{entry_point[1]}"
+```
+
+**Why This Works**: This matches exactly what Inkscape does internally when rendering connectors. By updating the `d` attribute to match Inkscape's calculation, both Inkscape and standard SVG viewers render identically.
+
+**Simple Cases** (for reference, but use algorithm for accuracy):
+- **Horizontal Arrows**: Right edge center → Left edge center
+- **Vertical Arrows**: Bottom edge center → Top edge center
 
 **Calculation**:
 - Box at `translate(x, y)` with width `w` and height `h`:
+  - Center: `(x + w/2, y + h/2)`
   - Right edge center: `(x + w, y + h/2)`
   - Left edge center: `(x, y + h/2)`
   - Bottom edge center: `(x + w/2, y + h)`
@@ -259,19 +287,27 @@ offset_y = 20 - min_y
 
 1. ✅ All arrows are connectors (check for `inkscape:connector-type`)
 2. ✅ All paths use absolute coordinates (no `m`, `h`, `v` commands)
-3. ✅ All boxes fully contain their text
-4. ✅ Spacing between boxes is adequate (50px minimum)
-5. ✅ All blocks are properly grouped
-6. ✅ 20px border added after bounding box calculation
-7. ✅ Inter-block arrows are in separate group at end
-8. ✅ Arrow connection points are at box edges
-9. ✅ SVG renders correctly in both Inkscape and standard SVG viewers
-10. ✅ All marker references have corresponding definitions
+3. ✅ Connector path coordinates match Inkscape rendering (run `fix-svg-arrows.py --fix-paths`)
+4. ✅ All boxes fully contain their text
+5. ✅ Spacing between boxes is adequate (50px minimum)
+6. ✅ All blocks are properly grouped
+7. ✅ 20px border added after bounding box calculation
+8. ✅ Inter-block arrows are in separate group at end
+9. ✅ Arrow connection points use center-to-center algorithm
+10. ✅ SVG renders correctly in both Inkscape and standard SVG viewers (verify visually)
+11. ✅ All marker references have corresponding definitions
 
 ### Common Issues and Fixes
 
 **Issue**: Arrows visible in Inkscape but not in SVG viewers
 - **Fix**: Convert relative coordinates to absolute
+
+**Issue**: Arrows render differently in Inkscape vs SVG viewers (coordinates mismatch)
+- **Root Cause**: Inkscape dynamically calculates connector paths from `connection-start`/`connection-end`, but the `d` attribute contains stale coordinates
+- **Fix Options**:
+  1. **Automated (Recommended)**: Use `scripts/fix-svg-arrows.py --fix-paths` to algorithmically calculate correct coordinates
+  2. **Manual**: Export from Inkscape as "Plain SVG" to get correct `d` attributes, then copy coordinates back
+  3. **Manual Calculation**: Use center-to-center algorithm to calculate boundary intersections
 
 **Issue**: Arrows don't connect properly when boxes are moved
 - **Fix**: Ensure arrows are connectors with proper `inkscape:connection-start` and `inkscape:connection-end` attributes
@@ -283,7 +319,7 @@ offset_y = 20 - min_y
 - **Fix**: Move inter-block connections group to end of SVG
 
 **Issue**: Arrow coordinates are incorrect
-- **Fix**: Calculate connection points based on box positions and edges, not centers (unless specifically needed)
+- **Fix**: Use the center-to-center algorithm to calculate boundary intersection points (see Arrow Connection Points section)
 
 ## Workflow Summary
 
@@ -310,11 +346,17 @@ offset_y = 20 - min_y
    - Place at end of SVG (for z-order)
    - Use straight lines with proper connection points
 
-5. **Validation**:
+5. **Fix Connector Paths** (Critical for SVG viewer compatibility):
+   - Run `scripts/fix-svg-arrows.py --fix-paths file.svg` to update `d` attributes
+   - This ensures SVG viewers render the same as Inkscape
+   - Or export as "Plain SVG" from Inkscape and copy coordinates back
+
+6. **Validation**:
    - Test in Inkscape (connector functionality)
    - Test in standard SVG viewers (rendering)
    - Verify all arrows connect correctly
    - Check text visibility and box sizing
+   - Verify arrows render identically in both Inkscape and SVG viewers
 
 ## Example: Complete Arrow Pattern
 
@@ -344,15 +386,62 @@ offset_y = 20 - min_y
 </g>
 ```
 
+## Automated Tools
+
+### fix-svg-arrows.py
+
+Consolidated script for fixing SVG arrows and connectors:
+
+```bash
+# Convert static arrows to connectors
+python3 scripts/fix-svg-arrows.py --to-connectors file.svg
+
+# Fix connector path coordinates (matches Inkscape rendering)
+python3 scripts/fix-svg-arrows.py --fix-paths file.svg
+
+# Do both operations (recommended)
+python3 scripts/fix-svg-arrows.py --all file.svg
+
+# Fix all files in a directory
+python3 scripts/fix-svg-arrows.py --all book/images/*.svg
+```
+
+**What it does**:
+- `--to-connectors`: Converts static arrow paths to Inkscape connectors
+- `--fix-paths`: Algorithmically calculates correct connector path coordinates using center-to-center algorithm
+- `--all`: Runs both operations in sequence
+
+**When to use**:
+- After creating new SVG diagrams with arrows
+- After moving boxes in Inkscape (connector paths may need recalculation)
+- Before committing SVG files to ensure SVG viewer compatibility
+
+### Alternative: Export Plain SVG from Inkscape
+
+If automated scripts don't work, you can export from Inkscape:
+
+1. Open file in Inkscape
+2. File → Save As → Choose "Plain SVG (*.svg)"
+3. This converts connectors to static paths with correct `d` attributes
+4. Copy the `d` attributes back to your original file (preserving connector attributes)
+
+See `scripts/export-plain-svg.md` for detailed instructions.
+
 ## Notes
 
 - Always preserve Inkscape-specific attributes for connector functionality
 - Test changes in both Inkscape and standard SVG viewers
 - Keep connector attributes even when using absolute coordinates
+- The `d` attribute must match what Inkscape renders for SVG viewer compatibility
+- Use automated tools to ensure consistency
 - Document any deviations from these guidelines with justification
 
 ---
 
-**Last Updated**: Based on fixes to `complete-transformer-architecture.svg`
-**Key Learnings**: Connector format, absolute coordinates, proper grouping, edge-based connections
+**Last Updated**: Based on fixes to `complete-transformer-architecture.svg` and connector path coordinate mismatch resolution
+**Key Learnings**: 
+- Connector format, absolute coordinates, proper grouping
+- Center-to-center algorithm for connection points
+- Connector path coordinate mismatch between Inkscape and SVG viewers
+- Automated tools for fixing connector paths
 
