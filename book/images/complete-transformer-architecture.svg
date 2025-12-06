@@ -1,0 +1,1178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1200"
+   height="1090"
+   version="1.1"
+   id="svg316"
+   sodipodi:docname="complete-transformer-architecture.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview318"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.0916667"
+     inkscape:cx="648.09161"
+     inkscape:cy="390.68703"
+     inkscape:window-width="1883"
+     inkscape:window-height="1233"
+     inkscape:window-x="481"
+     inkscape:window-y="364"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg316" />
+  <defs
+     id="defs10">
+    <style
+       id="style2">
+      .subgraph-bg { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; rx: 10; }
+      .subgraph-title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #1e293b; }
+      .input-box { fill: #e1f5ff; stroke: #2563eb; stroke-width: 2; rx: 6; }
+      .embed-box { fill: #fff4e1; stroke: #f59e0b; stroke-width: 2; rx: 6; }
+      .qkv-box { fill: #f3e5f5; stroke: #9333ea; stroke-width: 2; rx: 6; }
+      .attention-box { fill: #e8f5e9; stroke: #16a34a; stroke-width: 2; rx: 6; }
+      .softmax-box { fill: #fff9c4; stroke: #f59e0b; stroke-width: 2; rx: 6; }
+      .context-box { fill: #c8e6c9; stroke: #16a34a; stroke-width: 2; rx: 6; }
+      .ln-box { fill: #e0e7ff; stroke: #6366f1; stroke-width: 2; rx: 6; }
+      .residual-box { fill: #fce7f3; stroke: #ec4899; stroke-width: 2; rx: 6; }
+      .ffn-box { fill: #f3e5f5; stroke: #9333ea; stroke-width: 2; rx: 6; }
+      .output-box { fill: #c8e6c9; stroke: #16a34a; stroke-width: 2; rx: 6; }
+      .loss-box { fill: #ffcdd2; stroke: #dc2626; stroke-width: 2; rx: 6; }
+      .update-box { fill: #f3e5f5; stroke: #9333ea; stroke-width: 2; rx: 6; }
+      .box-label { font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #1e293b; }
+      .box-text { font-family: Arial, sans-serif; font-size: 10px; fill: #64748b; }
+      .arrow { stroke: #2563eb; stroke-width: 2; fill: none; marker-end: url(#arrow-blue); }
+      .arrow-train { stroke: #9333ea; stroke-width: 1.5; fill: none; stroke-dasharray: 4,4; marker-end: url(#arrow-purple); opacity: 0.6; }
+    </style>
+    <marker
+       id="arrow-blue"
+       markerWidth="8"
+       markerHeight="8"
+       refX="7"
+       refY="3"
+       orient="auto">
+      <polygon
+         points="0 0, 8 3, 0 6"
+         fill="#2563eb"
+         id="polygon4" />
+    </marker>
+    <marker
+       id="arrow-purple"
+       markerWidth="8"
+       markerHeight="8"
+       refX="7"
+       refY="3"
+       orient="auto">
+      <polygon
+         points="0 0, 8 3, 0 6"
+         fill="#9333ea"
+         id="polygon7" />
+    </marker>
+    <marker
+       id="arrow-blue-3"
+       markerWidth="8"
+       markerHeight="8"
+       refX="7"
+       refY="3"
+       orient="auto">
+      <polygon
+         points="8,3 0,6 0,0 "
+         fill="#2563eb"
+         id="polygon4-6" />
+    </marker>
+    <marker
+       id="arrow-blue-5"
+       markerWidth="8"
+       markerHeight="8"
+       refX="7"
+       refY="3"
+       orient="auto">
+      <polygon
+         points="8,3 0,6 0,0 "
+         fill="#2563eb"
+         id="polygon4-3" />
+    </marker>
+    <marker
+       id="arrow-blue-6"
+       markerWidth="8"
+       markerHeight="8"
+       refX="7"
+       refY="3"
+       orient="auto">
+      <polygon
+         points="8,3 0,6 0,0 "
+         fill="#2563eb"
+         id="polygon4-2" />
+    </marker>
+  </defs>
+  <!-- Input Processing Subgraph -->
+  <g
+     id="input-processing">
+    <!-- 3 boxes horizontally: 70px each, 50px spacing, container padding 20px -->
+    <!-- Container: 3*70 + 2*50 + 2*20 = 350px wide, 50 + 50 + 20 + 2*20 = 160px high -->
+    <rect
+       x="425"
+       y="20"
+       width="350"
+       height="160"
+       class="subgraph-bg"
+       id="rect12" />
+    <text
+       x="600"
+       y="40"
+       class="subgraph-title"
+       text-anchor="middle"
+       id="text14">Input Processing</text>
+    <g
+       transform="translate(445, 55)"
+       id="g22">
+      <rect
+         x="0"
+         y="0"
+         width="70"
+         height="50"
+         class="input-box"
+         id="rect16" />
+      <text
+         x="35"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text18">Text</text>
+      <text
+         x="35"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         id="text20">'The cat sat'</text>
+    </g>
+    <g
+       transform="translate(565, 55)"
+       id="g30">
+      <rect
+         x="0"
+         y="0"
+         width="70"
+         height="50"
+         class="input-box"
+         id="rect24" />
+      <text
+         x="35"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text26">Tokenize</text>
+      <text
+         x="35"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         font-size="9"
+         id="text28">['The', 'cat', 'sat']</text>
+    </g>
+    <g
+       transform="translate(685, 55)"
+       id="g38">
+      <rect
+         x="0"
+         y="0"
+         width="70"
+         height="50"
+         class="input-box"
+         id="rect32" />
+      <text
+         x="35"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text34">Encode</text>
+      <text
+         x="35"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         id="text36">[1, 2, 3]</text>
+    </g>
+    <g
+       transform="translate(445, 155)"
+       id="g44">
+      <rect
+         x="0"
+         y="0"
+         width="310"
+         height="20"
+         class="embed-box"
+         id="rect40" />
+      <text
+         x="155"
+         y="14"
+         class="box-label"
+         text-anchor="middle"
+         id="text42">Embedding Lookup → Vectors</text>
+    </g>
+    <!-- Input Processing Arrows -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 515,80 h 50"
+       id="path46"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g22"
+       inkscape:connection-end="#g30"
+       marker-end="url(#arrow-blue)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 635,80 h 50"
+       id="path48"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g30"
+       inkscape:connection-end="#g38"
+       marker-end="url(#arrow-blue)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 720,105 -120,50"
+       id="path50"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g38"
+       inkscape:connection-end="#g44"
+       marker-end="url(#arrow-blue)" />
+  </g>
+  <!-- Transformer Block 1 -->
+  <g
+     id="transformer-block-1">
+    <!-- 3x3 Grid: Each box 140px wide, 50px spacing, container padding 20px -->
+    <!-- Container: 3*140 + 2*50 + 2*20 = 560px wide, 3*50 + 2*50 + 2*20 = 310px high -->
+    <rect
+       x="320"
+       y="200"
+       width="560"
+       height="310"
+       class="subgraph-bg"
+       id="rect54" />
+    <text
+       x="600"
+       y="220"
+       class="subgraph-title"
+       text-anchor="middle"
+       id="text56">Transformer Block 1</text>
+    <!-- Row 1: Q/K/V, Attention, Softmax -->
+    <g
+       transform="translate(340, 240)"
+       id="g64">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="qkv-box"
+         id="rect58" />
+      <text
+         x="70"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text60">Q/K/V</text>
+      <text
+         x="70"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         id="text62">WQ, WK, WV</text>
+    </g>
+    <g
+       transform="translate(530, 240)"
+       id="g72">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="attention-box"
+         id="rect66" />
+      <text
+         x="70"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text68">Attention</text>
+      <text
+         x="70"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         font-size="9"
+         id="text70">Q·K^T / √d_k</text>
+    </g>
+    <g
+       transform="translate(720, 240)"
+       id="g80">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="softmax-box"
+         id="rect74" />
+      <text
+         x="70"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text76">Softmax</text>
+      <text
+         x="70"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         font-size="9"
+         id="text78">Weights</text>
+    </g>
+    <!-- Row 2: Residual (attn), Layer Norm (attn), Context -->
+    <g
+       transform="translate(340, 340)"
+       id="g88">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="residual-box"
+         id="rect82" />
+      <text
+         x="70"
+         y="25"
+         class="box-label"
+         text-anchor="middle"
+         id="text84">Residual</text>
+      <text
+         x="70"
+         y="40"
+         class="box-text"
+         text-anchor="middle"
+         font-size="9"
+         id="text86">+ Input</text>
+    </g>
+    <g
+       transform="translate(530, 340)"
+       id="g94">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="ln-box"
+         id="rect90" />
+      <text
+         x="70"
+         y="25"
+         class="box-label"
+         text-anchor="middle"
+         id="text92">Layer Norm</text>
+    </g>
+    <g
+       transform="translate(720, 340)"
+       id="g102">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="context-box"
+         id="rect96" />
+      <text
+         x="70"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text98">Context</text>
+      <text
+         x="70"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         font-size="9"
+         id="text100">Vector</text>
+    </g>
+    <!-- Row 3: Feed-Forward, Layer Norm (FFN), Residual (FFN) -->
+    <g
+       transform="translate(340, 440)"
+       id="g110">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="ffn-box"
+         id="rect104" />
+      <text
+         x="70"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text106">Feed-Forward</text>
+      <text
+         x="70"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         font-size="9"
+         id="text108">ReLU(xW₁+b₁)W₂+b₂</text>
+    </g>
+    <g
+       transform="translate(530, 440)"
+       id="g116">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="ln-box"
+         id="rect112" />
+      <text
+         x="70"
+         y="25"
+         class="box-label"
+         text-anchor="middle"
+         id="text114">Layer Norm</text>
+    </g>
+    <g
+       transform="translate(720, 440)"
+       id="g124">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="residual-box"
+         id="rect118" />
+      <text
+         x="70"
+         y="25"
+         class="box-label"
+         text-anchor="middle"
+         id="text120">Residual</text>
+      <text
+         x="70"
+         y="40"
+         class="box-text"
+         text-anchor="middle"
+         font-size="9"
+         id="text122">+ Input</text>
+    </g>
+    <!-- Transformer Block 1 Arrows -->
+    <!-- Row 1: Q/K/V → Attention → Softmax -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 480,265 h 50"
+       id="path126"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g64"
+       inkscape:connection-end="#g72"
+       marker-end="url(#arrow-blue)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 670,265 h 50"
+       id="path128"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g72"
+       inkscape:connection-end="#g80"
+       marker-end="url(#arrow-blue)" />
+    <!-- Softmax → Context (down, right column) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 790,290 v 50"
+       id="path130"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g80"
+       inkscape:connection-end="#g102"
+       marker-end="url(#arrow-blue)" />
+    <!-- Row 2: Context → Layer Norm (attn) (right to middle) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 720,365 h -50"
+       id="path132"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g102"
+       inkscape:connection-end="#g94"
+       marker-end="url(#arrow-blue)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 530.78432,364.79507 h -50"
+       id="path132-7"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g94"
+       inkscape:connection-end="#g88"
+       marker-end="url(#arrow-blue-3)" />
+    <!-- Layer Norm (attn) → Residual (attn) (middle to left) -->
+    <!-- Residual (attn) → Feed-Forward (down, left column) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 410,390 v 50"
+       id="path136"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g88"
+       inkscape:connection-end="#g110"
+       marker-end="url(#arrow-blue)" />
+    <!-- Row 3: Feed-Forward → Layer Norm (FFN) (left to middle) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 480,465 h 50"
+       id="path138"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g110"
+       inkscape:connection-end="#g116"
+       marker-end="url(#arrow-blue)" />
+    <!-- Layer Norm (FFN) → Residual (FFN) (middle to right) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 670,465 h 50"
+       id="path140"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g116"
+       inkscape:connection-end="#g124"
+       marker-end="url(#arrow-blue)" />
+  </g>
+  <!-- Transformer Block 2 -->
+  <g
+     id="transformer-block-2">
+    <!-- 3x3 Grid: Same layout as Block 1, 50px spacing -->
+    <rect
+       x="320"
+       y="530"
+       width="560"
+       height="310"
+       class="subgraph-bg"
+       id="rect144" />
+    <text
+       x="600"
+       y="550"
+       class="subgraph-title"
+       text-anchor="middle"
+       id="text146">Transformer Block 2</text>
+    <!-- Row 1: Q/K/V, Attention, Softmax -->
+    <g
+       transform="translate(340, 570)"
+       id="g154">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="qkv-box"
+         id="rect148" />
+      <text
+         x="70"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text150">Q/K/V</text>
+      <text
+         x="70"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         id="text152">Projections</text>
+    </g>
+    <g
+       transform="translate(530, 570)"
+       id="g160">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="attention-box"
+         id="rect156" />
+      <text
+         x="70"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text158">Attention</text>
+    </g>
+    <g
+       transform="translate(720, 570)"
+       id="g166">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="softmax-box"
+         id="rect162" />
+      <text
+         x="70"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text164">Softmax</text>
+    </g>
+    <!-- Row 2: Residual (attn), Layer Norm (attn), Context -->
+    <g
+       transform="translate(340, 670)"
+       id="g172">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="residual-box"
+         id="rect168" />
+      <text
+         x="70"
+         y="25"
+         class="box-label"
+         text-anchor="middle"
+         id="text170">Residual</text>
+    </g>
+    <g
+       transform="translate(530, 670)"
+       id="g178">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="ln-box"
+         id="rect174" />
+      <text
+         x="70"
+         y="25"
+         class="box-label"
+         text-anchor="middle"
+         id="text176">Layer Norm</text>
+    </g>
+    <g
+       transform="translate(720, 670)"
+       id="g184">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="context-box"
+         id="rect180" />
+      <text
+         x="70"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text182">Context</text>
+    </g>
+    <!-- Row 3: Feed-Forward, Layer Norm (FFN), Residual (FFN) -->
+    <g
+       transform="translate(340, 770)"
+       id="g190">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="ffn-box"
+         id="rect186" />
+      <text
+         x="70"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text188">Feed-Forward</text>
+    </g>
+    <g
+       transform="translate(530, 770)"
+       id="g196">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="ln-box"
+         id="rect192" />
+      <text
+         x="70"
+         y="25"
+         class="box-label"
+         text-anchor="middle"
+         id="text194">Layer Norm</text>
+    </g>
+    <g
+       transform="translate(720, 770)"
+       id="g202">
+      <rect
+         x="0"
+         y="0"
+         width="140"
+         height="50"
+         class="residual-box"
+         id="rect198" />
+      <text
+         x="70"
+         y="25"
+         class="box-label"
+         text-anchor="middle"
+         id="text200">Residual</text>
+    </g>
+    <!-- Transformer Block 2 Arrows -->
+    <!-- Row 1: Q/K/V → Attention → Softmax -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 480,595 h 50"
+       id="path204"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g154"
+       inkscape:connection-end="#g160"
+       marker-end="url(#arrow-blue)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 670,595 h 50"
+       id="path206"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g160"
+       inkscape:connection-end="#g166"
+       marker-end="url(#arrow-blue)" />
+    <!-- Softmax → Context (down, right column) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 790,620 v 50"
+       id="path208"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g166"
+       inkscape:connection-end="#g184"
+       marker-end="url(#arrow-blue)" />
+    <!-- Row 2: Context → Layer Norm (attn) (right to middle) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 720,695 h -50"
+       id="path210"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g184"
+       inkscape:connection-end="#g178"
+       marker-end="url(#arrow-blue)" />
+    <!-- Layer Norm (attn) → Residual (attn) (middle to left) -->
+    <!-- Residual (attn) → Feed-Forward (down, left column) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 410,720 v 50"
+       id="path214"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g172"
+       inkscape:connection-end="#g190"
+       marker-end="url(#arrow-blue)" />
+    <!-- Row 3: Feed-Forward → Layer Norm (FFN) (left to middle) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 480,795 h 50"
+       id="path216"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g190"
+       inkscape:connection-end="#g196"
+       marker-end="url(#arrow-blue)" />
+    <!-- Layer Norm (FFN) → Residual (FFN) (middle to right) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 670,795 h 50"
+       id="path218"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g196"
+       inkscape:connection-end="#g202"
+       marker-end="url(#arrow-blue)" />
+  </g>
+  <!-- Inter-block Connections -->
+  <!-- Output Subgraph -->
+  <g
+     id="output">
+    <!-- 2x2 Grid: Each box 100px wide, 50px spacing, container padding 20px -->
+    <!-- Container: 2*100 + 1*50 + 2*20 = 290px wide, 2*50 + 1*50 + 2*20 = 210px high -->
+    <rect
+       x="20"
+       y="860"
+       width="290"
+       height="210"
+       class="subgraph-bg"
+       id="rect222" />
+    <text
+       x="160"
+       y="880"
+       class="subgraph-title"
+       text-anchor="middle"
+       id="text224">Output</text>
+    <g
+       transform="translate(40, 900)"
+       id="g232">
+      <rect
+         x="0"
+         y="0"
+         width="100"
+         height="50"
+         class="output-box"
+         id="rect226" />
+      <text
+         x="50"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text228">Output</text>
+      <text
+         x="50"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         id="text230">Projection WO</text>
+    </g>
+    <g
+       transform="translate(190, 900)"
+       id="g240">
+      <rect
+         x="0"
+         y="0"
+         width="100"
+         height="50"
+         class="softmax-box"
+         id="rect234" />
+      <text
+         x="50"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text236">Logits</text>
+      <text
+         x="50"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         id="text238">Raw Scores</text>
+    </g>
+    <g
+       transform="translate(40, 1000)"
+       id="g248">
+      <rect
+         x="0"
+         y="0"
+         width="100"
+         height="50"
+         class="softmax-box"
+         id="rect242" />
+      <text
+         x="50"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text244">Softmax</text>
+      <text
+         x="50"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         id="text246">Probabilities</text>
+    </g>
+    <g
+       transform="translate(190, 1000)"
+       id="g256">
+      <rect
+         x="0"
+         y="0"
+         width="100"
+         height="50"
+         class="output-box"
+         id="rect250" />
+      <text
+         x="50"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text252">Prediction</text>
+      <text
+         x="50"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         id="text254">Next Token</text>
+    </g>
+    <!-- Output Arrows -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 140,925 h 50"
+       id="path258"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g232"
+       inkscape:connection-end="#g240"
+       marker-end="url(#arrow-blue)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 240.3396,951.80913 -91.858485,45.71408"
+       id="path260"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g240"
+       inkscape:connection-end="#g248"
+       marker-end="url(#arrow-blue)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 140,1025 h 50"
+       id="path262"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g248"
+       inkscape:connection-end="#g256"
+       marker-end="url(#arrow-blue)" />
+  </g>
+  <!-- Training Subgraph -->
+  <g
+     id="training">
+    <!-- 2x3 Grid: Each box 200px wide, 50px spacing, container padding 20px -->
+    <!-- Container: 3*200 + 2*50 + 2*20 = 740px wide, 2*50 + 1*50 + 2*20 = 200px high -->
+    <rect
+       x="440"
+       y="860"
+       width="740"
+       height="200"
+       class="subgraph-bg"
+       id="rect264" />
+    <text
+       x="810"
+       y="880"
+       class="subgraph-title"
+       text-anchor="middle"
+       id="text266">Training (Backward Pass)</text>
+    <!-- Row 1: Target -->
+    <g
+       transform="translate(460, 890)"
+       id="g274">
+      <rect
+         x="0"
+         y="0"
+         width="200"
+         height="50"
+         class="input-box"
+         id="rect268" />
+      <text
+         x="100"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text270">Target</text>
+      <text
+         x="100"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         id="text272">'dog'</text>
+    </g>
+    <!-- Row 2: Loss, Gradients, Weight Update -->
+    <g
+       transform="translate(460, 990)"
+       id="g282">
+      <rect
+         x="0"
+         y="0"
+         width="200"
+         height="50"
+         class="loss-box"
+         id="rect276" />
+      <text
+         x="100"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text278">Loss</text>
+      <text
+         x="100"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         id="text280">Cross-Entropy</text>
+    </g>
+    <g
+       transform="translate(710, 990)"
+       id="g290">
+      <rect
+         x="0"
+         y="0"
+         width="200"
+         height="50"
+         class="qkv-box"
+         id="rect284" />
+      <text
+         x="100"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text286">Gradients</text>
+      <text
+         x="100"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         id="text288">Backprop</text>
+    </g>
+    <g
+       transform="translate(960, 990)"
+       id="g298">
+      <rect
+         x="0"
+         y="0"
+         width="200"
+         height="50"
+         class="update-box"
+         id="rect292" />
+      <text
+         x="100"
+         y="20"
+         class="box-label"
+         text-anchor="middle"
+         id="text294">Weight Update</text>
+      <text
+         x="100"
+         y="35"
+         class="box-text"
+         text-anchor="middle"
+         font-size="9"
+         id="text296">W_new = W_old - η×grad</text>
+    </g>
+    <!-- Training Arrows -->
+    <!-- Target → Loss -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 561.36763,939.42021 v 50"
+       id="path214-9"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g274"
+       inkscape:connection-end="#g282"
+       marker-end="url(#arrow-blue-6)" />
+    <!-- Loss → Gradients → Weight Update -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 761.33409,1015 h 49.99925"
+       id="path304"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g282"
+       inkscape:connection-end="#g290"
+       marker-end="url(#arrow-blue)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1010,1015 h 50"
+       id="path304-2"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g290"
+       inkscape:connection-end="#g298"
+       marker-end="url(#arrow-blue)" />
+  </g>
+  <g
+     id="inter-block-connections"
+     style="display:inline">
+    <!-- Connection from Input Processing to Transformer Block 1 -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 600,175 -255,25"
+       id="path52"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g44"
+       inkscape:connection-end="#g64"
+       marker-end="url(#arrow-blue)" />
+    <!-- Connection from Transformer Block 1 to Transformer Block 2 -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 720,510 v 60"
+       id="path142"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g124"
+       inkscape:connection-end="#g154"
+       marker-end="url(#arrow-blue)" />
+    <!-- Connection from Transformer Block 2 to Output -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 720,840 v 60 q -700,0 -700,0"
+       id="path220"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0.5"
+       inkscape:connection-start="#g202"
+       inkscape:connection-end="#g232"
+       marker-end="url(#arrow-blue)" />
+    <!-- Prediction → Loss (from Output to Training) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 240,1025 v -35 q 0,0 220,0"
+       id="path300"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0.5"
+       inkscape:connection-start="#g256"
+       inkscape:connection-end="#g282"
+       marker-end="url(#arrow-blue)" />
+    <!-- Training feedback arrows (dashed, from Weight Update back to components) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#9333ea;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.6;stroke-dasharray:4,4"
+       d="M 1160,1015 Q 800,600 480,265"
+       id="path308"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0.5"
+       inkscape:connection-start="#g298"
+       inkscape:connection-end="#g64"
+       marker-end="url(#arrow-purple)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#9333ea;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.6;stroke-dasharray:4,4"
+       d="M 1160,1015 Q 900,600 480,595"
+       id="path310"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0.5"
+       inkscape:connection-start="#g298"
+       inkscape:connection-end="#g154"
+       marker-end="url(#arrow-purple)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#9333ea;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.6;stroke-dasharray:4,4"
+       d="M 1160,1015 Q 500,600 140,925"
+       id="path312"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0.5"
+       inkscape:connection-start="#g298"
+       inkscape:connection-end="#g232"
+       marker-end="url(#arrow-purple)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#9333ea;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.6;stroke-dasharray:4,4"
+       d="M 1160,1015 Q 400,600 600,155"
+       id="path314"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0.5"
+       inkscape:connection-start="#g298"
+       inkscape:connection-end="#g44"
+       marker-end="url(#arrow-purple)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 530.71781,695.38157 h -50"
+       id="path132-5"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g178"
+       inkscape:connection-end="#g172"
+       marker-end="url(#arrow-blue-5)" />
+  </g>
+</svg>

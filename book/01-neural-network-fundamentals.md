@@ -580,69 +580,7 @@ A transformer is built from these components:
 
 ### Complete Transformer Architecture
 
-```mermaid
-graph TB
-    subgraph Input["Input Processing"]
-        Text["Text<br/>'The cat sat'"] --> Tokenize["Tokenization<br/>['The', 'cat', 'sat']"]
-        Tokenize --> Encode["Token Encoding<br/>[1, 2, 3]"]
-        Encode --> Embed["Embedding Lookup<br/>Vectors"]
-    end
-    
-    subgraph Block1["Transformer Block 1"]
-        Embed --> QKV1["Q/K/V Projections<br/>WQ, WK, WV"]
-        QKV1 --> Attn1["Attention<br/>Q·K^T / √d_k"]
-        Attn1 --> Soft1["Softmax<br/>Attention Weights"]
-        Soft1 --> Ctx1["Context Vector<br/>Weighted Sum of V"]
-        Ctx1 --> LN1["Layer Norm"]
-        LN1 --> Res1["Residual<br/>+ Input"]
-        Res1 --> FFN1["Feed-Forward<br/>ReLU(xW₁+b₁)W₂+b₂"]
-        FFN1 --> LN2["Layer Norm"]
-        LN2 --> Res2["Residual<br/>+ Input"]
-    end
-    
-    subgraph Block2["Transformer Block 2"]
-        Res2 --> QKV2["Q/K/V Projections"]
-        QKV2 --> Attn2["Attention"]
-        Attn2 --> Soft2["Softmax"]
-        Soft2 --> Ctx2["Context Vector"]
-        Ctx2 --> LN3["Layer Norm"]
-        LN3 --> Res3["Residual"]
-        Res3 --> FFN2["Feed-Forward"]
-        FFN2 --> LN4["Layer Norm"]
-        LN4 --> Res4["Residual"]
-    end
-    
-    subgraph Output["Output"]
-        Res4 --> WO["Output Projection<br/>WO"]
-        WO --> Logits["Logits<br/>Raw Scores"]
-        Logits --> Soft3["Softmax<br/>Probabilities"]
-        Soft3 --> Pred["Prediction<br/>Next Token"]
-    end
-    
-    subgraph Training["Training (Backward Pass)"]
-        Pred --> Loss["Loss<br/>Cross-Entropy"]
-        Target["Target<br/>'dog'"] --> Loss
-        Loss --> Grad["Gradients<br/>Backpropagation"]
-        Grad --> Update["Weight Update<br/>W_new = W_old - η×grad"]
-        Update -.->|"Improves"| QKV1
-        Update -.->|"Improves"| QKV2
-        Update -.->|"Improves"| WO
-        Update -.->|"Improves"| Embed
-    end
-    
-    style Text fill:#e1f5ff
-    style Embed fill:#fff4e1
-    style Attn1 fill:#e8f5e9
-    style Attn2 fill:#e8f5e9
-    style FFN1 fill:#f3e5f5
-    style FFN2 fill:#f3e5f5
-    style Ctx1 fill:#c8e6c9
-    style Ctx2 fill:#c8e6c9
-    style Logits fill:#fff9c4
-    style Pred fill:#c8e6c9
-    style Loss fill:#ffcdd2
-    style Update fill:#f3e5f5
-```
+![Complete Transformer Architecture](images/complete-transformer-architecture.svg)
 
 ### Key Transformer Concepts
 
