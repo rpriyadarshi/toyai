@@ -770,6 +770,15 @@
        inkscape:connection-end="#g178"
        marker-end="url(#arrow-blue)" />
     <!-- Layer Norm (attn) → Residual (attn) (middle to left) -->
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 530.0,695.0 L 480.0,695.0"
+       id="path210-7"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g178"
+       inkscape:connection-end="#g172"
+       marker-end="url(#arrow-blue-3)" />
     <!-- Residual (attn) → Feed-Forward (down, left column) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1165,15 +1174,5 @@
        inkscape:connection-start="#g298"
        inkscape:connection-end="#g44"
        marker-end="url(#arrow-purple)" />
-    <!-- Layer Norm (attn) → Residual (attn) in Block 2 -->
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 670,695 L 480,695"
-       id="path132-5"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0"
-       inkscape:connection-start="#g178"
-       inkscape:connection-end="#g172"
-       marker-end="url(#arrow-blue-5)" />
   </g>
 </svg>
