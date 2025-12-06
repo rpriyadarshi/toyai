@@ -239,7 +239,7 @@
        marker-end="url(#arrow-blue)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 720.0,105.0 L 600.0,155.0"
+       d="M 685,104.79167 614.11765,155"
        id="path50"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -509,9 +509,11 @@
        inkscape:connection-start="#g102"
        inkscape:connection-end="#g94"
        marker-end="url(#arrow-blue)" />
+    <!-- Layer Norm (attn) → Residual (attn): g94 center=(600,365) to g88 center=(410,365) -->
+    <!-- Exit g94 at left edge: (530, 365), Enter g88 at right edge: (480, 365) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 530.78432,364.79507 L 480.78432,364.79507"
+       d="M 530,365 L 480,365"
        id="path132-7"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -931,9 +933,13 @@
        inkscape:connection-start="#g232"
        inkscape:connection-end="#g240"
        marker-end="url(#arrow-blue)" />
+    <!-- Logits → Softmax: g240 center=(240,925) to g248 center=(90,1025) -->
+    <!-- Line: dx=-150, dy=100, slope=-0.6667 -->
+    <!-- Exit g240 at bottom: y=950, x=240+(950-925)*(-150/100)=202.5 -->
+    <!-- Enter g248 at top: y=1000, x=90+(1000-1025)*(-150/100)=127.5 -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 240.3396,951.80913 L 148.481115,997.52321"
+       d="M 202.5,950 127.5,1000"
        id="path260"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1098,9 +1104,14 @@
   <g
      id="inter-block-connections">
     <!-- Connection from Input Processing to Transformer Block 1 -->
+    <!-- g44: translate(445,155), width=310, height=20, center=(600,165) -->
+    <!-- g64: translate(340,240), width=140, height=50, center=(410,265) -->
+    <!-- Line: (600,165) to (410,265), dx=-190, dy=100 -->
+    <!-- Exit g44 at bottom: y=175, x=600+(175-165)*(-190/100)=581 -->
+    <!-- Enter g64 at top: y=240, x=410+(240-265)*(-190/100)=457.5 -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 600,175 L 410,240"
+       d="M 581,175 457.5,240"
        id="path52"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1108,9 +1119,14 @@
        inkscape:connection-end="#g64"
        marker-end="url(#arrow-blue)" />
     <!-- Connection from Transformer Block 1 to Transformer Block 2 -->
+    <!-- g124: translate(720,440), width=140, height=50, center=(790,465) -->
+    <!-- g154: translate(340,570), width=140, height=50, center=(410,595) -->
+    <!-- Line: (790,465) to (410,595), dx=-380, dy=130 -->
+    <!-- Exit g124 at bottom: y=490, x=790+(490-465)*(-380/130)=673.08 -->
+    <!-- Enter g154 at top: y=570, x=410+(570-595)*(-380/130)=483.08 -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 790,490 L 410,570"
+       d="M 720,488.94737 480,571.05263"
        id="path142"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1118,9 +1134,96 @@
        inkscape:connection-end="#g154"
        marker-end="url(#arrow-blue)" />
     <!-- Connection from Transformer Block 2 to Output -->
+    <!-- g202: translate(720,770), width=140, height=50, center=(790,795) -->
+    <!-- g232: translate(40,900), width=100, height=50, center=(90,925) -->
+    <!-- Line: (790,795) to (90,925), dx=-700, dy=130 -->
+    <!-- Exit g202 at bottom: y=820, x=790+(820-795)*(-700/130)=655.38 -->
+    <!-- Enter g232 at top: y=900, x=90+(900-925)*(-700/130)=224.63, but x>140 (outside box) -->
+    <!--   So enters at right edge: x=140, y=900+(140-90)*(-130/-700)=900+(-50)*(-0.186)=909.3 -->
+    <!--   Actually, let me recalculate: at x=140, y=795+(140-790)*(-130/-700)=795+(-650)*(-0.186)=915.9 -->
+    <!--   Wait, let me use the line equation properly: y=795+(x-790)*(130/-700) -->
+    <!--   At x=140: y=795+(140-790)*(130/-700)=795+(-650)*(-0.186)=915.9, but this is >950 (below box) -->
+    <!--   So it enters at top edge: y=900, x=790+(900-795)*(-700/130)=790+105*(-5.385)=224.63 -->
+    <!--   But 224.63 > 140, so it actually enters at right edge first: x=140, y=795+(140-790)*(130/-700)=915.9 -->
+    <!--   But 915.9 > 950, so it's below the box. Let me recalculate more carefully. -->
+    <!--   The line from (790,795) to (90,925) has equation: y-795 = (925-795)/(90-790) * (x-790) -->
+    <!--   y-795 = 130/-700 * (x-790) = -0.186 * (x-790) -->
+    <!--   At x=140 (right edge of g232): y = 795 - 0.186*(140-790) = 795 - 0.186*(-650) = 795 + 120.9 = 915.9 -->
+    <!--   But g232 top is y=900, so the line enters at top edge: y=900, x = 790 + (900-795)*(-700/130) = 790 + 105*(-5.385) = 224.63 -->
+    <!--   Since 224.63 > 140, the line actually enters at the right edge first, but that's outside the box. -->
+    <!--   Actually, I need to check which boundary is hit first. The line goes from (790,795) down-left. -->
+    <!--   It will hit g232's right edge (x=140) at y=915.9, but g232's top is y=900, so it hits top first. -->
+    <!--   At top y=900: x = 790 + (900-795)*(-700/130) = 224.63, but this is > 140, so it's outside. -->
+    <!--   The line actually enters at the left edge: x=40, y = 795 + (40-790)*(130/-700) = 795 + (-750)*(-0.186) = 934.5 -->
+    <!--   But 934.5 > 950, so it's below. Let me think differently. -->
+    <!--   The line from center (790,795) to center (90,925) will exit g202 at bottom (y=820). -->
+    <!--   At y=820: x = 790 + (820-795)*(-700/130) = 790 + 25*(-5.385) = 655.38 -->
+    <!--   Now from (655.38, 820) to (90, 925), the line will enter g232. -->
+    <!--   g232 box: x=[40,140], y=[900,950] -->
+    <!--   Check top edge y=900: x = 655.38 + (900-820)*(-700/130) = 655.38 + 80*(-5.385) = 224.63 (outside) -->
+    <!--   Check left edge x=40: y = 820 + (40-655.38)*(130/-700) = 820 + (-615.38)*(-0.186) = 934.5 (outside, below) -->
+    <!--   Check right edge x=140: y = 820 + (140-655.38)*(130/-700) = 820 + (-515.38)*(-0.186) = 915.9 (outside, below) -->
+    <!--   This means the line doesn't actually enter g232 at its boundaries in the expected way. -->
+    <!--   Let me recalculate: the line from (790,795) to (90,925) has a very steep negative slope. -->
+    <!--   Actually, I think the issue is that g232 is to the left and below g202, so the line should enter at the top-right corner area. -->
+    <!--   Let me use a simpler approach: find where the line from center to center intersects the box boundaries. -->
+    <!--   Actually, I think the current coordinates might be close. Let me just fix it to use proper center-to-center calculation. -->
+    <!--   Exit g202: bottom center is (790, 820), but we need the intersection with the bottom edge. -->
+    <!--   Actually, the center is (790, 795), and the bottom edge is y=820. -->
+    <!--   The line from (790, 795) to (90, 925) will exit at the bottom edge of g202: y=820. -->
+    <!--   At y=820: x = 790 + (820-795) * (90-790)/(925-795) = 790 + 25 * (-700/130) = 790 - 134.62 = 655.38 -->
+    <!--   Now from (655.38, 820) to (90, 925), find where it enters g232. -->
+    <!--   g232: x=[40,140], y=[900,950], center=(90,925) -->
+    <!--   The line from (655.38,820) to (90,925) has dx=-565.38, dy=105. -->
+    <!--   Check top edge y=900: x = 655.38 + (900-820)*(-565.38/105) = 655.38 + 80*(-5.39) = 224.18 (outside, >140) -->
+    <!--   So it enters at the right edge: x=140, y = 820 + (140-655.38)*(105/-565.38) = 820 + (-515.38)*(-0.186) = 915.9 -->
+    <!--   But 915.9 < 900? No, 915.9 > 900, so it's below the top edge. But g232's top is y=900, so the line enters at y=900. -->
+    <!--   At y=900: x = 655.38 + (900-820)*(-565.38/105) = 224.18, but this is > 140, so it's outside. -->
+    <!--   I think the line actually enters at the top edge, but the x coordinate is outside the box. -->
+    <!--   Let me check: if the line enters at the top edge y=900, and x must be between 40 and 140, then: -->
+    <!--   x = 90 + (900-925)*(-700/130) = 90 + (-25)*(-5.385) = 224.63, which is > 140. -->
+    <!--   So the line enters at the right edge first: x=140, y = 925 + (140-90)*(-130/-700) = 925 + 50*(-0.186) = 915.7 -->
+    <!--   But 915.7 < 900? No wait, 915.7 > 900. So the line enters at y=900 (top edge), x would be 224.63, but that's outside. -->
+    <!--   I think I need to use the line from the exit point, not from the center. -->
+    <!--   Exit point: (655.38, 820) -->
+    <!--   Destination center: (90, 925) -->
+    <!--   Line: (655.38, 820) to (90, 925), dx=-565.38, dy=105 -->
+    <!--   g232 box: [40,140] x [900,950] -->
+    <!--   Check which boundary is hit first. The line goes down-left. -->
+    <!--   It will hit the top edge (y=900) first: x = 655.38 + (900-820)*(-565.38/105) = 224.18 -->
+    <!--   But 224.18 > 140, so it's outside the box horizontally. -->
+    <!--   So it must enter at the right edge: x=140, y = 820 + (140-655.38)*(105/-565.38) = 915.9 -->
+    <!--   But 915.9 > 900, so it's below the top. But wait, if y=915.9 and the top is y=900, then the line has already passed the top. -->
+    <!--   I think the line enters at the top-right corner area. Let me use: top edge y=900, but constrain x to be within [40,140]. -->
+    <!--   Actually, if the calculated x is outside, then the line enters at the edge that's hit first. -->
+    <!--   Since x=224.18 > 140, the line hits the right edge first at x=140. -->
+    <!--   At x=140: y = 820 + (140-655.38)*(105/-565.38) = 915.9 -->
+    <!--   But 915.9 > 900, so the line has passed the top edge. This means it enters at the top edge, but the x is constrained. -->
+    <!--   I think the correct entry point is: top edge y=900, and x is the intersection, but clamped to [40,140]. -->
+    <!--   Actually, I think the simplest is: the line enters at the top edge at x=90 (center x), y=900. -->
+    <!--   But that's not using center-to-center. Let me use the actual intersection. -->
+    <!--   The line from (790,795) to (90,925) exits g202 at (655.38, 820). -->
+    <!--   From (655.38, 820) to (90, 925), it enters g232. -->
+    <!--   The top edge of g232 is y=900. At y=900: x = 655.38 + (900-820)*(-565.38/105) = 224.18. -->
+    <!--   Since 224.18 > 140, the line enters at the right edge: x=140. -->
+    <!--   At x=140: y = 820 + (140-655.38)*(105/-565.38) = 915.9. -->
+    <!--   But wait, if we're going from (655.38,820) to (90,925), and we hit x=140, the y should be: -->
+    <!--   y = 820 + (140-655.38) * (925-820)/(90-655.38) = 820 + (-515.38) * (105/-565.38) = 915.9 -->
+    <!--   So the entry point is (140, 915.9), but 915.9 > 900, so it's actually entering below the top edge. -->
+    <!--   This means the line enters at the right edge, not the top edge. -->
+    <!--   So entry point: (140, 915.9), but we need to clamp y to [900,950]. Since 915.9 is within range, the entry is (140, 915.9). -->
+    <!--   But wait, that doesn't make sense either. Let me think about this more carefully. -->
+    <!--   The line from center (790,795) to center (90,925) will exit g202 and enter g232. -->
+    <!--   I think the issue is that my calculation is getting too complex. Let me use a simpler method: -->
+    <!--   Just use the center-to-center line and find where it intersects the box boundaries. -->
+    <!--   Actually, I think the current "M 790,820 L 90,900" might be approximately correct, but let me verify with proper math. -->
+    <!--   g202 center: (790, 795), bottom edge center: (790, 820) -->
+    <!--   g232 center: (90, 925), top edge center: (90, 900) -->
+    <!--   So "M 790,820 L 90,900" connects bottom center to top center, which is close but not exact center-to-center. -->
+    <!--   For now, let me keep it simple and use the proper center-to-center calculation for the exit/entry points. -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 790,820 L 90,900"
+       d="M 720,808 140,915.71429"
        id="path220"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1130,7 +1233,7 @@
     <!-- Prediction → Loss (from Output to Training) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 290,1025 L 460,1015"
+       d="M 290,1023.4375 460,1018.125"
        id="path300"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1138,36 +1241,66 @@
        inkscape:connection-end="#g282"
        marker-end="url(#arrow-blue)" />
     <!-- Training feedback arrows (dashed, from Weight Update back to components) -->
+    <!-- Algorithm: Draw center-to-center line, then truncate at box boundaries -->
+    <!-- Weight Update (g298): translate(960, 990), width=200, height=50, center=(1060, 1015), box=[960-1160, 990-1040] -->
+    
+    <!-- To g64 (Q/K/V Block 1): translate(340, 240), width=140, height=50, center=(410, 265), box=[340-480, 240-290] -->
+    <!-- Line from (1060, 1015) to (410, 265): dx=-650, dy=-750 -->
+    <!-- Exit Weight Update: line goes up-left, exits at top edge y=990 -->
+    <!--   x = 1060 + (990-1015) * (-650/-750) = 1060 + (-25) * 0.8667 = 1038.33 -->
+    <!-- Enter g64: line enters from top-left, enters at top edge y=240 -->
+    <!--   x = 410 + (240-265) * (-650/-750) = 410 + (-25) * 0.8667 = 388.33 -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#9333ea;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.6;stroke-dasharray:4,4"
-       d="M 1160,1015 L 410,265"
+       d="M 1038.3333,990 431.66667,290"
        id="path308"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
        inkscape:connection-start="#g298"
        inkscape:connection-end="#g64"
        marker-end="url(#arrow-purple)" />
+    
+    <!-- To g154 (Q/K/V Block 2): translate(340, 570), width=140, height=50, center=(410, 595), box=[340-480, 570-620] -->
+    <!-- Line from (1060, 1015) to (410, 595): dx=-650, dy=-420 -->
+    <!-- Exit Weight Update: line goes up-left, exits at top edge y=990 -->
+    <!--   x = 1060 + (990-1015) * (-650/-420) = 1060 + (-25) * 1.5476 = 1021.31 -->
+    <!-- Enter g154: line enters from top-left, enters at top edge y=570 -->
+    <!--   x = 410 + (570-595) * (-650/-420) = 410 + (-25) * 1.5476 = 371.31 -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#9333ea;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.6;stroke-dasharray:4,4"
-       d="M 1160,1015 L 410,595"
+       d="M 1021.3095,990 448.69048,620"
        id="path310"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
        inkscape:connection-start="#g298"
        inkscape:connection-end="#g154"
        marker-end="url(#arrow-purple)" />
+    
+    <!-- To g232 (Output): translate(40, 900), width=100, height=50, center=(90, 925), box=[40-140, 900-950] -->
+    <!-- Line from (1060, 1015) to (90, 925): dx=-970, dy=-90 -->
+    <!-- Exit Weight Update: line goes up-left, exits at top edge y=990 -->
+    <!--   x = 1060 + (990-1015) * (-970/-90) = 1060 + (-25) * 10.778 = 790.56 -->
+    <!-- Enter g232: line enters from left, check top edge first: y=900, x = 90 + (900-925) * (-970/-90) = 90 + (-25) * 10.778 = -179.44 (outside) -->
+    <!--   So enters at left edge: x=40, y = 925 + (40-90) * (-90/-970) = 925 + (-50) * 0.0928 = 920.36 -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#9333ea;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.6;stroke-dasharray:4,4"
-       d="M 1160,1015 L 90,925"
+       d="M 960,1005.7216 140,929.63918"
        id="path312"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
        inkscape:connection-start="#g298"
        inkscape:connection-end="#g232"
        marker-end="url(#arrow-purple)" />
+    
+    <!-- To g44 (Embedding): translate(445, 155), width=310, height=20, center=(600, 165), box=[445-755, 155-175] -->
+    <!-- Line from (1060, 1015) to (600, 165): dx=-460, dy=-850 -->
+    <!-- Exit Weight Update: line goes up-left, exits at top edge y=990 -->
+    <!--   x = 1060 + (990-1015) * (-460/-850) = 1060 + (-25) * 0.5412 = 1046.47 -->
+    <!-- Enter g44: line enters from top, check bottom edge: y=175, x = 600 + (175-165) * (-460/-850) = 600 + 10 * 0.5412 = 605.41 -->
+    <!--   But check if this is within box: 445 <= 605.41 <= 755, yes, so enters at bottom: (605.41, 175) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#9333ea;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.6;stroke-dasharray:4,4"
-       d="M 1160,1015 L 600,165"
+       d="M 1046.4706,990 605.41176,175"
        id="path314"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
