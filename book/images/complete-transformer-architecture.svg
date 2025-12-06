@@ -221,7 +221,7 @@
     <!-- Input Processing Arrows -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 515,80 h 50"
+       d="M 515.0,80.0 L 565.0,80.0"
        id="path46"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -230,7 +230,7 @@
        marker-end="url(#arrow-blue)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 635,80 h 50"
+       d="M 635.0,80.0 L 685.0,80.0"
        id="path48"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -239,7 +239,7 @@
        marker-end="url(#arrow-blue)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 720,105 -120,50"
+       d="M 720.0,105.0 L 600.0,155.0"
        id="path50"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -473,7 +473,7 @@
     <!-- Row 1: Q/K/V → Attention → Softmax -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 480,265 h 50"
+       d="M 480.0,265.0 L 530.0,265.0"
        id="path126"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -482,7 +482,7 @@
        marker-end="url(#arrow-blue)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 670,265 h 50"
+       d="M 670.0,265.0 L 720.0,265.0"
        id="path128"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -492,7 +492,7 @@
     <!-- Softmax → Context (down, right column) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 790,290 v 50"
+       d="M 790.0,290.0 L 790.0,340.0"
        id="path130"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -502,7 +502,7 @@
     <!-- Row 2: Context → Layer Norm (attn) (right to middle) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 720,365 h -50"
+       d="M 720.0,365.0 L 670.0,365.0"
        id="path132"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -511,7 +511,7 @@
        marker-end="url(#arrow-blue)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 530.78432,364.79507 h -50"
+       d="M 530.78432,364.79507 L 480.78432,364.79507"
        id="path132-7"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -522,7 +522,7 @@
     <!-- Residual (attn) → Feed-Forward (down, left column) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 410,390 v 50"
+       d="M 410.0,390.0 L 410.0,440.0"
        id="path136"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -532,7 +532,7 @@
     <!-- Row 3: Feed-Forward → Layer Norm (FFN) (left to middle) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 480,465 h 50"
+       d="M 480.0,465.0 L 530.0,465.0"
        id="path138"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -542,7 +542,7 @@
     <!-- Layer Norm (FFN) → Residual (FFN) (middle to right) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 670,465 h 50"
+       d="M 670.0,465.0 L 720.0,465.0"
        id="path140"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -733,7 +733,7 @@
     <!-- Row 1: Q/K/V → Attention → Softmax -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 480,595 h 50"
+       d="M 480.0,595.0 L 530.0,595.0"
        id="path204"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -742,7 +742,7 @@
        marker-end="url(#arrow-blue)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 670,595 h 50"
+       d="M 670.0,595.0 L 720.0,595.0"
        id="path206"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -752,7 +752,7 @@
     <!-- Softmax → Context (down, right column) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 790,620 v 50"
+       d="M 790.0,620.0 L 790.0,670.0"
        id="path208"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -762,7 +762,7 @@
     <!-- Row 2: Context → Layer Norm (attn) (right to middle) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 720,695 h -50"
+       d="M 720.0,695.0 L 670.0,695.0"
        id="path210"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -773,7 +773,7 @@
     <!-- Residual (attn) → Feed-Forward (down, left column) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 410,720 v 50"
+       d="M 410.0,720.0 L 410.0,770.0"
        id="path214"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -783,7 +783,7 @@
     <!-- Row 3: Feed-Forward → Layer Norm (FFN) (left to middle) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 480,795 h 50"
+       d="M 480.0,795.0 L 530.0,795.0"
        id="path216"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -793,7 +793,7 @@
     <!-- Layer Norm (FFN) → Residual (FFN) (middle to right) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 670,795 h 50"
+       d="M 670.0,795.0 L 720.0,795.0"
        id="path218"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -915,7 +915,7 @@
     <!-- Output Arrows -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 140,925 h 50"
+       d="M 140.0,925.0 L 190.0,925.0"
        id="path258"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -924,7 +924,7 @@
        marker-end="url(#arrow-blue)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 240.3396,951.80913 -91.858485,45.71408"
+       d="M 240.3396,951.80913 L 148.481115,997.52321"
        id="path260"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -933,7 +933,7 @@
        marker-end="url(#arrow-blue)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 140,1025 h 50"
+       d="M 140.0,1025.0 L 190.0,1025.0"
        id="path262"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1058,7 +1058,7 @@
     <!-- Target → Loss -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 561.36763,939.42021 v 50"
+       d="M 560,940 L 560,990"
        id="path214-9"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1068,7 +1068,7 @@
     <!-- Loss → Gradients → Weight Update -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 761.33409,1015 h 49.99925"
+       d="M 660,1015 L 710,1015"
        id="path304"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1077,7 +1077,7 @@
        marker-end="url(#arrow-blue)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 1010,1015 h 50"
+       d="M 910,1015 L 960,1015"
        id="path304-2"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1085,13 +1085,13 @@
        inkscape:connection-end="#g298"
        marker-end="url(#arrow-blue)" />
   </g>
+  <!-- Inter-block Connections (placed last to be in front) -->
   <g
-     id="inter-block-connections"
-     style="display:inline">
+     id="inter-block-connections">
     <!-- Connection from Input Processing to Transformer Block 1 -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 600,175 -255,25"
+       d="M 600,175 L 410,240"
        id="path52"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1101,7 +1101,7 @@
     <!-- Connection from Transformer Block 1 to Transformer Block 2 -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 720,510 v 60"
+       d="M 790,490 L 410,570"
        id="path142"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -1111,63 +1111,64 @@
     <!-- Connection from Transformer Block 2 to Output -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 720,840 v 60 q -700,0 -700,0"
+       d="M 790,820 L 90,900"
        id="path220"
        inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0.5"
+       inkscape:connector-curvature="0"
        inkscape:connection-start="#g202"
        inkscape:connection-end="#g232"
        marker-end="url(#arrow-blue)" />
     <!-- Prediction → Loss (from Output to Training) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 240,1025 v -35 q 0,0 220,0"
+       d="M 290,1025 L 460,1015"
        id="path300"
        inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0.5"
+       inkscape:connector-curvature="0"
        inkscape:connection-start="#g256"
        inkscape:connection-end="#g282"
        marker-end="url(#arrow-blue)" />
     <!-- Training feedback arrows (dashed, from Weight Update back to components) -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#9333ea;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.6;stroke-dasharray:4,4"
-       d="M 1160,1015 Q 800,600 480,265"
+       d="M 1160,1015 L 410,265"
        id="path308"
        inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0.5"
+       inkscape:connector-curvature="0"
        inkscape:connection-start="#g298"
        inkscape:connection-end="#g64"
        marker-end="url(#arrow-purple)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#9333ea;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.6;stroke-dasharray:4,4"
-       d="M 1160,1015 Q 900,600 480,595"
+       d="M 1160,1015 L 410,595"
        id="path310"
        inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0.5"
+       inkscape:connector-curvature="0"
        inkscape:connection-start="#g298"
        inkscape:connection-end="#g154"
        marker-end="url(#arrow-purple)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#9333ea;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.6;stroke-dasharray:4,4"
-       d="M 1160,1015 Q 500,600 140,925"
+       d="M 1160,1015 L 90,925"
        id="path312"
        inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0.5"
+       inkscape:connector-curvature="0"
        inkscape:connection-start="#g298"
        inkscape:connection-end="#g232"
        marker-end="url(#arrow-purple)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#9333ea;stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.6;stroke-dasharray:4,4"
-       d="M 1160,1015 Q 400,600 600,155"
+       d="M 1160,1015 L 600,165"
        id="path314"
        inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0.5"
+       inkscape:connector-curvature="0"
        inkscape:connection-start="#g298"
        inkscape:connection-end="#g44"
        marker-end="url(#arrow-purple)" />
+    <!-- Layer Norm (attn) → Residual (attn) in Block 2 -->
     <path
        style="fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:2px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 530.71781,695.38157 h -50"
+       d="M 670,695 L 480,695"
        id="path132-5"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
