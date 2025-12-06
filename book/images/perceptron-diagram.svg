@@ -1,4 +1,4 @@
-<svg width="900" height="500" xmlns="http://www.w3.org/2000/svg">
+<svg width="900" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
   <defs>
     <style>
       .input-box { fill: #e1f5ff; stroke: #2563eb; stroke-width: 2.5; rx: 8; }
@@ -28,35 +28,35 @@
   <text x="450" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#1e293b">The Perceptron: Single Neuron Decision-Making Unit</text>
   
   <!-- Input 1 (x₁) -->
-  <g transform="translate(50, 80)">
+  <g id="g1" transform="translate(50, 80)">
     <rect x="0" y="0" width="100" height="70" class="input-box"/>
     <text x="50" y="30" class="box-label" text-anchor="middle">x₁</text>
     <text x="50" y="50" class="box-subtitle" text-anchor="middle">Input 1</text>
   </g>
   
   <!-- Input 2 (x₂) -->
-  <g transform="translate(50, 180)">
+  <g id="g2" transform="translate(50, 180)">
     <rect x="0" y="0" width="100" height="70" class="input-box"/>
     <text x="50" y="30" class="box-label" text-anchor="middle">x₂</text>
     <text x="50" y="50" class="box-subtitle" text-anchor="middle">Input 2</text>
   </g>
   
   <!-- Input 3 (x₃) -->
-  <g transform="translate(50, 280)">
+  <g id="g3" transform="translate(50, 280)">
     <rect x="0" y="0" width="100" height="70" class="input-box"/>
     <text x="50" y="30" class="box-label" text-anchor="middle">x₃</text>
     <text x="50" y="50" class="box-subtitle" text-anchor="middle">Input 3</text>
   </g>
   
   <!-- Bias (b) -->
-  <g transform="translate(50, 380)">
+  <g id="g4" transform="translate(50, 380)">
     <rect x="0" y="0" width="100" height="70" class="bias-box"/>
     <text x="50" y="30" class="box-label" text-anchor="middle">b</text>
     <text x="50" y="50" class="box-subtitle" text-anchor="middle">Bias</text>
   </g>
   
   <!-- Weighted Sum (Σ) -->
-  <g transform="translate(300, 200)">
+  <g id="g5" transform="translate(300, 200)">
     <rect x="0" y="0" width="140" height="120" class="sum-box"/>
     <text x="70" y="35" class="box-label" text-anchor="middle">Σ</text>
     <text x="70" y="55" class="box-subtitle" text-anchor="middle">Weighted Sum</text>
@@ -65,7 +65,7 @@
   </g>
   
   <!-- Activation Function (f()) -->
-  <g transform="translate(550, 200)">
+  <g id="g6" transform="translate(550, 200)">
     <rect x="0" y="0" width="140" height="120" class="activation-box"/>
     <text x="70" y="35" class="box-label" text-anchor="middle">f()</text>
     <text x="70" y="55" class="box-subtitle" text-anchor="middle">Activation</text>
@@ -74,7 +74,7 @@
   </g>
   
   <!-- Output (y) -->
-  <g transform="translate(750, 200)">
+  <g id="g7" transform="translate(750, 200)">
     <rect x="0" y="0" width="100" height="120" class="output-box"/>
     <text x="50" y="35" class="box-label" text-anchor="middle">y</text>
     <text x="50" y="55" class="box-subtitle" text-anchor="middle">Output</text>
@@ -83,29 +83,29 @@
   </g>
   
   <!-- Arrows from Input 1 to Sum -->
-  <path d="M 150 115 L 300 240" class="arrow-main"/>
+  <path d="M 150 115 L 300 240" class="arrow-main" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g1" inkscape:connection-end="#g5" />
   <text x="200" y="165" class="weight-label">w₁</text>
   
   <!-- Arrows from Input 2 to Sum -->
-  <path d="M 150 215 L 300 260" class="arrow-main"/>
+  <path d="M 150 215 L 300 260" class="arrow-main" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g2" inkscape:connection-end="#g5" />
   <text x="200" y="230" class="weight-label">w₂</text>
   
   <!-- Arrows from Input 3 to Sum -->
-  <path d="M 150 315 L 300 280" class="arrow-main"/>
+  <path d="M 150 315 L 300 280" class="arrow-main" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g3" inkscape:connection-end="#g5" />
   <text x="200" y="295" class="weight-label">w₃</text>
   
   <!-- Arrow from Bias to Sum -->
-  <path d="M 150 415 L 300 300" class="arrow-main"/>
+  <path d="M 150 415 L 300 300" class="arrow-main" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g4" inkscape:connection-end="#g5" />
   <text x="200" y="360" class="weight-label">+b</text>
   
   <!-- Arrow from Sum to Activation -->
-  <path d="M 440 260 L 550 260" class="arrow-sum"/>
+  <path d="M 440 260 L 550 260" class="arrow-sum" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g5" inkscape:connection-end="#g6" />
   
   <!-- Arrow from Activation to Output -->
-  <path d="M 690 260 L 750 260" class="arrow-act"/>
+  <path d="M 690 260 L 750 260" class="arrow-act" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g6" inkscape:connection-end="#g7" />
   
   <!-- Mathematical formula at bottom -->
-  <g transform="translate(200, 450)">
+  <g id="g8" transform="translate(200, 450)">
     <rect x="0" y="0" width="500" height="40" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" rx="5"/>
     <text x="250" y="15" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle" fill="#1e293b">Mathematical Formula:</text>
     <text x="250" y="32" font-family="'Courier New', monospace" font-size="14" text-anchor="middle" fill="#dc2626">y = f(w₁·x₁ + w₂·x₂ + w₃·x₃ + b)</text>

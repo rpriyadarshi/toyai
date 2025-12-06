@@ -274,11 +274,11 @@
   <path
      d="M 90 50 L 140 50"
      class="arrow"
-     id="path313" />
+     id="path313"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g253" inkscape:connection-end="#g259" />
   <path
      d="M 210 50 L 260 50"
      class="arrow"
-     id="path315" />
+     id="path315"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g259" inkscape:connection-end="#g265" />
   <text
      x="234.6985"
      y="39.764496"
@@ -288,7 +288,7 @@
   <path
      d="M 330 50 L 380 50"
      class="arrow"
-     id="path319" />
+     id="path319"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g265" inkscape:connection-end="#g271" />
   <text
      x="354.69849"
      y="39.764496"
@@ -298,25 +298,25 @@
   <path
      d="M 450 50 L 500 50"
      class="arrow"
-     id="path323" />
+     id="path323"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g271" inkscape:connection-end="#g277" />
   <!-- Arrows Row 2: h₆ → h₇ → h₈ → h₉ → 'sat' (right to left flow) -->
   <!-- From right box's left edge to left box's right edge -->
   <path
      d="M 500 160 L 450 160"
      class="arrow-left"
-     id="path-h6-h7" />
+     id="path-h6-h7"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g283" inkscape:connection-end="#g289" />
   <path
      d="M 380 160 L 330 160"
      class="arrow-left"
-     id="path-h7-h8" />
+     id="path-h7-h8"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g289" inkscape:connection-end="#g295" />
   <path
      d="M 260 160 L 210 160"
      class="arrow-left"
-     id="path-h8-h9" />
+     id="path-h8-h9"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g295" inkscape:connection-end="#g303" />
   <path
      d="M 140 160 L 90 160"
      class="arrow-left"
-     id="path-h9-sat" />
+     id="path-h9-sat"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g303" inkscape:connection-end="#g311" />
   <text
      x="474.69849"
      y="39.764496"
@@ -327,7 +327,7 @@
   <path
      d="M 535 80 L 535 130"
      class="arrow"
-     id="path327" />
+     id="path327"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g277" inkscape:connection-end="#g283" />
   <text
      x="475"
      y="150"

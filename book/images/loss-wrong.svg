@@ -1,4 +1,4 @@
-<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
   <defs>
     <style>
       .wrong-box { fill: #ffcdd2; stroke: #dc2626; stroke-width: 2.5; rx: 8; }
@@ -13,14 +13,14 @@
   </defs>
   
   <!-- Wrong Prediction -->
-  <g transform="translate(20, 20)">
+  <g id="g1" transform="translate(20, 20)">
     <rect x="0" y="0" width="260" height="60" class="wrong-box"/>
     <text x="130" y="25" class="box-label" text-anchor="middle">Wrong Prediction</text>
     <text x="130" y="42" class="box-text" text-anchor="middle">[0.8,0.1,0.05,0.05]</text>
   </g>
   
   <!-- High Loss -->
-  <g transform="translate(20, 120)">
+  <g id="g2" transform="translate(20, 120)">
     <rect x="0" y="0" width="260" height="60" class="loss-box"/>
     <text x="130" y="25" class="box-label" text-anchor="middle">High Loss</text>
     <text x="130" y="42" class="box-text" text-anchor="middle">L = -log(0.05)</text>
@@ -28,6 +28,6 @@
   </g>
   
   <!-- Arrow -->
-  <path d="M 150 80 L 150 120" class="arrow"/>
+  <path d="M 150 80 L 150 120" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g1" inkscape:connection-end="#g2" />
 </svg>
 

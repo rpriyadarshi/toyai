@@ -167,11 +167,11 @@
   <path
      d="M 120 60 L 170 60"
      class="arrow"
-     id="path45" />
+     id="path45"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g15" inkscape:connection-end="#g23" />
   <path
      d="M 290 60 L 380 60"
      class="arrow"
-     id="path47" />
+     id="path47"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g23" inkscape:connection-end="#g33" />
   <text
      x="334.5267"
      y="36.092178"
@@ -187,5 +187,5 @@
   <path
      d="M 520 60 L 570 60"
      class="arrow"
-     id="path53" />
+     id="path53"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g33" inkscape:connection-end="#g43" />
 </svg>

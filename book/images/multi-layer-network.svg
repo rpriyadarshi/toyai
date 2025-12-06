@@ -1,4 +1,4 @@
-<svg width="900" height="300" xmlns="http://www.w3.org/2000/svg">
+<svg width="900" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
   <defs>
     <style>
       .layer-box { fill: none; stroke: #333; stroke-width: 2; rx: 5; }
@@ -13,7 +13,9 @@
   </defs>
   
   <!-- Input Layer: 3 neurons vertically aligned -->
-  <rect x="50" y="50" width="120" height="180" class="layer-box input-layer"/>
+  <g id="input-layer" transform="translate(50, 50)">
+    <rect x="0" y="0" width="120" height="180" class="layer-box input-layer"/>
+  </g>
   <text x="110" y="35" class="layer-label" text-anchor="middle">Input Layer</text>
   
   <circle cx="110" cy="90" r="15" class="neuron"/>
@@ -26,7 +28,9 @@
   <text x="110" y="195" class="neuron-label" text-anchor="middle">3</text>
   
   <!-- Hidden Layer 1: 4 neurons vertically aligned -->
-  <rect x="250" y="50" width="160" height="180" class="layer-box hidden-layer"/>
+  <g id="hidden-layer-1" transform="translate(250, 50)">
+    <rect x="0" y="0" width="160" height="180" class="layer-box hidden-layer"/>
+  </g>
   <text x="330" y="35" class="layer-label" text-anchor="middle">Hidden Layer 1</text>
   
   <circle cx="330" cy="80" r="15" class="neuron"/>
@@ -42,7 +46,9 @@
   <text x="330" y="205" class="neuron-label" text-anchor="middle">4</text>
   
   <!-- Hidden Layer 2: 3 neurons vertically aligned -->
-  <rect x="500" y="50" width="120" height="180" class="layer-box hidden-layer"/>
+  <g id="hidden-layer-2" transform="translate(500, 50)">
+    <rect x="0" y="0" width="120" height="180" class="layer-box hidden-layer"/>
+  </g>
   <text x="560" y="35" class="layer-label" text-anchor="middle">Hidden Layer 2</text>
   
   <circle cx="560" cy="90" r="15" class="neuron"/>
@@ -55,7 +61,9 @@
   <text x="560" y="195" class="neuron-label" text-anchor="middle">3</text>
   
   <!-- Output Layer: 4 neurons vertically aligned -->
-  <rect x="700" y="50" width="160" height="180" class="layer-box output-layer"/>
+  <g id="output-layer" transform="translate(700, 50)">
+    <rect x="0" y="0" width="160" height="180" class="layer-box output-layer"/>
+  </g>
   <text x="780" y="35" class="layer-label" text-anchor="middle">Output Layer</text>
   
   <circle cx="780" cy="80" r="15" class="neuron"/>
@@ -123,9 +131,9 @@
   <line x1="575" y1="190" x2="765" y2="200" class="connection"/>
   
   <!-- Data flow arrows (centered vertically) -->
-  <path d="M 170 140 L 240 140" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-  <path d="M 410 140 L 500 140" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-  <path d="M 620 140 L 700 140" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 170 140 L 240 140" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-layer" inkscape:connection-end="#hidden-layer-1" />
+  <path d="M 410 140 L 500 140" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden-layer-1" inkscape:connection-end="#hidden-layer-2" />
+  <path d="M 620 140 L 700 140" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden-layer-2" inkscape:connection-end="#output-layer" />
   
   <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">

@@ -220,25 +220,25 @@
   <path
      d="M 95 70 L 95 110"
      class="arrow"
-     id="path60" />
+     id="path60"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g16" inkscape:connection-end="#g24" />
   <path
      d="M 95 170 L 95 210"
      class="arrow"
-     id="path62" />
+     id="path62"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g24" inkscape:connection-end="#g32" />
   <path
      d="M 95 270 L 95 310"
      class="arrow"
-     id="path64" />
+     id="path64"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g32" inkscape:connection-end="#g40" />
   <path
      d="M 95 370 L 95 410"
      class="arrow"
-     id="path66" />
+     id="path66"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g40" inkscape:connection-end="#g50" />
   <!-- Loop arrow: Update → Forward (rounded Manhattan path on right side) -->
   <!-- Start from right edge of Update box (center vertically), go right, up, then left to Forward -->
   <path
      d="M 170 445 L 180 445 Q 195 445 195 440 L 195 145 Q 195 140 180 140 L 170 140"
      class="arrow-loop"
-     id="path68" />
+     id="path68"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g50" inkscape:connection-end="#g24" />
   <text
      x="170.51227"
      y="292.2782"
@@ -249,7 +249,7 @@
   <path
      d="M 95 480 L 95 520"
      class="arrow"
-     id="path72" />
+     id="path72"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g50" inkscape:connection-end="#g58" />
   <text
      x="128.7756"
      y="500"

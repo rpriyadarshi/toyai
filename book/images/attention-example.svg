@@ -1,4 +1,4 @@
-<svg width="590" height="370" xmlns="http://www.w3.org/2000/svg">
+<svg width="590" height="370" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
   <defs>
     <style>
       .query-box { fill: #e1f5ff; stroke: #2563eb; stroke-width: 2.5; rx: 8; }
@@ -17,35 +17,35 @@
   </defs>
   
   <!-- Query -->
-  <g transform="translate(245, 20)">
+  <g id="g1" transform="translate(245, 20)">
     <rect x="0" y="0" width="100" height="70" class="query-box"/>
     <text x="50" y="25" class="box-label" text-anchor="middle">Query: 'sat'</text>
     <text x="50" y="45" class="box-text" text-anchor="middle">Needs: subject</text>
   </g>
   
   <!-- Attention boxes -->
-  <g transform="translate(20, 120)">
+  <g id="g2" transform="translate(20, 120)">
     <rect x="0" y="0" width="100" height="80" class="attention-strong"/>
     <text x="50" y="25" class="box-label" text-anchor="middle">'cat'</text>
     <text x="50" y="45" class="box-text" text-anchor="middle">0.6 (60%)</text>
     <text x="50" y="65" class="box-text" text-anchor="middle" font-weight="bold" fill="#16a34a">Subject!</text>
   </g>
   
-  <g transform="translate(170, 120)">
+  <g id="g3" transform="translate(170, 120)">
     <rect x="0" y="0" width="100" height="80" class="attention-medium"/>
     <text x="50" y="25" class="box-label" text-anchor="middle">'mat'</text>
     <text x="50" y="45" class="box-text" text-anchor="middle">0.2 (20%)</text>
     <text x="50" y="65" class="box-text" text-anchor="middle">Object</text>
   </g>
   
-  <g transform="translate(320, 120)">
+  <g id="g4" transform="translate(320, 120)">
     <rect x="0" y="0" width="100" height="80" class="attention-low"/>
     <text x="50" y="25" class="box-label" text-anchor="middle">'yesterday'</text>
     <text x="50" y="45" class="box-text" text-anchor="middle">0.15 (15%)</text>
     <text x="50" y="65" class="box-text" text-anchor="middle">Context</text>
   </g>
   
-  <g transform="translate(470, 120)">
+  <g id="g5" transform="translate(470, 120)">
     <rect x="0" y="0" width="100" height="80" class="attention-very-low"/>
     <text x="50" y="25" class="box-label" text-anchor="middle">'the'</text>
     <text x="50" y="45" class="box-text" text-anchor="middle">0.05 (5%)</text>
@@ -53,7 +53,7 @@
   </g>
   
   <!-- Context -->
-  <g transform="translate(245, 280)">
+  <g id="g6" transform="translate(245, 280)">
     <rect x="0" y="0" width="100" height="70" class="context-box"/>
     <text x="50" y="25" class="box-label" text-anchor="middle">Context:</text>
     <text x="50" y="45" class="box-text" text-anchor="middle">Strong 'cat'</text>
@@ -61,15 +61,15 @@
   </g>
   
   <!-- Arrows from Query to Attention -->
-  <path d="M 295 90 L 70 120" class="arrow"/>
-  <path d="M 295 90 L 220 120" class="arrow"/>
-  <path d="M 295 90 L 370 120" class="arrow"/>
-  <path d="M 295 90 L 520 120" class="arrow"/>
+  <path d="M 295 90 L 70 120" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g1" inkscape:connection-end="#g2" />
+  <path d="M 295 90 L 220 120" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g1" inkscape:connection-end="#g3" />
+  <path d="M 295 90 L 370 120" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g1" inkscape:connection-end="#g4" />
+  <path d="M 295 90 L 520 120" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g1" inkscape:connection-end="#g5" />
   
   <!-- Arrows from Attention to Context -->
-  <path d="M 70 200 L 245 280" class="arrow"/>
-  <path d="M 220 200 L 270 280" class="arrow"/>
-  <path d="M 370 200 L 295 280" class="arrow"/>
-  <path d="M 520 200 L 345 280" class="arrow"/>
+  <path d="M 70 200 L 245 280" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g2" inkscape:connection-end="#g6" />
+  <path d="M 220 200 L 270 280" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g3" inkscape:connection-end="#g6" />
+  <path d="M 370 200 L 295 280" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g4" inkscape:connection-end="#g6" />
+  <path d="M 520 200 L 345 280" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g5" inkscape:connection-end="#g6" />
 </svg>
 

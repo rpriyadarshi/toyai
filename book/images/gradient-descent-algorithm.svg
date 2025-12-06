@@ -234,20 +234,20 @@
   <path
      d="M 70 110 L 70 150"
      class="arrow"
-     id="path64" />
+     id="path64"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g20" inkscape:connection-end="#g30" />
   <path
      d="M 70 220 L 70 260"
      class="arrow"
-     id="path66" />
+     id="path66"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g30" inkscape:connection-end="#g42" />
   <path
      d="M 70 340 L 70 380"
      class="arrow"
-     id="path68" />
+     id="path68"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g42" inkscape:connection-end="#g52" />
   <!-- Loop arrow: Check → Compute (rounded Manhattan path on right side) -->
   <path
      d="M 120 415 L 130 415 Q 145 415 145 410 L 145 190 Q 145 185 130 185 L 120 185"
      class="arrow-loop"
-     id="path70" />
+     id="path70"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g52" inkscape:connection-end="#g30" />
   <text
      x="108.28831"
      y="241.90869"
@@ -257,7 +257,7 @@
   <path
      d="M 70 450 L 70 490"
      class="arrow"
-     id="path74" />
+     id="path74"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g52" inkscape:connection-end="#g62" />
   <text
      x="107.29442"
      y="472.64398"

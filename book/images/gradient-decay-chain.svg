@@ -1,4 +1,4 @@
-<svg width="890" height="120" xmlns="http://www.w3.org/2000/svg">
+<svg width="890" height="120" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
   <defs>
     <style>
       .gradient-strong { fill: #e8f5e9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
@@ -13,49 +13,49 @@
   </defs>
   
   <!-- Gradient boxes -->
-  <g transform="translate(20, 20)">
+  <g id="g1" transform="translate(20, 20)">
     <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
     <text x="40" y="30" class="box-label" text-anchor="middle">1.00</text>
     <text x="40" y="50" class="box-text" text-anchor="middle">100%</text>
   </g>
   
-  <g transform="translate(130, 20)">
+  <g id="g2" transform="translate(130, 20)">
     <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
     <text x="40" y="30" class="box-label" text-anchor="middle">0.90</text>
     <text x="40" y="50" class="box-text" text-anchor="middle">90%</text>
   </g>
   
-  <g transform="translate(240, 20)">
+  <g id="g3" transform="translate(240, 20)">
     <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
     <text x="40" y="30" class="box-label" text-anchor="middle">0.81</text>
     <text x="40" y="50" class="box-text" text-anchor="middle">81%</text>
   </g>
   
-  <g transform="translate(350, 20)">
+  <g id="g4" transform="translate(350, 20)">
     <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
     <text x="40" y="30" class="box-label" text-anchor="middle">0.73</text>
     <text x="40" y="50" class="box-text" text-anchor="middle">73%</text>
   </g>
   
-  <g transform="translate(460, 20)">
+  <g id="g5" transform="translate(460, 20)">
     <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
     <text x="40" y="30" class="box-label" text-anchor="middle">0.66</text>
     <text x="40" y="50" class="box-text" text-anchor="middle">66%</text>
   </g>
   
-  <g transform="translate(570, 20)">
+  <g id="g6" transform="translate(570, 20)">
     <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
     <text x="40" y="30" class="box-label" text-anchor="middle">0.59</text>
     <text x="40" y="50" class="box-text" text-anchor="middle">59%</text>
   </g>
   
-  <g transform="translate(680, 20)">
+  <g id="g7" transform="translate(680, 20)">
     <rect x="0" y="0" width="80" height="80" class="gradient-strong"/>
     <text x="40" y="30" class="box-label" text-anchor="middle">0.53</text>
     <text x="40" y="50" class="box-text" text-anchor="middle">53%</text>
   </g>
   
-  <g transform="translate(790, 20)">
+  <g id="g8" transform="translate(790, 20)">
     <rect x="0" y="0" width="80" height="80" class="gradient-weak"/>
     <text x="40" y="30" class="box-label" text-anchor="middle">0.48</text>
     <text x="40" y="50" class="box-text" text-anchor="middle">48%</text>
@@ -63,12 +63,12 @@
   </g>
   
   <!-- Arrows -->
-  <path d="M 100 60 L 130 60" class="arrow"/>
-  <path d="M 210 60 L 240 60" class="arrow"/>
-  <path d="M 320 60 L 350 60" class="arrow"/>
-  <path d="M 430 60 L 460 60" class="arrow"/>
-  <path d="M 540 60 L 570 60" class="arrow"/>
-  <path d="M 650 60 L 680 60" class="arrow"/>
-  <path d="M 760 60 L 790 60" class="arrow"/>
+  <path d="M 100 60 L 130 60" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g1" inkscape:connection-end="#g2" />
+  <path d="M 210 60 L 240 60" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g2" inkscape:connection-end="#g3" />
+  <path d="M 320 60 L 350 60" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g3" inkscape:connection-end="#g4" />
+  <path d="M 430 60 L 460 60" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g4" inkscape:connection-end="#g5" />
+  <path d="M 540 60 L 570 60" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g5" inkscape:connection-end="#g6" />
+  <path d="M 650 60 L 680 60" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g6" inkscape:connection-end="#g7" />
+  <path d="M 760 60 L 790 60" class="arrow" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g7" inkscape:connection-end="#g8" />
 </svg>
 

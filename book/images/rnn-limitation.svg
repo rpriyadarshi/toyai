@@ -242,7 +242,7 @@
   <path
      d="M 100 50 L 150 50"
      class="arrow"
-     id="path70" />
+     id="path70"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g18" inkscape:connection-end="#g26" />
   <text
      x="124.82835"
      y="38.422771"
@@ -252,7 +252,7 @@
   <path
      d="M 230 50 L 280 50"
      class="arrow"
-     id="path74" />
+     id="path74"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g26" inkscape:connection-end="#g34" />
   <text
      x="254.82834"
      y="38.422771"
@@ -262,7 +262,7 @@
   <path
      d="M 360 50 L 410 50"
      class="arrow"
-     id="path78" />
+     id="path78"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g34" inkscape:connection-end="#g42" />
   <text
      x="384.82834"
      y="38.422771"
@@ -273,7 +273,7 @@
   <path
      d="M 450 80 L 450 130"
      class="arrow"
-     id="path82" />
+     id="path82"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g42" inkscape:connection-end="#g50" />
   <text
      x="423.47729"
      y="105.20939"
@@ -284,7 +284,7 @@
   <path
      d="M 410 160 L 360 160"
      class="arrow-left"
-     id="path86" />
+     id="path86"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g50" inkscape:connection-end="#g60" />
   <text
      x="385"
      y="145"
@@ -294,7 +294,7 @@
   <path
      d="M 280 160 L 230 160"
      class="arrow-left"
-     id="path90" />
+     id="path90"  inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#g60" inkscape:connection-end="#g68" />
   <text
      x="255"
      y="145"
