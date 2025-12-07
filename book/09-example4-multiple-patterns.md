@@ -124,7 +124,7 @@ See [code](../examples/example4_multiple_patterns/main.cpp)
 
 **Training Loss Curve:**
 
-![Loss Decreases as Model Learns Multiple Patterns](images/training-loss-example4.svg)
+![Loss Decreases as Model Learns Multiple Patterns](images/training/training-loss-example4.svg)
 
 ---
 ---

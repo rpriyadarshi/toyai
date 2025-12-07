@@ -128,7 +128,7 @@ graph LR
 
 **2D Embedding Space Visualization:**
 
-![Semantic Space: Tokens as Points in 2D](images/embedding-space-2d.svg)
+![Semantic Space: Tokens as Points in 2D](images/other/embedding-space-2d.svg)
 
 ### Fixed vs. Learned Embeddings
 

@@ -276,7 +276,7 @@ graph LR
 
 **Gradient Decay Curve (Vanishing Gradient Problem):**
 
-![Gradient Vanishes Over Time Steps](images/gradient-decay-vanishing.svg)
+![Gradient Vanishes Over Time Steps](images/training/gradient-decay-vanishing.svg)
 
 **When gradients vanish:**
 - The RNN **cannot learn** to connect "sat" to "cat"
