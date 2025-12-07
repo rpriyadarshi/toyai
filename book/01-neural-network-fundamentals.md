@@ -40,6 +40,13 @@ You might notice that the core computation $w \cdot x + b$ looks very familiar�
 
 The key difference is that the perceptron then applies an activation function $f()$ to this linear combination. If $f()$ is the identity function (just returns its input unchanged), then the perceptron is computing a linear function—a straight line (or hyperplane in higher dimensions). But with other activation functions like ReLU or sigmoid, we get non-linear transformations that enable the network to learn complex, curved patterns that a simple straight line cannot represent.
 
+To see this transformation in action, consider what happens when we apply different activation functions to straight lines. The graphs below show four different linear functions (y = 2x + 1, y = -x + 2, y = 0.5x - 1, and y = -1.5x + 0.5) and how they are transformed by ReLU, Sigmoid, and Tanh activation functions. Notice how ReLU zeros out all negative values, creating sharp corners where lines cross zero. Sigmoid squashes everything into the 0-1 range, creating smooth S-shaped curves. Tanh does something similar but squashes to the -1 to 1 range, preserving the sign of the original values. These transformations are what allow neural networks to learn non-linear patterns—without them, the network would only be able to compute straight lines.
+
+| | |
+|:---:|:---:|
+| ![Linear Functions](images/activation-examples/linear-function.svg) | ![After ReLU](images/activation-examples/relu-applied.svg) |
+| ![After Sigmoid](images/activation-examples/sigmoid-applied.svg) | ![After Tanh](images/activation-examples/tanh-applied.svg) |
+
 To understand this intuitively, think of a perceptron as a simple voting system. The inputs are like votes: [vote1, vote2, vote3]. The weights determine the strength of each vote: [0.8, 0.2, 0.5] means vote1 is most important. The bias adds a baseline value, like always adding +0.1 regardless of the votes. The activation function then shapes the result, perhaps by saying "if the total exceeds 0.5, output YES."
 
 Let's work through a concrete example:
