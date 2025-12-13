@@ -419,9 +419,9 @@ Gradient descent converges to a local minimum under certain conditions: the loss
 
 The gradient descent process follows these steps: First, we compute the loss by comparing the model's prediction to the target. Next, we compute the gradients, which tell us which direction to move each weight. Then we update the weights using the formula $W_{\text{new}} = W_{\text{old}} - \eta \times \frac{\partial L}{\partial W}$. This is like solving an equation iteratively. In algebra, if you're trying to find where a function equals zero, you might start with a guess, compute the slope at that point, and move in the direction that reduces the function value. Gradient descent does exactly this: it iteratively refines the weights until it finds values that minimize the loss. We repeat this process for many iterations, gradually moving the weights toward values that minimize the loss.
 
-![Gradient Descent Algorithm](images/training/gradient-descent-algorithm.svg)
-
-![Gradient Descent: Loss Decreases Over Time](images/training/gradient-descent-path.svg)
+| | |
+|:---:|:---:|
+| ![Gradient Descent Algorithm](images/training/gradient-descent-algorithm.svg) | ![Gradient Descent: Loss Decreases Over Time](images/training/gradient-descent-path.svg) |
 
 We trace through a complete iteration to illustrate how this works, using example values chosen to demonstrate the process:
 
