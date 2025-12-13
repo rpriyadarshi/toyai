@@ -40,13 +40,16 @@ In this equation, $\mathbf{x}$ represents the input, which is a vector of $d$ nu
 
 ### Example: Computing Perceptron Output
 
-We now illustrate the perceptron computation using a numerical example with a 2-dimensional input vector. For pedagogical clarity, we choose simple input values that make the arithmetic easy to follow: $\mathbf{x} = [1, 0]$, which is a unit basis vector where only the first component is non-zero. This choice simplifies the calculation while demonstrating the core computation.
+We now illustrate the perceptron computation using a numerical example with a 2-dimensional input vector. For pedagogical clarity, we choose simple input values that make the arithmetic easy to follow: $\mathbf{x} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$, which is a unit basis vector where only the first component is non-zero. This choice simplifies the calculation while demonstrating the core computation.
 
 **Given:**
-- Input vector: $\mathbf{x} = [1, 0]$ (chosen for simplicity: only the first component is active, making it easy to trace how each component contributes)
-- Weight vector: $\mathbf{w} = [0.1, 0.2]$ (arbitrary example values chosen to demonstrate the computation)
+- Input vector: $\mathbf{x} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$ (chosen for simplicity: only the first component is active, making it easy to trace how each component contributes)
+- Weight vector: $\mathbf{w} = \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix}$ (arbitrary example values chosen to demonstrate the computation)
 - Bias: $b = 0.05$ (arbitrary example value)
 - Activation function: $f(x) = \text{ReLU}(x) = \max(0, x)$
+
+**Equation to solve:**
+$$y = f\left(\begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 0 \end{bmatrix} + 0.05\right) = \text{ReLU}\left(\begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 0 \end{bmatrix} + 0.05\right)$$
 
 **Computation:**
 
@@ -61,17 +64,22 @@ We now illustrate the perceptron computation using a numerical example with a 2-
 
 **Result:** The perceptron produces output $y = 0.15$.
 
-**Interpretation:** We chose the input vector $[1, 0]$ because it simplifies the calculation—only the first component is non-zero, making it easy to see how that component contributes to the output. The first component (value 1) is multiplied by weight 0.1, contributing 0.1 to the weighted sum. The second component (value 0) is multiplied by weight 0.2, contributing 0 to the weighted sum (demonstrating that zero inputs produce zero contribution regardless of the weight value). The bias term adds 0.05 to the result. After applying the ReLU activation function, which preserves non-negative values, the final output is 0.15.
+**Interpretation:** We chose the input vector $\begin{bmatrix} 1 \\ 0 \end{bmatrix}$ because it simplifies the calculation—only the first component is non-zero, making it easy to see how that component contributes to the output. The first component (value 1) is multiplied by weight 0.1, contributing 0.1 to the weighted sum. The second component (value 0) is multiplied by weight 0.2, contributing 0 to the weighted sum (demonstrating that zero inputs produce zero contribution regardless of the weight value). The bias term adds 0.05 to the result. After applying the ReLU activation function, which preserves non-negative values, the final output is 0.15.
 
 ### Example: Alternative Input
 
-To demonstrate how different inputs produce different outputs, we now consider the same perceptron with input $\mathbf{x} = [0, 1]$, which is the complementary unit basis vector (only the second component is non-zero). This choice allows us to compare how the same perceptron responds to different input patterns while keeping the arithmetic simple.
+To demonstrate how different inputs produce different outputs, we now consider the same perceptron with input $\mathbf{x} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$, which is the complementary unit basis vector (only the second component is non-zero). This choice allows us to compare how the same perceptron responds to different input patterns while keeping the arithmetic simple.
+
+**Equation to solve:**
+$$y = f\left(\begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix} \cdot \begin{bmatrix} 0 \\ 1 \end{bmatrix} + 0.05\right) = \text{ReLU}\left(\begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix} \cdot \begin{bmatrix} 0 \\ 1 \end{bmatrix} + 0.05\right)$$
+
+**Computation:**
 
 1. Dot product: $\mathbf{w} \cdot \mathbf{x} = 0.1 \times 0 + 0.2 \times 1 = 0.2$
 2. Add bias: $0.2 + 0.05 = 0.25$
 3. Apply ReLU: $y = \max(0, 0.25) = 0.25$
 
-This example demonstrates that the same perceptron produces different outputs for different input vectors. By using the unit basis vectors $[1, 0]$ and $[0, 1]$, we can clearly see how each input component contributes independently to the output, enabling the network to distinguish between different input patterns based on their component values.
+This example demonstrates that the same perceptron produces different outputs for different input vectors. By using the unit basis vectors $\begin{bmatrix} 1 \\ 0 \end{bmatrix}$ and $\begin{bmatrix} 0 \\ 1 \end{bmatrix}$, we can clearly see how each input component contributes independently to the output, enabling the network to distinguish between different input patterns based on their component values.
 
 You might notice that the core computation $\mathbf{w} \cdot \mathbf{x} + b$ looks very familiar—it's closely related to the equation of a straight line! In algebra, we write a line as $y = mx + c$, where $m$ is the slope and $c$ is the y-intercept. For a perceptron with a single input ($d=1$), $\mathbf{w} \cdot \mathbf{x} + b$ becomes $wx + b$, which is exactly $y = mx + c$ (where $w$ is the slope and $b$ is the intercept). For multiple inputs ($d > 1$), $\mathbf{w} \cdot \mathbf{x} = \sum_{i=1}^d w_i x_i$ is the dot product (weighted sum), which generalizes the line equation to multiple dimensions. The bias $b$ still shifts the entire computation up or down, just like the y-intercept shifts a line.
 
@@ -88,11 +96,18 @@ To understand this intuitively, think of a perceptron as a simple voting system.
 
 We illustrate this with a numerical example using arbitrary values chosen to demonstrate the computation:
 
+**Equation to solve:**
+$$y = f\left(\begin{bmatrix} 0.8 \\ 0.2 \\ 0.5 \end{bmatrix} \cdot \begin{bmatrix} 1.0 \\ 0.5 \\ 0.3 \end{bmatrix} + 0.1\right) = \text{ReLU}\left(\begin{bmatrix} 0.8 \\ 0.2 \\ 0.5 \end{bmatrix} \cdot \begin{bmatrix} 1.0 \\ 0.5 \\ 0.3 \end{bmatrix} + 0.1\right)$$
+
+**Given:**
 ```
 Input: [1.0, 0.5, 0.3]  (example 3-dimensional input vector)
 Weights: [0.8, 0.2, 0.5]  (example weight values)
 Bias: 0.1  (example bias value)
+```
 
+**Computation:**
+```
 Weighted sum: 1.0×0.8 + 0.5×0.2 + 0.3×0.5 + 0.1 = 1.15
 Activation (ReLU): max(0, 1.15) = 1.15
 Output: 1.15
@@ -106,17 +121,17 @@ We now examine each component of the perceptron in detail, as understanding thes
 
 **Weight ($\mathbf{w}$):** Weights determine the strength of connections in a network. A high weight creates a strong connection, meaning that input has a large influence on the output. A low weight creates a weak connection, giving that input only a small influence. When a weight is negative, it creates an inhibitory connection that opposes the input rather than supporting it. During training, the network learns which weights to assign to each input based on how well those weights help it make correct predictions.
 
-**Numerical Example:** Consider a weight vector $\mathbf{w} = [0.1, 0.2]$:
+**Numerical Example:** Consider a weight vector $\mathbf{w} = \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix}$:
 - The first input component is scaled by weight 0.1 (moderate influence)
 - The second input component is scaled by weight 0.2 (stronger influence, contributing twice as much per unit input)
-- For comparison, a weight vector $\mathbf{w} = [0.5, -0.3]$ would give the first component strong positive influence (0.5), while the second component would have inhibitory influence (-0.3), reducing the output when that input is positive
+- For comparison, a weight vector $\mathbf{w} = \begin{bmatrix} 0.5 \\ -0.3 \end{bmatrix}$ would give the first component strong positive influence (0.5), while the second component would have inhibitory influence (-0.3), reducing the output when that input is positive
 
-**Computation Example:** Using the same simple input vector $\mathbf{x} = [1, 0]$ and weights $\mathbf{w} = [0.1, 0.2]$:
+**Computation Example:** Using the same simple input vector $\mathbf{x} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$ and weights $\mathbf{w} = \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix}$:
 - First component contribution: $w_1 \times x_1 = 0.1 \times 1 = 0.1$
 - Second component contribution: $w_2 \times x_2 = 0.2 \times 0 = 0$
 - Total weighted input: $0.1 + 0 = 0.1$
 
-This demonstrates that weights only affect the output when their corresponding input components are non-zero. The weight value 0.2 has no effect in this case because the corresponding input component is zero. We chose $[1, 0]$ specifically to make this property clear—by having one component be zero, we can isolate the effect of the other component.
+This demonstrates that weights only affect the output when their corresponding input components are non-zero. The weight value 0.2 has no effect in this case because the corresponding input component is zero. We chose $\begin{bmatrix} 1 \\ 0 \end{bmatrix}$ specifically to make this property clear—by having one component be zero, we can isolate the effect of the other component.
 
 Weights are typically initialized to small random values (e.g., sampled from a normal distribution with mean 0 and standard deviation 0.01) to break symmetry. If all weights start at zero, all neurons in a layer would compute identical outputs and learn identical features, which would waste capacity. Random initialization ensures each neuron starts with different weights, enabling the network to learn diverse features.
 
@@ -127,7 +142,7 @@ Weights are typically initialized to small random values (e.g., sampled from a n
 - Given weighted sum 0.0, the value before activation becomes $0.0 + 0.05 = 0.05$ (positive output even with zero weighted input)
 - With bias $b = -0.1$, the same weighted sum of 0.1 becomes $0.1 + (-0.1) = 0.0$
 
-**Comparison Example:** To illustrate how bias affects the output, consider two perceptrons with identical weights $\mathbf{w} = [0.1, 0.2]$ and the same simple input $\mathbf{x} = [1, 0]$ (chosen to keep the calculation straightforward):
+**Comparison Example:** To illustrate how bias affects the output, consider two perceptrons with identical weights $\mathbf{w} = \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix}$ and the same simple input $\mathbf{x} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$ (chosen to keep the calculation straightforward):
 - Perceptron A with $b = 0.05$: output = ReLU(0.1 + 0.05) = ReLU(0.15) = 0.15
 - Perceptron B with $b = -0.1$: output = ReLU(0.1 + (-0.1)) = ReLU(0.0) = 0.0
 
@@ -141,7 +156,7 @@ The bias parameter shifts the decision threshold, controlling the perceptron's s
 - **Sigmoid**: $f(0.15) = \frac{1}{1+e^{-0.15}} \approx 0.537$ (maps to the interval $(0, 1)$)
 - **Tanh**: $f(0.15) = \tanh(0.15) \approx 0.149$ (maps to the interval $(-1, 1)$, preserving the sign of the input)
 
-**Comparison Example:** To compare different activation functions, we use the same input $\mathbf{x} = [1, 0]$ (chosen for simplicity), weights $\mathbf{w} = [0.1, 0.2]$, and bias $b = 0.05$:
+**Comparison Example:** To compare different activation functions, we use the same input $\mathbf{x} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$ (chosen for simplicity), weights $\mathbf{w} = \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix}$, and bias $b = 0.05$:
 - Pre-activation value: $0.1 + 0.05 = 0.15$
 - **With ReLU activation**: output = $\max(0, 0.15) = 0.15$
 - **With Sigmoid activation**: output = $\frac{1}{1+e^{-0.15}} \approx 0.537$
@@ -191,6 +206,14 @@ To visualize this, imagine a multi-stage factory. Stage 1 (the input layer) is w
 
 We trace through an example to illustrate how data flows through multiple layers. The values shown are arbitrary examples chosen to demonstrate the transformation process:
 
+**Equation to solve:**
+For each layer: $\mathbf{y} = f(\mathbf{W}\mathbf{x} + \mathbf{b})$
+
+- Layer 1: $\mathbf{y}_1 = f\left(\mathbf{W}_1 \begin{bmatrix} 0.5 \\ 0.3 \end{bmatrix} + \mathbf{b}_1\right) = \begin{bmatrix} 0.3 \\ 0.7 \\ -0.2 \end{bmatrix}$
+- Layer 2: $\mathbf{y}_2 = f\left(\mathbf{W}_2 \begin{bmatrix} 0.3 \\ 0.7 \\ -0.2 \end{bmatrix} + \mathbf{b}_2\right) = \begin{bmatrix} 0.4 \\ 0.6 \\ -0.1 \end{bmatrix}$
+- Output: $\mathbf{y}_{\text{out}} = f\left(\mathbf{W}_{\text{out}} \begin{bmatrix} 0.4 \\ 0.6 \\ -0.1 \end{bmatrix} + \mathbf{b}_{\text{out}}\right) = \begin{bmatrix} 0.1 \\ 0.8 \\ 0.05 \\ 0.05 \end{bmatrix}$
+
+**Computation:**
 ```
 Input Layer: Receives input data [0.5, 0.3]  (example 2-dimensional input)
 Hidden Layer 1: Transforms to vector [0.3, 0.7, -0.2]  (expands to 3 dimensions)
@@ -224,6 +247,10 @@ To understand this intuitively, think of a feed-forward network as a two-stage t
 
 We trace through a numerical example using arbitrary values chosen to illustrate the expansion-compression pattern:
 
+**Equation to solve:**
+$$\text{FFN}\left(\begin{bmatrix} 0.3 \\ 0.7 \end{bmatrix}\right) = \text{ReLU}\left(\begin{bmatrix} 0.3 \\ 0.7 \end{bmatrix}\mathbf{W}_1 + \mathbf{b}_1\right)\mathbf{W}_2 + \mathbf{b}_2 = \begin{bmatrix} 0.4 \\ 0.6 \end{bmatrix}$$
+
+**Computation:**
 ```
 Input: [0.3, 0.7] (dimension 2, example input values)
 W₁: 2×4 matrix → Output: [0.5, 0.2, 0.8, 0.1] (expanded to 4 dimensions)
@@ -257,17 +284,36 @@ To understand this intuitively, think of loss like a golf score: lower is better
 
 We illustrate this with a numerical example. For clarity, we use a simple 4-class classification problem with arbitrary class labels:
 
+**Given:**
 ```
 Target: Class C (one-hot encoding: [0, 0, 1, 0])
 Prediction probabilities: [0.1, 0.2, 0.6, 0.1]
+```
 
+Note: In mathematical notation, the target vector is $\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}$ and prediction probabilities are $\begin{bmatrix} 0.1 \\ 0.2 \\ 0.6 \\ 0.1 \end{bmatrix}$.
+
+**Equation to solve:**
+$$L = -\log(0.6) = 0.51$$
+
+**Computation:**
+```
 Loss = -log(0.6) = 0.51  (model assigned 60% probability to correct class)
 ```
 
 In this case, the model correctly identified class C as the most likely answer, assigning it 60% probability. The loss of 0.51 reflects that this is a reasonable prediction, though not perfect. Now consider what happens when the model makes a wrong prediction:
 
+**Given:**
 ```
 If prediction was: [0.8, 0.1, 0.05, 0.05]
+```
+
+Note: In mathematical notation, the prediction probabilities are $\begin{bmatrix} 0.8 \\ 0.1 \\ 0.05 \\ 0.05 \end{bmatrix}$.
+
+**Equation to solve:**
+$$L = -\log(0.05) = 3.0$$
+
+**Computation:**
+```
 Loss = -log(0.05) = 3.0  (model assigned only 5% to correct class)
 ```
 
@@ -293,16 +339,24 @@ Gradient descent is an optimization algorithm that uses gradients to iteratively
 
 A gradient shows how much each parameter should change to reduce the loss. In basic calculus and algebra, the gradient is the derivative—it tells you the slope of a function at a given point. If you remember from algebra that the slope of a line $y = mx + b$ is $m$, the gradient generalizes this concept to multi-dimensional functions. The gradient tells you the slope in each direction.
 
-The gradient $\nabla_{\mathbf{W}} L$ is a vector (or matrix) of partial derivatives: $\nabla_{\mathbf{W}} L = [\frac{\partial L}{\partial w_1}, \frac{\partial L}{\partial w_2}, \ldots]$. Each component tells us how much the loss changes when we change that specific parameter. Think of the gradient as a compass pointing uphill. Since loss is like altitude (and we want to go down), the gradient points in the direction of steepest increase. This means the negative gradient points in the direction we want to go—downhill, toward lower loss. The magnitude of the gradient tells us how steep the slope is: a large gradient means a steep slope, while a small gradient means a gentle slope.
+The gradient $\nabla_{\mathbf{W}} L$ is a vector (or matrix) of partial derivatives: $\nabla_{\mathbf{W}} L = \begin{bmatrix} \frac{\partial L}{\partial w_1} \\ \frac{\partial L}{\partial w_2} \\ \vdots \end{bmatrix}$. Each component tells us how much the loss changes when we change that specific parameter. Think of the gradient as a compass pointing uphill. Since loss is like altitude (and we want to go down), the gradient points in the direction of steepest increase. This means the negative gradient points in the direction we want to go—downhill, toward lower loss. The magnitude of the gradient tells us how steep the slope is: a large gradient means a steep slope, while a small gradient means a gentle slope.
 
 We illustrate this with a numerical example using arbitrary values chosen to demonstrate the gradient descent update:
 
+**Given:**
 ```
 Parameter W (a weight in a matrix):
 Current value: W = 0.5  (example initial weight)
 Loss at W=0.5: 2.0  (example loss value)
 Gradient: ∂L/∂W = -0.3  (example gradient value)
+Learning rate: η = 0.1
+```
 
+**Equation to solve:**
+$$W_{\text{new}} = 0.5 - 0.1 \times (-0.3) = 0.5 + 0.03 = 0.53$$
+
+**Computation:**
+```
 Interpretation: 
 - Negative gradient means increasing W will DECREASE loss
 - Magnitude 0.3 means the slope is moderate
@@ -324,16 +378,27 @@ In neural networks, the learning rate (denoted as $\eta$ or `lr`) is typically s
 
 To see how the learning rate affects updates, consider this example using arbitrary values:
 
+**Given:**
 ```
 Gradient: -0.5 (example gradient value indicating weight should increase)
 Learning rate: 0.1 (small step size)
+```
 
+**Equation to solve (with learning rate 0.1):**
+$$W_{\text{new}} = W_{\text{old}} - 0.1 \times (-0.5) = W_{\text{old}} + 0.05$$
+
+**Computation:**
+```
 Weight update: W_new = W_old - 0.1 × (-0.5)
               = W_old + 0.05  (small increase)
 ```
 
 With a learning rate of 0.1, we make a modest update. But if we used a learning rate of 1.0:
 
+**Equation to solve (with learning rate 1.0):**
+$$W_{\text{new}} = W_{\text{old}} - 1.0 \times (-0.5) = W_{\text{old}} + 0.5$$
+
+**Computation with larger learning rate:**
 ```
 If learning rate was 1.0:
 Weight update: W_new = W_old - 1.0 × (-0.5)
@@ -360,12 +425,19 @@ The gradient descent process follows these steps: First, we compute the loss by 
 
 We trace through a complete iteration to illustrate how this works, using example values chosen to demonstrate the process:
 
+**Given:**
 ```
 Initial weight: W = 0.5  (arbitrary starting value)
 Loss: 2.0  (example initial loss)
 Gradient: ∂L/∂W = -0.3 (negative = should increase W)
 Learning rate: η = 0.1  (example learning rate)
+```
 
+**Equation to solve:**
+$$W_{\text{new}} = 0.5 - 0.1 \times (-0.3) = 0.5 + 0.03 = 0.53$$
+
+**Computation:**
+```
 Update: W_new = 0.5 - 0.1 × (-0.3)
        = 0.5 + 0.03
        = 0.53
@@ -397,6 +469,13 @@ In a neural network, the forward pass follows a specific sequence of transformat
 
 We trace through a complete forward pass example using arbitrary values chosen to illustrate the transformation process:
 
+**Equations to solve:**
+- Hidden Layer 1: $\mathbf{y}_1 = f\left(\mathbf{W}_1 \begin{bmatrix} 0.5 \\ 0.3 \end{bmatrix} + \mathbf{b}_1\right) = \begin{bmatrix} 0.1 \\ 0.2 \\ 0.4 \end{bmatrix}$
+- Hidden Layer 2: $\mathbf{y}_2 = f\left(\mathbf{W}_2 \begin{bmatrix} 0.1 \\ 0.2 \\ 0.4 \end{bmatrix} + \mathbf{b}_2\right) = \begin{bmatrix} 0.3 \\ 0.7 \end{bmatrix}$
+- Output Layer: $\mathbf{y}_{\text{out}} = f\left(\mathbf{W}_{\text{out}} \begin{bmatrix} 0.3 \\ 0.7 \end{bmatrix} + \mathbf{b}_{\text{out}}\right) = \begin{bmatrix} 1.0 \\ 2.0 \\ 0.5 \\ 0.3 \end{bmatrix}$
+- Softmax: $\text{softmax}\left(\begin{bmatrix} 1.0 \\ 2.0 \\ 0.5 \\ 0.3 \end{bmatrix}\right) = \begin{bmatrix} 0.1 \\ 0.8 \\ 0.05 \\ 0.05 \end{bmatrix}$
+
+**Computation:**
 ```
 Forward Pass:
 Input: [0.5, 0.3]  (example 2-dimensional input)
@@ -427,6 +506,18 @@ Each term in this product is computed during the backward pass, with gradients f
 
 We trace through a backward pass example using arbitrary gradient values chosen to illustrate the propagation process:
 
+**Given:**
+```
+Loss: 0.5 (example loss value)
+```
+
+**Equations to solve (using chain rule):**
+- Gradient w.r.t. output: $\frac{\partial L}{\partial \mathbf{y}_{\text{out}}} = \begin{bmatrix} -0.2 \\ 0.8 \\ -0.3 \\ -0.3 \end{bmatrix}$
+- Gradient w.r.t. hidden layer 2: $\frac{\partial L}{\partial \mathbf{y}_2} = \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix}$ (computed via chain rule)
+- Gradient w.r.t. hidden layer 1: $\frac{\partial L}{\partial \mathbf{y}_1} = \begin{bmatrix} 0.05 \\ 0.15 \\ 0.1 \end{bmatrix}$ (computed via chain rule)
+- For each weight matrix: $\frac{\partial L}{\partial \mathbf{W}_i} = \frac{\partial L}{\partial \mathbf{y}_i} \frac{\partial \mathbf{y}_i}{\partial \mathbf{W}_i}$
+
+**Computation:**
 ```
 Backward Pass:
 Loss: 0.5 (example loss value)
@@ -462,6 +553,7 @@ Weight update is the process of changing matrix values (weights) based on gradie
 
 We illustrate how weight updates work in practice using example values chosen to demonstrate the update process:
 
+**Given:**
 ```
 Before training:
 Weight matrix W = [0.1, 0.2]  (example initial weights)
@@ -471,7 +563,14 @@ Loss: 2.5 (example high loss value)
 After computing gradients:
 Gradient = [-0.5, -0.3]  (example gradient values)
           [-0.2, -0.1]
+Learning rate: η = 0.1
+```
 
+**Equation to solve:**
+$$\mathbf{W}_{\text{new}} = \begin{bmatrix} 0.1 & 0.2 \\ 0.3 & 0.4 \end{bmatrix} - 0.1 \times \begin{bmatrix} -0.5 & -0.3 \\ -0.2 & -0.1 \end{bmatrix} = \begin{bmatrix} 0.15 & 0.23 \\ 0.32 & 0.41 \end{bmatrix}$$
+
+**Computation:**
+```
 Weight update (learning_rate = 0.1):
 W_new = W_old - 0.1 × Gradient
       = [0.1, 0.2] - 0.1 × [-0.5, -0.3]
@@ -569,13 +668,13 @@ The **vocabulary** is the complete set of all possible tokens that a transformer
 
 **Embeddings**
 
-**Embedding lookup** is the process of converting integer token IDs into vector representations using an embedding matrix. Think of embedding lookup like using a student ID to retrieve their file from a filing cabinet. The student ID (integer) gives you access to the student file (a vector of information), so ID 2 might retrieve the vector [0.3, 0.7, -0.2]. An **embedding** converts a discrete token into a continuous vector (a list of numbers). Think of an embedding like a translator that converts a word (a discrete symbol) into a point on a map (continuous coordinates). The word "cat" is just a symbol, but its embedding [0.3, 0.7, -0.2] represents a location in meaning-space where similar words are close together.
+**Embedding lookup** is the process of converting integer token IDs into vector representations using an embedding matrix. Think of embedding lookup like using a student ID to retrieve their file from a filing cabinet. The student ID (integer) gives you access to the student file (a vector of information), so ID 2 might retrieve the vector $\begin{bmatrix} 0.3 \\ 0.7 \\ -0.2 \end{bmatrix}$. An **embedding** converts a discrete token into a continuous vector (a list of numbers). Think of an embedding like a translator that converts a word (a discrete symbol) into a point on a map (continuous coordinates). The word "cat" is just a symbol, but its embedding $\begin{bmatrix} 0.3 \\ 0.7 \\ -0.2 \end{bmatrix}$ represents a location in meaning-space where similar words are close together.
 
 #### Mathematical Foundations
 
 **Vectors, Matrices, and Dimensions**
 
-A **vector** is an ordered list of numbers, representing a point in space. Think of a vector like GPS coordinates. The vector [0.3, 0.7] represents a point at (0.3, 0.7) on a 2D map, while [0.3, 0.7, -0.2] represents a point in 3D space. In basic algebra, you might add vectors component-wise: [1, 2] + [3, 4] = [4, 6]. This is just like adding coordinates—you add the x-components together and the y-components together.
+A **vector** is an ordered list of numbers, representing a point in space. Think of a vector like GPS coordinates. The vector $\begin{bmatrix} 0.3 \\ 0.7 \end{bmatrix}$ represents a point at (0.3, 0.7) on a 2D map, while $\begin{bmatrix} 0.3 \\ 0.7 \\ -0.2 \end{bmatrix}$ represents a point in 3D space. In basic algebra, you might add vectors component-wise: $\begin{bmatrix} 1 \\ 2 \end{bmatrix} + \begin{bmatrix} 3 \\ 4 \end{bmatrix} = \begin{bmatrix} 4 \\ 6 \end{bmatrix}$. This is just like adding coordinates—you add the x-components together and the y-components together.
 
 A **matrix** is a rectangular grid of numbers, used to transform vectors. In algebra, matrix multiplication is like solving a system of linear equations. When you multiply a matrix by a vector, you're essentially computing multiple weighted sums simultaneously. For example, if you have equations $y_1 = 2x_1 + 3x_2$ and $y_2 = 4x_1 + 5x_2$, you can write this as a matrix multiplication where the matrix contains the coefficients.
 
@@ -601,7 +700,7 @@ A **sequence** is an ordered list of tokens that the transformer processes toget
 
 **Attention Dot Product**
 
-The **attention dot product** is a mathematical operation that measures how similar two vectors are. In algebra, the dot product is computed by multiplying corresponding components and summing: for vectors $[a, b]$ and $[c, d]$, the dot product is $ac + bd$. This is essentially a weighted sum—you're multiplying each component of one vector by the corresponding component of the other, then adding everything together.
+The **attention dot product** is a mathematical operation that measures how similar two vectors are. In algebra, the dot product is computed by multiplying corresponding components and summing: for vectors $\begin{bmatrix} a \\ b \end{bmatrix}$ and $\begin{bmatrix} c \\ d \end{bmatrix}$, the dot product is $ac + bd$. This is essentially a weighted sum—you're multiplying each component of one vector by the corresponding component of the other, then adding everything together.
 
 The dot product $\mathbf{Q} \cdot \mathbf{K}$ measures cosine similarity when vectors are normalized. For unnormalized vectors, it measures both magnitude and alignment. Think of the dot product like measuring alignment. A high dot product means the vectors point in the same direction, indicating they're similar and relevant to each other. A low dot product means the vectors point in different directions, indicating they're different and not relevant.
 
@@ -609,7 +708,7 @@ The dot product $\mathbf{Q} \cdot \mathbf{K}$ measures cosine similarity when ve
 
 **Context Vectors and Output Projection**
 
-A **context vector** is a weighted combination of all token values, where the weights come from attention. In basic algebra, this is like computing a weighted average. If you have values [a, b, c] with weights [0.5, 0.3, 0.2], the weighted average is $0.5a + 0.3b + 0.2c$. The context vector does exactly this: it multiplies each token value by its attention weight and sums them together. Think of a context vector like a blended smoothie. Each fruit (token value) contributes to the smoothie, and the amount of each fruit equals the attention weight. The final smoothie (the context vector) contains all the blended information. **Output Projection ($\mathbf{W}_O$)** is a matrix that transforms the context vector into vocabulary-space (predictions for each token). Think of $\mathbf{W}_O$ like a translator that converts context meaning (in semantic space) into the likelihood of each word (in vocabulary space). It's like converting "animal, four legs, meows" into "cat: 80%, dog: 15%, mat: 5%".
+A **context vector** is a weighted combination of all token values, where the weights come from attention. In basic algebra, this is like computing a weighted average. If you have values $\begin{bmatrix} a \\ b \\ c \end{bmatrix}$ with weights $\begin{bmatrix} 0.5 \\ 0.3 \\ 0.2 \end{bmatrix}$, the weighted average is $0.5a + 0.3b + 0.2c$. The context vector does exactly this: it multiplies each token value by its attention weight and sums them together. Think of a context vector like a blended smoothie. Each fruit (token value) contributes to the smoothie, and the amount of each fruit equals the attention weight. The final smoothie (the context vector) contains all the blended information. **Output Projection ($\mathbf{W}_O$)** is a matrix that transforms the context vector into vocabulary-space (predictions for each token). Think of $\mathbf{W}_O$ like a translator that converts context meaning (in semantic space) into the likelihood of each word (in vocabulary space). It's like converting "animal, four legs, meows" into "cat: 80%, dog: 15%, mat: 5%".
 
 **Logits and Softmax**
 
