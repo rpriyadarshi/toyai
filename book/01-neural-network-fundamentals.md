@@ -38,6 +38,41 @@ where $\mathbf{x} \in \mathbb{R}^d$ is the input vector, $\mathbf{w} \in \mathbb
 
 In this equation, $\mathbf{x}$ represents the input, which is a vector of $d$ numbers. The variable $\mathbf{w}$ represents the weights, which determine how important each input is. The bias $b$ provides a baseline offset that shifts the entire computation. The function $f()$ is called the activation function, and it shapes the output in a specific way. Finally, $y$ is the output—the decision made by the perceptron.
 
+### Example: Computing Perceptron Output
+
+We now illustrate the perceptron computation using a numerical example with a 2-dimensional input vector. For pedagogical clarity, we choose simple input values that make the arithmetic easy to follow: $\mathbf{x} = [1, 0]$, which is a unit basis vector where only the first component is non-zero. This choice simplifies the calculation while demonstrating the core computation.
+
+**Given:**
+- Input vector: $\mathbf{x} = [1, 0]$ (chosen for simplicity: only the first component is active, making it easy to trace how each component contributes)
+- Weight vector: $\mathbf{w} = [0.1, 0.2]$ (arbitrary example values chosen to demonstrate the computation)
+- Bias: $b = 0.05$ (arbitrary example value)
+- Activation function: $f(x) = \text{ReLU}(x) = \max(0, x)$
+
+**Computation:**
+
+1. **Compute the dot product** $\mathbf{w} \cdot \mathbf{x}$:
+   $$\mathbf{w} \cdot \mathbf{x} = w_1 \cdot x_1 + w_2 \cdot x_2 = 0.1 \times 1 + 0.2 \times 0 = 0.1 + 0 = 0.1$$
+
+2. **Add the bias term**:
+   $$\mathbf{w} \cdot \mathbf{x} + b = 0.1 + 0.05 = 0.15$$
+
+3. **Apply the activation function**:
+   $$y = f(0.15) = \text{ReLU}(0.15) = \max(0, 0.15) = 0.15$$
+
+**Result:** The perceptron produces output $y = 0.15$.
+
+**Interpretation:** We chose the input vector $[1, 0]$ because it simplifies the calculation—only the first component is non-zero, making it easy to see how that component contributes to the output. The first component (value 1) is multiplied by weight 0.1, contributing 0.1 to the weighted sum. The second component (value 0) is multiplied by weight 0.2, contributing 0 to the weighted sum (demonstrating that zero inputs produce zero contribution regardless of the weight value). The bias term adds 0.05 to the result. After applying the ReLU activation function, which preserves non-negative values, the final output is 0.15.
+
+### Example: Alternative Input
+
+To demonstrate how different inputs produce different outputs, we now consider the same perceptron with input $\mathbf{x} = [0, 1]$, which is the complementary unit basis vector (only the second component is non-zero). This choice allows us to compare how the same perceptron responds to different input patterns while keeping the arithmetic simple.
+
+1. Dot product: $\mathbf{w} \cdot \mathbf{x} = 0.1 \times 0 + 0.2 \times 1 = 0.2$
+2. Add bias: $0.2 + 0.05 = 0.25$
+3. Apply ReLU: $y = \max(0, 0.25) = 0.25$
+
+This example demonstrates that the same perceptron produces different outputs for different input vectors. By using the unit basis vectors $[1, 0]$ and $[0, 1]$, we can clearly see how each input component contributes independently to the output, enabling the network to distinguish between different input patterns based on their component values.
+
 You might notice that the core computation $\mathbf{w} \cdot \mathbf{x} + b$ looks very familiar—it's closely related to the equation of a straight line! In algebra, we write a line as $y = mx + c$, where $m$ is the slope and $c$ is the y-intercept. For a perceptron with a single input ($d=1$), $\mathbf{w} \cdot \mathbf{x} + b$ becomes $wx + b$, which is exactly $y = mx + c$ (where $w$ is the slope and $b$ is the intercept). For multiple inputs ($d > 1$), $\mathbf{w} \cdot \mathbf{x} = \sum_{i=1}^d w_i x_i$ is the dot product (weighted sum), which generalizes the line equation to multiple dimensions. The bias $b$ still shifts the entire computation up or down, just like the y-intercept shifts a line.
 
 The key difference is that the perceptron then applies an activation function $f()$ to this linear combination. If $f()$ is the identity function (just returns its input unchanged), then the perceptron is computing a linear function—a straight line (or hyperplane in higher dimensions). But with other activation functions, we get non-linear transformations that enable the network to learn complex, curved patterns that a simple straight line cannot represent.
@@ -51,31 +86,68 @@ To see this transformation in action, consider what happens when we apply differ
 
 To understand this intuitively, think of a perceptron as a simple voting system. The inputs are like votes: [vote1, vote2, vote3]. The weights determine the strength of each vote: [0.8, 0.2, 0.5] means vote1 is most important. The bias adds a baseline value, like always adding +0.1 regardless of the votes. The activation function then shapes the result, perhaps by saying "if the total exceeds 0.5, output YES."
 
-Let's work through a concrete example:
+We illustrate this with a numerical example using arbitrary values chosen to demonstrate the computation:
 
 ```
-Input: [1.0, 0.5, 0.3]
-Weights: [0.8, 0.2, 0.5]
-Bias: 0.1
+Input: [1.0, 0.5, 0.3]  (example 3-dimensional input vector)
+Weights: [0.8, 0.2, 0.5]  (example weight values)
+Bias: 0.1  (example bias value)
 
 Weighted sum: 1.0×0.8 + 0.5×0.2 + 0.3×0.5 + 0.1 = 1.15
 Activation (ReLU): max(0, 1.15) = 1.15
-Output: 1.15 (decision made!)
+Output: 1.15
 ```
 
-In this example, we multiply each input by its corresponding weight, sum everything together, add the bias, and then apply the activation function to produce the final output.
+This example demonstrates that each input is multiplied by its corresponding weight, the products are summed together, the bias is added, and then the activation function is applied to produce the final output. The specific values are chosen arbitrarily for illustration; in practice, these would be learned during training.
 
 ### Understanding the Components
 
-Let's examine each component of the perceptron in detail, as understanding these building blocks is essential for grasping how more complex networks operate.
+We now examine each component of the perceptron in detail, as understanding these building blocks is essential for grasping how more complex networks operate.
 
 **Weight ($\mathbf{w}$):** Weights determine the strength of connections in a network. A high weight creates a strong connection, meaning that input has a large influence on the output. A low weight creates a weak connection, giving that input only a small influence. When a weight is negative, it creates an inhibitory connection that opposes the input rather than supporting it. During training, the network learns which weights to assign to each input based on how well those weights help it make correct predictions.
+
+**Numerical Example:** Consider a weight vector $\mathbf{w} = [0.1, 0.2]$:
+- The first input component is scaled by weight 0.1 (moderate influence)
+- The second input component is scaled by weight 0.2 (stronger influence, contributing twice as much per unit input)
+- For comparison, a weight vector $\mathbf{w} = [0.5, -0.3]$ would give the first component strong positive influence (0.5), while the second component would have inhibitory influence (-0.3), reducing the output when that input is positive
+
+**Computation Example:** Using the same simple input vector $\mathbf{x} = [1, 0]$ and weights $\mathbf{w} = [0.1, 0.2]$:
+- First component contribution: $w_1 \times x_1 = 0.1 \times 1 = 0.1$
+- Second component contribution: $w_2 \times x_2 = 0.2 \times 0 = 0$
+- Total weighted input: $0.1 + 0 = 0.1$
+
+This demonstrates that weights only affect the output when their corresponding input components are non-zero. The weight value 0.2 has no effect in this case because the corresponding input component is zero. We chose $[1, 0]$ specifically to make this property clear—by having one component be zero, we can isolate the effect of the other component.
 
 Weights are typically initialized to small random values (e.g., sampled from a normal distribution with mean 0 and standard deviation 0.01) to break symmetry. If all weights start at zero, all neurons in a layer would compute identical outputs and learn identical features, which would waste capacity. Random initialization ensures each neuron starts with different weights, enabling the network to learn diverse features.
 
 **Bias ($b$):** The bias acts as a baseline or offset that shifts the entire computation up or down. In algebra, this is like translating a graph: if you have $y = f(x)$ and you add a constant $c$ to get $y = f(x) + c$, the entire graph shifts up or down by $c$ units. The bias does the same thing—it shifts the entire function up or down. Think of it like setting a scale to zero before weighing something, or adjusting a thermostat's baseline temperature. The bias allows the perceptron to make decisions even when all inputs are zero, and it provides flexibility in how the decision boundary is positioned. Mathematically, without bias, a perceptron with all-zero inputs always outputs $f(0) = f(\mathbf{w} \cdot \mathbf{0}) = f(0)$, which severely limits expressivity. The bias term enables the network to learn decision boundaries that don't pass through the origin.
 
+**Numerical Example:** Consider bias $b = 0.05$:
+- Given weighted sum 0.1, the value before activation becomes $0.1 + 0.05 = 0.15$
+- Given weighted sum 0.0, the value before activation becomes $0.0 + 0.05 = 0.05$ (positive output even with zero weighted input)
+- With bias $b = -0.1$, the same weighted sum of 0.1 becomes $0.1 + (-0.1) = 0.0$
+
+**Comparison Example:** To illustrate how bias affects the output, consider two perceptrons with identical weights $\mathbf{w} = [0.1, 0.2]$ and the same simple input $\mathbf{x} = [1, 0]$ (chosen to keep the calculation straightforward):
+- Perceptron A with $b = 0.05$: output = ReLU(0.1 + 0.05) = ReLU(0.15) = 0.15
+- Perceptron B with $b = -0.1$: output = ReLU(0.1 + (-0.1)) = ReLU(0.0) = 0.0
+
+The bias parameter shifts the decision threshold, controlling the perceptron's sensitivity to input variations.
+
 **Activation Function ($f()$):** The activation function acts as a filter that shapes the signal. Without an activation function, a network can only perform linear transformations, which severely limits what it can learn. With an activation function, the network gains the ability to learn complex, non-linear patterns. Different activation functions create different "shapes" of transformation, each suited to different types of problems.
+
+**Numerical Example:** Consider the pre-activation value 0.15 (weighted sum + bias):
+- **ReLU**: $f(0.15) = \max(0, 0.15) = 0.15$ (preserves non-negative values)
+- **ReLU with negative input**: For input $-0.1$, ReLU produces $\max(0, -0.1) = 0$ (rectifies negative values to zero)
+- **Sigmoid**: $f(0.15) = \frac{1}{1+e^{-0.15}} \approx 0.537$ (maps to the interval $(0, 1)$)
+- **Tanh**: $f(0.15) = \tanh(0.15) \approx 0.149$ (maps to the interval $(-1, 1)$, preserving the sign of the input)
+
+**Comparison Example:** To compare different activation functions, we use the same input $\mathbf{x} = [1, 0]$ (chosen for simplicity), weights $\mathbf{w} = [0.1, 0.2]$, and bias $b = 0.05$:
+- Pre-activation value: $0.1 + 0.05 = 0.15$
+- **With ReLU activation**: output = $\max(0, 0.15) = 0.15$
+- **With Sigmoid activation**: output = $\frac{1}{1+e^{-0.15}} \approx 0.537$
+- **With identity (no activation)**: output = $0.15$ (linear transformation only)
+
+This comparison demonstrates that different activation functions produce distinct outputs from the same pre-activation value, enabling networks to learn different types of non-linear patterns.
 
 Activation functions must be (at least piecewise) differentiable for gradient descent to work. They introduce non-linearity, which is mathematically necessary for learning complex patterns. It can be proven (via the universal approximation theorem) that neural networks with non-linear activation functions can approximate any continuous function, given sufficient capacity. Without activation functions, multiple layers would collapse into a single linear layer, losing the hierarchical learning capability that makes deep networks powerful.
 
@@ -117,16 +189,16 @@ Neural networks typically have three types of layers. The input layer receives r
 
 To visualize this, imagine a multi-stage factory. Stage 1 (the input layer) is where raw materials arrive. Stages 2 through 4 (hidden layers) each refine the product in some way, with each stage building on the work of the previous stage. Stage 5 (the output layer) is where the finished product exits.
 
-Let's trace through an example to see how data flows through multiple layers:
+We trace through an example to illustrate how data flows through multiple layers. The values shown are arbitrary examples chosen to demonstrate the transformation process:
 
 ```
-Input Layer: Receives token "cat"
-Hidden Layer 1: Converts to vector [0.3, 0.7, -0.2]
-Hidden Layer 2: Processes to [0.4, 0.6, -0.1]
-Output Layer: Produces [0.1, 0.8, 0.05, 0.05] (probabilities)
+Input Layer: Receives input data [0.5, 0.3]  (example 2-dimensional input)
+Hidden Layer 1: Transforms to vector [0.3, 0.7, -0.2]  (expands to 3 dimensions)
+Hidden Layer 2: Transforms to [0.4, 0.6, -0.1]  (refines the representation)
+Output Layer: Produces [0.1, 0.8, 0.05, 0.05]  (4-dimensional output values)
 ```
 
-Notice how each layer transforms the data. The input layer receives the raw token, the first hidden layer converts it into a numerical representation, the second hidden layer refines that representation, and the output layer produces the final probabilities for each possible next token.
+Each layer transforms the data in a specific way. The input layer receives the raw input data, the first hidden layer converts it into a numerical representation, the second hidden layer refines that representation, and the output layer produces the final output values. The specific numerical values are illustrative; in a trained network, these would result from the learned weight matrices and activation functions.
 
 ![Multi-Layer Neural Network: Input → Hidden Layers → Output](images/network-structure/multi-layer-network.svg)
 
@@ -144,26 +216,26 @@ Mathematically, a feed-forward network is defined as:
 
 $$\text{FFN}(\mathbf{x}) = \text{ReLU}(\mathbf{x}\mathbf{W}_1 + \mathbf{b}_1)\mathbf{W}_2 + \mathbf{b}_2$$
 
-where $\mathbf{x} \in \mathbb{R}^d$ is the input vector, $\mathbf{W}_1 \in \mathbb{R}^{d \times d'}$ is the first weight matrix that expands dimensions, $\mathbf{b}_1 \in \mathbb{R}^{d'}$ is the first bias vector, $\mathbf{W}_2 \in \mathbb{R}^{d' \times d}$ is the second weight matrix that compresses dimensions back, $\mathbf{b}_2 \in \mathbb{R}^{d}$ is the second bias vector, and ReLU is applied element-wise. The expansion factor $d' > d$ (typically $d' = 4d$ in transformers) gives the network more capacity to learn complex feature combinations.
+where $\mathbf{x} \in \mathbb{R}^d$ is the input vector, $\mathbf{W}_1 \in \mathbb{R}^{d \times d'}$ is the first weight matrix that expands dimensions, $\mathbf{b}_1 \in \mathbb{R}^{d'}$ is the first bias vector, $\mathbf{W}_2 \in \mathbb{R}^{d' \times d}$ is the second weight matrix that compresses dimensions back, $\mathbf{b}_2 \in \mathbb{R}^{d}$ is the second bias vector, and ReLU is applied element-wise. The expansion factor $d' > d$ (typically $d' = 4d$ in practice) gives the network more capacity to learn complex feature combinations.
 
 Here, $\mathbf{W}_1$ expands the input from dimension $d$ to dimension $d'$, $\mathbf{b}_1$ shifts the expanded representation, ReLU adds non-linearity, $\mathbf{W}_2$ compresses back to dimension $d$, and $\mathbf{b}_2$ provides the final offset. The expansion phase allows the network to learn complex feature combinations in the higher-dimensional space, while the compression ensures the output has the correct shape for the next layer.
 
-To understand this intuitively, think of a feed-forward network as a two-stage transformation: expansion followed by compression. You start with a small package (a $d$-dimensional vector). In stage 1, you expand it into a large box (a $d'$-dimensional vector where $d' > d$), giving you more room to work with the information. The activation function then filters and processes the contents, introducing non-linearity. In stage 2, you compress it back down to a small package (back to $d$ dimensions), but now it's been transformed in a meaningful way. This expansion-compression pattern is fundamental to how transformers process information.
+To understand this intuitively, think of a feed-forward network as a two-stage transformation: expansion followed by compression. You start with a small package (a $d$-dimensional vector). In stage 1, you expand it into a large box (a $d'$-dimensional vector where $d' > d$), giving you more room to work with the information. The activation function then filters and processes the contents, introducing non-linearity. In stage 2, you compress it back down to a small package (back to $d$ dimensions), but now it's been transformed in a meaningful way. This expansion-compression pattern is fundamental to how many modern neural network architectures process information.
 
-Let's trace through a concrete example:
+We trace through a numerical example using arbitrary values chosen to illustrate the expansion-compression pattern:
 
 ```
-Input: [0.3, 0.7] (dimension 2)
-W₁: 2×4 matrix → Output: [0.5, 0.2, 0.8, 0.1] (expanded to 4)
-ReLU: [0.5, 0.2, 0.8, 0.1] (no negatives)
-W₂: 4×2 matrix → Output: [0.4, 0.6] (back to dimension 2)
+Input: [0.3, 0.7] (dimension 2, example input values)
+W₁: 2×4 matrix → Output: [0.5, 0.2, 0.8, 0.1] (expanded to 4 dimensions)
+ReLU: [0.5, 0.2, 0.8, 0.1] (no negatives, preserves non-negative values)
+W₂: 4×2 matrix → Output: [0.4, 0.6] (compressed back to dimension 2)
 ```
 
-Notice how the input starts as a 2-dimensional vector, expands to 4 dimensions in the middle (where the network can learn complex feature combinations), and then compresses back to 2 dimensions. The expansion gives the network capacity to learn, while the compression ensures the output has the right shape for the next layer.
+The input starts as a 2-dimensional vector, expands to 4 dimensions in the middle (where the network can learn complex feature combinations), and then compresses back to 2 dimensions. The expansion gives the network capacity to learn, while the compression ensures the output has the correct shape for the next layer. The specific numerical values are illustrative; in practice, these would be determined by the learned weight matrices.
 
 ![Feed-Forward Network Structure](images/network-structure/ffn-structure.svg)
 
-Feed-forward networks are crucial because they add both non-linearity and capacity to transformers. The expansion phase allows the network to learn complex feature combinations that wouldn't be possible with just linear transformations. This is why FFNs are a core component of transformer architectures.
+Feed-forward networks are crucial because they add both non-linearity and capacity to neural networks. The expansion phase allows the network to learn complex feature combinations that wouldn't be possible with just linear transformations. This is why FFNs are a core component of many modern neural network architectures.
 
 To see feed-forward networks in action, [Example 5: Feed-Forward Layers](10-example5-feedforward.md) demonstrates the complete FFN computation step by step.
 
@@ -177,29 +249,29 @@ Mathematically, the cross-entropy loss is defined as:
 
 $$L = -\log P_{\text{model}}(y_{\text{target}})$$
 
-where $P_{\text{model}}(y_{\text{target}})$ is the probability assigned by the model to the correct token $y_{\text{target}}$. Notice that when the model assigns high probability to the correct answer, the loss is low (since the logarithm of a number close to 1 is close to 0). When the model assigns low probability to the correct answer, the loss is high (since the logarithm of a small number is a large negative number, and we negate it).
+where $P_{\text{model}}(y_{\text{target}})$ is the probability assigned by the model to the correct class $y_{\text{target}}$. Notice that when the model assigns high probability to the correct answer, the loss is low (since the logarithm of a number close to 1 is close to 0). When the model assigns low probability to the correct answer, the loss is high (since the logarithm of a small number is a large negative number, and we negate it).
 
 We use log probabilities rather than raw probabilities to avoid numerical underflow when probabilities are very small (e.g., $10^{-10}$). Direct probability multiplication would cause the result to underflow to zero in floating-point arithmetic, making gradient computation impossible. By working in log space, we maintain numerical stability while preserving the mathematical relationship between probabilities and loss.
 
 To understand this intuitively, think of loss like a golf score: lower is better. A perfect prediction gives you a loss near 0, while a wrong prediction gives you a high loss. Just as in golf, you want to minimize your score.
 
-Let's work through an example to see how this works in practice:
+We illustrate this with a numerical example. For clarity, we use a simple 4-class classification problem with arbitrary class labels:
 
 ```
-Target: "C" (one-hot: [0, 0, 1, 0])
+Target: Class C (one-hot encoding: [0, 0, 1, 0])
 Prediction probabilities: [0.1, 0.2, 0.6, 0.1]
 
-Loss = -log(0.6) = 0.51  (model predicted C with 60% confidence - good!)
+Loss = -log(0.6) = 0.51  (model assigned 60% probability to correct class)
 ```
 
-In this case, the model correctly identified "C" as the most likely answer, assigning it 60% probability. The loss of 0.51 reflects that this is a reasonable prediction, though not perfect. Now consider what happens when the model makes a wrong prediction:
+In this case, the model correctly identified class C as the most likely answer, assigning it 60% probability. The loss of 0.51 reflects that this is a reasonable prediction, though not perfect. Now consider what happens when the model makes a wrong prediction:
 
 ```
 If prediction was: [0.8, 0.1, 0.05, 0.05]
-Loss = -log(0.05) = 3.0  (model predicted wrong - bad!)
+Loss = -log(0.05) = 3.0  (model assigned only 5% to correct class)
 ```
 
-Here, the model assigned only 5% probability to the correct answer "C", while assigning 80% to the wrong answer. The loss of 3.0 is much higher, correctly penalizing the model for its poor prediction.
+Here, the model assigned only 5% probability to the correct answer (class C), while assigning 80% to an incorrect class. The loss of 3.0 is much higher, correctly penalizing the model for its poor prediction. The specific class labels and probabilities are chosen for illustration; in practice, these would represent actual predictions from a trained model.
 
 | | |
 |:---:|:---:|
@@ -223,13 +295,13 @@ A gradient shows how much each parameter should change to reduce the loss. In ba
 
 The gradient $\nabla_{\mathbf{W}} L$ is a vector (or matrix) of partial derivatives: $\nabla_{\mathbf{W}} L = [\frac{\partial L}{\partial w_1}, \frac{\partial L}{\partial w_2}, \ldots]$. Each component tells us how much the loss changes when we change that specific parameter. Think of the gradient as a compass pointing uphill. Since loss is like altitude (and we want to go down), the gradient points in the direction of steepest increase. This means the negative gradient points in the direction we want to go—downhill, toward lower loss. The magnitude of the gradient tells us how steep the slope is: a large gradient means a steep slope, while a small gradient means a gentle slope.
 
-Let's work through an example to make this concrete:
+We illustrate this with a numerical example using arbitrary values chosen to demonstrate the gradient descent update:
 
 ```
 Parameter W (a weight in a matrix):
-Current value: W = 0.5
-Loss at W=0.5: 2.0
-Gradient: ∂L/∂W = -0.3
+Current value: W = 0.5  (example initial weight)
+Loss at W=0.5: 2.0  (example loss value)
+Gradient: ∂L/∂W = -0.3  (example gradient value)
 
 Interpretation: 
 - Negative gradient means increasing W will DECREASE loss
@@ -238,7 +310,7 @@ Interpretation:
          = 0.5 - 0.1 × (-0.3) = 0.5 + 0.03 = 0.53
 ```
 
-In this example, the negative gradient tells us that increasing the weight will decrease the loss. The magnitude of 0.3 indicates a moderate slope. We then update the weight by moving in the direction opposite to the gradient (since we want to minimize loss), scaled by the learning rate.
+In this example, the negative gradient tells us that increasing the weight will decrease the loss. The magnitude of 0.3 indicates a moderate slope. We then update the weight by moving in the direction opposite to the gradient (since we want to minimize loss), scaled by the learning rate. The specific values are chosen for illustration; in practice, these would be computed from the actual loss function and current parameter values.
 
 **Gradient Visualization:**
 
@@ -248,13 +320,13 @@ In this example, the negative gradient tells us that increasing the weight will 
 
 The learning rate is a hyperparameter that controls how large each weight update is during training. Think of the learning rate as your step size when walking downhill. If you take large steps (high learning rate), you make fast progress but might overshoot the bottom of the valley. If you take small steps (low learning rate), your progress is slower but more precise. If your steps are too large, you might jump right over the valley and never find the minimum (this is called divergence). If your steps are too small, it takes forever to reach the bottom (slow convergence).
 
-In transformers, the learning rate (denoted as $\eta$ or `lr`) is typically set between 0.0001 and 0.01. It's used in the gradient descent update rule: $W_{\text{new}} = W_{\text{old}} - \eta \times \text{gradient}$. Often, the learning rate is scheduled to start high (for fast initial learning) and decrease over time (for fine-tuning as training progresses).
+In neural networks, the learning rate (denoted as $\eta$ or `lr`) is typically set between 0.0001 and 0.01. It's used in the gradient descent update rule: $W_{\text{new}} = W_{\text{old}} - \eta \times \text{gradient}$. Often, the learning rate is scheduled to start high (for fast initial learning) and decrease over time (for fine-tuning as training progresses).
 
-To see how the learning rate affects updates, consider this example:
+To see how the learning rate affects updates, consider this example using arbitrary values:
 
 ```
-Gradient: -0.5 (should increase weight)
-Learning rate: 0.1 (small steps)
+Gradient: -0.5 (example gradient value indicating weight should increase)
+Learning rate: 0.1 (small step size)
 
 Weight update: W_new = W_old - 0.1 × (-0.5)
               = W_old + 0.05  (small increase)
@@ -268,7 +340,7 @@ Weight update: W_new = W_old - 1.0 × (-0.5)
               = W_old + 0.5  (large increase - might overshoot!)
 ```
 
-This much larger update could cause us to overshoot the optimal weight value, potentially making the loss worse rather than better.
+This much larger update could cause us to overshoot the optimal weight value, potentially making the loss worse rather than better. The gradient value of -0.5 is chosen arbitrarily for illustration; in practice, it would be computed from the actual loss function.
 
 ### Gradient Descent Algorithm
 
@@ -286,13 +358,13 @@ The gradient descent process follows these steps: First, we compute the loss by 
 
 ![Gradient Descent: Loss Decreases Over Time](images/training/gradient-descent-path.svg)
 
-Let's trace through a complete iteration to see how this works:
+We trace through a complete iteration to illustrate how this works, using example values chosen to demonstrate the process:
 
 ```
-Initial weight: W = 0.5
-Loss: 2.0
+Initial weight: W = 0.5  (arbitrary starting value)
+Loss: 2.0  (example initial loss)
 Gradient: ∂L/∂W = -0.3 (negative = should increase W)
-Learning rate: η = 0.1
+Learning rate: η = 0.1  (example learning rate)
 
 Update: W_new = 0.5 - 0.1 × (-0.3)
        = 0.5 + 0.03
@@ -301,9 +373,9 @@ Update: W_new = 0.5 - 0.1 × (-0.3)
 New loss: 1.8 (lower - improved!)
 ```
 
-After this update, the loss decreased from 2.0 to 1.8, confirming that we moved in the right direction. We would continue this process, computing new gradients and making new updates, until the loss stops decreasing significantly.
+After this update, the loss decreased from 2.0 to 1.8, confirming that we moved in the right direction. We would continue this process, computing new gradients and making new updates, until the loss stops decreasing significantly. The specific values are illustrative; in practice, these would be computed from the actual model and data.
 
-Gradient descent is the fundamental algorithm that enables neural networks to learn. Without it, we couldn't systematically update parameters to reduce loss. It's the engine that drives all neural network training, from simple perceptrons to complex transformer models.
+Gradient descent is the fundamental algorithm that enables neural networks to learn. Without it, we couldn't systematically update parameters to reduce loss. It's the engine that drives all neural network training, from simple perceptrons to complex multi-layer networks.
 
 To see gradient descent in action, [Example 2: Single Training Step](07-example2-single-step.md) demonstrates a complete gradient descent update with a single weight.
 
@@ -317,27 +389,25 @@ Backpropagation operates on a computational graph, which represents the forward 
 
 ### The Forward Pass
 
-The forward pass is the process of computing predictions by passing input data through the network from input to output. Think of the forward pass as following a recipe step-by-step. You start with ingredients (input tokens), process them through each step (each layer), and end with the final dish (the prediction). Data flows in one direction: Input → Layer 1 → Layer 2 → ... → Output.
+The forward pass is the process of computing predictions by passing input data through the network from input to output. Think of the forward pass as following a recipe step-by-step. You start with ingredients (input data), process them through each step (each layer), and end with the final dish (the prediction). Data flows in one direction: Input → Layer 1 → Layer 2 → ... → Output.
 
-In transformers, the forward pass follows a specific sequence of transformations. First, tokenization breaks the text into tokens. Then token encoding converts those tokens into integer IDs. Embedding lookup converts the integer IDs into vectors. Q/K/V projections transform those vectors into Query, Key, and Value vectors using weight matrices. Attention then combines these to produce a context vector. Output projection transforms the context vector into **logits** (raw, unnormalized scores for each vocabulary token) using the weight matrix $\mathbf{W}_O$. Finally, softmax converts the logits into probabilities.
+In a neural network, the forward pass follows a specific sequence of transformations. First, the input data is received by the input layer. Then each hidden layer processes the data, applying weight matrices, adding biases, and applying activation functions. The output layer produces the final predictions. For classification tasks, the output is typically converted to probabilities using a softmax function.
 
 ![Forward Pass Flow](images/flow-diagrams/forward-pass-flow.svg)
 
-Let's trace through a complete forward pass example:
+We trace through a complete forward pass example using arbitrary values chosen to illustrate the transformation process:
 
 ```
 Forward Pass:
-Input: "The cat"
-  → Tokenize: ["The", "cat"]
-  → Encode: [1, 2]
-  → Embed: [[0.1, 0.2], [0.3, 0.7]]
-  → Q/K/V: Query, Key, Value vectors
-  → Attention: [0.4, 0.6] (context vector)
-  → Logits: [1.0, 2.0, 0.5, 0.3]
-  → Probabilities: [0.1, 0.8, 0.05, 0.05]
+Input: [0.5, 0.3]  (example 2-dimensional input)
+  → Input Layer: [0.5, 0.3]
+  → Hidden Layer 1: [0.1, 0.2, 0.4]  (expands to 3 dimensions)
+  → Hidden Layer 2: [0.3, 0.7]  (compresses to 2 dimensions)
+  → Output Layer: [1.0, 2.0, 0.5, 0.3]  (raw scores for 4 classes)
+  → Softmax: [0.1, 0.8, 0.05, 0.05]  (probabilities for 4 classes)
 ```
 
-Notice how each step transforms the data, building up a richer representation until we finally have probabilities for each possible next token. The forward pass is how the model makes predictions, and it's the first step in both inference (making predictions) and training (where we'll then compute loss and gradients).
+Each step transforms the data, building up a richer representation until we finally have probabilities for each possible output class. The forward pass is how the model makes predictions, and it's the first step in both inference (making predictions) and training (where we'll then compute loss and gradients). The specific numerical values are illustrative; in a trained network, these would result from the learned weight matrices.
 
 To see the forward pass in detail, [Example 1: Minimal Forward Pass](06-example1-forward-pass.md) shows the complete forward pass computation step by step.
 
@@ -345,7 +415,7 @@ To see the forward pass in detail, [Example 1: Minimal Forward Pass](06-example1
 
 The backward pass (also called backpropagation) is the process of computing gradients by propagating the loss backward through the network from output to input. This is where the magic of learning happens—we figure out how each parameter contributed to the error and how much it should change.
 
-In transformers, the backward pass follows this sequence. First, we compute the loss at the output by comparing the prediction to the target. Then we compute the gradient with respect to the output (the logits). Next, we propagate this gradient backward through each layer, using the chain rule of calculus. The gradient flows from the loss through the logits, then through the output projection to the context vector. From the context vector, it flows through the attention weights and attention scores to Q, K, and V. Finally, it flows through the Q/K/V maps back to the embeddings. At each step, we compute the gradient for each parameter (weight and bias). Once we have all the gradients, we use them to update the parameters using gradient descent.
+In a neural network, the backward pass follows this sequence. First, we compute the loss at the output by comparing the prediction to the target. Then we compute the gradient with respect to the output. Next, we propagate this gradient backward through each layer, using the chain rule of calculus. The gradient flows from the loss through the output layer, then through each hidden layer in reverse order, and finally to the input layer. At each step, we compute the gradient for each parameter (weight and bias). Once we have all the gradients, we use them to update the parameters using gradient descent.
 
 The chain rule enables this backward propagation. For a two-layer network with output $y = f_2(f_1(\mathbf{x}; \mathbf{W}_1); \mathbf{W}_2)$, the gradient with respect to $\mathbf{W}_1$ is computed as:
 
@@ -355,22 +425,24 @@ Each term in this product is computed during the backward pass, with gradients f
 
 ![Backward Pass Flow](images/flow-diagrams/backward-pass-flow.svg)
 
-Let's trace through a backward pass example:
+We trace through a backward pass example using arbitrary gradient values chosen to illustrate the propagation process:
 
 ```
 Backward Pass:
-Loss: 0.5 (prediction was wrong)
-  → Gradient w.r.t. logits: [-0.2, 0.8, -0.3, -0.3]
-  → Gradient w.r.t. context: [0.1, 0.2]
-  → Gradient w.r.t. attention weights: [0.05, 0.15]
-  → Gradient w.r.t. Q, K, V: [computed via chain rule]
-  → Gradient w.r.t. W_Q, W_K, W_V, W_O: [computed]
+Loss: 0.5 (example loss value)
+  → Gradient w.r.t. output: [-0.2, 0.8, -0.3, -0.3]  (example gradients)
+  → Gradient w.r.t. hidden layer 2: [0.1, 0.2]  (propagated backward)
+  → Gradient w.r.t. hidden layer 1: [0.05, 0.15, 0.1]  (propagated backward)
+  → Gradient w.r.t. input layer: [computed via chain rule]
+  → Gradient w.r.t. all weight matrices: [computed]
   → Update: W_new = W_old - learning_rate × gradient
 ```
 
-Notice how the gradient flows backward, with each layer receiving information about how much it contributed to the error. The backward pass enables learning because without it, we couldn't compute how to update parameters to reduce loss. It's the mechanism that makes gradient descent possible in multi-layer networks.
+The gradient values shown are illustrative examples. In practice, these would be computed exactly using the chain rule of calculus based on the actual loss function and network architecture.
 
-To see the complete backward pass in action, [Example 3: Full Backpropagation](08-example3-full-backprop.md) shows the complete gradient flow through all components of a transformer.
+The gradient flows backward, with each layer receiving information about how much it contributed to the error. The backward pass enables learning because without it, we couldn't compute how to update parameters to reduce loss. It's the mechanism that makes gradient descent possible in multi-layer networks.
+
+To see the complete backward pass in action, [Example 3: Full Backpropagation](08-example3-full-backprop.md) shows the complete gradient flow through all components of a multi-layer network.
 
 ---
 
@@ -388,16 +460,16 @@ To understand this intuitively, think of learning to play a musical instrument. 
 
 Weight update is the process of changing matrix values (weights) based on gradients to improve predictions. Think of weight updates like tuning a radio. The current setting (weight) is like the current frequency. The static (loss) tells you how bad the signal is. The gradient tells you which direction to turn the dial, and the weight update is actually turning the dial. After many adjustments, you find the best frequency—the weight values that minimize loss.
 
-Let's see how weight updates work in practice:
+We illustrate how weight updates work in practice using example values chosen to demonstrate the update process:
 
 ```
 Before training:
-Weight matrix W = [0.1, 0.2]
+Weight matrix W = [0.1, 0.2]  (example initial weights)
                  [0.3, 0.4]
-Loss: 2.5 (high - bad predictions)
+Loss: 2.5 (example high loss value)
 
 After computing gradients:
-Gradient = [-0.5, -0.3]
+Gradient = [-0.5, -0.3]  (example gradient values)
           [-0.2, -0.1]
 
 Weight update (learning_rate = 0.1):
@@ -408,10 +480,10 @@ W_new = W_old - 0.1 × Gradient
         [0.32, 0.41]
 
 After training (many updates):
-Loss: 0.1 (low - good predictions!)
+Loss: 0.1 (example low loss value after training)
 ```
 
-Notice how the weights change based on the gradients, and how after many such updates, the loss decreases dramatically. This is how the model learns patterns from examples—by repeatedly making small adjustments to its weights based on the errors it makes.
+The weights change based on the gradients, and after many such updates, the loss decreases dramatically. This is how the model learns patterns from examples—by repeatedly making small adjustments to its weights based on the errors it makes. The specific values are illustrative; in practice, these would be computed from the actual model, data, and loss function.
 
 To see a complete training cycle, [Example 2: Single Training Step](07-example2-single-step.md) shows one complete iteration of the training loop.
 
@@ -423,18 +495,20 @@ A batch is a group of sequences processed together during training. Think of bat
 
 In practice, the batch size is the number of sequences processed together (typically 32, 64, or 128). All sequences in the batch are processed in parallel, which makes efficient use of GPU resources. The gradients computed for each sequence are averaged across the batch, and the loss is also averaged. This averaging provides a more stable estimate of the true gradient than processing sequences one at a time.
 
-Here's an example of how batching works:
+The following example illustrates how batching works. For clarity, we use simple text sequences as examples, though in practice these would be numerical vectors:
 
 ```
 Batch size: 4
 Batch: [
-  ["The", "cat", "sat"],
-  ["The", "dog", "ran"],
-  ["A", "bird", "flew"],
-  ["A", "fish", "swam"]
+  ["The", "cat", "sat"],  (example sequence 1)
+  ["The", "dog", "ran"],  (example sequence 2)
+  ["A", "bird", "flew"],  (example sequence 3)
+  ["A", "fish", "swam"]   (example sequence 4)
 ]
 Process all 4 sequences together, average gradients
 ```
+
+The sequences shown are illustrative examples. In practice, these would be converted to numerical vectors (embeddings) before processing. The key point is that all sequences in the batch are processed in parallel, and their gradients are averaged.
 
 ![Batch Training](images/training/batch-training.svg)
 
@@ -448,16 +522,18 @@ An epoch is one complete pass through the entire training dataset. Think of an e
 
 In training, if you have a dataset with 10,000 sequences and a batch size of 32, you'll have 10,000 ÷ 32 = 313 batches per epoch. One epoch means processing all 313 batches. Training typically involves repeating this for multiple epochs (e.g., 10 epochs), giving the model multiple chances to see all the training data and improve.
 
-Let's work through a concrete example:
+We illustrate this with a numerical example using arbitrary values chosen to demonstrate the epoch concept:
 
 ```
-Dataset: 1000 sequences
-Batch size: 32
-Epoch 1: Process batches 1-32 (all 1000 sequences)
+Dataset: 1000 sequences  (example dataset size)
+Batch size: 32  (example batch size)
+Epoch 1: Process batches 1-32 (all 1000 sequences, 1000÷32 ≈ 32 batches)
 Epoch 2: Process batches 1-32 again (same sequences, different order)
 Epoch 3: Process batches 1-32 again
 ... (until model converges)
 ```
+
+The specific numbers (1000 sequences, batch size 32) are chosen for illustration. In practice, these values would depend on the actual dataset size and available computational resources. The key concept is that one epoch means processing the entire dataset once, divided into batches.
 
 Models typically need multiple epochs to learn effectively. Each epoch gives the model another opportunity to see all training data and improve its predictions. Early epochs show rapid improvement as the model learns basic patterns, while later epochs show slower, more refined improvements.
 
