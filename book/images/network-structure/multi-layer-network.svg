@@ -1,144 +1,215 @@
-<svg width="900" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="935" height="349">
   <defs>
     <style>
       .layer-box { fill: none; stroke: #333; stroke-width: 2; rx: 5; }
       .input-layer { fill: #e1f5ff; }
       .hidden-layer { fill: #fff4e1; }
       .output-layer { fill: #c8e6c9; }
-      .neuron { fill: white; stroke: #333; stroke-width: 1.5; }
-      .connection { stroke: #999; stroke-width: 0.5; opacity: 0.6; }
-      .layer-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; }
-      .neuron-label { font-family: Arial, sans-serif; font-size: 11px; }
+      .neuron { fill: white; stroke: #333; stroke-width: 2; }
+      .bias-node { fill: #f0f0f0; stroke: #666; stroke-width: 2; stroke-dasharray: 3,3; }
+      .connection { stroke: #999; stroke-width: 0.5; opacity: 0.5; fill: none; }
+      .bias-connection { stroke: #666; stroke-width: 1; opacity: 0.7; stroke-dasharray: 2,2; fill: none; }
+      .layer-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; }
+      .neuron-value { font-family: 'Courier New', monospace; font-size: 11px; fill: #1e293b; font-weight: bold; }
+      .bias-label { font-family: Arial, sans-serif; font-size: 10px; fill: #666; font-weight: bold; }
+      .neuron-index { font-family: Arial, sans-serif; font-size: 9px; fill: #666; }
     </style>
-  </defs>
-  
-  <!-- Input Layer: 3 neurons vertically aligned -->
-  <g id="input-layer" transform="translate(50, 50)">
-    <rect x="0" y="0" width="120" height="180" class="layer-box input-layer"/>
-  </g>
-  <text x="110" y="35" class="layer-label" text-anchor="middle">Input Layer</text>
-  
-  <circle cx="110" cy="90" r="15" class="neuron"/>
-  <text x="110" y="95" class="neuron-label" text-anchor="middle">1</text>
-  
-  <circle cx="110" cy="140" r="15" class="neuron"/>
-  <text x="110" y="145" class="neuron-label" text-anchor="middle">2</text>
-  
-  <circle cx="110" cy="190" r="15" class="neuron"/>
-  <text x="110" y="195" class="neuron-label" text-anchor="middle">3</text>
-  
-  <!-- Hidden Layer 1: 4 neurons vertically aligned -->
-  <g id="hidden-layer-1" transform="translate(250, 50)">
-    <rect x="0" y="0" width="160" height="180" class="layer-box hidden-layer"/>
-  </g>
-  <text x="330" y="35" class="layer-label" text-anchor="middle">Hidden Layer 1</text>
-  
-  <circle cx="330" cy="80" r="15" class="neuron"/>
-  <text x="330" y="85" class="neuron-label" text-anchor="middle">1</text>
-  
-  <circle cx="330" cy="120" r="15" class="neuron"/>
-  <text x="330" y="125" class="neuron-label" text-anchor="middle">2</text>
-  
-  <circle cx="330" cy="160" r="15" class="neuron"/>
-  <text x="330" y="165" class="neuron-label" text-anchor="middle">3</text>
-  
-  <circle cx="330" cy="200" r="15" class="neuron"/>
-  <text x="330" y="205" class="neuron-label" text-anchor="middle">4</text>
-  
-  <!-- Hidden Layer 2: 3 neurons vertically aligned -->
-  <g id="hidden-layer-2" transform="translate(500, 50)">
-    <rect x="0" y="0" width="120" height="180" class="layer-box hidden-layer"/>
-  </g>
-  <text x="560" y="35" class="layer-label" text-anchor="middle">Hidden Layer 2</text>
-  
-  <circle cx="560" cy="90" r="15" class="neuron"/>
-  <text x="560" y="95" class="neuron-label" text-anchor="middle">1</text>
-  
-  <circle cx="560" cy="140" r="15" class="neuron"/>
-  <text x="560" y="145" class="neuron-label" text-anchor="middle">2</text>
-  
-  <circle cx="560" cy="190" r="15" class="neuron"/>
-  <text x="560" y="195" class="neuron-label" text-anchor="middle">3</text>
-  
-  <!-- Output Layer: 4 neurons vertically aligned -->
-  <g id="output-layer" transform="translate(700, 50)">
-    <rect x="0" y="0" width="160" height="180" class="layer-box output-layer"/>
-  </g>
-  <text x="780" y="35" class="layer-label" text-anchor="middle">Output Layer</text>
-  
-  <circle cx="780" cy="80" r="15" class="neuron"/>
-  <text x="780" y="85" class="neuron-label" text-anchor="middle">1</text>
-  
-  <circle cx="780" cy="120" r="15" class="neuron"/>
-  <text x="780" y="125" class="neuron-label" text-anchor="middle">2</text>
-  
-  <circle cx="780" cy="160" r="15" class="neuron"/>
-  <text x="780" y="165" class="neuron-label" text-anchor="middle">3</text>
-  
-  <circle cx="780" cy="200" r="15" class="neuron"/>
-  <text x="780" y="205" class="neuron-label" text-anchor="middle">4</text>
-  
-  <!-- Connections: Input to Hidden1 -->
-  <!-- I1 to all H1 -->
-  <line x1="125" y1="90" x2="315" y2="80" class="connection"/>
-  <line x1="125" y1="90" x2="315" y2="120" class="connection"/>
-  <line x1="125" y1="90" x2="315" y2="160" class="connection"/>
-  <line x1="125" y1="90" x2="315" y2="200" class="connection"/>
-  <!-- I2 to all H1 -->
-  <line x1="125" y1="140" x2="315" y2="80" class="connection"/>
-  <line x1="125" y1="140" x2="315" y2="120" class="connection"/>
-  <line x1="125" y1="140" x2="315" y2="160" class="connection"/>
-  <line x1="125" y1="140" x2="315" y2="200" class="connection"/>
-  <!-- I3 to all H1 -->
-  <line x1="125" y1="190" x2="315" y2="80" class="connection"/>
-  <line x1="125" y1="190" x2="315" y2="120" class="connection"/>
-  <line x1="125" y1="190" x2="315" y2="160" class="connection"/>
-  <line x1="125" y1="190" x2="315" y2="200" class="connection"/>
-  
-  <!-- Connections: Hidden1 to Hidden2 -->
-  <!-- H1 to all H2 -->
-  <line x1="345" y1="80" x2="545" y2="90" class="connection"/>
-  <line x1="345" y1="80" x2="545" y2="140" class="connection"/>
-  <line x1="345" y1="80" x2="545" y2="190" class="connection"/>
-  <!-- H2 to all H2 -->
-  <line x1="345" y1="120" x2="545" y2="90" class="connection"/>
-  <line x1="345" y1="120" x2="545" y2="140" class="connection"/>
-  <line x1="345" y1="120" x2="545" y2="190" class="connection"/>
-  <!-- H3 to all H2 -->
-  <line x1="345" y1="160" x2="545" y2="90" class="connection"/>
-  <line x1="345" y1="160" x2="545" y2="140" class="connection"/>
-  <line x1="345" y1="160" x2="545" y2="190" class="connection"/>
-  <!-- H4 to all H2 -->
-  <line x1="345" y1="200" x2="545" y2="90" class="connection"/>
-  <line x1="345" y1="200" x2="545" y2="140" class="connection"/>
-  <line x1="345" y1="200" x2="545" y2="190" class="connection"/>
-  
-  <!-- Connections: Hidden2 to Output -->
-  <!-- H1 to all O -->
-  <line x1="575" y1="90" x2="765" y2="80" class="connection"/>
-  <line x1="575" y1="90" x2="765" y2="120" class="connection"/>
-  <line x1="575" y1="90" x2="765" y2="160" class="connection"/>
-  <line x1="575" y1="90" x2="765" y2="200" class="connection"/>
-  <!-- H2 to all O -->
-  <line x1="575" y1="140" x2="765" y2="80" class="connection"/>
-  <line x1="575" y1="140" x2="765" y2="120" class="connection"/>
-  <line x1="575" y1="140" x2="765" y2="160" class="connection"/>
-  <line x1="575" y1="140" x2="765" y2="200" class="connection"/>
-  <!-- H3 to all O -->
-  <line x1="575" y1="190" x2="765" y2="80" class="connection"/>
-  <line x1="575" y1="190" x2="765" y2="120" class="connection"/>
-  <line x1="575" y1="190" x2="765" y2="160" class="connection"/>
-  <line x1="575" y1="190" x2="765" y2="200" class="connection"/>
-  
-  <!-- Data flow arrows (centered vertically) -->
-  <path d="M 170 140 L 240 140" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-layer" inkscape:connection-end="#hidden-layer-1" />
-  <path d="M 410 140 L 500 140" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden-layer-1" inkscape:connection-end="#hidden-layer-2" />
-  <path d="M 620 140 L 700 140" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden-layer-2" inkscape:connection-end="#output-layer" />
-  
-  <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" fill="#2563eb"/>
+      <polygon points="0 0, 10 3, 0 6" fill="#2563eb" />
     </marker>
   </defs>
+  
+  <g id="content" transform="translate(-16.8, 11.8)">
+  <g id="input-layer" transform="translate(50, 67)">
+    <rect x="0" y="0" width="66" height="172.5" class="layer-box input-layer" />
+    <g id="input-neuron-1">
+      <circle cx="33" cy="33" r="23" class="neuron" />
+      <text x="33" y="35" class="neuron-index" text-anchor="middle">x₁</text>
+      <text x="33" y="47" class="neuron-value" text-anchor="middle">0.5</text>
+    </g>
+    <g id="input-neuron-2">
+      <circle cx="33" cy="88" r="23" class="neuron" />
+      <text x="33" y="90" class="neuron-index" text-anchor="middle">x₂</text>
+      <text x="33" y="102" class="neuron-value" text-anchor="middle">0.3</text>
+    </g>
+    <g id="input-neuron-3">
+      <circle cx="33" cy="143" r="23" class="neuron" />
+      <text x="33" y="145" class="neuron-index" text-anchor="middle">x₃</text>
+      <text x="33" y="157" class="neuron-value" text-anchor="middle">0.2</text>
+    </g>
+  </g>
+  <text x="83" y="25" class="layer-label" text-anchor="middle">Input Layer</text>
+  
+  
+  
+  
+  <g id="hidden-layer-1" transform="translate(316, 42)">
+    <rect x="0" y="0" width="66" height="227.5" class="layer-box hidden-layer" />
+    <g id="hidden1-neuron-1">
+      <circle cx="33" cy="33" r="23" class="neuron" />
+      <text x="33" y="35" class="neuron-index" text-anchor="middle">h₁</text>
+      <text x="33" y="47" class="neuron-value" text-anchor="middle">0.3</text>
+    </g>
+    <g id="hidden1-neuron-2">
+      <circle cx="33" cy="88" r="23" class="neuron" />
+      <text x="33" y="90" class="neuron-index" text-anchor="middle">h₂</text>
+      <text x="33" y="102" class="neuron-value" text-anchor="middle">0.7</text>
+    </g>
+    <g id="hidden1-neuron-3">
+      <circle cx="33" cy="143" r="23" class="neuron" />
+      <text x="33" y="145" class="neuron-index" text-anchor="middle">h₃</text>
+      <text x="33" y="157" class="neuron-value" text-anchor="middle">0.4</text>
+    </g>
+    <g id="hidden1-neuron-4">
+      <circle cx="33" cy="198" r="23" class="neuron" />
+      <text x="33" y="200" class="neuron-index" text-anchor="middle">h₄</text>
+      <text x="33" y="212" class="neuron-value" text-anchor="middle">-0.2</text>
+    </g>
+  </g>
+  <text x="349" y="25" class="layer-label" text-anchor="middle">Hidden Layer 1</text>
+  
+  
+  <g id="bias-1">
+    <circle cx="320" cy="300" r="17" class="bias-node" />
+    <text x="320" y="304" class="bias-label" text-anchor="middle">b₁</text>
+  </g>
+  
+  
+  
+  
+  <g id="hidden-layer-2" transform="translate(582, 67)">
+    <rect x="0" y="0" width="66" height="172.5" class="layer-box hidden-layer" />
+    <g id="hidden2-neuron-1">
+      <circle cx="33" cy="33" r="23" class="neuron" />
+      <text x="33" y="35" class="neuron-index" text-anchor="middle">h₁</text>
+      <text x="33" y="47" class="neuron-value" text-anchor="middle">0.4</text>
+    </g>
+    <g id="hidden2-neuron-2">
+      <circle cx="33" cy="88" r="23" class="neuron" />
+      <text x="33" y="90" class="neuron-index" text-anchor="middle">h₂</text>
+      <text x="33" y="102" class="neuron-value" text-anchor="middle">0.6</text>
+    </g>
+    <g id="hidden2-neuron-3">
+      <circle cx="33" cy="143" r="23" class="neuron" />
+      <text x="33" y="145" class="neuron-index" text-anchor="middle">h₃</text>
+      <text x="33" y="157" class="neuron-value" text-anchor="middle">-0.1</text>
+    </g>
+  </g>
+  <text x="615" y="25" class="layer-label" text-anchor="middle">Hidden Layer 2</text>
+  
+  
+  <g id="bias-2">
+    <circle cx="560" cy="300" r="17" class="bias-node" />
+    <text x="560" y="304" class="bias-label" text-anchor="middle">b₂</text>
+  </g>
+  
+  
+  
+  
+  <g id="output-layer" transform="translate(848, 42)">
+    <rect x="0" y="0" width="66" height="227.5" class="layer-box output-layer" />
+    <g id="output-neuron-1">
+      <circle cx="33" cy="33" r="23" class="neuron" />
+      <text x="33" y="35" class="neuron-index" text-anchor="middle">y₁</text>
+      <text x="33" y="47" class="neuron-value" text-anchor="middle">0.1</text>
+    </g>
+    <g id="output-neuron-2">
+      <circle cx="33" cy="88" r="23" class="neuron" />
+      <text x="33" y="90" class="neuron-index" text-anchor="middle">y₂</text>
+      <text x="33" y="102" class="neuron-value" text-anchor="middle">0.8</text>
+    </g>
+    <g id="output-neuron-3">
+      <circle cx="33" cy="143" r="23" class="neuron" />
+      <text x="33" y="145" class="neuron-index" text-anchor="middle">y₃</text>
+      <text x="33" y="157" class="neuron-value" text-anchor="middle">0.05</text>
+    </g>
+    <g id="output-neuron-4">
+      <circle cx="33" cy="198" r="23" class="neuron" />
+      <text x="33" y="200" class="neuron-index" text-anchor="middle">y₄</text>
+      <text x="33" y="212" class="neuron-value" text-anchor="middle">0.05</text>
+    </g>
+  </g>
+  <text x="881" y="25" class="layer-label" text-anchor="middle">Output Layer</text>
+  
+  
+  <g id="bias-out">
+    <circle cx="800" cy="300" r="17" class="bias-node" />
+    <text x="800" y="304" class="bias-label" text-anchor="middle">bₒ</text>
+  </g>
+  
+  
+  <path d="M 105.9 97.8 L 326.1 77.2" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-neuron-1" inkscape:connection-end="#hidden1-neuron-1" />
+  <path d="M 105.9 102.6 L 326.1 127.4" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-neuron-1" inkscape:connection-end="#hidden1-neuron-2" />
+  <path d="M 104.9 107.0 L 327.1 178.0" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-neuron-1" inkscape:connection-end="#hidden1-neuron-3" />
+  <path d="M 103.4 110.7 L 328.6 229.3" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-neuron-1" inkscape:connection-end="#hidden1-neuron-4" />
+  
+  <path d="M 105.0 148.4 L 327.0 81.6" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-neuron-2" inkscape:connection-end="#hidden1-neuron-1" />
+  <path d="M 105.9 152.8 L 326.1 132.2" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-neuron-2" inkscape:connection-end="#hidden1-neuron-2" />
+  <path d="M 105.9 157.6 L 326.1 182.4" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-neuron-2" inkscape:connection-end="#hidden1-neuron-3" />
+  <path d="M 104.9 162.0 L 327.1 233.0" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-neuron-2" inkscape:connection-end="#hidden1-neuron-4" />
+  
+  <path d="M 103.5 199.6 L 328.5 85.4" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-neuron-3" inkscape:connection-end="#hidden1-neuron-1" />
+  <path d="M 105.0 203.4 L 327.0 136.6" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-neuron-3" inkscape:connection-end="#hidden1-neuron-2" />
+  <path d="M 105.9 207.8 L 326.1 187.2" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-neuron-3" inkscape:connection-end="#hidden1-neuron-3" />
+  <path d="M 105.9 212.6 L 326.1 237.4" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-neuron-3" inkscape:connection-end="#hidden1-neuron-4" />
+  
+  
+  <path d="M 322.2 283.1 L 346.1 97.8" class="bias-connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#bias-1" inkscape:connection-end="#hidden1-neuron-1" />
+  <path d="M 322.9 283.2 L 345.1 152.7" class="bias-connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#bias-1" inkscape:connection-end="#hidden1-neuron-2" />
+  <path d="M 324.2 283.5 L 343.4 207.3" class="bias-connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#bias-1" inkscape:connection-end="#hidden1-neuron-3" />
+  <path d="M 327.4 284.7 L 339.0 260.7" class="bias-connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#bias-1" inkscape:connection-end="#hidden1-neuron-4" />
+  
+  
+  <path d="M 371.9 77.2 L 592.1 97.8" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden1-neuron-1" inkscape:connection-end="#hidden2-neuron-1" />
+  <path d="M 371.0 81.6 L 593.0 148.4" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden1-neuron-1" inkscape:connection-end="#hidden2-neuron-2" />
+  <path d="M 369.5 85.4 L 594.5 199.6" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden1-neuron-1" inkscape:connection-end="#hidden2-neuron-3" />
+  
+  <path d="M 371.9 127.4 L 592.1 102.6" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden1-neuron-2" inkscape:connection-end="#hidden2-neuron-1" />
+  <path d="M 371.9 132.2 L 592.1 152.8" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden1-neuron-2" inkscape:connection-end="#hidden2-neuron-2" />
+  <path d="M 371.0 136.6 L 593.0 203.4" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden1-neuron-2" inkscape:connection-end="#hidden2-neuron-3" />
+  
+  <path d="M 370.9 178.0 L 593.1 107.0" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden1-neuron-3" inkscape:connection-end="#hidden2-neuron-1" />
+  <path d="M 371.9 182.4 L 592.1 157.6" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden1-neuron-3" inkscape:connection-end="#hidden2-neuron-2" />
+  <path d="M 371.9 187.2 L 592.1 207.8" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden1-neuron-3" inkscape:connection-end="#hidden2-neuron-3" />
+  
+  <path d="M 369.4 229.3 L 594.6 110.7" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden1-neuron-4" inkscape:connection-end="#hidden2-neuron-1" />
+  <path d="M 370.9 233.0 L 593.1 162.0" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden1-neuron-4" inkscape:connection-end="#hidden2-neuron-2" />
+  <path d="M 371.9 237.4 L 592.1 212.6" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden1-neuron-4" inkscape:connection-end="#hidden2-neuron-3" />
+  
+  
+  <path d="M 564.5 283.6 L 608.9 122.2" class="bias-connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#bias-2" inkscape:connection-end="#hidden2-neuron-1" />
+  <path d="M 566.0 284.1 L 606.8 176.5" class="bias-connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#bias-2" inkscape:connection-end="#hidden2-neuron-2" />
+  <path d="M 568.9 285.5 L 603.0 229.6" class="bias-connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#bias-2" inkscape:connection-end="#hidden2-neuron-3" />
+  
+  
+  <path d="M 637.9 97.8 L 858.1 77.2" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden2-neuron-1" inkscape:connection-end="#output-neuron-1" />
+  <path d="M 637.9 102.6 L 858.1 127.4" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden2-neuron-1" inkscape:connection-end="#output-neuron-2" />
+  <path d="M 636.9 107.0 L 859.1 178.0" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden2-neuron-1" inkscape:connection-end="#output-neuron-3" />
+  <path d="M 635.4 110.7 L 860.6 229.3" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden2-neuron-1" inkscape:connection-end="#output-neuron-4" />
+  
+  <path d="M 637.0 148.4 L 859.0 81.6" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden2-neuron-2" inkscape:connection-end="#output-neuron-1" />
+  <path d="M 637.9 152.8 L 858.1 132.2" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden2-neuron-2" inkscape:connection-end="#output-neuron-2" />
+  <path d="M 637.9 157.6 L 858.1 182.4" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden2-neuron-2" inkscape:connection-end="#output-neuron-3" />
+  <path d="M 636.9 162.0 L 859.1 233.0" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden2-neuron-2" inkscape:connection-end="#output-neuron-4" />
+  
+  <path d="M 635.5 199.6 L 860.5 85.4" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden2-neuron-3" inkscape:connection-end="#output-neuron-1" />
+  <path d="M 637.0 203.4 L 859.0 136.6" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden2-neuron-3" inkscape:connection-end="#output-neuron-2" />
+  <path d="M 637.9 207.8 L 858.1 187.2" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden2-neuron-3" inkscape:connection-end="#output-neuron-3" />
+  <path d="M 637.9 212.6 L 858.1 237.4" class="connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden2-neuron-3" inkscape:connection-end="#output-neuron-4" />
+  
+  
+  <path d="M 805.8 284.0 L 873.2 96.6" class="bias-connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#bias-out" inkscape:connection-end="#output-neuron-1" />
+  <path d="M 807.3 284.7 L 871.1 150.8" class="bias-connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#bias-out" inkscape:connection-end="#output-neuron-2" />
+  <path d="M 809.8 286.1 L 867.8 203.8" class="bias-connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#bias-out" inkscape:connection-end="#output-neuron-3" />
+  <path d="M 813.7 289.9 L 862.5 253.7" class="bias-connection" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#bias-out" inkscape:connection-end="#output-neuron-4" />
+  
+  <!-- Data flow arrows (connectors to boxes) -->
+  <!-- Input to Hidden1: from right edge center (116, 153.25) to left edge center (316, 155.75) -->
+  <path d="M 116 153.25 L 316 155.75" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#input-layer" inkscape:connection-end="#hidden-layer-1" />
+  <!-- Hidden1 to Hidden2: from right edge center (382, 155.75) to left edge center (582, 153.25) -->
+  <path d="M 382 155.75 L 582 153.25" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden-layer-1" inkscape:connection-end="#hidden-layer-2" />
+  <!-- Hidden2 to Output: from right edge center (648, 153.25) to left edge center (848, 155.75) -->
+  <path d="M 648 153.25 L 848 155.75" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden-layer-2" inkscape:connection-end="#output-layer" />
+  </g>
 </svg>
-
