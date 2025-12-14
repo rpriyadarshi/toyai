@@ -208,24 +208,24 @@ Neural networks typically have three types of layers. The input layer receives r
 
 To visualize this, imagine a multi-stage factory. Stage 1 (the input layer) is where raw materials arrive. Stages 2 through 4 (hidden layers) each refine the product in some way, with each stage building on the work of the previous stage. Stage 5 (the output layer) is where the finished product exits.
 
-We trace through an example to illustrate how data flows through multiple layers. The values shown are arbitrary examples chosen to demonstrate the transformation process:
+We trace through an example to illustrate how data flows through multiple layers. The values shown are arbitrary examples chosen to demonstrate the transformation process. This example matches the network architecture shown in the diagram above, with 3 input neurons, 4 neurons in the first hidden layer, 3 neurons in the second hidden layer, and 4 output neurons.
 
 **Equation to solve:**
 For each layer: $\mathbf{y} = f(\mathbf{W}\mathbf{x} + \mathbf{b})$
 
-- Layer 1: $\mathbf{y}_1 = f\left(\mathbf{W}_1 \begin{bmatrix} 0.5 \\ 0.3 \end{bmatrix} + \mathbf{b}_1\right) = \begin{bmatrix} 0.3 \\ 0.7 \\ -0.2 \end{bmatrix}$
-- Layer 2: $\mathbf{y}_2 = f\left(\mathbf{W}_2 \begin{bmatrix} 0.3 \\ 0.7 \\ -0.2 \end{bmatrix} + \mathbf{b}_2\right) = \begin{bmatrix} 0.4 \\ 0.6 \\ -0.1 \end{bmatrix}$
-- Output: $\mathbf{y}_{\text{out}} = f\left(\mathbf{W}_{\text{out}} \begin{bmatrix} 0.4 \\ 0.6 \\ -0.1 \end{bmatrix} + \mathbf{b}_{\text{out}}\right) = \begin{bmatrix} 0.1 \\ 0.8 \\ 0.05 \\ 0.05 \end{bmatrix}$
+- Hidden Layer 1: $\mathbf{y}_1 = f\left(\mathbf{W}_1 \begin{bmatrix} 0.5 \\ 0.3 \\ 0.2 \end{bmatrix} + \mathbf{b}_1\right) = \begin{bmatrix} 0.3 \\ 0.7 \\ 0.4 \\ -0.2 \end{bmatrix}$
+- Hidden Layer 2: $\mathbf{y}_2 = f\left(\mathbf{W}_2 \begin{bmatrix} 0.3 \\ 0.7 \\ 0.4 \\ -0.2 \end{bmatrix} + \mathbf{b}_2\right) = \begin{bmatrix} 0.4 \\ 0.6 \\ -0.1 \end{bmatrix}$
+- Output Layer: $\mathbf{y}_{\text{out}} = f\left(\mathbf{W}_{\text{out}} \begin{bmatrix} 0.4 \\ 0.6 \\ -0.1 \end{bmatrix} + \mathbf{b}_{\text{out}}\right) = \begin{bmatrix} 0.1 \\ 0.8 \\ 0.05 \\ 0.05 \end{bmatrix}$
 
 **Computation:**
 
-1. **Input Layer**: Receives input data $\mathbf{x} = \begin{bmatrix} 0.5 \\ 0.3 \end{bmatrix}$ (example 2-dimensional input)
+1. **Input Layer**: Receives input data $\mathbf{x} = \begin{bmatrix} 0.5 \\ 0.3 \\ 0.2 \end{bmatrix}$ (example 3-dimensional input)
 
-2. **Hidden Layer 1**: Transforms to vector $\mathbf{y}_1 = \begin{bmatrix} 0.3 \\ 0.7 \\ -0.2 \end{bmatrix}$ (expands to 3 dimensions)
+2. **Hidden Layer 1**: Transforms to vector $\mathbf{y}_1 = \begin{bmatrix} 0.3 \\ 0.7 \\ 0.4 \\ -0.2 \end{bmatrix}$ (expands to 4 dimensions)
 
-3. **Hidden Layer 2**: Transforms to $\mathbf{y}_2 = \begin{bmatrix} 0.4 \\ 0.6 \\ -0.1 \end{bmatrix}$ (refines the representation)
+3. **Hidden Layer 2**: Transforms to $\mathbf{y}_2 = \begin{bmatrix} 0.4 \\ 0.6 \\ -0.1 \end{bmatrix}$ (compresses to 3 dimensions)
 
-4. **Output Layer**: Produces $\mathbf{y}_{\text{out}} = \begin{bmatrix} 0.1 \\ 0.8 \\ 0.05 \\ 0.05 \end{bmatrix}$ (4-dimensional output values)
+4. **Output Layer**: Produces $\mathbf{y}_{\text{out}} = \begin{bmatrix} 0.1 \\ 0.8 \\ 0.05 \\ 0.05 \end{bmatrix}$ (expands to 4-dimensional output values)
 
 Each layer transforms the data in a specific way. The input layer receives the raw input data, the first hidden layer converts it into a numerical representation, the second hidden layer refines that representation, and the output layer produces the final output values. The specific numerical values are illustrative; in a trained network, these would result from the learned weight matrices and activation functions.
 
