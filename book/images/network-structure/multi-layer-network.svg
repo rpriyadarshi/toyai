@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="935" height="349">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="935" height="422">
   <defs>
     <style>
-      .layer-box { fill: none; stroke: #333; stroke-width: 2; rx: 5; }
-      .input-layer { fill: #e1f5ff; }
-      .hidden-layer { fill: #fff4e1; }
-      .output-layer { fill: #c8e6c9; }
+      .input-layer { fill: #e1f5ff; stroke: #2563eb; stroke-width: 2.5; rx: 8; }
+      .hidden-layer { fill: #fff4e1; stroke: #f59e0b; stroke-width: 2.5; rx: 8; }
+      .output-layer { fill: #c8e6c9; stroke: #16a34a; stroke-width: 2.5; rx: 8; }
+      .layer-box { rx: 8; }
       .neuron { fill: white; stroke: #333; stroke-width: 2; }
       .bias-node { fill: #f0f0f0; stroke: #666; stroke-width: 2; stroke-dasharray: 3,3; }
       .connection { stroke: #999; stroke-width: 0.5; opacity: 0.5; fill: none; }
@@ -14,6 +14,9 @@
       .neuron-value { font-family: 'Courier New', monospace; font-size: 11px; fill: #1e293b; font-weight: bold; }
       .bias-label { font-family: Arial, sans-serif; font-size: 10px; fill: #666; font-weight: bold; }
       .neuron-index { font-family: Arial, sans-serif; font-size: 9px; fill: #666; }
+      .legend-box { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; rx: 5; }
+      .legend-title { font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #1e293b; }
+      .legend-text { font-family: Arial, sans-serif; font-size: 10px; fill: #64748b; }
     </style>
     <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
       <polygon points="0 0, 10 3, 0 6" fill="#2563eb" />
@@ -211,5 +214,14 @@
   <path d="M 382 155.75 L 582 153.25" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden-layer-1" inkscape:connection-end="#hidden-layer-2" />
   <!-- Hidden2 to Output: from right edge center (648, 153.25) to left edge center (848, 155.75) -->
   <path d="M 648 153.25 L 848 155.75" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowhead)" inkscape:connector-type="polyline" inkscape:connector-curvature="0" inkscape:connection-start="#hidden-layer-2" inkscape:connection-end="#output-layer" />
+  
+  <!-- Legend -->
+  <g id="legend" transform="translate(317, 330)">
+    <rect x="0" y="0" width="335" height="60" class="legend-box" />
+    <text x="167.5" y="15" class="legend-title" text-anchor="middle">Legend</text>
+    <text x="10" y="30" class="legend-text">• Values in circles are activation outputs after each layer transformation</text>
+    <text x="10" y="42" class="legend-text">• Data flows left to right (Input → Hidden Layers → Output)</text>
+    <text x="10" y="54" class="legend-text">• Bias nodes (b₁, b₂, bₒ) add constant offsets to layer computations</text>
+  </g>
   </g>
 </svg>
