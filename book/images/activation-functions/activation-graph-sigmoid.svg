@@ -3,33 +3,46 @@
     <style>
       .title { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; }
       .formula { font-family: 'Courier New', monospace; font-size: 11px; fill: #dc2626; }
+      .label { font-family: Arial, sans-serif; font-size: 10px; fill: #1e293b; }
+      .axis-label { font-family: Arial, sans-serif; font-size: 12px; fill: #1e293b; }
     </style>
   </defs>
   
-  <!-- Title -->
   <text x="140" y="20" class="title" text-anchor="middle">Sigmoid</text>
   <text x="140" y="38" class="formula" text-anchor="middle">f(x) = 1/(1+e⁻ˣ)</text>
   
-  <!-- Sigmoid Graph -->
   <g transform="translate(40, 70)">
-    <!-- Axes -->
+    <rect x="0" y="0" width="200" height="200" fill="#fafafa" stroke="none"/>
+    
+    <line x1="50" y1="0" x2="50" y2="200" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="100" y1="0" x2="100" y2="200" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="150" y1="0" x2="150" y2="200" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="50" x2="200" y2="50" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="100" x2="200" y2="100" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="0" y1="150" x2="200" y2="150" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="2,2"/>
+    
     <line x1="0" y1="100" x2="200" y2="100" stroke="#333" stroke-width="2"/>
     <line x1="100" y1="0" x2="100" y2="200" stroke="#333" stroke-width="2"/>
-    <!-- Axis labels -->
-    <text x="200" y="115" font-family="Arial" font-size="12">x</text>
-    <text x="95" y="-10" font-family="Arial" font-size="12">f(x)</text>
-    <!-- Sigmoid curve (S-shaped) -->
-    <path d="M 0,200 Q 50,180 100,100 T 200,0" stroke="#dc2626" stroke-width="3" fill="none"/>
-    <!-- Grid lines -->
-    <line x1="50" y1="0" x2="50" y2="200" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="150" y1="0" x2="150" y2="200" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="0" y1="50" x2="200" y2="50" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <line x1="0" y1="150" x2="200" y2="150" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <!-- Key points -->
-    <circle cx="100" cy="100" r="3" fill="#dc2626"/>
-    <text x="105" y="95" font-family="Arial" font-size="10">(0, 0.5)</text>
-    <text x="0" y="195" font-family="Arial" font-size="10">0</text>
-    <text x="190" y="10" font-family="Arial" font-size="10">1</text>
+    
+    <text x="200" y="115" class="axis-label">x</text>
+    <text x="95" y="-10" class="axis-label">f(x)</text>
+    
+    <path d="M 0.0,190.5 L 3.3,189.6 L 6.7,188.5 L 10.0,187.4 L 13.3,186.2 L 16.7,184.8 L 20.0,183.4 L 23.3,181.8 L 26.7,180.0 L 30.0,178.2 L 33.3,176.2 L 36.7,174.0 L 40.0,171.6 L 43.3,169.1 L 46.7,166.4 L 50.0,163.5 L 53.3,160.4 L 56.7,157.2 L 60.0,153.7 L 63.3,150.1 L 66.7,146.2 L 70.0,142.2 L 73.3,138.0 L 76.7,133.6 L 80.0,129.1 L 83.3,124.5 L 86.7,119.7 L 90.0,114.9 L 93.3,110.0 L 96.7,105.0 L 100.0,100.0 L 103.3,95.0 L 106.7,90.0 L 110.0,85.1 L 113.3,80.3 L 116.7,75.5 L 120.0,70.9 L 123.3,66.4 L 126.7,62.0 L 130.0,57.8 L 133.3,53.8 L 136.7,49.9 L 140.0,46.3 L 143.3,42.8 L 146.7,39.6 L 150.0,36.5 L 153.3,33.6 L 156.7,30.9 L 160.0,28.4 L 163.3,26.0 L 166.7,23.8 L 170.0,21.8 L 173.3,20.0 L 176.7,18.2 L 180.0,16.6 L 183.3,15.2 L 186.7,13.8 L 190.0,12.6 L 193.3,11.5 L 196.7,10.4 L 200.0,9.5" stroke="#dc2626" stroke-width="3" fill="none"/>
+    
+    <circle cx="100" cy="100" r="4" fill="#dc2626" stroke="white" stroke-width="1"/>
+    <text x="115" y="88" class="label" fill="#dc2626">(0, 0.5)</text>
+    
+    <text x="-25" y="105" class="label" text-anchor="end">0.5</text>
+    <text x="-25" y="55" class="label" text-anchor="end">1</text>
+    <text x="-25" y="155" class="label" text-anchor="end">0</text>
+    
+    <text x="0" y="220" class="label" text-anchor="middle">-3</text>
+    <text x="50" y="220" class="label" text-anchor="middle">-1.5</text>
+    <text x="100" y="220" class="label" text-anchor="middle">0</text>
+    <text x="150" y="220" class="label" text-anchor="middle">1.5</text>
+    <text x="200" y="220" class="label" text-anchor="middle">3</text>
+    
+    <line x1="0" y1="5" x2="200" y2="5" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+    <line x1="0" y1="195" x2="200" y2="195" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
   </g>
 </svg>
-
