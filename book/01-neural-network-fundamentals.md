@@ -38,6 +38,8 @@ where $\mathbf{x} \in \mathbb{R}^d$ is the input vector, $\mathbf{w} \in \mathbb
 
 In this equation, $\mathbf{x}$ represents the input, which is a vector of $d$ numbers. The variable $\mathbf{w}$ represents the weights, which determine how important each input is. The bias $b$ provides a baseline offset that shifts the entire computation. The function $f()$ is called the activation function, and it shapes the output in a specific way. Finally, $y$ is the output—the decision made by the perceptron.
 
+**Notation Note:** When we write a vector like $\begin{bmatrix} 1 \\ 0 \end{bmatrix}$, this represents a single vector with two components (the first component is 1, the second is 0). This is different from a system of equations—it is one mathematical object (a vector), not multiple equations. The vertical arrangement is simply the standard mathematical notation for column vectors.
+
 ### Example: Computing Perceptron Output
 
 We now illustrate the perceptron computation using a numerical example with a 2-dimensional input vector. For pedagogical clarity, we choose simple input values that make the arithmetic easy to follow: $\mathbf{x} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$, which is a unit basis vector where only the first component is non-zero. This choice simplifies the calculation while demonstrating the core computation.
