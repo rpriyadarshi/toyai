@@ -102,18 +102,20 @@ We illustrate this with a numerical example using arbitrary values chosen to dem
 $$y = f\left(\begin{bmatrix} 0.8 \\ 0.2 \\ 0.5 \end{bmatrix} \cdot \begin{bmatrix} 1.0 \\ 0.5 \\ 0.3 \end{bmatrix} + 0.1\right) = \text{ReLU}\left(\begin{bmatrix} 0.8 \\ 0.2 \\ 0.5 \end{bmatrix} \cdot \begin{bmatrix} 1.0 \\ 0.5 \\ 0.3 \end{bmatrix} + 0.1\right)$$
 
 **Given:**
-```
-Input: [1.0, 0.5, 0.3]  (example 3-dimensional input vector)
-Weights: [0.8, 0.2, 0.5]  (example weight values)
-Bias: 0.1  (example bias value)
-```
+- Input vector: $\mathbf{x} = \begin{bmatrix} 1.0 \\ 0.5 \\ 0.3 \end{bmatrix}$ (example 3-dimensional input vector)
+- Weight vector: $\mathbf{w} = \begin{bmatrix} 0.8 \\ 0.2 \\ 0.5 \end{bmatrix}$ (example weight values)
+- Bias: $b = 0.1$ (example bias value)
+- Activation function: $f(x) = \text{ReLU}(x) = \max(0, x)$
 
 **Computation:**
-```
-Weighted sum: 1.0×0.8 + 0.5×0.2 + 0.3×0.5 + 0.1 = 1.15
-Activation (ReLU): max(0, 1.15) = 1.15
-Output: 1.15
-```
+
+1. **Compute the weighted sum** $\mathbf{w} \cdot \mathbf{x} + b$:
+   $$\mathbf{w} \cdot \mathbf{x} + b = w_1 x_1 + w_2 x_2 + w_3 x_3 + b = 0.8 \times 1.0 + 0.2 \times 0.5 + 0.5 \times 0.3 + 0.1 = 0.8 + 0.1 + 0.15 + 0.1 = 1.15$$
+
+2. **Apply the activation function**:
+   $$y = f(1.15) = \text{ReLU}(1.15) = \max(0, 1.15) = 1.15$$
+
+**Result:** The perceptron produces output $y = 1.15$.
 
 This example demonstrates that each input is multiplied by its corresponding weight, the products are summed together, the bias is added, and then the activation function is applied to produce the final output. The specific values are chosen arbitrarily for illustration; in practice, these would be learned during training.
 
@@ -216,12 +218,14 @@ For each layer: $\mathbf{y} = f(\mathbf{W}\mathbf{x} + \mathbf{b})$
 - Output: $\mathbf{y}_{\text{out}} = f\left(\mathbf{W}_{\text{out}} \begin{bmatrix} 0.4 \\ 0.6 \\ -0.1 \end{bmatrix} + \mathbf{b}_{\text{out}}\right) = \begin{bmatrix} 0.1 \\ 0.8 \\ 0.05 \\ 0.05 \end{bmatrix}$
 
 **Computation:**
-```
-Input Layer: Receives input data [0.5, 0.3]  (example 2-dimensional input)
-Hidden Layer 1: Transforms to vector [0.3, 0.7, -0.2]  (expands to 3 dimensions)
-Hidden Layer 2: Transforms to [0.4, 0.6, -0.1]  (refines the representation)
-Output Layer: Produces [0.1, 0.8, 0.05, 0.05]  (4-dimensional output values)
-```
+
+1. **Input Layer**: Receives input data $\mathbf{x} = \begin{bmatrix} 0.5 \\ 0.3 \end{bmatrix}$ (example 2-dimensional input)
+
+2. **Hidden Layer 1**: Transforms to vector $\mathbf{y}_1 = \begin{bmatrix} 0.3 \\ 0.7 \\ -0.2 \end{bmatrix}$ (expands to 3 dimensions)
+
+3. **Hidden Layer 2**: Transforms to $\mathbf{y}_2 = \begin{bmatrix} 0.4 \\ 0.6 \\ -0.1 \end{bmatrix}$ (refines the representation)
+
+4. **Output Layer**: Produces $\mathbf{y}_{\text{out}} = \begin{bmatrix} 0.1 \\ 0.8 \\ 0.05 \\ 0.05 \end{bmatrix}$ (4-dimensional output values)
 
 Each layer transforms the data in a specific way. The input layer receives the raw input data, the first hidden layer converts it into a numerical representation, the second hidden layer refines that representation, and the output layer produces the final output values. The specific numerical values are illustrative; in a trained network, these would result from the learned weight matrices and activation functions.
 
@@ -253,12 +257,23 @@ We trace through a numerical example using arbitrary values chosen to illustrate
 $$\text{FFN}\left(\begin{bmatrix} 0.3 \\ 0.7 \end{bmatrix}\right) = \text{ReLU}\left(\begin{bmatrix} 0.3 \\ 0.7 \end{bmatrix}\mathbf{W}_1 + \mathbf{b}_1\right)\mathbf{W}_2 + \mathbf{b}_2 = \begin{bmatrix} 0.4 \\ 0.6 \end{bmatrix}$$
 
 **Computation:**
-```
-Input: [0.3, 0.7] (dimension 2, example input values)
-W₁: 2×4 matrix → Output: [0.5, 0.2, 0.8, 0.1] (expanded to 4 dimensions)
-ReLU: [0.5, 0.2, 0.8, 0.1] (no negatives, preserves non-negative values)
-W₂: 4×2 matrix → Output: [0.4, 0.6] (compressed back to dimension 2)
-```
+
+1. **Input**: $\mathbf{x} = \begin{bmatrix} 0.3 \\ 0.7 \end{bmatrix}$ (dimension 2, example input values)
+
+2. **First transformation** (using $\mathbf{W}_1$, a $2 \times 4$ matrix):
+   $$\mathbf{W}_1 \mathbf{x} + \mathbf{b}_1 = \begin{bmatrix} 0.5 \\ 0.2 \\ 0.8 \\ 0.1 \end{bmatrix}$$
+   
+   This expands the input to 4 dimensions.
+
+3. **Apply ReLU activation**:
+   $$\text{ReLU}\left(\begin{bmatrix} 0.5 \\ 0.2 \\ 0.8 \\ 0.1 \end{bmatrix}\right) = \begin{bmatrix} 0.5 \\ 0.2 \\ 0.8 \\ 0.1 \end{bmatrix}$$
+   
+   Since all values are non-negative, ReLU preserves them unchanged.
+
+4. **Second transformation** (using $\mathbf{W}_2$, a $4 \times 2$ matrix):
+   $$\text{ReLU}(\mathbf{W}_1 \mathbf{x} + \mathbf{b}_1) \mathbf{W}_2 + \mathbf{b}_2 = \begin{bmatrix} 0.4 \\ 0.6 \end{bmatrix}$$
+   
+   This compresses the representation back to dimension 2.
 
 The input starts as a 2-dimensional vector, expands to 4 dimensions in the middle (where the network can learn complex feature combinations), and then compresses back to 2 dimensions. The expansion gives the network capacity to learn, while the compression ensures the output has the correct shape for the next layer. The specific numerical values are illustrative; in practice, these would be determined by the learned weight matrices.
 
@@ -287,37 +302,31 @@ To understand this intuitively, think of loss like a golf score: lower is better
 We illustrate this with a numerical example. For clarity, we use a simple 4-class classification problem with arbitrary class labels:
 
 **Given:**
-```
-Target: Class C (one-hot encoding: [0, 0, 1, 0])
-Prediction probabilities: [0.1, 0.2, 0.6, 0.1]
-```
-
-Note: In mathematical notation, the target vector is $\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}$ and prediction probabilities are $\begin{bmatrix} 0.1 \\ 0.2 \\ 0.6 \\ 0.1 \end{bmatrix}$.
+- Target: Class C (one-hot encoding: $\mathbf{y}_{\text{target}} = \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}$)
+- Prediction probabilities: $\mathbf{p} = \begin{bmatrix} 0.1 \\ 0.2 \\ 0.6 \\ 0.1 \end{bmatrix}$
 
 **Equation to solve:**
 $$L = -\log(0.6) = 0.51$$
 
 **Computation:**
-```
-Loss = -log(0.6) = 0.51  (model assigned 60% probability to correct class)
-```
+
+$$L = -\log(0.6) \approx 0.51$$
+
+The model assigned 60% probability to the correct class, resulting in a loss of approximately 0.51.
 
 In this case, the model correctly identified class C as the most likely answer, assigning it 60% probability. The loss of 0.51 reflects that this is a reasonable prediction, though not perfect. Now consider what happens when the model makes a wrong prediction:
 
 **Given:**
-```
-If prediction was: [0.8, 0.1, 0.05, 0.05]
-```
-
-Note: In mathematical notation, the prediction probabilities are $\begin{bmatrix} 0.8 \\ 0.1 \\ 0.05 \\ 0.05 \end{bmatrix}$.
+- Prediction probabilities: $\mathbf{p} = \begin{bmatrix} 0.8 \\ 0.1 \\ 0.05 \\ 0.05 \end{bmatrix}$ (model assigned only 5% to correct class)
 
 **Equation to solve:**
-$$L = -\log(0.05) = 3.0$$
+$$L = -\log(0.05) \approx 3.0$$
 
 **Computation:**
-```
-Loss = -log(0.05) = 3.0  (model assigned only 5% to correct class)
-```
+
+$$L = -\log(0.05) \approx 3.0$$
+
+The model assigned only 5% probability to the correct class, resulting in a much higher loss of approximately 3.0.
 
 Here, the model assigned only 5% probability to the correct answer (class C), while assigning 80% to an incorrect class. The loss of 3.0 is much higher, correctly penalizing the model for its poor prediction. The specific class labels and probabilities are chosen for illustration; in practice, these would represent actual predictions from a trained model.
 
@@ -346,25 +355,19 @@ The gradient $\nabla_{\mathbf{W}} L$ is a vector (or matrix) of partial derivati
 We illustrate this with a numerical example using arbitrary values chosen to demonstrate the gradient descent update:
 
 **Given:**
-```
-Parameter W (a weight in a matrix):
-Current value: W = 0.5  (example initial weight)
-Loss at W=0.5: 2.0  (example loss value)
-Gradient: ∂L/∂W = -0.3  (example gradient value)
-Learning rate: η = 0.1
-```
+- Parameter $W$ (a weight in a matrix): Current value $W = 0.5$ (example initial weight)
+- Loss at $W=0.5$: $L = 2.0$ (example loss value)
+- Gradient: $\frac{\partial L}{\partial W} = -0.3$ (example gradient value)
+- Learning rate: $\eta = 0.1$
 
 **Equation to solve:**
-$$W_{\text{new}} = 0.5 - 0.1 \times (-0.3) = 0.5 + 0.03 = 0.53$$
+$$W_{\text{new}} = W_{\text{old}} - \eta \cdot \frac{\partial L}{\partial W} = 0.5 - 0.1 \times (-0.3) = 0.5 + 0.03 = 0.53$$
 
 **Computation:**
-```
-Interpretation: 
-- Negative gradient means increasing W will DECREASE loss
-- Magnitude 0.3 means the slope is moderate
-- Update: W_new = W_old - learning_rate × gradient
-         = 0.5 - 0.1 × (-0.3) = 0.5 + 0.03 = 0.53
-```
+
+The negative gradient indicates that increasing $W$ will decrease the loss. The magnitude of 0.3 indicates a moderate slope. Applying the gradient descent update rule:
+
+$$W_{\text{new}} = W_{\text{old}} - \eta \cdot \frac{\partial L}{\partial W} = 0.5 - 0.1 \times (-0.3) = 0.5 + 0.03 = 0.53$$
 
 In this example, the negative gradient tells us that increasing the weight will decrease the loss. The magnitude of 0.3 indicates a moderate slope. We then update the weight by moving in the direction opposite to the gradient (since we want to minimize loss), scaled by the learning rate. The specific values are chosen for illustration; in practice, these would be computed from the actual loss function and current parameter values.
 
@@ -381,31 +384,29 @@ In neural networks, the learning rate (denoted as $\eta$ or `lr`) is typically s
 To see how the learning rate affects updates, consider this example using arbitrary values:
 
 **Given:**
-```
-Gradient: -0.5 (example gradient value indicating weight should increase)
-Learning rate: 0.1 (small step size)
-```
+- Gradient: $\frac{\partial L}{\partial W} = -0.5$ (example gradient value indicating weight should increase)
+- Learning rate: $\eta = 0.1$ (small step size)
 
 **Equation to solve (with learning rate 0.1):**
-$$W_{\text{new}} = W_{\text{old}} - 0.1 \times (-0.5) = W_{\text{old}} + 0.05$$
+$$W_{\text{new}} = W_{\text{old}} - \eta \cdot \frac{\partial L}{\partial W} = W_{\text{old}} - 0.1 \times (-0.5) = W_{\text{old}} + 0.05$$
 
 **Computation:**
-```
-Weight update: W_new = W_old - 0.1 × (-0.5)
-              = W_old + 0.05  (small increase)
-```
+
+$$W_{\text{new}} = W_{\text{old}} - 0.1 \times (-0.5) = W_{\text{old}} + 0.05$$
+
+This results in a small increase in the weight value.
 
 With a learning rate of 0.1, we make a modest update. But if we used a learning rate of 1.0:
 
 **Equation to solve (with learning rate 1.0):**
-$$W_{\text{new}} = W_{\text{old}} - 1.0 \times (-0.5) = W_{\text{old}} + 0.5$$
+$$W_{\text{new}} = W_{\text{old}} - \eta \cdot \frac{\partial L}{\partial W} = W_{\text{old}} - 1.0 \times (-0.5) = W_{\text{old}} + 0.5$$
 
 **Computation with larger learning rate:**
-```
-If learning rate was 1.0:
-Weight update: W_new = W_old - 1.0 × (-0.5)
-              = W_old + 0.5  (large increase - might overshoot!)
-```
+
+If the learning rate was $\eta = 1.0$:
+$$W_{\text{new}} = W_{\text{old}} - 1.0 \times (-0.5) = W_{\text{old}} + 0.5$$
+
+This results in a much larger increase in the weight value, which might cause the algorithm to overshoot the optimal value.
 
 This much larger update could cause us to overshoot the optimal weight value, potentially making the loss worse rather than better. The gradient value of -0.5 is chosen arbitrarily for illustration; in practice, it would be computed from the actual loss function.
 
@@ -428,24 +429,19 @@ The gradient descent process follows these steps: First, we compute the loss by 
 We trace through a complete iteration to illustrate how this works, using example values chosen to demonstrate the process:
 
 **Given:**
-```
-Initial weight: W = 0.5  (arbitrary starting value)
-Loss: 2.0  (example initial loss)
-Gradient: ∂L/∂W = -0.3 (negative = should increase W)
-Learning rate: η = 0.1  (example learning rate)
-```
+- Initial weight: $W = 0.5$ (arbitrary starting value)
+- Loss: $L = 2.0$ (example initial loss)
+- Gradient: $\frac{\partial L}{\partial W} = -0.3$ (negative indicates increasing $W$ will decrease loss)
+- Learning rate: $\eta = 0.1$ (example learning rate)
 
 **Equation to solve:**
-$$W_{\text{new}} = 0.5 - 0.1 \times (-0.3) = 0.5 + 0.03 = 0.53$$
+$$W_{\text{new}} = W_{\text{old}} - \eta \cdot \frac{\partial L}{\partial W} = 0.5 - 0.1 \times (-0.3) = 0.5 + 0.03 = 0.53$$
 
 **Computation:**
-```
-Update: W_new = 0.5 - 0.1 × (-0.3)
-       = 0.5 + 0.03
-       = 0.53
 
-New loss: 1.8 (lower - improved!)
-```
+$$W_{\text{new}} = 0.5 - 0.1 \times (-0.3) = 0.5 + 0.03 = 0.53$$
+
+After this update, the loss decreases from $L = 2.0$ to $L = 1.8$, confirming that we moved in the correct direction.
 
 After this update, the loss decreased from 2.0 to 1.8, confirming that we moved in the right direction. We would continue this process, computing new gradients and making new updates, until the loss stops decreasing significantly. The specific values are illustrative; in practice, these would be computed from the actual model and data.
 
@@ -478,15 +474,18 @@ We trace through a complete forward pass example using arbitrary values chosen t
 - Softmax: $\text{softmax}\left(\begin{bmatrix} 1.0 \\ 2.0 \\ 0.5 \\ 0.3 \end{bmatrix}\right) = \begin{bmatrix} 0.1 \\ 0.8 \\ 0.05 \\ 0.05 \end{bmatrix}$
 
 **Computation:**
-```
-Forward Pass:
-Input: [0.5, 0.3]  (example 2-dimensional input)
-  → Input Layer: [0.5, 0.3]
-  → Hidden Layer 1: [0.1, 0.2, 0.4]  (expands to 3 dimensions)
-  → Hidden Layer 2: [0.3, 0.7]  (compresses to 2 dimensions)
-  → Output Layer: [1.0, 2.0, 0.5, 0.3]  (raw scores for 4 classes)
-  → Softmax: [0.1, 0.8, 0.05, 0.05]  (probabilities for 4 classes)
-```
+
+1. **Input**: $\mathbf{x} = \begin{bmatrix} 0.5 \\ 0.3 \end{bmatrix}$ (example 2-dimensional input)
+
+2. **Input Layer**: $\mathbf{x}_{\text{in}} = \begin{bmatrix} 0.5 \\ 0.3 \end{bmatrix}$
+
+3. **Hidden Layer 1**: $\mathbf{y}_1 = \begin{bmatrix} 0.1 \\ 0.2 \\ 0.4 \end{bmatrix}$ (expands to 3 dimensions)
+
+4. **Hidden Layer 2**: $\mathbf{y}_2 = \begin{bmatrix} 0.3 \\ 0.7 \end{bmatrix}$ (compresses to 2 dimensions)
+
+5. **Output Layer**: $\mathbf{z} = \begin{bmatrix} 1.0 \\ 2.0 \\ 0.5 \\ 0.3 \end{bmatrix}$ (raw scores for 4 classes)
+
+6. **Softmax**: $\text{softmax}(\mathbf{z}) = \begin{bmatrix} 0.1 \\ 0.8 \\ 0.05 \\ 0.05 \end{bmatrix}$ (probabilities for 4 classes)
 
 Each step transforms the data, building up a richer representation until we finally have probabilities for each possible output class. The forward pass is how the model makes predictions, and it's the first step in both inference (making predictions) and training (where we'll then compute loss and gradients). The specific numerical values are illustrative; in a trained network, these would result from the learned weight matrices.
 
@@ -509,27 +508,37 @@ Each term in this product is computed during the backward pass, with gradients f
 We trace through a backward pass example using arbitrary gradient values chosen to illustrate the propagation process:
 
 **Given:**
-```
-Loss: 0.5 (example loss value)
-```
+- Loss: $L = 0.5$ (example loss value)
 
 **Equations to solve (using chain rule):**
-- Gradient w.r.t. output: $\frac{\partial L}{\partial \mathbf{y}_{\text{out}}} = \begin{bmatrix} -0.2 \\ 0.8 \\ -0.3 \\ -0.3 \end{bmatrix}$
-- Gradient w.r.t. hidden layer 2: $\frac{\partial L}{\partial \mathbf{y}_2} = \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix}$ (computed via chain rule)
-- Gradient w.r.t. hidden layer 1: $\frac{\partial L}{\partial \mathbf{y}_1} = \begin{bmatrix} 0.05 \\ 0.15 \\ 0.1 \end{bmatrix}$ (computed via chain rule)
-- For each weight matrix: $\frac{\partial L}{\partial \mathbf{W}_i} = \frac{\partial L}{\partial \mathbf{y}_i} \frac{\partial \mathbf{y}_i}{\partial \mathbf{W}_i}$
+
+1. Gradient with respect to output:
+   $$\frac{\partial L}{\partial \mathbf{y}_{\text{out}}} = \begin{bmatrix} -0.2 \\ 0.8 \\ -0.3 \\ -0.3 \end{bmatrix}$$
+
+2. Gradient with respect to hidden layer 2 (computed via chain rule):
+   $$\frac{\partial L}{\partial \mathbf{y}_2} = \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix}$$
+
+3. Gradient with respect to hidden layer 1 (computed via chain rule):
+   $$\frac{\partial L}{\partial \mathbf{y}_1} = \begin{bmatrix} 0.05 \\ 0.15 \\ 0.1 \end{bmatrix}$$
+
+4. For each weight matrix (computed via chain rule):
+   $$\frac{\partial L}{\partial \mathbf{W}_i} = \frac{\partial L}{\partial \mathbf{y}_i} \frac{\partial \mathbf{y}_i}{\partial \mathbf{W}_i}$$
 
 **Computation:**
-```
-Backward Pass:
-Loss: 0.5 (example loss value)
-  → Gradient w.r.t. output: [-0.2, 0.8, -0.3, -0.3]  (example gradients)
-  → Gradient w.r.t. hidden layer 2: [0.1, 0.2]  (propagated backward)
-  → Gradient w.r.t. hidden layer 1: [0.05, 0.15, 0.1]  (propagated backward)
-  → Gradient w.r.t. input layer: [computed via chain rule]
-  → Gradient w.r.t. all weight matrices: [computed]
-  → Update: W_new = W_old - learning_rate × gradient
-```
+
+The backward pass propagates gradients from the output layer back to the input layer:
+
+1. **Gradient with respect to output**: $\frac{\partial L}{\partial \mathbf{y}_{\text{out}}} = \begin{bmatrix} -0.2 \\ 0.8 \\ -0.3 \\ -0.3 \end{bmatrix}$ (example gradients)
+
+2. **Gradient with respect to hidden layer 2**: $\frac{\partial L}{\partial \mathbf{y}_2} = \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix}$ (propagated backward via chain rule)
+
+3. **Gradient with respect to hidden layer 1**: $\frac{\partial L}{\partial \mathbf{y}_1} = \begin{bmatrix} 0.05 \\ 0.15 \\ 0.1 \end{bmatrix}$ (propagated backward via chain rule)
+
+4. **Gradient with respect to input layer**: Computed via chain rule
+
+5. **Gradient with respect to all weight matrices**: Computed using $\frac{\partial L}{\partial \mathbf{W}_i} = \frac{\partial L}{\partial \mathbf{y}_i} \frac{\partial \mathbf{y}_i}{\partial \mathbf{W}_i}$
+
+6. **Weight update**: $\mathbf{W}_{\text{new}} = \mathbf{W}_{\text{old}} - \eta \cdot \frac{\partial L}{\partial \mathbf{W}_i}$
 
 The gradient values shown are illustrative examples. In practice, these would be computed exactly using the chain rule of calculus based on the actual loss function and network architecture.
 
@@ -556,33 +565,23 @@ Weight update is the process of changing matrix values (weights) based on gradie
 We illustrate how weight updates work in practice using example values chosen to demonstrate the update process:
 
 **Given:**
-```
-Before training:
-Weight matrix W = [0.1, 0.2]  (example initial weights)
-                 [0.3, 0.4]
-Loss: 2.5 (example high loss value)
-
-After computing gradients:
-Gradient = [-0.5, -0.3]  (example gradient values)
-          [-0.2, -0.1]
-Learning rate: η = 0.1
-```
+- Before training:
+  - Weight matrix: $\mathbf{W}_{\text{old}} = \begin{bmatrix} 0.1 & 0.2 \\ 0.3 & 0.4 \end{bmatrix}$ (example initial weights)
+  - Loss: $L = 2.5$ (example high loss value)
+- After computing gradients:
+  - Gradient: $\nabla_{\mathbf{W}} L = \begin{bmatrix} -0.5 & -0.3 \\ -0.2 & -0.1 \end{bmatrix}$ (example gradient values)
+  - Learning rate: $\eta = 0.1$
 
 **Equation to solve:**
-$$\mathbf{W}_{\text{new}} = \begin{bmatrix} 0.1 & 0.2 \\ 0.3 & 0.4 \end{bmatrix} - 0.1 \times \begin{bmatrix} -0.5 & -0.3 \\ -0.2 & -0.1 \end{bmatrix} = \begin{bmatrix} 0.15 & 0.23 \\ 0.32 & 0.41 \end{bmatrix}$$
+$$\mathbf{W}_{\text{new}} = \mathbf{W}_{\text{old}} - \eta \cdot \nabla_{\mathbf{W}} L = \begin{bmatrix} 0.1 & 0.2 \\ 0.3 & 0.4 \end{bmatrix} - 0.1 \times \begin{bmatrix} -0.5 & -0.3 \\ -0.2 & -0.1 \end{bmatrix} = \begin{bmatrix} 0.15 & 0.23 \\ 0.32 & 0.41 \end{bmatrix}$$
 
 **Computation:**
-```
-Weight update (learning_rate = 0.1):
-W_new = W_old - 0.1 × Gradient
-      = [0.1, 0.2] - 0.1 × [-0.5, -0.3]
-        [0.3, 0.4]         [-0.2, -0.1]
-      = [0.15, 0.23]
-        [0.32, 0.41]
 
-After training (many updates):
-Loss: 0.1 (example low loss value after training)
-```
+Applying the gradient descent update rule with learning rate $\eta = 0.1$:
+
+$$\mathbf{W}_{\text{new}} = \mathbf{W}_{\text{old}} - \eta \cdot \nabla_{\mathbf{W}} L = \begin{bmatrix} 0.1 & 0.2 \\ 0.3 & 0.4 \end{bmatrix} - 0.1 \times \begin{bmatrix} -0.5 & -0.3 \\ -0.2 & -0.1 \end{bmatrix} = \begin{bmatrix} 0.15 & 0.23 \\ 0.32 & 0.41 \end{bmatrix}$$
+
+After many such updates during training, the loss decreases from $L = 2.5$ to $L = 0.1$ (example low loss value after training).
 
 The weights change based on the gradients, and after many such updates, the loss decreases dramatically. This is how the model learns patterns from examples—by repeatedly making small adjustments to its weights based on the errors it makes. The specific values are illustrative; in practice, these would be computed from the actual model, data, and loss function.
 
@@ -598,16 +597,15 @@ In practice, the batch size is the number of sequences processed together (typic
 
 The following example illustrates how batching works. For clarity, we use simple text sequences as examples, though in practice these would be numerical vectors:
 
-```
-Batch size: 4
-Batch: [
-  ["The", "cat", "sat"],  (example sequence 1)
-  ["The", "dog", "ran"],  (example sequence 2)
-  ["A", "bird", "flew"],  (example sequence 3)
-  ["A", "fish", "swam"]   (example sequence 4)
-]
-Process all 4 sequences together, average gradients
-```
+**Batch configuration:**
+- Batch size: $B = 4$
+- Batch contains 4 sequences:
+  1. ["The", "cat", "sat"] (example sequence 1)
+  2. ["The", "dog", "ran"] (example sequence 2)
+  3. ["A", "bird", "flew"] (example sequence 3)
+  4. ["A", "fish", "swam"] (example sequence 4)
+
+All 4 sequences are processed together in parallel, and their gradients are averaged across the batch.
 
 The sequences shown are illustrative examples. In practice, these would be converted to numerical vectors (embeddings) before processing. The key point is that all sequences in the batch are processed in parallel, and their gradients are averaged.
 
@@ -625,14 +623,16 @@ In training, if you have a dataset with 10,000 sequences and a batch size of 32,
 
 We illustrate this with a numerical example using arbitrary values chosen to demonstrate the epoch concept:
 
-```
-Dataset: 1000 sequences  (example dataset size)
-Batch size: 32  (example batch size)
-Epoch 1: Process batches 1-32 (all 1000 sequences, 1000÷32 ≈ 32 batches)
-Epoch 2: Process batches 1-32 again (same sequences, different order)
-Epoch 3: Process batches 1-32 again
-... (until model converges)
-```
+**Given:**
+- Dataset size: $N = 1000$ sequences (example dataset size)
+- Batch size: $B = 32$ (example batch size)
+- Number of batches per epoch: $\lceil N / B \rceil = \lceil 1000 / 32 \rceil \approx 32$ batches
+
+**Epoch progression:**
+- **Epoch 1**: Process batches 1 through 32 (all 1000 sequences)
+- **Epoch 2**: Process batches 1 through 32 again (same sequences, typically in different order)
+- **Epoch 3**: Process batches 1 through 32 again
+- This process continues until the model converges
 
 The specific numbers (1000 sequences, batch size 32) are chosen for illustration. In practice, these values would depend on the actual dataset size and available computational resources. The key concept is that one epoch means processing the entire dataset once, divided into batches.
 
