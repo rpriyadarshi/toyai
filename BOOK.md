@@ -8,7 +8,9 @@
 
 This book has been split into individual chapter files for easier navigation. 
 
-**👉 Start here:** [`book/00-index.md`](book/00-index.md)
+**👉 Start here:** [`book/00-introduction.md`](book/00-introduction.md) - Philosophy and approach
+
+**👉 Then:** [`book/00-index.md`](book/00-index.md) - Table of contents
 
 ### Quick Links
 
@@ -40,8 +42,9 @@ This book has been split into individual chapter files for easier navigation.
 
 ## 📖 How to Read
 
-1. **Start with the index**: [`book/00-index.md`](book/00-index.md) for table of contents
-2. **Read foundations first**: Chapters 1-5 establish core concepts
+1. **Start with the introduction**: [`book/00-introduction.md`](book/00-introduction.md) for philosophy and approach
+2. **Review the index**: [`book/00-index.md`](book/00-index.md) for table of contents
+3. **Read foundations first**: Chapters 1-5 establish core concepts
 3. **Work through examples**: Examples 1-6 build progressively
 4. **Use worksheets**: See `worksheets/` directory for hand-calculation guides
 5. **Run code**: Build and run examples to see concepts in action

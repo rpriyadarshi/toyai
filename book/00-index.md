@@ -6,6 +6,8 @@
 
 ## Table of Contents
 
+- [Introduction](00-introduction.md) - Philosophy and approach of this book
+
 ### Part I: Foundations
 
 1. [Neural Network Fundamentals](01-neural-network-fundamentals.md) - **START HERE!** Complete foundation: from perceptrons to transformers, all concepts with physical analogies
@@ -38,16 +40,17 @@
 
 ## How to Use This Book
 
-1. **Start with Part I**: Read the foundation chapters to understand core concepts
-2. **Work through Examples**: Follow examples 1-6 in order, each builds on the previous
-3. **Use Worksheets**: Refer to `worksheets/` directory for hand-calculation guides
-4. **Run Code**: Build and run examples to see concepts in action
-5. **Refer to Appendices**: Use appendices as quick reference
+1. **Start with the Introduction**: Read `00-introduction.md` to understand the philosophy and approach
+2. **Read Foundations (Part I)**: Read chapters 1-5 in order to understand core concepts
+3. **Work through Examples (Part II)**: Follow examples 1-6 in order, each builds on the previous
+4. **Use Worksheets**: Refer to `worksheets/` directory for hand-calculation guides
+5. **Run Code**: Build and run examples to see concepts in action
+6. **Refer to Appendices**: Use appendices as quick reference
 
 ---
 
 **Navigation**: Use the table of contents above to jump to any chapter.
 ---
 **Navigation:**
-- [← Index](00-index.md) | [Next: Neural Network Fundamentals →](01-neural-network-fundamentals.md)
+- [← Introduction](00-introduction.md) | [Next: Neural Network Fundamentals →](01-neural-network-fundamentals.md)
 ---

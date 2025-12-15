@@ -20,7 +20,8 @@ The book is organized in two ways:
 
 ### Individual Chapters (`book/` directory)
 - **Modular format**: Each chapter is a separate file for easy navigation
-- **Start with**: `book/00-index.md` for table of contents
+- **Start with**: [Introduction](book/00-introduction.md) for philosophy and approach
+- **Then**: [Table of Contents](book/00-index.md) for navigation
 - **Read online**: View chapters directly in your editor or on GitHub
 
 ### Complete PDF Book
@@ -44,7 +45,7 @@ The PDF includes:
 - Mathematical formulas properly rendered
 - All content in one downloadable file
 
-See `scripts/UPDATE_BOOK.md` for details on updating the book.
+See [scripts/UPDATE_BOOK.md](scripts/UPDATE_BOOK.md) for details on updating the book.
 
 ## 🏗️ Structure
 
@@ -80,7 +81,7 @@ toyai-1/
 
 ### 1. Read the Book
 
-Start with **`book/00-index.md`** or **`BOOK.md`**. Read Part I (Foundations, Chapters 1-5) to understand the core concepts. **Chapter 1: Core Terminology and Foundations** explains all terminology with physical analogies - start there!
+Start with **[Introduction](book/00-introduction.md)** to understand the philosophy and approach of this book. Then read **[Table of Contents](book/00-index.md)** or **[BOOK.md](BOOK.md)** for navigation. Read Part I (Foundations, Chapters 1-5) to understand the core concepts. **[Chapter 1: Neural Network Fundamentals](book/01-neural-network-fundamentals.md)** explains all terminology with physical analogies - start there!
 
 ### 2. Work Through Examples
 
@@ -95,7 +96,7 @@ Each example in `examples/` demonstrates one new concept:
 
 ### 3. Verify by Hand
 
-Use the worksheets in `worksheets/` to compute each example step-by-step on paper.
+Use the worksheets in the [`worksheets/`](worksheets/) directory to compute each example step-by-step on paper.
 
 ### 4. Build and Run
 
@@ -111,12 +112,13 @@ make
 
 ## 📖 Learning Path
 
-1. **Read Foundations (Chapters 1-5)** - Start with terminology, then matrix operations, embeddings, attention, and why transformers
-   - Chapter 1: Core Terminology and Foundations (**START HERE!**)
-   - Chapter 2: The Matrix Core
-   - Chapter 3: Embeddings: Tokens to Vectors
-   - Chapter 4: Attention Intuition
-   - Chapter 5: Why Transformers?
+1. **Read Introduction** - Understand the philosophy and approach ([book/00-introduction.md](book/00-introduction.md))
+2. **Read Foundations (Chapters 1-5)** - Start with terminology, then matrix operations, embeddings, attention, and why transformers
+   - [Chapter 1: Neural Network Fundamentals](book/01-neural-network-fundamentals.md) (**START HERE!**)
+   - [Chapter 2: The Matrix Core](book/02-matrix-core.md)
+   - [Chapter 3: Embeddings: Tokens to Vectors](book/03-embeddings.md)
+   - [Chapter 4: Attention Intuition](book/04-attention-intuition.md)
+   - [Chapter 5: Why Transformers?](book/05-why-transformers.md)
 2. **Study Example 1** - Read chapter, understand code, do worksheet
 3. **Study Example 2** - Add training concepts
 4. **Study Example 3** - Master backpropagation
@@ -218,4 +220,4 @@ This is an educational project. Suggestions for clarity, additional examples, or
 
 ---
 
-**Start your journey**: Open `BOOK.md` and begin with Part I: Foundations.
+**Start your journey**: Read [Introduction](book/00-introduction.md) first, then proceed to [Part I: Foundations](book/00-index.md#part-i-foundations).

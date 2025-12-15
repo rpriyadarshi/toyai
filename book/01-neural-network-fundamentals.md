@@ -2,6 +2,9 @@
 
 This chapter establishes the foundation for understanding transformers by first explaining what neural networks are, how they work, and why they form the basis for modern language models. Throughout this chapter, we explain every concept using physical analogies that connect abstract mathematics to tangible reality, making the material more accessible and memorable.
 
+**Navigation:**
+- [← Introduction](00-introduction.md) | [Table of Contents](00-index.md) | [Next: The Matrix Core →](02-matrix-core.md)
+
 ### Why This Chapter First?
 
 Most AI education jumps straight to transformers without explaining the fundamental system they're built on. This approach leaves students with a superficial understanding—they can describe what transformers do, but they don't understand how or why they work. 
@@ -767,5 +770,5 @@ Remember: Every concept in this chapter has a physical analogy. If you ever forg
 ---
 
 **Navigation:**
-- [← Index](00-index.md) | [Next: The Matrix Core →](02-matrix-core.md)
+- [← Introduction](00-introduction.md) | [← Index](00-index.md) | [Next: The Matrix Core →](02-matrix-core.md)
 

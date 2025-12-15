@@ -522,5 +522,5 @@
 ---
 
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Appendix A](appendix-a-matrix-calculus.md) | [Next: Appendix C →](appendix-c-hand-calculation-tips.md)
+- [← Introduction](00-introduction.md) | [← Index](00-index.md) | [← Previous: Appendix A](appendix-a-matrix-calculus.md) | [Next: Appendix C →](appendix-c-hand-calculation-tips.md)
 

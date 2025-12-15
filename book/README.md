@@ -4,7 +4,8 @@ This directory contains the complete book split into individual chapter files fo
 
 ## File Organization
 
-### Index
+### Introduction and Index
+- **`00-introduction.md`** - Philosophy and approach of this book
 - **`00-index.md`** - Table of contents and navigation hub
 
 ### Part I: Foundations
@@ -40,11 +41,12 @@ Each chapter file includes navigation links at the bottom:
 
 ## Reading Order
 
-1. Start with `00-index.md` for overview
-2. Read foundations (01-05) in order
-3. Work through examples (06-11) sequentially
-4. Refer to appendices as needed
-5. End with conclusion
+1. Start with `00-introduction.md` for philosophy and approach
+2. Review `00-index.md` for overview and table of contents
+3. Read foundations (01-05) in order
+4. Work through examples (06-11) sequentially
+5. Refer to appendices as needed
+6. End with conclusion
 
 ## Alternative: Single File
 

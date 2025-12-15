@@ -32,5 +32,5 @@ For $C = A^T$:
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 6: Complete](11-example6-complete.md) | [Next: Appendix B →](appendix-b-hand-calculation-tips.md)
+- [← Introduction](00-introduction.md) | [← Index](00-index.md) | [← Previous: Example 6: Complete](11-example6-complete.md) | [Next: Appendix B →](appendix-b-terminology-reference.md)
 ---
