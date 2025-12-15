@@ -23,7 +23,7 @@ Neural networks matter because they can learn complex patterns from data without
 
 ![Neural Network Structure: Factory Assembly Line](images/network-structure/neural-network-structure.svg)
 
-To see a neural network in action, [Example 1: Minimal Forward Pass](06-example1-forward-pass.md) demonstrates how a simple network makes predictions step by step.
+To see a neural network in action, [Example 1: Minimal Forward Pass](06-example1-forward-pass.md) demonstrates how a transformer makes predictions step by step through the forward pass.
 
 ---
 
@@ -196,6 +196,8 @@ The most common activation functions you'll encounter are:
 | | | |
 |:---:|:---:|:---:|
 | ![ReLU Graph](images/activation-functions/activation-graph-relu.svg) | ![Sigmoid Graph](images/activation-functions/activation-graph-sigmoid.svg) | ![Tanh Graph](images/activation-functions/activation-graph-tanh.svg) |
+
+To see ReLU activation in action within a feed-forward network, [Example 5: Feed-Forward Layers](10-example5-feedforward.md) demonstrates how ReLU is applied in the expansion phase of a feed-forward network.
 
 While a single perceptron is quite limited in what it can learn, stacking many perceptrons together creates powerful networks capable of learning complex patterns. This is why we build networks with multiple layers, as we'll see in the next section.
 
@@ -659,6 +661,8 @@ Third, the output component converts the processed information into predictions.
 
 ![Complete Transformer Architecture](images/network-structure/complete-transformer-architecture.svg)
 
+To see the complete transformer architecture implemented with all components working together, [Example 6: Complete Transformer](11-example6-complete.md) demonstrates the full implementation including multiple transformer blocks, layer normalization, residual connections, and the complete training pipeline.
+
 ### Key Transformer Concepts
 
 Now that we understand the basic architecture, let's define the key concepts that make transformers work. These terms will appear throughout the rest of this book, so it's important to understand them clearly. We'll organize them by theme, starting with how text enters the system and progressing through how it's processed.
@@ -723,7 +727,7 @@ A **context vector** is a weighted combination of all token values, where the we
 
 **Layer Normalization**
 
-**Layer normalization** is a technique that normalizes the inputs to a layer by adjusting the mean and variance. In basic algebra and statistics, this is exactly like computing z-scores: you subtract the mean and divide by the standard deviation. The formula is $z = \frac{x - \mu}{\sigma}$, where $\mu$ is the mean and $\sigma$ is the standard deviation. This transforms any set of numbers so they have a mean of 0 and a standard deviation of 1. Think of layer normalization like standardizing test scores. Raw scores might vary widely (0-100), but after normalization (subtract mean, divide by standard deviation), the scores are centered around 0 with a consistent scale.
+**Layer normalization** is a technique that normalizes the inputs to a layer by adjusting the mean and variance. In basic algebra and statistics, this is exactly like computing z-scores: you subtract the mean and divide by the standard deviation. The formula is $z = \frac{x - \mu}{\sigma}$, where $\mu$ is the mean and $\sigma$ is the standard deviation. This transforms any set of numbers so they have a mean of 0 and a standard deviation of 1. Think of layer normalization like standardizing test scores. Raw scores might vary widely (0-100), but after normalization (subtract mean, divide by standard deviation), the scores are centered around 0 with a consistent scale. To see layer normalization in a complete transformer implementation, [Example 6: Complete Transformer](11-example6-complete.md) includes layer normalization in all transformer blocks.
 
 **Residual Connections**
 
