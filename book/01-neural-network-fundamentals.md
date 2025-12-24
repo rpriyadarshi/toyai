@@ -88,6 +88,19 @@ This example demonstrates that the same perceptron produces different outputs fo
 
 You might notice that the core computation $\mathbf{w} \cdot \mathbf{x} + b$ looks very familiar—it's closely related to the equation of a straight line! In algebra, we write a line as $y = mx + c$, where $m$ is the slope and $c$ is the y-intercept. For a perceptron with a single input ($d=1$), $\mathbf{w} \cdot \mathbf{x} + b$ becomes $wx + b$, which is exactly $y = mx + c$ (where $w$ is the slope and $b$ is the intercept). For multiple inputs ($d > 1$), $\mathbf{w} \cdot \mathbf{x} = \sum_{i=1}^d w_i x_i$ is the dot product (weighted sum), which generalizes the line equation to multiple dimensions. The bias $b$ still shifts the entire computation up or down, just like the y-intercept shifts a line.
 
+To understand what this generalization means geometrically, think of it this way: $y = mx + c$ defines a straight line in 2D space (the x-y plane). When we move to multiple dimensions with $\mathbf{w} \cdot \mathbf{x} + b$, we're not creating "a bunch of lines"—we're creating a single geometric object called a **hyperplane**. The equation $\mathbf{w} \cdot \mathbf{x} + b = 0$ defines a decision boundary that divides the input space:
+
+- **1D input ($d=1$)**: $w_1 x_1 + b = 0$ defines a point on a number line (dividing positive from negative)
+- **2D input ($d=2$)**: $w_1 x_1 + w_2 x_2 + b = 0$ defines a straight line in the $(x_1, x_2)$ plane (dividing the plane into two regions)
+- **3D input ($d=3$)**: $w_1 x_1 + w_2 x_2 + w_3 x_3 + b = 0$ defines a plane in 3D space (dividing space into two regions)
+- **nD input ($d=n$)**: $\mathbf{w} \cdot \mathbf{x} + b = 0$ defines a hyperplane in $n$-dimensional space
+
+All points on one side of the hyperplane satisfy $\mathbf{w} \cdot \mathbf{x} + b > 0$, while all points on the other side satisfy $\mathbf{w} \cdot \mathbf{x} + b < 0$. This is why the vector form is so powerful: it's the same mathematical structure (a hyperplane) regardless of dimension, just like how a line in 2D, a plane in 3D, and a hyperplane in higher dimensions are all the same type of geometric object—they're all flat surfaces that divide space.
+
+| | | |
+|:---:|:---:|:---:|
+| ![1D Hyperplane: Decision Point](images/other/hyperplane-1d.svg) | ![2D Hyperplane: Decision Line](images/other/hyperplane-2d.svg) | ![3D Hyperplane: Decision Plane](images/other/hyperplane-3d.svg) |
+
 The key difference is that the perceptron then applies an activation function $f()$ to this linear combination. If $f()$ is the identity function (just returns its input unchanged), then the perceptron is computing a linear function—a straight line (or hyperplane in higher dimensions). But with other activation functions, we get non-linear transformations that enable the network to learn complex, curved patterns that a simple straight line cannot represent.
 
 To see this transformation in action, consider what happens when we apply different activation functions to straight lines. The graphs below show four different linear functions (y = 2x + 1, y = -x + 2, y = 0.5x - 1, and y = -1.5x + 0.5) and how they are transformed by three common activation functions: ReLU, Sigmoid, and Tanh. (We'll define these functions precisely in a moment, but for now, notice their visual effects.) ReLU zeros out all negative values, creating sharp corners where lines cross zero. Sigmoid squashes everything into the 0-1 range, creating smooth S-shaped curves. Tanh does something similar but squashes to the -1 to 1 range, preserving the sign of the original values. These transformations are what allow neural networks to learn non-linear patterns—without them, the network would only be able to compute straight lines.

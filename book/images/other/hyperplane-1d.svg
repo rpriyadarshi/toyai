@@ -1,0 +1,34 @@
+<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title at top -->
+  <text x="150" y="25" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">1D Input (d=1)</text>
+  <text x="150" y="42" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">w₁x₁ + b = 0</text>
+  
+  <!-- Content group: all elements relative to this -->
+  <g transform="translate(20, 60)">
+    <!-- Decision point label (above everything) -->
+    <text x="150" y="15" font-family="Arial" font-size="11" font-weight="bold" text-anchor="middle" fill="#2563eb">Decision Point</text>
+    
+    <!-- Positive region -->
+    <rect x="150" y="25" width="100" height="25" fill="#16a34a" opacity="0.2"/>
+    <text x="200" y="40" font-family="Arial" font-size="11" font-weight="bold" fill="#16a34a" text-anchor="middle">w·x + b &gt; 0</text>
+    
+    <!-- Negative region -->
+    <rect x="50" y="25" width="100" height="25" fill="#dc2626" opacity="0.2"/>
+    <text x="100" y="40" font-family="Arial" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">w·x + b &lt; 0</text>
+    
+    <!-- Number line (below regions) -->
+    <line x1="50" y1="60" x2="250" y2="60" stroke="#333" stroke-width="3"/>
+    <!-- Tick marks -->
+    <line x1="100" y1="55" x2="100" y2="65" stroke="#333" stroke-width="2"/>
+    <line x1="150" y1="55" x2="150" y2="65" stroke="#333" stroke-width="2"/>
+    <line x1="200" y1="55" x2="200" y2="65" stroke="#333" stroke-width="2"/>
+    
+    <!-- Decision point circle (on the line) -->
+    <circle cx="150" cy="60" r="6" fill="#2563eb" stroke="#fff" stroke-width="2"/>
+    
+    <!-- Number labels (below the line) -->
+    <text x="100" y="80" font-family="Arial" font-size="11" text-anchor="middle">-1</text>
+    <text x="150" y="80" font-family="Arial" font-size="11" text-anchor="middle">0</text>
+    <text x="200" y="80" font-family="Arial" font-size="11" text-anchor="middle">1</text>
+  </g>
+</svg>

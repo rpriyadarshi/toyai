@@ -321,12 +321,16 @@ d = f"M {exit_point[0]},{exit_point[1]} {entry_point[0]},{entry_point[1]}"
 **Issue**: Arrow coordinates are incorrect
 - **Fix**: Use the center-to-center algorithm to calculate boundary intersection points (see Arrow Connection Points section)
 
-## Workflow Summary
+## Complete Workflow: From Design to Finished Diagram
+
+### Phase 1: Design and Structure
 
 1. **Design Phase**:
    - Plan block structure and grouping
    - Calculate box sizes based on text content
    - Plan spacing (50px minimum between boxes)
+   - Identify where labels will be placed
+   - Decide on diagram size (small/medium/large) to determine text zones
 
 2. **Implementation Phase**:
    - Create block groups with proper IDs
@@ -334,12 +338,14 @@ d = f"M {exit_point[0]},{exit_point[1]} {entry_point[0]},{entry_point[1]}"
    - Add boxes with proper sizing
    - Create connector arrows (not static paths)
    - Use absolute coordinates for all paths
+   - **Draw diagram structure first** (shapes, lines, boxes) - this becomes the template
 
 3. **Layout Phase**:
    - Position blocks with adequate spacing
    - Calculate bounding box of all elements
    - Add 20px border padding
    - Center content if needed
+   - **Save diagram as template** (with structure but minimal/no text)
 
 4. **Inter-Block Connections**:
    - Create separate group for inter-block arrows
@@ -351,12 +357,53 @@ d = f"M {exit_point[0]},{exit_point[1]} {entry_point[0]},{entry_point[1]}"
    - This ensures SVG viewers render the same as Inkscape
    - Or export as "Plain SVG" from Inkscape and copy coordinates back
 
-6. **Validation**:
+6. **Text Placement** (Standardized Zones - **Use diagram as template**):
+   
+   **Workflow**:
+   ```bash
+   # Step 1: Analyze the diagram structure
+   python3 scripts/svg_diagram_builder.py analyze diagram.svg
+   
+   # Step 2: Place text elements in standard zones
+   # Title (always first, at top)
+   python3 scripts/svg_diagram_builder.py place diagram.svg title "Diagram Title"
+   
+   # Equation/Subtitle (if needed, below title)
+   python3 scripts/svg_diagram_builder.py place diagram.svg equation "w₁x₁ + w₂x₂ + b = 0"
+   
+   # Element labels (uses empty space finder automatically)
+   python3 scripts/svg_diagram_builder.py place diagram.svg label "Decision Line" --target-x 150 --target-y 80
+   
+   # Axis labels (at axis ends)
+   python3 scripts/svg_diagram_builder.py place diagram.svg axis "x₁" --target-x 250 --target-y 95
+   
+   # Notes (at bottom, if needed)
+   python3 scripts/svg_diagram_builder.py place diagram.svg note "Note: Example diagram"
+   
+   # Or use batch mode with JSON config
+   python3 scripts/svg_diagram_builder.py batch diagram.svg text_config.json
+   ```
+   
+   **Standard Zones** (automatically determined by diagram size):
+   - **Title Zone**: Top center (y=25-30), font-size 14-18, bold
+   - **Equation Zone**: Below title (y=42-50), font-size 12, gray
+   - **Content Zone**: Starts y=60-80, use transform="translate(x, y)"
+   - **Axis Label Zone**: At axis ends, rotated for vertical axes
+   - **Element Label Zone**: Near elements (automatically uses `find_empty_space.py`)
+   - **Note Zone**: Bottom (y=height-30), font-size 11, gray, centered
+   
+   **Key Principle**: Draw diagram structure first, then use it as a template for text placement.
+   The tool analyzes the structure and places text in optimal positions.
+   
+   See `scripts/svg_text_zones.md` for complete zone definitions and `scripts/example_text_config.json` for JSON config format.
+
+7. **Validation**:
    - Test in Inkscape (connector functionality)
    - Test in standard SVG viewers (rendering)
    - Verify all arrows connect correctly
    - Check text visibility and box sizing
    - Verify arrows render identically in both Inkscape and SVG viewers
+   - Verify labels don't overlap with any elements
 
 ## Example: Complete Arrow Pattern
 
@@ -388,6 +435,18 @@ d = f"M {exit_point[0]},{exit_point[1]} {entry_point[0]},{entry_point[1]}"
 
 ## Automated Tools
 
+### Quick Reference
+
+**Finding empty spaces for labels:**
+```bash
+python3 scripts/find_empty_space.py file.svg <x> <y> "<label>" [--font-size 11] [--anchor middle] [--min-distance 15]
+```
+
+**Fixing arrow connectors:**
+```bash
+python3 scripts/fix-svg-arrows.py --all file.svg
+```
+
 ### fix-svg-arrows.py
 
 Consolidated script for fixing SVG arrows and connectors:
@@ -416,6 +475,128 @@ python3 scripts/fix-svg-arrows.py --all book/images/*.svg
 - After moving boxes in Inkscape (connector paths may need recalculation)
 - Before committing SVG files to ensure SVG viewer compatibility
 
+### svg-diagram-builder.py
+
+Comprehensive system for creating and labeling SVG diagrams with standardized text zones:
+
+```bash
+# Analyze existing SVG structure
+python3 scripts/svg_diagram_builder.py analyze diagram.svg
+
+# Place text elements in standard zones
+python3 scripts/svg_diagram_builder.py place diagram.svg title "My Diagram Title"
+python3 scripts/svg_diagram_builder.py place diagram.svg equation "w₁x₁ + w₂x₂ + b = 0"
+python3 scripts/svg_diagram_builder.py place diagram.svg label "Decision Line" --target-x 150 --target-y 80
+python3 scripts/svg_diagram_builder.py place diagram.svg axis "x₁" --target-x 250 --target-y 95
+python3 scripts/svg_diagram_builder.py place diagram.svg note "Note: Example diagram"
+
+# Batch placement from JSON config
+python3 scripts/svg_diagram_builder.py batch diagram.svg text_config.json
+```
+
+**What it does**:
+- Defines standard text zones (title, equation, labels, axes, notes)
+- Analyzes existing SVG structure
+- Provides optimal text placement using standardized zones
+- Integrates with `find_empty_space.py` for element labels
+- Generates ready-to-use SVG text elements
+
+**Standard Zones**:
+- **Title Zone**: Top center, large bold text
+- **Equation Zone**: Below title, medium gray text
+- **Content Zone**: Main diagram area (starts y=60-80)
+- **Axis Label Zone**: At axis ends, rotated for vertical
+- **Element Label Zone**: Near elements (uses empty space finder)
+- **Note Zone**: Bottom, small gray text
+
+**Workflow**:
+1. Create diagram structure (shapes, lines, boxes)
+2. Analyze with `svg_diagram_builder.py analyze`
+3. Place text elements using `place` command
+4. For element labels, the tool automatically uses `find_empty_space.py`
+5. Verify all text is in correct zones and doesn't overlap
+
+See `scripts/svg_text_zones.md` for complete documentation.
+
+### find-empty-space.py
+
+Automated tool for finding optimal label positions in SVG diagrams:
+
+```bash
+# Basic usage: find empty positions for a label
+python3 scripts/find_empty_space.py file.svg <target_x> <target_y> "<label_text>"
+
+# Example: Find position for "Decision Line" label near point (150, 80)
+python3 scripts/find_empty_space.py hyperplane-2d.svg 150 80 "Decision Line"
+
+# With options: specify font size, anchor, and minimum distance
+python3 scripts/find_empty_space.py file.svg 150 80 "Label" \
+    --font-size 12 \
+    --anchor middle \
+    --min-distance 20
+
+# Exclude certain text from being treated as obstacles
+python3 scripts/find_empty_space.py file.svg 150 80 "Label" \
+    --exclude-text "Title,Subtitle"
+
+# Show top 10 positions with verbose output
+python3 scripts/find_empty_space.py file.svg 150 80 "Label" \
+    --top-n 10 \
+    --verbose
+```
+
+**What it does**:
+- Parses SVG to extract all obstacles (lines, shapes, polygons, circles, existing text)
+- Generates candidate positions in spiral pattern around target point
+- Uses bounding box collision detection to find empty spaces
+- Scores positions by distance from target and visual quality
+- Returns best positions with ready-to-use SVG coordinates
+
+**Algorithm**:
+1. **Obstacle Detection**: Extracts bounding boxes for all non-label elements
+   - Lines (with stroke width padding)
+   - Paths (simple M/L commands)
+   - Polygons and rectangles
+   - Circles
+   - Existing text elements
+2. **Candidate Generation**: Creates positions in spiral pattern (15° steps, multiple distances)
+3. **Collision Detection**: Checks if label bounding box intersects any obstacle
+4. **Scoring**: Ranks positions by:
+   - Distance from target (closer = better)
+   - Edge proximity penalty (avoid edges)
+   - Direction bonus (prefer cardinal/intercardinal directions)
+
+**When to use**:
+- When placing labels in diagrams with overlapping elements
+- To find optimal positions that don't overlap with lines, shapes, or other text
+- Before manually positioning labels to get suggestions
+- When labels are getting truncated or overlapping
+
+**Tips**:
+- Use `--verbose` to see what obstacles were detected
+- Adjust `--min-distance` if no positions are found (try increasing it)
+- The script auto-detects canvas dimensions from SVG, but you can override with `--canvas-width` and `--canvas-height`
+- Use `--exclude-text` to ignore certain text elements when calculating obstacles
+- The output includes ready-to-copy SVG `<text>` element code
+
+**Troubleshooting**:
+- If script finds no positions: Try increasing `--min-distance` or check if target coordinates are correct
+- If positions seem wrong: Use `--verbose` to see detected obstacles and canvas dimensions
+- If text still overlaps: The script estimates text width; adjust manually if needed for very long text
+
+**Continuous Improvement**:
+This script is actively maintained. If you encounter issues with:
+- Missing obstacle types (e.g., ellipses, complex paths)
+- Incorrect text width estimation
+- Poor position suggestions
+- Performance issues with large SVGs
+
+Please document the issue and update the script. The algorithm can be improved by:
+- Adding support for more SVG element types
+- Improving text width estimation (accounting for font metrics)
+- Better scoring heuristics (e.g., prefer positions near region centers)
+- Handling nested transforms and groups more accurately
+
 ### Alternative: Export Plain SVG from Inkscape
 
 If automated scripts don't work, you can export from Inkscape:
@@ -438,10 +619,57 @@ See `scripts/export-plain-svg.md` for detailed instructions.
 
 ---
 
-**Last Updated**: Based on fixes to `complete-transformer-architecture.svg` and connector path coordinate mismatch resolution
+## Quick Reference: Complete Workflow
+
+**1. Create Diagram Structure** (draw shapes, lines, boxes - minimal/no text)
+```bash
+# Create SVG with structure only
+# Use Inkscape or text editor
+```
+
+**2. Analyze Structure**
+```bash
+python3 scripts/svg_diagram_builder.py analyze diagram.svg
+```
+
+**3. Place Text Elements** (use diagram as template)
+```bash
+# Title
+python3 scripts/svg_diagram_builder.py place diagram.svg title "Title"
+
+# Equation
+python3 scripts/svg_diagram_builder.py place diagram.svg equation "y = mx + c"
+
+# Labels (auto-finds empty space)
+python3 scripts/svg_diagram_builder.py place diagram.svg label "Label" --target-x X --target-y Y
+
+# Axis labels
+python3 scripts/svg_diagram_builder.py place diagram.svg axis "x₁" --target-x X --target-y Y
+
+# Notes
+python3 scripts/svg_diagram_builder.py place diagram.svg note "Note text"
+```
+
+**4. Fix Arrows** (if using connectors)
+```bash
+python3 scripts/fix-svg-arrows.py --all diagram.svg
+```
+
+**5. Validate**
+- Test in Inkscape and SVG viewers
+- Verify no text overlaps
+- Check all elements are visible
+
+---
+
+**Last Updated**: Based on fixes to `complete-transformer-architecture.svg`, connector path coordinate mismatch resolution, label placement optimization, and standardized text zone system
 **Key Learnings**: 
 - Connector format, absolute coordinates, proper grouping
 - Center-to-center algorithm for connection points
 - Connector path coordinate mismatch between Inkscape and SVG viewers
 - Automated tools for fixing connector paths
+- Bounding box collision detection for optimal label placement
+- Spiral search algorithm for finding empty spaces in diagrams
+- Standardized text zones for consistent diagram layout
+- Template-based workflow: draw structure first, then place text
 
