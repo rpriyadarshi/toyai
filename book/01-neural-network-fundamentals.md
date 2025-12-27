@@ -190,7 +190,7 @@ The most common activation functions you'll encounter are:
 
 - **ReLU** (Rectified Linear Unit): $f(x) = \max(0, x)$ - This function keeps positive values unchanged and zeros out any negative values. It's the most commonly used activation in modern neural networks because it's simple, efficient, and works well in practice. Note that ReLU is non-differentiable at $x=0$, but in practice this rarely causes issues since the probability of exactly hitting zero is negligible.
 
-- **Sigmoid**: $f(x) = \frac{1}{1+e^{-x}}$ - This function squashes any input into the range $(0, 1)$, making it useful when you need outputs that represent probabilities. The sigmoid function is smooth and differentiable everywhere, but it saturates (gradient approaches zero) for very large positive or negative inputs, which can slow down learning.
+- **Sigmoid**: $f(x) = \frac{1}{1+e^{-x}}$ - This function squashes any input into the range $(0, 1)$, making it useful when you need outputs that represent probabilities. The sigmoid function is smooth and differentiable everywhere, but it saturates (gradient approaches zero) for very large positive or negative inputs, which can slow down learning. While sigmoid can represent probabilities, modern networks typically use softmax for multi-class classification (see [Example 7: Character Recognition](12-example7-character-recognition.md)).
 
 - **Tanh**: $f(x) = \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$ - Similar to sigmoid but squashes inputs into the range $(-1, 1)$, providing a symmetric output around zero. Like sigmoid, tanh is smooth and differentiable everywhere, but also saturates at the extremes. The hyperbolic tangent function can also be written as $\tanh(x) = \frac{\sinh(x)}{\cosh(x)}$, where $\sinh(x) = \frac{e^x - e^{-x}}{2}$ and $\cosh(x) = \frac{e^x + e^{-x}}{2}$ are the hyperbolic sine and cosine functions, respectively.
 
@@ -358,7 +358,7 @@ Here, the model assigned only 5% probability to the correct answer (class C), wh
 
 Loss functions are essential because they tell us how well the model is learning. During training, we compute the loss after each prediction and use it to guide how we update the model's parameters. The entire training process is essentially a search for parameter values that minimize this loss function.
 
-To see loss computation in action, [Example 2: Single Training Step](07-example2-single-step.md) shows how loss is computed and used to update the model.
+To see loss computation in action, [Example 2: Single Training Step](07-example2-single-step.md) shows how loss is computed and used to update the model. To see a complete classification example with hand calculations, [Example 7: Character Recognition](12-example7-character-recognition.md) demonstrates digit classification from pixel input to final prediction.
 
 ---
 
@@ -481,7 +481,7 @@ Backpropagation operates on a computational graph, which represents the forward 
 
 The forward pass is the process of computing predictions by passing input data through the network from input to output. Think of the forward pass as following a recipe step-by-step. You start with ingredients (input data), process them through each step (each layer), and end with the final dish (the prediction). Data flows in one direction: Input → Layer 1 → Layer 2 → ... → Output.
 
-In a neural network, the forward pass follows a specific sequence of transformations. First, the input data is received by the input layer. Then each hidden layer processes the data, applying weight matrices, adding biases, and applying activation functions. The output layer produces the final predictions. For classification tasks, the output is typically converted to probabilities using a softmax function.
+In a neural network, the forward pass follows a specific sequence of transformations. First, the input data is received by the input layer. Then each hidden layer processes the data, applying weight matrices, adding biases, and applying activation functions. The output layer produces the final predictions. For classification tasks, the output is typically converted to probabilities using a softmax function. For a concrete classification example, see [Example 7: Character Recognition](12-example7-character-recognition.md), which shows how pixel inputs become class predictions through the same process.
 
 ![Forward Pass Flow](images/flow-diagrams/forward-pass-flow.svg)
 

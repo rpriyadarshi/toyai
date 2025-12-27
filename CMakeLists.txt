@@ -45,6 +45,10 @@ target_link_libraries(example5 core_lib)
 add_executable(example6 examples/example6_complete/main.cpp)
 target_link_libraries(example6 core_lib)
 
+# Example 7: Character recognition
+add_executable(example7 examples/example7_character_recognition/main.cpp)
+target_link_libraries(example7 core_lib)
+
 # Set output directories
 set_target_properties(example1 PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/examples/example1_forward_only"
@@ -63,5 +67,8 @@ set_target_properties(example5 PROPERTIES
 )
 set_target_properties(example6 PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/examples/example6_complete"
+)
+set_target_properties(example7 PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/examples/example7_character_recognition"
 )
 

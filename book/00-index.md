@@ -24,6 +24,7 @@
 9. [Example 4: Multiple Patterns](09-example4-multiple-patterns.md)
 10. [Example 5: Feed-Forward Layers](10-example5-feedforward.md)
 11. [Example 6: Complete Transformer](11-example6-complete.md)
+12. [Example 7: Character Recognition](12-example7-character-recognition.md)
 
 ### Appendices
 
@@ -42,7 +43,7 @@
 
 1. **Start with the Introduction**: Read `00-introduction.md` to understand the philosophy and approach
 2. **Read Foundations (Part I)**: Read chapters 1-5 in order to understand core concepts
-3. **Work through Examples (Part II)**: Follow examples 1-6 in order, each builds on the previous
+3. **Work through Examples (Part II)**: Follow examples 1-7 in order, each builds on the previous
 4. **Use Worksheets**: Refer to `worksheets/` directory for hand-calculation guides
 5. **Run Code**: Build and run examples to see concepts in action
 6. **Refer to Appendices**: Use appendices as quick reference
