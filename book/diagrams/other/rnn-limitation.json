@@ -1,0 +1,141 @@
+{
+  "metadata": {
+    "id": "rnn-limitation",
+    "title": "RNN Limitation",
+    "width": 510,
+    "height": 210
+  },
+  "components": [
+    {
+      "id": "state1",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "state-strong",
+      "position": {"x": 20, "y": 20},
+      "width": 80,
+      "height": 60,
+      "custom_text": {
+        "label": "[cat]",
+        "subtext": "100%"
+      }
+    },
+    {
+      "id": "state2",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "state-medium",
+      "position": {"x": 150, "y": 20},
+      "width": 80,
+      "height": 60,
+      "custom_text": {
+        "label": "[saw]",
+        "subtext": "cat: 50%"
+      }
+    },
+    {
+      "id": "state3",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "state-medium",
+      "position": {"x": 280, "y": 20},
+      "width": 80,
+      "height": 60,
+      "custom_text": {
+        "label": "[yesterday]",
+        "subtext": "cat: 30%"
+      }
+    },
+    {
+      "id": "state4",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "state-medium",
+      "position": {"x": 410, "y": 20},
+      "width": 80,
+      "height": 60,
+      "custom_text": {
+        "label": "[park]",
+        "subtext": "cat: 20%"
+      }
+    },
+    {
+      "id": "state5",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "state-medium",
+      "position": {"x": 410, "y": 130},
+      "width": 80,
+      "height": 60,
+      "custom_text": {
+        "label": "[house]",
+        "subtext": "cat: 15%"
+      }
+    },
+    {
+      "id": "state6",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "state-weak",
+      "position": {"x": 280, "y": 130},
+      "width": 80,
+      "height": 60,
+      "custom_text": {
+        "label": "[sat]",
+        "subtext": "cat: 8%"
+      }
+    },
+    {
+      "id": "state7",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "state-weak",
+      "position": {"x": 150, "y": 130},
+      "width": 80,
+      "height": 60,
+      "custom_text": {
+        "label": "[mat]",
+        "subtext": "cat: 5%"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "state1.output",
+      "to": "state2.input",
+      "style": "forward",
+      "label": "Compress"
+    },
+    {
+      "from": "state2.output",
+      "to": "state3.input",
+      "style": "forward",
+      "label": "Compress"
+    },
+    {
+      "from": "state3.output",
+      "to": "state4.input",
+      "style": "forward",
+      "label": "Compress"
+    },
+    {
+      "from": "state4.output",
+      "to": "state5.input",
+      "style": "forward",
+      "label": "Compress"
+    },
+    {
+      "from": "state5.output",
+      "to": "state6.input",
+      "style": "forward",
+      "label": "Compress"
+    },
+    {
+      "from": "state6.output",
+      "to": "state7.input",
+      "style": "forward",
+      "label": "Compress"
+    }
+  ],
+  "labels": []
+}
+

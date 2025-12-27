@@ -1,0 +1,39 @@
+{
+  "visual": {
+    "width": 400,
+    "height": 500,
+    "class": "scatter-plot"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 400,
+      "height": 500,
+      "rx": 0,
+      "fill": "#fafafa",
+      "stroke": "none"
+    },
+    "circle": [
+      {
+        "cx": 200,
+        "cy": 200,
+        "r": 8,
+        "fill": "#16a34a"
+      }
+    ]
+  },
+  "pins": {
+    "input": {
+      "side": "left",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "right",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

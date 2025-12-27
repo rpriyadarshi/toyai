@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "id": "loss-wrong",
+    "title": "Loss Calculation (Wrong)",
+    "width": 300,
+    "height": 200
+  },
+  "components": [
+    {
+      "id": "wrong",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 20, "y": 20},
+      "width": 260,
+      "height": 60,
+      "custom_text": {
+        "label": "Wrong Prediction",
+        "subtext": "[0.8,0.1,0.05,0.05]"
+      }
+    },
+    {
+      "id": "loss",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 20, "y": 120},
+      "width": 260,
+      "height": 60,
+      "custom_text": {
+        "label": "High Loss",
+        "subtext": "L = -log(0.05) = 3.0"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "wrong.output",
+      "to": "loss.input",
+      "style": "forward",
+      "color": "#dc2626"
+    }
+  ],
+  "labels": []
+}
+

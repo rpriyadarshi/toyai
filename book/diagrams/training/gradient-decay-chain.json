@@ -1,0 +1,145 @@
+{
+  "metadata": {
+    "id": "gradient-decay-chain",
+    "title": "Gradient Decay Chain",
+    "width": 890,
+    "height": 120
+  },
+  "components": [
+    {
+      "id": "grad1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 20, "y": 20},
+      "width": 80,
+      "height": 80,
+      "custom_text": {
+        "label": "1.00",
+        "subtext": "100%"
+      }
+    },
+    {
+      "id": "grad2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 130, "y": 20},
+      "width": 80,
+      "height": 80,
+      "custom_text": {
+        "label": "0.90",
+        "subtext": "90%"
+      }
+    },
+    {
+      "id": "grad3",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 240, "y": 20},
+      "width": 80,
+      "height": 80,
+      "custom_text": {
+        "label": "0.81",
+        "subtext": "81%"
+      }
+    },
+    {
+      "id": "grad4",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 350, "y": 20},
+      "width": 80,
+      "height": 80,
+      "custom_text": {
+        "label": "0.73",
+        "subtext": "73%"
+      }
+    },
+    {
+      "id": "grad5",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 460, "y": 20},
+      "width": 80,
+      "height": 80,
+      "custom_text": {
+        "label": "0.66",
+        "subtext": "66%"
+      }
+    },
+    {
+      "id": "grad6",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 570, "y": 20},
+      "width": 80,
+      "height": 80,
+      "custom_text": {
+        "label": "0.59",
+        "subtext": "59%"
+      }
+    },
+    {
+      "id": "grad7",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 680, "y": 20},
+      "width": 80,
+      "height": 80,
+      "custom_text": {
+        "label": "0.53",
+        "subtext": "53%"
+      }
+    },
+    {
+      "id": "grad8",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 790, "y": 20},
+      "width": 80,
+      "height": 80,
+      "custom_text": {
+        "label": "0.48",
+        "subtext": "48%"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "grad1.output",
+      "to": "grad2.input",
+      "style": "forward"
+    },
+    {
+      "from": "grad2.output",
+      "to": "grad3.input",
+      "style": "forward"
+    },
+    {
+      "from": "grad3.output",
+      "to": "grad4.input",
+      "style": "forward"
+    },
+    {
+      "from": "grad4.output",
+      "to": "grad5.input",
+      "style": "forward"
+    },
+    {
+      "from": "grad5.output",
+      "to": "grad6.input",
+      "style": "forward"
+    },
+    {
+      "from": "grad6.output",
+      "to": "grad7.input",
+      "style": "forward"
+    },
+    {
+      "from": "grad7.output",
+      "to": "grad8.input",
+      "style": "forward"
+    }
+  ],
+  "labels": []
+}
+

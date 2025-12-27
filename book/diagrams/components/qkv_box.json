@@ -1,0 +1,43 @@
+{
+  "visual": {
+    "width": 140,
+    "height": 50,
+    "class": "qkv-box"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 140,
+      "height": 50,
+      "rx": 6
+    },
+    "text": [
+      {
+        "content": "Q/K/V",
+        "x": 70,
+        "y": 20,
+        "class": "box-label"
+      },
+      {
+        "content": "Projections",
+        "x": 70,
+        "y": 35,
+        "class": "box-text"
+      }
+    ]
+  },
+  "pins": {
+    "input": {
+      "side": "left",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "right",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

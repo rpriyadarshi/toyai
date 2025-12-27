@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "id": "example-diagram",
+    "title": "Example Diagram",
+    "width": 400,
+    "height": 300
+  },
+  "components": [
+    {
+      "id": "box1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 50, "y": 100},
+      "pins": {
+        "output": {"side": "right", "position": "middle"}
+      }
+    },
+    {
+      "id": "box2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 250, "y": 100},
+      "pins": {
+        "input": {"side": "left", "position": "middle"}
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "box1.output",
+      "to": "box2.input",
+      "style": "forward"
+    }
+  ],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Example Diagram",
+      "priority": 2
+    },
+    {
+      "type": "element",
+      "text": "Box 1",
+      "target": "box1",
+      "priority": 4
+    },
+    {
+      "type": "element",
+      "text": "Box 2",
+      "target": "box2",
+      "priority": 4
+    }
+  ]
+}
+

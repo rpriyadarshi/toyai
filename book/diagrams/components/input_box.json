@@ -1,0 +1,43 @@
+{
+  "visual": {
+    "width": 70,
+    "height": 50,
+    "class": "input-box"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 70,
+      "height": 50,
+      "rx": 6
+    },
+    "text": [
+      {
+        "content": "Label",
+        "x": 35,
+        "y": 20,
+        "class": "box-label"
+      },
+      {
+        "content": "Text",
+        "x": 35,
+        "y": 35,
+        "class": "box-text"
+      }
+    ]
+  },
+  "pins": {
+    "input": {
+      "side": "left",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "right",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

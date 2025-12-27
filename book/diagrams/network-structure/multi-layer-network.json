@@ -1,0 +1,251 @@
+{
+  "metadata": {
+    "id": "multi-layer-network",
+    "title": "Multi-Layer Network",
+    "width": 935,
+    "height": 422
+  },
+  "components": [
+    {
+      "id": "input_layer",
+      "type": "container",
+      "template": "subgraph_container",
+      "position": {"x": 50, "y": 67},
+      "width": 66,
+      "height": 172.5,
+      "title": "Input Layer",
+      "contains": ["input1", "input2", "input3"]
+    },
+    {
+      "id": "input1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 33},
+      "parent_id": "input_layer",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "x₁",
+        "subtext": "0.5"
+      }
+    },
+    {
+      "id": "input2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 88},
+      "parent_id": "input_layer",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "x₂",
+        "subtext": "0.3"
+      }
+    },
+    {
+      "id": "input3",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 143},
+      "parent_id": "input_layer",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "x₃",
+        "subtext": "0.2"
+      }
+    },
+    {
+      "id": "hidden_layer1",
+      "type": "container",
+      "template": "subgraph_container",
+      "position": {"x": 316, "y": 42},
+      "width": 66,
+      "height": 227.5,
+      "title": "Hidden Layer 1",
+      "contains": ["hidden1_1", "hidden1_2", "hidden1_3", "hidden1_4"]
+    },
+    {
+      "id": "hidden1_1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 33},
+      "parent_id": "hidden_layer1",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "h₁",
+        "subtext": "0.3"
+      }
+    },
+    {
+      "id": "hidden1_2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 88},
+      "parent_id": "hidden_layer1",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "h₂",
+        "subtext": "0.7"
+      }
+    },
+    {
+      "id": "hidden1_3",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 143},
+      "parent_id": "hidden_layer1",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "h₃",
+        "subtext": "0.4"
+      }
+    },
+    {
+      "id": "hidden1_4",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 198},
+      "parent_id": "hidden_layer1",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "h₄",
+        "subtext": "-0.2"
+      }
+    },
+    {
+      "id": "hidden_layer2",
+      "type": "container",
+      "template": "subgraph_container",
+      "position": {"x": 582, "y": 67},
+      "width": 66,
+      "height": 172.5,
+      "title": "Hidden Layer 2",
+      "contains": ["hidden2_1", "hidden2_2", "hidden2_3"]
+    },
+    {
+      "id": "hidden2_1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 33},
+      "parent_id": "hidden_layer2",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "h₁",
+        "subtext": "0.4"
+      }
+    },
+    {
+      "id": "hidden2_2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 88},
+      "parent_id": "hidden_layer2",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "h₂",
+        "subtext": "0.6"
+      }
+    },
+    {
+      "id": "hidden2_3",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 143},
+      "parent_id": "hidden_layer2",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "h₃",
+        "subtext": "-0.1"
+      }
+    },
+    {
+      "id": "output_layer",
+      "type": "container",
+      "template": "subgraph_container",
+      "position": {"x": 848, "y": 42},
+      "width": 66,
+      "height": 227.5,
+      "title": "Output Layer",
+      "contains": ["output1", "output2", "output3", "output4"]
+    },
+    {
+      "id": "output1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 33},
+      "parent_id": "output_layer",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "y₁",
+        "subtext": "0.1"
+      }
+    },
+    {
+      "id": "output2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 88},
+      "parent_id": "output_layer",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "y₂",
+        "subtext": "0.8"
+      }
+    },
+    {
+      "id": "output3",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 143},
+      "parent_id": "output_layer",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "y₃",
+        "subtext": "0.05"
+      }
+    },
+    {
+      "id": "output4",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 33, "y": 198},
+      "parent_id": "output_layer",
+      "width": 46,
+      "height": 46,
+      "custom_text": {
+        "label": "y₄",
+        "subtext": "0.05"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "input_layer.output",
+      "to": "hidden_layer1.input",
+      "style": "forward"
+    },
+    {
+      "from": "hidden_layer1.output",
+      "to": "hidden_layer2.input",
+      "style": "forward"
+    },
+    {
+      "from": "hidden_layer2.output",
+      "to": "output_layer.input",
+      "style": "forward"
+    }
+  ],
+  "labels": []
+}
+

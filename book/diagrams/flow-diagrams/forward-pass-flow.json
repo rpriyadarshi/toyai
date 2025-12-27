@@ -1,0 +1,113 @@
+{
+  "metadata": {
+    "id": "forward-pass-flow",
+    "title": "Forward Pass Flow",
+    "width": 790,
+    "height": 120
+  },
+  "components": [
+    {
+      "id": "input",
+      "type": "input",
+      "template": "input_box",
+      "position": {"x": 20, "y": 20},
+      "width": 100,
+      "height": 80,
+      "custom_text": {
+        "label": "Input",
+        "subtext": "'The cat'"
+      }
+    },
+    {
+      "id": "layer1",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "layer-box",
+      "position": {"x": 150, "y": 20},
+      "width": 100,
+      "height": 80,
+      "custom_text": {
+        "label": "Layer 1",
+        "subtext": "Embedding"
+      }
+    },
+    {
+      "id": "layer2",
+      "type": "qkv",
+      "template": "qkv_box",
+      "position": {"x": 280, "y": 20},
+      "width": 100,
+      "height": 80,
+      "custom_text": {
+        "label": "Layer 2",
+        "subtext": "Q/K/V"
+      }
+    },
+    {
+      "id": "layer3",
+      "type": "attention",
+      "template": "attention_box",
+      "position": {"x": 410, "y": 20},
+      "width": 100,
+      "height": 80,
+      "custom_text": {
+        "label": "Layer 3",
+        "subtext": "Attention"
+      }
+    },
+    {
+      "id": "layer4",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "layer-box",
+      "position": {"x": 540, "y": 20},
+      "width": 100,
+      "height": 80,
+      "custom_text": {
+        "label": "Layer 4",
+        "subtext": "Output"
+      }
+    },
+    {
+      "id": "output",
+      "type": "output",
+      "template": "output_box",
+      "position": {"x": 670, "y": 20},
+      "width": 100,
+      "height": 80,
+      "custom_text": {
+        "label": "Output",
+        "subtext": "Probabilities"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "input.output",
+      "to": "layer1.input",
+      "style": "forward"
+    },
+    {
+      "from": "layer1.output",
+      "to": "layer2.input",
+      "style": "forward"
+    },
+    {
+      "from": "layer2.output",
+      "to": "layer3.input",
+      "style": "forward"
+    },
+    {
+      "from": "layer3.output",
+      "to": "layer4.input",
+      "style": "forward"
+    },
+    {
+      "from": "layer4.output",
+      "to": "output.input",
+      "style": "forward"
+    }
+  ],
+  "labels": []
+}
+

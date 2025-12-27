@@ -1,0 +1,43 @@
+{
+  "visual": {
+    "width": 200,
+    "height": 50,
+    "class": "update-box"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 200,
+      "height": 50,
+      "rx": 6
+    },
+    "text": [
+      {
+        "content": "Weight Update",
+        "x": 100,
+        "y": 20,
+        "class": "box-label"
+      },
+      {
+        "content": "W_new = W_old - η×grad",
+        "x": 100,
+        "y": 35,
+        "class": "box-text"
+      }
+    ]
+  },
+  "pins": {
+    "input": {
+      "side": "left",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "top",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

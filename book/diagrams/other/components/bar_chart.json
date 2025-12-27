@@ -1,0 +1,32 @@
+{
+  "visual": {
+    "width": 400,
+    "height": 300,
+    "class": "bar-chart"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 400,
+      "height": 300,
+      "rx": 0,
+      "fill": "#fafafa",
+      "stroke": "#333",
+      "stroke-width": 2
+    }
+  },
+  "pins": {
+    "input": {
+      "side": "left",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "right",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

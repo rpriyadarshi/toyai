@@ -1,0 +1,150 @@
+{
+  "metadata": {
+    "id": "neural-network-structure",
+    "title": "Neural Network Structure: Factory Assembly Line",
+    "width": 1000,
+    "height": 400
+  },
+  "components": [
+    {
+      "id": "input",
+      "type": "input",
+      "template": "input_box",
+      "position": {"x": 50, "y": 150},
+      "width": 120,
+      "height": 100,
+      "custom_text": {
+        "label": "Input",
+        "subtext": "Raw Data"
+      }
+    },
+    {
+      "id": "layer1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 220, "y": 150},
+      "width": 140,
+      "height": 100,
+      "custom_text": {
+        "label": "Layer 1",
+        "subtext": "Processing Station"
+      }
+    },
+    {
+      "id": "layer2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 410, "y": 150},
+      "width": 140,
+      "height": 100,
+      "custom_text": {
+        "label": "Layer 2",
+        "subtext": "Processing Station"
+      }
+    },
+    {
+      "id": "layer3",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 600, "y": 150},
+      "width": 140,
+      "height": 100,
+      "custom_text": {
+        "label": "Layer 3",
+        "subtext": "Processing Station"
+      }
+    },
+    {
+      "id": "output",
+      "type": "output",
+      "template": "output_box",
+      "position": {"x": 790, "y": 150},
+      "width": 120,
+      "height": 100,
+      "custom_text": {
+        "label": "Output",
+        "subtext": "Prediction"
+      }
+    },
+    {
+      "id": "training",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 350, "y": 30},
+      "width": 200,
+      "height": 80,
+      "custom_text": {
+        "label": "Training Examples",
+        "subtext": "Learn from data"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "input.output",
+      "to": "layer1.input",
+      "style": "forward",
+      "color": "#2563eb",
+      "stroke_width": 3
+    },
+    {
+      "from": "layer1.output",
+      "to": "layer2.input",
+      "style": "forward",
+      "color": "#2563eb",
+      "stroke_width": 3
+    },
+    {
+      "from": "layer2.output",
+      "to": "layer3.input",
+      "style": "forward",
+      "color": "#2563eb",
+      "stroke_width": 3
+    },
+    {
+      "from": "layer3.output",
+      "to": "output.input",
+      "style": "forward",
+      "color": "#2563eb",
+      "stroke_width": 3
+    },
+    {
+      "from": "training.output",
+      "to": "layer1.input",
+      "style": "training",
+      "color": "#9333ea",
+      "stroke_width": 2,
+      "metadata": {
+        "dasharray": "5,5"
+      }
+    },
+    {
+      "from": "training.output",
+      "to": "layer2.input",
+      "style": "training",
+      "color": "#9333ea",
+      "stroke_width": 2,
+      "metadata": {
+        "dasharray": "5,5"
+      }
+    },
+    {
+      "from": "training.output",
+      "to": "layer3.input",
+      "style": "training",
+      "color": "#9333ea",
+      "stroke_width": 2,
+      "metadata": {
+        "dasharray": "5,5"
+      }
+    }
+  ],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Neural Network Structure: Factory Assembly Line",
+      "priority": 1
+    }
+  ]
+}
+

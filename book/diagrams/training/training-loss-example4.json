@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "id": "training-loss-example4",
+    "title": "Loss Decreases as Model Learns Multiple Patterns",
+    "width": 600,
+    "height": 400
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 80, "y": 60},
+      "width": 400,
+      "height": 300,
+      "custom_text": {
+        "x_label": "Training Iteration",
+        "y_label": "Loss",
+        "x_range": [0, 20],
+        "y_range": [0, 5]
+      }
+    },
+    {
+      "id": "loss_curve",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 80, "y": 60},
+      "width": 400,
+      "height": 300,
+      "custom_text": {
+        "function": "loss = decreasing with noise",
+        "color": "#2563eb"
+      }
+    },
+    {
+      "id": "trend_line",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 80, "y": 60},
+      "width": 400,
+      "height": 300,
+      "custom_text": {
+        "function": "trend = smoothed",
+        "color": "#dc2626",
+        "metadata": {
+          "dasharray": "5,5"
+        }
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Loss Decreases as Model Learns Multiple Patterns",
+      "priority": 1
+    }
+  ]
+}
+

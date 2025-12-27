@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "id": "hyperplane-3d",
+    "title": "3D Input (d=3)",
+    "width": 300,
+    "height": 250
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 20, "y": 60},
+      "width": 230,
+      "height": 160,
+      "custom_text": {
+        "x_label": "x₁",
+        "y_label": "x₂",
+        "z_label": "x₃",
+        "x_range": [-1, 1],
+        "y_range": [-1, 1],
+        "z_range": [-1, 1]
+      }
+    },
+    {
+      "id": "decision_plane",
+      "type": "plot",
+      "template": "plot_region",
+      "position": {"x": 20, "y": 60},
+      "width": 230,
+      "height": 160,
+      "custom_text": {
+        "label": "Decision Plane",
+        "color": "#2563eb"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "3D Input (d=3)",
+      "priority": 1
+    },
+    {
+      "type": "equation",
+      "text": "w₁x₁ + w₂x₂ + w₃x₃ + b = 0",
+      "priority": 2
+    }
+  ]
+}
+

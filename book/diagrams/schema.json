@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Diagram JSON Schema",
+  "description": "Schema for diagram JSON definitions",
+  "type": "object",
+  "required": ["metadata", "components", "connections", "labels"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["id", "title", "width", "height"],
+      "properties": {
+        "id": {"type": "string"},
+        "title": {"type": "string"},
+        "width": {"type": "number"},
+        "height": {"type": "number"},
+        "diagram_type": {
+          "type": "string",
+          "enum": ["flow", "graph", "table", "network", "geometric"]
+        },
+        "placement_algorithm": {
+          "type": "string",
+          "enum": ["hierarchical_bottom_up", "force_directed", "hierarchical", "grid_based", "manual"],
+          "default": "hierarchical_bottom_up"
+        }
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "template", "position"],
+        "properties": {
+          "id": {"type": "string"},
+          "type": {"type": "string"},
+          "template": {"type": "string"},
+          "position": {
+            "type": "object",
+            "required": ["x", "y"],
+            "properties": {
+              "x": {"type": "number"},
+              "y": {"type": "number"}
+            }
+          },
+          "width": {"type": "number"},
+          "height": {"type": "number"},
+          "custom_text": {
+            "type": "object",
+            "properties": {
+              "label": {"type": "string"},
+              "subtext": {"type": "string"}
+            }
+          },
+          "pins": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "side": {"type": "string", "enum": ["left", "right", "top", "bottom"]},
+                "position": {"type": "string", "enum": ["start", "middle", "end"]},
+                "offset": {
+                  "type": "object",
+                  "properties": {
+                    "x": {"type": "number"},
+                    "y": {"type": "number"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "connections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to"],
+        "properties": {
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "style": {
+            "type": "string",
+            "enum": ["forward", "backward", "dashed", "training"],
+            "default": "forward"
+          },
+          "routing": {
+            "type": "string",
+            "enum": ["direct", "orthogonal", "polyline"],
+            "default": "polyline"
+          },
+          "color": {"type": "string"},
+          "stroke_width": {"type": "number", "default": 2.0},
+          "dasharray": {"type": "string"},
+          "container_id": {"type": "string"},
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    "containers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "template", "position", "title", "contains"],
+        "properties": {
+          "id": {"type": "string"},
+          "type": {"type": "string", "default": "container"},
+          "template": {"type": "string"},
+          "position": {
+            "type": "object",
+            "required": ["x", "y"],
+            "properties": {
+              "x": {"type": "number"},
+              "y": {"type": "number"}
+            }
+          },
+          "width": {"type": "number"},
+          "height": {"type": "number"},
+          "title": {"type": "string"},
+          "contains": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "text", "priority"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["title", "equation", "axis", "element", "note"]
+          },
+          "text": {"type": "string"},
+          "priority": {"type": "number"},
+          "target": {"type": "string"},
+          "target_position": {
+            "type": "object",
+            "properties": {
+              "x": {"type": "number"},
+              "y": {"type": "number"}
+            }
+          },
+          "container_id": {"type": "string"}
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,118 @@
+{
+  "metadata": {
+    "id": "activation-relu",
+    "title": "ReLU",
+    "width": 280,
+    "height": 350
+  },
+  "components": [
+    {
+      "id": "input",
+      "type": "input",
+      "template": "input_box",
+      "position": {"x": 90, "y": 68},
+      "width": 100,
+      "height": 40,
+      "custom_text": {
+        "label": "Input x",
+        "subtext": ""
+      }
+    },
+    {
+      "id": "check",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "check-box",
+      "position": {"x": 90, "y": 138},
+      "width": 100,
+      "height": 50,
+      "custom_text": {
+        "label": "Check:",
+        "subtext": "x ≥ 0?"
+      }
+    },
+    {
+      "id": "yes",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "output-yes",
+      "position": {"x": 20, "y": 218},
+      "width": 80,
+      "height": 50,
+      "custom_text": {
+        "label": "Yes",
+        "subtext": "Output: x"
+      }
+    },
+    {
+      "id": "no",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "output-no",
+      "position": {"x": 180, "y": 218},
+      "width": 80,
+      "height": 50,
+      "custom_text": {
+        "label": "No",
+        "subtext": "Output: 0"
+      }
+    },
+    {
+      "id": "range",
+      "type": "simple",
+      "template": "simple_box",
+      "class": "range-box",
+      "position": {"x": 90, "y": 298},
+      "width": 100,
+      "height": 20,
+      "custom_text": {
+        "label": "Range: [0, +∞)",
+        "subtext": ""
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "input.output",
+      "to": "check.input",
+      "style": "forward"
+    },
+    {
+      "from": "check.output",
+      "to": "yes.input",
+      "style": "forward",
+      "color": "#16a34a"
+    },
+    {
+      "from": "check.output",
+      "to": "no.input",
+      "style": "forward",
+      "color": "#dc2626"
+    },
+    {
+      "from": "yes.output",
+      "to": "range.input",
+      "style": "forward",
+      "color": "#16a34a"
+    },
+    {
+      "from": "no.output",
+      "to": "range.input",
+      "style": "forward",
+      "color": "#dc2626"
+    }
+  ],
+  "labels": [
+    {
+      "type": "title",
+      "text": "ReLU",
+      "priority": 1
+    },
+    {
+      "type": "equation",
+      "text": "f(x) = max(0, x)",
+      "priority": 2
+    }
+  ]
+}
+

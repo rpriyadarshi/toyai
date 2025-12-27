@@ -81,3 +81,21 @@ Thumbs.db
 
 # Temporary files
 tmp/
+
+# Output files
+output/
+generated/
+
+# Build output
+build/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Logs
+logs/
+*.log

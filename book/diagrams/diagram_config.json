@@ -1,0 +1,178 @@
+{
+  "colors": {
+    "primary": "#2563eb",
+    "secondary": "#9333ea",
+    "success": "#16a34a",
+    "danger": "#dc2626",
+    "warning": "#f59e0b",
+    "info": "#6366f1",
+    "text": {
+      "primary": "#1e293b",
+      "secondary": "#64748b",
+      "muted": "#666"
+    },
+    "background": {
+      "default": "#f8fafc",
+      "input": "#e1f5ff",
+      "output": "#c8e6c9",
+      "embed": "#fff4e1",
+      "qkv": "#f3e5f5",
+      "attention": "#e8f5e9",
+      "softmax": "#fff9c4",
+      "context": "#c8e6c9",
+      "layer_norm": "#e0e7ff",
+      "residual": "#fce7f3",
+      "ffn": "#f3e5f5",
+      "loss": "#ffcdd2",
+      "update": "#f3e5f5",
+      "state_strong": "#c8e6c9",
+      "state_medium": "#fff9c4",
+      "state_weak": "#ffcdd2",
+      "check_box": "#fff4e1",
+      "output_yes": "#c8e6c9",
+      "output_no": "#ffcdd2",
+      "range_box": "#fff9c4",
+      "bias_box": "#fff4e1",
+      "sum_box": "#f3e5f5",
+      "activation_box": "#e8f5e9",
+      "layer_box": "#fff4e1",
+      "start_box": "#e1f5ff",
+      "forward_box": "#fff4e1",
+      "backward_box": "#f3e5f5",
+      "stop_box": "#c8e6c9"
+    },
+    "border": {
+      "default": "#cbd5e1",
+      "primary": "#2563eb",
+      "secondary": "#9333ea",
+      "success": "#16a34a",
+      "danger": "#dc2626",
+      "warning": "#f59e0b",
+      "info": "#6366f1",
+      "input": "#2563eb",
+      "output": "#16a34a",
+      "embed": "#f59e0b",
+      "qkv": "#9333ea",
+      "attention": "#16a34a",
+      "softmax": "#f59e0b",
+      "context": "#16a34a",
+      "layer_norm": "#6366f1",
+      "residual": "#ec4899",
+      "ffn": "#9333ea",
+      "loss": "#dc2626",
+      "update": "#9333ea",
+      "state_strong": "#4caf50",
+      "state_medium": "#f59e0b",
+      "state_weak": "#f44336",
+      "check_box": "#f59e0b",
+      "output_yes": "#16a34a",
+      "output_no": "#dc2626",
+      "range_box": "#f59e0b",
+      "bias_box": "#f59e0b",
+      "sum_box": "#9333ea",
+      "activation_box": "#16a34a",
+      "layer_box": "#f59e0b",
+      "start_box": "#2563eb",
+      "forward_box": "#f59e0b",
+      "backward_box": "#9333ea",
+      "stop_box": "#16a34a"
+    }
+  },
+  "typography": {
+    "font_family": "Arial, sans-serif",
+    "sizes": {
+      "title": {
+        "small": 14,
+        "medium": 16,
+        "large": 18
+      },
+      "equation": 12,
+      "box_label": {
+        "small": 12,
+        "medium": 14
+      },
+      "box_text": {
+        "small": 10,
+        "medium": 11
+      },
+      "axis": 12,
+      "label": 11,
+      "note": 11
+    },
+    "weights": {
+      "title": "bold",
+      "box_label": "bold",
+      "label": "normal",
+      "axis": "normal",
+      "note": "normal"
+    }
+  },
+  "spacing": {
+    "box_padding": {
+      "small": 10,
+      "medium": 15,
+      "large": 20
+    },
+    "box_border_radius": 6,
+    "stroke_width": {
+      "standard": 2,
+      "emphasis": 2.5,
+      "axis": 3
+    },
+    "min_box_spacing": 50,
+    "border_padding": 20
+  },
+  "label_priorities": {
+    "axis": 1,
+    "title": 2,
+    "equation": 3,
+    "element": 4,
+    "note": 5
+  },
+  "label_constraints": {
+    "axis": {
+      "max_distance": 30,
+      "preferred_side": "end"
+    },
+    "title": {
+      "position": "top_center",
+      "y_offset": {
+        "small": 10,
+        "medium": 8,
+        "large": 8
+      }
+    },
+    "equation": {
+      "position": "below_title",
+      "y_offset": {
+        "small": 42,
+        "medium": 50,
+        "large": 50
+      }
+    },
+    "element": {
+      "max_distance": 200,
+      "preferred_directions": ["right", "left", "top", "bottom"]
+    },
+    "note": {
+      "position": "bottom",
+      "y_offset": 30
+    }
+  },
+  "routing": {
+    "algorithm": "a_star",
+    "adaptive_grid": true,
+    "min_cell_size": 2.0,
+    "max_cell_size": 10.0,
+    "obstruction_padding": 5.0,
+    "path_crossing_penalty": 5.0,
+    "obstruction_nearby_penalty": 10.0,
+    "obstruction_avoidance": true,
+    "default_routing": "polyline",
+    "curved_corners": true,
+    "corner_radius": 5,
+    "routing_padding": 10,
+    "steiner_point_offset": 18
+  }
+}
+

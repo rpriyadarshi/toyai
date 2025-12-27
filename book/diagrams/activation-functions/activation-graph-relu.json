@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "id": "activation-graph-relu",
+    "title": "ReLU",
+    "width": 280,
+    "height": 280
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 40, "y": 70},
+      "width": 200,
+      "height": 200,
+      "custom_text": {
+        "x_label": "x",
+        "y_label": "f(x)",
+        "x_range": [-3, 3],
+        "y_range": [0, 3]
+      }
+    },
+    {
+      "id": "plot_line",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 40, "y": 70},
+      "width": 200,
+      "height": 200,
+      "custom_text": {
+        "function": "f(x) = max(0, x)",
+        "color": "#2563eb"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "ReLU",
+      "priority": 1
+    },
+    {
+      "type": "equation",
+      "text": "f(x) = max(0, x)",
+      "priority": 2
+    }
+  ]
+}
+

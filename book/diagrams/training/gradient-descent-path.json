@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "id": "gradient-descent-path",
+    "title": "Gradient Descent: Loss Decreases Over Time",
+    "width": 600,
+    "height": 400
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 80, "y": 60},
+      "width": 400,
+      "height": 300,
+      "custom_text": {
+        "x_label": "Training Iteration",
+        "y_label": "Loss",
+        "x_range": [0, 10],
+        "y_range": [0, 5]
+      }
+    },
+    {
+      "id": "loss_curve",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 80, "y": 60},
+      "width": 400,
+      "height": 300,
+      "custom_text": {
+        "function": "loss = decreasing curve",
+        "color": "#2563eb"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Gradient Descent: Loss Decreases Over Time",
+      "priority": 1
+    },
+    {
+      "type": "note",
+      "text": "Loss decreases as weights are updated",
+      "priority": 5
+    }
+  ]
+}
+

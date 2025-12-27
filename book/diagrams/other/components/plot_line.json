@@ -1,0 +1,28 @@
+{
+  "visual": {
+    "width": 200,
+    "height": 200,
+    "class": "plot-line"
+  },
+  "structure": {
+    "path": {
+      "d": "M 0,200 L 200,0",
+      "stroke": "#2563eb",
+      "stroke-width": 2,
+      "fill": "none"
+    }
+  },
+  "pins": {
+    "input": {
+      "side": "left",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "right",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

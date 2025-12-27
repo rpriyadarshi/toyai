@@ -1,0 +1,94 @@
+{
+  "metadata": {
+    "id": "cat-journey",
+    "title": "Cat Journey Through Network",
+    "width": 590,
+    "height": 210
+  },
+  "components": [
+    {
+      "id": "cat",
+      "type": "input",
+      "template": "input_box",
+      "position": {"x": 20, "y": 80},
+      "width": 100,
+      "height": 60,
+      "custom_text": {
+        "label": "'cat'",
+        "subtext": "Strong"
+      }
+    },
+    {
+      "id": "hidden1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 150, "y": 80},
+      "width": 100,
+      "height": 60,
+      "custom_text": {
+        "label": "Hidden 1",
+        "subtext": "Strong"
+      }
+    },
+    {
+      "id": "hidden2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 280, "y": 80},
+      "width": 100,
+      "height": 60,
+      "custom_text": {
+        "label": "Hidden 2",
+        "subtext": "Medium"
+      }
+    },
+    {
+      "id": "hidden3",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 410, "y": 80},
+      "width": 100,
+      "height": 60,
+      "custom_text": {
+        "label": "Hidden 3",
+        "subtext": "Weak"
+      }
+    },
+    {
+      "id": "sat",
+      "type": "output",
+      "template": "output_box",
+      "position": {"x": 470, "y": 80},
+      "width": 100,
+      "height": 60,
+      "custom_text": {
+        "label": "'sat'",
+        "subtext": "Very Weak"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "cat.output",
+      "to": "hidden1.input",
+      "style": "forward"
+    },
+    {
+      "from": "hidden1.output",
+      "to": "hidden2.input",
+      "style": "forward"
+    },
+    {
+      "from": "hidden2.output",
+      "to": "hidden3.input",
+      "style": "forward"
+    },
+    {
+      "from": "hidden3.output",
+      "to": "sat.input",
+      "style": "forward"
+    }
+  ],
+  "labels": []
+}
+

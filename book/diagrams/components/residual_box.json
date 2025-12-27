@@ -1,0 +1,43 @@
+{
+  "visual": {
+    "width": 140,
+    "height": 50,
+    "class": "residual-box"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 140,
+      "height": 50,
+      "rx": 6
+    },
+    "text": [
+      {
+        "content": "Residual",
+        "x": 70,
+        "y": 25,
+        "class": "box-label"
+      },
+      {
+        "content": "+ Input",
+        "x": 70,
+        "y": 40,
+        "class": "box-text"
+      }
+    ]
+  },
+  "pins": {
+    "input": {
+      "side": "right",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "bottom",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

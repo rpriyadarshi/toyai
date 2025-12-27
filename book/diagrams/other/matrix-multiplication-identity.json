@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "id": "matrix-multiplication-identity",
+    "title": "Matrix Multiplication with Identity",
+    "width": 700,
+    "height": 200
+  },
+  "components": [
+    {
+      "id": "matrix_a",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 50, "y": 50},
+      "width": 120,
+      "height": 80,
+      "custom_text": {
+        "label": "A (Identity)",
+        "subtext": "1  0\n0  1"
+      }
+    },
+    {
+      "id": "matrix_b",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 250, "y": 50},
+      "width": 120,
+      "height": 80,
+      "custom_text": {
+        "label": "B",
+        "subtext": "0.5  0.5\n0.5  0.5"
+      }
+    },
+    {
+      "id": "matrix_c",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 450, "y": 50},
+      "width": 120,
+      "height": 80,
+      "custom_text": {
+        "label": "C = A×B",
+        "subtext": "0.5  0.5\n0.5  0.5"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "matrix_a.output",
+      "to": "matrix_b.input",
+      "style": "forward"
+    },
+    {
+      "from": "matrix_b.output",
+      "to": "matrix_c.input",
+      "style": "forward"
+    }
+  ],
+  "labels": [
+    {
+      "type": "note",
+      "text": "B unchanged! (Pass-through)",
+      "priority": 5
+    }
+  ]
+}
+

@@ -1,0 +1,29 @@
+{
+  "visual": {
+    "width": 230,
+    "height": 160,
+    "class": "plot-region"
+  },
+  "structure": {
+    "polygon": {
+      "points": "0,0 230,0 230,160 0,160",
+      "fill": "#16a34a",
+      "opacity": 0.2,
+      "stroke": "#16a34a",
+      "stroke-width": 2
+    }
+  },
+  "pins": {
+    "input": {
+      "side": "left",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "right",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "id": "sigmoid-applied",
+    "title": "After Sigmoid",
+    "width": 500,
+    "height": 350
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 60, "y": 60},
+      "width": 380,
+      "height": 230,
+      "custom_text": {
+        "x_label": "x",
+        "y_label": "y",
+        "x_range": [-3, 3],
+        "y_range": [0, 1]
+      }
+    },
+    {
+      "id": "plot_line",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 60, "y": 60},
+      "width": 380,
+      "height": 230,
+      "custom_text": {
+        "function": "y = 1/(1+e⁻ˣ)",
+        "color": "#dc2626"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "After Sigmoid",
+      "priority": 1
+    }
+  ]
+}
+

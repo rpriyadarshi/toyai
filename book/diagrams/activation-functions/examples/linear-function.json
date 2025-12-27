@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "id": "linear-function",
+    "title": "Linear Functions",
+    "width": 500,
+    "height": 350
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 60, "y": 60},
+      "width": 380,
+      "height": 230,
+      "custom_text": {
+        "x_label": "x",
+        "y_label": "y",
+        "x_range": [-3, 3],
+        "y_range": [-3, 5]
+      }
+    },
+    {
+      "id": "plot_line1",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 60, "y": 60},
+      "width": 380,
+      "height": 230,
+      "custom_text": {
+        "function": "y = x",
+        "color": "#2563eb"
+      }
+    },
+    {
+      "id": "plot_line2",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 60, "y": 60},
+      "width": 380,
+      "height": 230,
+      "custom_text": {
+        "function": "y = x + 1",
+        "color": "#dc2626"
+      }
+    },
+    {
+      "id": "plot_line3",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 60, "y": 60},
+      "width": 380,
+      "height": 230,
+      "custom_text": {
+        "function": "y = 2x",
+        "color": "#16a34a"
+      }
+    },
+    {
+      "id": "plot_line4",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 60, "y": 60},
+      "width": 380,
+      "height": 230,
+      "custom_text": {
+        "function": "y = -x + 2",
+        "color": "#9333ea"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Linear Functions",
+      "priority": 1
+    }
+  ]
+}
+

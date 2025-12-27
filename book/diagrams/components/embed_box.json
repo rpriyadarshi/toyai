@@ -1,0 +1,37 @@
+{
+  "visual": {
+    "width": 310,
+    "height": 20,
+    "class": "embed-box"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 310,
+      "height": 20,
+      "rx": 6
+    },
+    "text": [
+      {
+        "content": "Embedding Lookup → Vectors",
+        "x": 155,
+        "y": 14,
+        "class": "box-label"
+      }
+    ]
+  },
+  "pins": {
+    "input": {
+      "side": "top",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "bottom",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

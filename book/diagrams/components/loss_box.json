@@ -1,0 +1,43 @@
+{
+  "visual": {
+    "width": 200,
+    "height": 50,
+    "class": "loss-box"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 200,
+      "height": 50,
+      "rx": 6
+    },
+    "text": [
+      {
+        "content": "Loss",
+        "x": 100,
+        "y": 20,
+        "class": "box-label"
+      },
+      {
+        "content": "Cross-Entropy",
+        "x": 100,
+        "y": 35,
+        "class": "box-text"
+      }
+    ]
+  },
+  "pins": {
+    "input": {
+      "side": "top",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "right",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

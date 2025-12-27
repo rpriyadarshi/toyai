@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "id": "training-loss-epochs",
+    "title": "Training Progress: Loss Decreases Over Epochs",
+    "width": 600,
+    "height": 400
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 80, "y": 60},
+      "width": 400,
+      "height": 300,
+      "custom_text": {
+        "x_label": "Epoch",
+        "y_label": "Average Loss",
+        "x_range": [1, 10],
+        "y_range": [0, 5]
+      }
+    },
+    {
+      "id": "loss_curve",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 80, "y": 60},
+      "width": 400,
+      "height": 300,
+      "custom_text": {
+        "function": "loss = decreasing curve",
+        "color": "#2563eb"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Training Progress: Loss Decreases Over Epochs",
+      "priority": 1
+    },
+    {
+      "type": "note",
+      "text": "Model learns and improves with each epoch",
+      "priority": 5
+    }
+  ]
+}
+

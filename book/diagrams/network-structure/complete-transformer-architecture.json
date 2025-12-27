@@ -1,0 +1,323 @@
+{
+  "metadata": {
+    "id": "complete-transformer-architecture",
+    "title": "Complete Transformer Architecture",
+    "width": 1200,
+    "height": 1090
+  },
+  "components": [
+    {
+      "id": "text",
+      "type": "input",
+      "template": "input_box",
+      "position": {"x": 445, "y": 55},
+      "custom_text": {
+        "label": "Text",
+        "subtext": "'The cat sat'"
+      }
+    },
+    {
+      "id": "tokenize",
+      "type": "input",
+      "template": "input_box",
+      "position": {"x": 565, "y": 55},
+      "custom_text": {
+        "label": "Tokenize",
+        "subtext": "['The', 'cat', 'sat']"
+      }
+    },
+    {
+      "id": "encode",
+      "type": "input",
+      "template": "input_box",
+      "position": {"x": 685, "y": 55},
+      "custom_text": {
+        "label": "Encode",
+        "subtext": "[1, 2, 3]"
+      }
+    },
+    {
+      "id": "embedding",
+      "type": "embed",
+      "template": "embed_box",
+      "position": {"x": 445, "y": 155}
+    },
+    {
+      "id": "qkv1",
+      "type": "qkv",
+      "template": "qkv_box",
+      "position": {"x": 340, "y": 240},
+      "custom_text": {
+        "label": "Q/K/V",
+        "subtext": "WQ, WK, WV"
+      }
+    },
+    {
+      "id": "attention1",
+      "type": "attention",
+      "template": "attention_box",
+      "position": {"x": 530, "y": 240}
+    },
+    {
+      "id": "softmax1",
+      "type": "softmax",
+      "template": "softmax_box",
+      "position": {"x": 720, "y": 240}
+    },
+    {
+      "id": "residual_attn1",
+      "type": "residual",
+      "template": "residual_box",
+      "position": {"x": 340, "y": 340}
+    },
+    {
+      "id": "ln_attn1",
+      "type": "layer_norm",
+      "template": "layer_norm_box",
+      "position": {"x": 530, "y": 340}
+    },
+    {
+      "id": "context1",
+      "type": "context",
+      "template": "context_box",
+      "position": {"x": 720, "y": 340}
+    },
+    {
+      "id": "ffn1",
+      "type": "ffn",
+      "template": "ffn_box",
+      "position": {"x": 340, "y": 440}
+    },
+    {
+      "id": "ln_ffn1",
+      "type": "layer_norm",
+      "template": "layer_norm_box",
+      "position": {"x": 530, "y": 440}
+    },
+    {
+      "id": "residual_ffn1",
+      "type": "residual",
+      "template": "residual_box",
+      "position": {"x": 720, "y": 440}
+    },
+    {
+      "id": "qkv2",
+      "type": "qkv",
+      "template": "qkv_box",
+      "position": {"x": 340, "y": 570}
+    },
+    {
+      "id": "attention2",
+      "type": "attention",
+      "template": "attention_box",
+      "position": {"x": 530, "y": 570}
+    },
+    {
+      "id": "softmax2",
+      "type": "softmax",
+      "template": "softmax_box",
+      "position": {"x": 720, "y": 570}
+    },
+    {
+      "id": "residual_attn2",
+      "type": "residual",
+      "template": "residual_box",
+      "position": {"x": 340, "y": 670}
+    },
+    {
+      "id": "ln_attn2",
+      "type": "layer_norm",
+      "template": "layer_norm_box",
+      "position": {"x": 530, "y": 670}
+    },
+    {
+      "id": "context2",
+      "type": "context",
+      "template": "context_box",
+      "position": {"x": 720, "y": 670}
+    },
+    {
+      "id": "ffn2",
+      "type": "ffn",
+      "template": "ffn_box",
+      "position": {"x": 340, "y": 770}
+    },
+    {
+      "id": "ln_ffn2",
+      "type": "layer_norm",
+      "template": "layer_norm_box",
+      "position": {"x": 530, "y": 770}
+    },
+    {
+      "id": "residual_ffn2",
+      "type": "residual",
+      "template": "residual_box",
+      "position": {"x": 720, "y": 770}
+    },
+    {
+      "id": "output_proj",
+      "type": "output",
+      "template": "output_box",
+      "position": {"x": 40, "y": 900}
+    },
+    {
+      "id": "logits",
+      "type": "softmax",
+      "template": "softmax_box",
+      "position": {"x": 190, "y": 900},
+      "width": 100,
+      "custom_text": {
+        "label": "Logits",
+        "subtext": "Raw Scores"
+      }
+    },
+    {
+      "id": "softmax_out",
+      "type": "softmax",
+      "template": "softmax_box",
+      "position": {"x": 40, "y": 1000},
+      "width": 100,
+      "custom_text": {
+        "label": "Softmax",
+        "subtext": "Probabilities"
+      }
+    },
+    {
+      "id": "prediction",
+      "type": "output",
+      "template": "output_box",
+      "position": {"x": 190, "y": 1000},
+      "custom_text": {
+        "label": "Prediction",
+        "subtext": "Next Token"
+      }
+    },
+    {
+      "id": "target",
+      "type": "input",
+      "template": "input_box",
+      "position": {"x": 460, "y": 890},
+      "custom_text": {
+        "label": "Target",
+        "subtext": "'dog'"
+      }
+    },
+    {
+      "id": "loss",
+      "type": "loss",
+      "template": "loss_box",
+      "position": {"x": 460, "y": 990}
+    },
+    {
+      "id": "gradients",
+      "type": "qkv",
+      "template": "qkv_box",
+      "position": {"x": 710, "y": 990},
+      "custom_text": {
+        "label": "Gradients",
+        "subtext": "Backprop"
+      }
+    },
+    {
+      "id": "weight_update",
+      "type": "update",
+      "template": "update_box",
+      "position": {"x": 960, "y": 990}
+    }
+  ],
+  "connections": [
+    {"from": "text.output", "to": "tokenize.input", "style": "forward"},
+    {"from": "tokenize.output", "to": "encode.input", "style": "forward"},
+    {"from": "encode.output", "to": "embedding.input", "style": "forward"},
+    {"from": "embedding.output", "to": "qkv1.input", "style": "forward"},
+    {"from": "qkv1.output", "to": "attention1.input", "style": "forward"},
+    {"from": "attention1.output", "to": "softmax1.input", "style": "forward"},
+    {"from": "softmax1.output", "to": "context1.input", "style": "forward"},
+    {"from": "context1.output", "to": "ln_attn1.input", "style": "forward"},
+    {"from": "ln_attn1.output", "to": "residual_attn1.input", "style": "forward"},
+    {"from": "residual_attn1.output", "to": "ffn1.input", "style": "forward"},
+    {"from": "ffn1.output", "to": "ln_ffn1.input", "style": "forward"},
+    {"from": "ln_ffn1.output", "to": "residual_ffn1.input", "style": "forward"},
+    {"from": "residual_ffn1.output", "to": "qkv2.input", "style": "forward"},
+    {"from": "qkv2.output", "to": "attention2.input", "style": "forward"},
+    {"from": "attention2.output", "to": "softmax2.input", "style": "forward"},
+    {"from": "softmax2.output", "to": "context2.input", "style": "forward"},
+    {"from": "context2.output", "to": "ln_attn2.input", "style": "forward"},
+    {"from": "ln_attn2.output", "to": "residual_attn2.input", "style": "forward"},
+    {"from": "residual_attn2.output", "to": "ffn2.input", "style": "forward"},
+    {"from": "ffn2.output", "to": "ln_ffn2.input", "style": "forward"},
+    {"from": "ln_ffn2.output", "to": "residual_ffn2.input", "style": "forward"},
+    {"from": "residual_ffn2.output", "to": "output_proj.input", "style": "forward"},
+    {"from": "output_proj.output", "to": "logits.input", "style": "forward"},
+    {"from": "logits.output", "to": "softmax_out.input", "style": "forward"},
+    {"from": "softmax_out.output", "to": "prediction.input", "style": "forward"},
+    {"from": "target.output", "to": "loss.input", "style": "forward"},
+    {"from": "prediction.output", "to": "loss.input", "style": "forward"},
+    {"from": "loss.output", "to": "gradients.input", "style": "forward"},
+    {"from": "gradients.output", "to": "weight_update.input", "style": "forward"},
+    {"from": "weight_update.output", "to": "qkv1.input", "style": "training", "color": "#9333ea", "stroke_width": 1.5, "dasharray": "4,4"},
+    {"from": "weight_update.output", "to": "qkv2.input", "style": "training", "color": "#9333ea", "stroke_width": 1.5, "dasharray": "4,4"},
+    {"from": "weight_update.output", "to": "output_proj.input", "style": "training", "color": "#9333ea", "stroke_width": 1.5, "dasharray": "4,4"},
+    {"from": "weight_update.output", "to": "embedding.input", "style": "training", "color": "#9333ea", "stroke_width": 1.5, "dasharray": "4,4"}
+  ],
+  "containers": [
+    {
+      "id": "input-processing",
+      "type": "container",
+      "template": "subgraph_container",
+      "position": {"x": 425, "y": 20},
+      "width": 350,
+      "height": 160,
+      "title": "Input Processing",
+      "contains": ["text", "tokenize", "encode", "embedding"]
+    },
+    {
+      "id": "transformer-block-1",
+      "type": "container",
+      "template": "subgraph_container",
+      "position": {"x": 320, "y": 200},
+      "width": 560,
+      "height": 310,
+      "title": "Transformer Block 1",
+      "contains": ["qkv1", "attention1", "softmax1", "residual_attn1", "ln_attn1", "context1", "ffn1", "ln_ffn1", "residual_ffn1"]
+    },
+    {
+      "id": "transformer-block-2",
+      "type": "container",
+      "template": "subgraph_container",
+      "position": {"x": 320, "y": 530},
+      "width": 560,
+      "height": 310,
+      "title": "Transformer Block 2",
+      "contains": ["qkv2", "attention2", "softmax2", "residual_attn2", "ln_attn2", "context2", "ffn2", "ln_ffn2", "residual_ffn2"]
+    },
+    {
+      "id": "output",
+      "type": "container",
+      "template": "subgraph_container",
+      "position": {"x": 20, "y": 860},
+      "width": 290,
+      "height": 210,
+      "title": "Output",
+      "contains": ["output_proj", "logits", "softmax_out", "prediction"]
+    },
+    {
+      "id": "training",
+      "type": "container",
+      "template": "subgraph_container",
+      "position": {"x": 440, "y": 860},
+      "width": 740,
+      "height": 200,
+      "title": "Training (Backward Pass)",
+      "contains": ["target", "loss", "gradients", "weight_update"]
+    }
+  ],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Complete Transformer Architecture",
+      "priority": 2
+    }
+  ]
+}
+

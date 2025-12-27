@@ -205,6 +205,101 @@ d = f"M {exit_point[0]},{exit_point[1]} {entry_point[0]},{entry_point[1]}"
   - Bottom edge center: `(x + w/2, y + h)`
   - Top edge center: `(x + w/2, y)`
 
+**Implementation Details**:
+- The `_line_box_intersection` method finds where a line segment intersects a bounding box
+- For exit points: allows `t >= 0` (line starts at center, which may be inside box)
+- For entry points: allows `t <= 1` (line ends at center, which may be inside box)
+- Returns the intersection point closest to the start (for exit) or end (for entry)
+
+### Title Positioning Algorithm - Obstruction Grid Based
+
+**Critical Rule**: Global titles must use the obstruction grid to find open space and respect border_padding.
+
+**The Problem**: Titles positioned mathematically without checking for obstructions can overlap with containers or other elements, violating spacing rules.
+
+**The Solution**: Use obstruction grid-based positioning:
+1. Mark all components and containers as obstructions in the grid
+2. Calculate initial position based on border_padding and font metrics
+3. Check if initial position is obstructed
+4. If obstructed, calculate required position based on topmost container
+5. Verify required position respects border_padding
+6. If still obstructed, use `find_nearest_open_space` to find alternative
+7. Prioritize avoiding overlap over strict border_padding when container is at border_padding
+
+**Algorithm Steps**:
+```python
+# 1. Mark obstructions
+for component in diagram.components:
+    grid.mark_obstructed(component.get_absolute_bbox())
+for container in diagram.containers:
+    grid.mark_obstructed(container.get_absolute_bbox())
+
+# 2. Calculate initial position
+min_y = border_padding + text_ascent
+initial_y = max(min_y, y_offset + text_ascent)
+title_bbox = calculate_label_bbox_at(label, x, initial_y)
+
+# 3. Check for obstructions
+if grid.is_obstructed(title_bbox):
+    # 4. Find topmost container
+    topmost_container = min(containers, key=lambda c: c.position[1])
+    container_top = topmost_container.get_absolute_bbox().top
+    
+    # 5. Calculate required position (title bottom above container with spacing)
+    required_title_bottom = container_top - min_spacing
+    required_y = required_title_bottom - text_descent
+    
+    # 6. Verify border_padding and find alternative if needed
+    if required_title_top >= border_padding:
+        if not grid.is_obstructed(candidate_bbox):
+            y = required_y
+        else:
+            # Use obstruction grid to find open space
+            y = grid.find_nearest_open_space(...)
+    else:
+        # Use required position to avoid overlap (may slightly violate border_padding)
+        y = required_y
+```
+
+**Why This Works**: The obstruction grid tracks all occupied space, ensuring titles are placed in open areas. When containers are at border_padding, the algorithm prioritizes spacing over strict border_padding to avoid overlap.
+
+### Canvas Height Auto-Adjustment Algorithm
+
+**Critical Rule**: Canvas height must be automatically adjusted when labels extend above border_padding.
+
+**The Problem**: When titles are positioned to avoid overlaps, they may extend above the canvas edge (y < 0) or above border_padding, violating the padding rule.
+
+**The Solution**: After placing global labels, check if any extend above border_padding and adjust canvas height:
+1. Find minimum y-coordinate of all global label bounding boxes
+2. If min_y < border_padding, calculate extra space needed
+3. Increase canvas height by extra_top_space
+4. Shift all elements (components, containers, labels) down by extra_top_space
+5. This ensures title top is exactly at border_padding
+
+**Algorithm Steps**:
+```python
+# After placing global labels
+min_y = 0
+for label in global_labels:
+    if label.position and label.bbox:
+        min_y = min(min_y, label.bbox.top)
+
+if min_y < border_padding:
+    extra_top_space = border_padding - min_y
+    dataset.height += extra_top_space
+    
+    # Shift all elements down
+    for component in top_level_components:
+        component.position = (x, y + extra_top_space)
+    for container in containers:
+        container.position = (x, y + extra_top_space)
+    for label in global_labels:
+        label.position = (x, y + extra_top_space)
+        label.bbox = shift_bbox(label.bbox, 0, extra_top_space)
+```
+
+**Why This Works**: By shifting all elements down, we maintain relative positions while ensuring the title respects border_padding. The canvas is extended upward to accommodate the title with proper spacing.
+
 ## Inter-Block Connections
 
 ### Placement and Z-Order

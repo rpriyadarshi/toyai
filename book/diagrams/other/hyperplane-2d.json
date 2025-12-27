@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "id": "hyperplane-2d",
+    "title": "2D Input (d=2)",
+    "width": 300,
+    "height": 250
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 20, "y": 60},
+      "width": 230,
+      "height": 160,
+      "custom_text": {
+        "x_label": "x₁",
+        "y_label": "x₂",
+        "x_range": [-1, 1],
+        "y_range": [-1, 1]
+      }
+    },
+    {
+      "id": "decision_line",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 20, "y": 60},
+      "width": 230,
+      "height": 160,
+      "custom_text": {
+        "function": "decision line",
+        "color": "#2563eb"
+      }
+    },
+    {
+      "id": "positive_region",
+      "type": "plot",
+      "template": "plot_region",
+      "position": {"x": 20, "y": 60},
+      "width": 230,
+      "height": 160,
+      "custom_text": {
+        "label": "w·x + b > 0",
+        "color": "#16a34a"
+      }
+    },
+    {
+      "id": "negative_region",
+      "type": "plot",
+      "template": "plot_region",
+      "position": {"x": 20, "y": 60},
+      "width": 230,
+      "height": 160,
+      "custom_text": {
+        "label": "w·x + b < 0",
+        "color": "#dc2626"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "2D Input (d=2)",
+      "priority": 1
+    },
+    {
+      "type": "equation",
+      "text": "w₁x₁ + w₂x₂ + b = 0",
+      "priority": 2
+    }
+  ]
+}
+

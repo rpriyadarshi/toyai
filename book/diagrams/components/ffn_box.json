@@ -1,0 +1,43 @@
+{
+  "visual": {
+    "width": 140,
+    "height": 50,
+    "class": "ffn-box"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 140,
+      "height": 50,
+      "rx": 6
+    },
+    "text": [
+      {
+        "content": "Feed-Forward",
+        "x": 70,
+        "y": 20,
+        "class": "box-label"
+      },
+      {
+        "content": "ReLU(xW₁+b₁)W₂+b₂",
+        "x": 70,
+        "y": 35,
+        "class": "box-text"
+      }
+    ]
+  },
+  "pins": {
+    "input": {
+      "side": "top",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "right",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

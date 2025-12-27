@@ -1,0 +1,211 @@
+{
+  "metadata": {
+    "id": "batch-training",
+    "title": "Batch Training",
+    "width": 530,
+    "height": 460
+  },
+  "components": [
+    {
+      "id": "batch",
+      "type": "input",
+      "template": "input_box",
+      "position": {"x": 280, "y": 20},
+      "width": 100,
+      "height": 60,
+      "custom_text": {
+        "label": "Batch",
+        "subtext": "4 Examples"
+      }
+    },
+    {
+      "id": "process1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 20, "y": 110},
+      "width": 100,
+      "height": 60,
+      "custom_text": {
+        "label": "Process",
+        "subtext": "Example 1"
+      }
+    },
+    {
+      "id": "process2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 150, "y": 110},
+      "width": 100,
+      "height": 60,
+      "custom_text": {
+        "label": "Process",
+        "subtext": "Example 2"
+      }
+    },
+    {
+      "id": "process3",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 280, "y": 110},
+      "width": 100,
+      "height": 60,
+      "custom_text": {
+        "label": "Process",
+        "subtext": "Example 3"
+      }
+    },
+    {
+      "id": "process4",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 410, "y": 110},
+      "width": 100,
+      "height": 60,
+      "custom_text": {
+        "label": "Process",
+        "subtext": "Example 4"
+      }
+    },
+    {
+      "id": "gradient1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 20, "y": 200},
+      "width": 100,
+      "height": 50,
+      "custom_text": {
+        "label": "Gradient 1",
+        "subtext": ""
+      }
+    },
+    {
+      "id": "gradient2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 150, "y": 200},
+      "width": 100,
+      "height": 50,
+      "custom_text": {
+        "label": "Gradient 2",
+        "subtext": ""
+      }
+    },
+    {
+      "id": "gradient3",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 280, "y": 200},
+      "width": 100,
+      "height": 50,
+      "custom_text": {
+        "label": "Gradient 3",
+        "subtext": ""
+      }
+    },
+    {
+      "id": "gradient4",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 410, "y": 200},
+      "width": 100,
+      "height": 50,
+      "custom_text": {
+        "label": "Gradient 4",
+        "subtext": ""
+      }
+    },
+    {
+      "id": "average",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 220, "y": 280},
+      "width": 200,
+      "height": 80,
+      "custom_text": {
+        "label": "Average Gradients",
+        "subtext": "∇L = (∇L₁+∇L₂+∇L₃+∇L₄)/4"
+      }
+    },
+    {
+      "id": "update",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 245, "y": 390},
+      "width": 150,
+      "height": 50,
+      "custom_text": {
+        "label": "Update Weights",
+        "subtext": "W = W - η∇L"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "batch.output",
+      "to": "process1.input",
+      "style": "forward"
+    },
+    {
+      "from": "batch.output",
+      "to": "process2.input",
+      "style": "forward"
+    },
+    {
+      "from": "batch.output",
+      "to": "process3.input",
+      "style": "forward"
+    },
+    {
+      "from": "batch.output",
+      "to": "process4.input",
+      "style": "forward"
+    },
+    {
+      "from": "process1.output",
+      "to": "gradient1.input",
+      "style": "forward"
+    },
+    {
+      "from": "process2.output",
+      "to": "gradient2.input",
+      "style": "forward"
+    },
+    {
+      "from": "process3.output",
+      "to": "gradient3.input",
+      "style": "forward"
+    },
+    {
+      "from": "process4.output",
+      "to": "gradient4.input",
+      "style": "forward"
+    },
+    {
+      "from": "gradient1.output",
+      "to": "average.input",
+      "style": "forward"
+    },
+    {
+      "from": "gradient2.output",
+      "to": "average.input",
+      "style": "forward"
+    },
+    {
+      "from": "gradient3.output",
+      "to": "average.input",
+      "style": "forward"
+    },
+    {
+      "from": "gradient4.output",
+      "to": "average.input",
+      "style": "forward"
+    },
+    {
+      "from": "average.output",
+      "to": "update.input",
+      "style": "forward"
+    }
+  ],
+  "labels": []
+}
+

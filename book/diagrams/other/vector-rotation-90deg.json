@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "id": "vector-rotation-90deg",
+    "title": "Vector Rotation 90°",
+    "width": 500,
+    "height": 380
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 250, "y": 100},
+      "width": 160,
+      "height": 160,
+      "custom_text": {
+        "x_label": "x",
+        "y_label": "y",
+        "x_range": [-1, 1],
+        "y_range": [-1, 1]
+      }
+    },
+    {
+      "id": "vector_orig",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 50, "y": 240},
+      "width": 80,
+      "height": 50,
+      "custom_text": {
+        "label": "v",
+        "subtext": "[1, 0]"
+      }
+    },
+    {
+      "id": "rotation_matrix",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 200, "y": 240},
+      "width": 100,
+      "height": 50,
+      "custom_text": {
+        "label": "R(90°)",
+        "subtext": "[0 -1; 1 0]"
+      }
+    },
+    {
+      "id": "vector_rot",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 370, "y": 240},
+      "width": 80,
+      "height": 50,
+      "custom_text": {
+        "label": "v'",
+        "subtext": "[0, 1]"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "vector_orig.output",
+      "to": "rotation_matrix.input",
+      "style": "forward"
+    },
+    {
+      "from": "rotation_matrix.output",
+      "to": "vector_rot.input",
+      "style": "forward"
+    }
+  ],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Vector Rotation 90°",
+      "priority": 1
+    }
+  ]
+}
+

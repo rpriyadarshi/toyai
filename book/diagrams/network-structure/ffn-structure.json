@@ -1,0 +1,128 @@
+{
+  "metadata": {
+    "id": "ffn-structure",
+    "title": "Feed-Forward Network Structure",
+    "width": 880,
+    "height": 120
+  },
+  "components": [
+    {
+      "id": "input",
+      "type": "input",
+      "template": "input_box",
+      "position": {"x": 20, "y": 20},
+      "width": 100,
+      "height": 80,
+      "custom_text": {
+        "label": "Input",
+        "subtext": "[0.3, 0.7]"
+      }
+    },
+    {
+      "id": "w1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 150, "y": 20},
+      "width": 100,
+      "height": 80,
+      "custom_text": {
+        "label": "W₁",
+        "subtext": "2×4 Matrix"
+      }
+    },
+    {
+      "id": "b1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 280, "y": 20},
+      "width": 80,
+      "height": 80,
+      "custom_text": {
+        "label": "+b₁",
+        "subtext": "Bias"
+      }
+    },
+    {
+      "id": "relu",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 390, "y": 20},
+      "width": 100,
+      "height": 80,
+      "custom_text": {
+        "label": "ReLU",
+        "subtext": "Activation"
+      }
+    },
+    {
+      "id": "w2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 520, "y": 20},
+      "width": 100,
+      "height": 80,
+      "custom_text": {
+        "label": "W₂",
+        "subtext": "4×2 Matrix"
+      }
+    },
+    {
+      "id": "b2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 650, "y": 20},
+      "width": 80,
+      "height": 80,
+      "custom_text": {
+        "label": "+b₂",
+        "subtext": "Bias"
+      }
+    },
+    {
+      "id": "output",
+      "type": "output",
+      "template": "output_box",
+      "position": {"x": 760, "y": 20},
+      "width": 100,
+      "height": 80,
+      "custom_text": {
+        "label": "Output",
+        "subtext": "[0.4, 0.6]"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "input.output",
+      "to": "w1.input",
+      "style": "forward"
+    },
+    {
+      "from": "w1.output",
+      "to": "b1.input",
+      "style": "forward"
+    },
+    {
+      "from": "b1.output",
+      "to": "relu.input",
+      "style": "forward"
+    },
+    {
+      "from": "relu.output",
+      "to": "w2.input",
+      "style": "forward"
+    },
+    {
+      "from": "w2.output",
+      "to": "b2.input",
+      "style": "forward"
+    },
+    {
+      "from": "b2.output",
+      "to": "output.input",
+      "style": "forward"
+    }
+  ],
+  "labels": []
+}
+

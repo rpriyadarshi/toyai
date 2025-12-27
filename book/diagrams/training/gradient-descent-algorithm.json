@@ -1,0 +1,103 @@
+{
+  "metadata": {
+    "id": "gradient-descent-algorithm",
+    "title": "Gradient Descent Algorithm",
+    "width": 165,
+    "height": 580
+  },
+  "components": [
+    {
+      "id": "start",
+      "type": "input",
+      "template": "input_box",
+      "position": {"x": 20, "y": 20},
+      "width": 100,
+      "height": 90,
+      "custom_text": {
+        "label": "Start",
+        "subtext": "W = 0.5, Loss = 2.0"
+      }
+    },
+    {
+      "id": "compute",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 20, "y": 130},
+      "width": 100,
+      "height": 50,
+      "custom_text": {
+        "label": "Compute",
+        "subtext": "∇L"
+      }
+    },
+    {
+      "id": "step",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 20, "y": 200},
+      "width": 100,
+      "height": 50,
+      "custom_text": {
+        "label": "Step",
+        "subtext": "W = W - η∇L"
+      }
+    },
+    {
+      "id": "check",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 20, "y": 270},
+      "width": 100,
+      "height": 50,
+      "custom_text": {
+        "label": "Check",
+        "subtext": "Converged?"
+      }
+    },
+    {
+      "id": "stop",
+      "type": "output",
+      "template": "output_box",
+      "position": {"x": 20, "y": 340},
+      "width": 100,
+      "height": 50,
+      "custom_text": {
+        "label": "Stop",
+        "subtext": "Done"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "start.output",
+      "to": "compute.input",
+      "style": "forward"
+    },
+    {
+      "from": "compute.output",
+      "to": "step.input",
+      "style": "forward"
+    },
+    {
+      "from": "step.output",
+      "to": "check.input",
+      "style": "forward"
+    },
+    {
+      "from": "check.output",
+      "to": "stop.input",
+      "style": "forward"
+    },
+    {
+      "from": "check.output",
+      "to": "compute.input",
+      "style": "training",
+      "color": "#9333ea",
+      "metadata": {
+        "dasharray": "5,5"
+      }
+    }
+  ],
+  "labels": []
+}
+

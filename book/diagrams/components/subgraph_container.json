@@ -1,0 +1,26 @@
+{
+  "visual": {
+    "width": 560,
+    "height": 310,
+    "class": "subgraph-bg"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 560,
+      "height": 310,
+      "rx": 10
+    },
+    "text": [
+      {
+        "content": "Subgraph Title",
+        "x": 280,
+        "y": 20,
+        "class": "subgraph-title"
+      }
+    ]
+  },
+  "pins": {}
+}
+

@@ -1,0 +1,50 @@
+{
+  "visual": {
+    "width": 200,
+    "height": 200,
+    "class": "axis-box"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 200,
+      "height": 200,
+      "rx": 0,
+      "fill": "#fafafa",
+      "stroke": "none"
+    },
+    "line": [
+      {
+        "x1": 0,
+        "y1": 200,
+        "x2": 200,
+        "y2": 200,
+        "stroke": "#333",
+        "stroke-width": 2
+      },
+      {
+        "x1": 100,
+        "y1": 0,
+        "x2": 100,
+        "y2": 200,
+        "stroke": "#333",
+        "stroke-width": 2
+      }
+    ],
+    "text": []
+  },
+  "pins": {
+    "input": {
+      "side": "left",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "right",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

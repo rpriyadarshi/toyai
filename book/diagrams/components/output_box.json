@@ -1,0 +1,43 @@
+{
+  "visual": {
+    "width": 100,
+    "height": 50,
+    "class": "output-box"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 100,
+      "height": 50,
+      "rx": 6
+    },
+    "text": [
+      {
+        "content": "Output",
+        "x": 50,
+        "y": 20,
+        "class": "box-label"
+      },
+      {
+        "content": "Projection WO",
+        "x": 50,
+        "y": 35,
+        "class": "box-text"
+      }
+    ]
+  },
+  "pins": {
+    "input": {
+      "side": "top",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "right",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}
+

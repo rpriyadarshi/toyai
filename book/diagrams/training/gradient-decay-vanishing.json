@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "id": "gradient-decay-vanishing",
+    "title": "Gradient Vanishes Over Time Steps",
+    "width": 600,
+    "height": 400
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 80, "y": 60},
+      "width": 400,
+      "height": 300,
+      "custom_text": {
+        "x_label": "Time Step (Backward)",
+        "y_label": "Gradient Strength",
+        "x_range": [0, 10],
+        "y_range": [0, 1]
+      }
+    },
+    {
+      "id": "decay_curve",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 80, "y": 60},
+      "width": 400,
+      "height": 300,
+      "custom_text": {
+        "function": "gradient = 0.9^t",
+        "color": "#dc2626"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Gradient Vanishes Over Time Steps",
+      "priority": 1
+    },
+    {
+      "type": "note",
+      "text": "Gradient too weak to learn!",
+      "priority": 5
+    }
+  ]
+}
+

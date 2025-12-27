@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "id": "attention-weights-distribution",
+    "title": "Attention Weights: Probability Distribution Over Tokens",
+    "width": 600,
+    "height": 420
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 80, "y": 60},
+      "width": 400,
+      "height": 300,
+      "custom_text": {
+        "x_label": "Token",
+        "y_label": "Attention Weight",
+        "x_range": [0, 4],
+        "y_range": [0, 1]
+      }
+    },
+    {
+      "id": "bar_chart",
+      "type": "plot",
+      "template": "bar_chart",
+      "position": {"x": 80, "y": 60},
+      "width": 400,
+      "height": 300,
+      "custom_text": {
+        "data": [
+          {"label": "'cat'", "value": 0.6, "color": "#16a34a"},
+          {"label": "'the'", "value": 0.1, "color": "#dc2626"},
+          {"label": "'on'", "value": 0.2, "color": "#fff9c4"},
+          {"label": "'mat'", "value": 0.1, "color": "#dc2626"}
+        ]
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Attention Weights: Probability Distribution Over Tokens",
+      "priority": 1
+    },
+    {
+      "type": "note",
+      "text": "Sum = 0.6 + 0.1 + 0.2 + 0.1 = 1.0 ✓",
+      "priority": 5
+    }
+  ]
+}
+
