@@ -283,7 +283,7 @@ Consider our handwritten digit recognition example. The network doesn't just lea
    - Layer 1 detects simple patterns → outputs feature vector $\mathbf{h}_1$
    - Layer 2 combines patterns → outputs feature vector $\mathbf{h}_2$
    - Layer 3 recognizes complex patterns → outputs feature vector $\mathbf{h}_3$
-   - Output layer computes: $\text{logit}_i = \mathbf{w}_i \cdot \mathbf{h}_3 + b_i$ for each class $i$
+   - Output layer computes: $\text{logit}_i = \mathbf{w}_i \cdot \mathbf{h}_3 + b_i$ for each class $i$ (where a logit is the raw, unnormalized score before converting to probabilities; we'll define this formally later)
    - The class with the highest logit becomes the prediction
 
 **Concrete Example: Recognizing the Digit "6"**
@@ -306,13 +306,13 @@ Let's trace through what happens when the network sees an image of the digit "6"
   - Very low values for "digit 0", "digit 1", "digit 2" patterns
   - **Very high value (0.95) for "digit 6" pattern** (recognizes the complete "6" shape)
 
-- **Output Layer**: Computes logits for each class
+- **Output Layer**: Computes logits (raw, unnormalized scores) for each class
   - Logit for "digit 0": $\mathbf{w}_0 \cdot [0.1, 0.05, 0.95, 0.2] + b_0 = 0.3$
   - Logit for "digit 1": $\mathbf{w}_1 \cdot [0.1, 0.05, 0.95, 0.2] + b_1 = 0.1$
   - Logit for "digit 2": $\mathbf{w}_2 \cdot [0.1, 0.05, 0.95, 0.2] + b_2 = 0.2$
   - **Logit for "digit 6": $\mathbf{w}_6 \cdot [0.1, 0.05, 0.95, 0.2] + b_6 = 2.5$** (highest!)
 
-- **Softmax**: Converts logits to probabilities
+- **Softmax** (a function that converts scores to probabilities; we'll define this formally later): Converts logits to probabilities
   - $P(\text{digit 0}) = 0.05$
   - $P(\text{digit 1}) = 0.02$
   - $P(\text{digit 2}) = 0.03$
@@ -905,7 +905,7 @@ The following example illustrates how batching works. For clarity, we use simple
 
 All 4 sequences are processed together in parallel, and their gradients are averaged across the batch.
 
-The sequences shown are illustrative examples. In practice, these would be converted to numerical vectors (embeddings) before processing. The key point is that all sequences in the batch are processed in parallel, and their gradients are averaged.
+The sequences shown are illustrative examples. In practice, these would be converted to numerical vectors before processing (we'll explain how tokens become vectors in Chapter 3: Embeddings). The key point is that all sequences in the batch are processed in parallel, and their gradients are averaged.
 
 ![Batch Training](images/training/batch-training.svg)
 
