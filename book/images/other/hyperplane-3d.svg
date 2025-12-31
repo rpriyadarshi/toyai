@@ -1,50 +1,68 @@
-<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="550" height="480" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#16a34a" />
+    <marker id="axisArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M 0,0 L 8,4 L 0,8 Z" fill="#1f2937"/>
     </marker>
-    <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#dc2626" />
+    <marker id="arrow-green" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M 0,0 L 6,3 L 0,6 Z" fill="#16a34a"/>
     </marker>
+    <marker id="arrow-red" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M 0,0 L 6,3 L 0,6 Z" fill="#dc2626"/>
+    </marker>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#16a34a;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+    <linearGradient id="redGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
   </defs>
-  
-  <!-- Title at top -->
-  <text x="150" y="25" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">3D Input (d=3)</text>
-  <text x="150" y="42" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">w₁x₁ + w₂x₂ + w₃x₃ + b = 0</text>
-  
-  <!-- Content group: all elements relative to this -->
-  <g transform="translate(20, 60)">
-    <!-- 3D axes (isometric view) -->
-    <!-- x-axis (horizontal) -->
-    <line x1="50" y1="80" x2="200" y2="80" stroke="#333" stroke-width="2"/>
-    <text x="200" y="95" font-family="Arial" font-size="12" text-anchor="middle">x₁</text>
-    
-    <!-- y-axis (diagonal left) -->
-    <line x1="50" y1="80" x2="100" y2="15" stroke="#333" stroke-width="2"/>
-    <text x="105" y="10" font-family="Arial" font-size="12" text-anchor="middle">x₂</text>
-    
-    <!-- z-axis (vertical) -->
-    <line x1="50" y1="80" x2="50" y2="0" stroke="#333" stroke-width="2"/>
-    <text x="35" y="5" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle">x₃</text>
-    
-    <!-- Origin -->
-    <circle cx="50" cy="80" r="3" fill="#333"/>
-    <text x="55" y="88" font-family="Arial" font-size="10">(0,0,0)</text>
-    
-    <!-- Decision plane (tilted plane in isometric view) -->
-    <polygon points="50,80 200,80 200,40 50,15" fill="#2563eb" opacity="0.3" stroke="#2563eb" stroke-width="2"/>
-    
-    <!-- Decision plane label: position in empty space above plane (top-right area) -->
-    <text x="125" y="10" font-family="Arial" font-size="11" font-weight="bold" fill="#2563eb" text-anchor="middle">Decision Plane</text>
-    
-    <!-- Positive region indicator (arrow) -->
-    <path d="M 150 65 L 170 50" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
-    <!-- Label positioned to the right of arrow end, in empty space -->
-    <text x="185" y="48" font-family="Arial" font-size="11" font-weight="bold" fill="#16a34a" text-anchor="start">w·x + b &gt; 0</text>
-    
-    <!-- Negative region indicator (arrow) -->
-    <path d="M 100 95 L 80 110" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
-    <!-- Label positioned below arrow end, in empty space -->
-    <text x="75" y="130" font-family="Arial" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">w·x + b &lt; 0</text>
-  </g>
+  <text x="275.0" y="30" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle" fill="#1f2937">3D Input (d=3)</text>
+  <text x="275.0" y="52" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#6b7280">w₁x₁ + w₂x₂ + w₃x₃ + b = 0</text>
+  <line x1="338.6238041214484" y1="236.7247287812516" x2="213.93361985408305" y2="310.59072827976644" stroke="#1f2937" stroke-width="2.5" marker-end="url(#axisArrow)"/>
+  <text x="184.03648285027577" y="315.0630481979757" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937">x₁</text>
+  <line x1="172.22744077930207" y1="251.58454692905963" x2="388.05874996233456" y2="294.2037674382778" stroke="#1f2937" stroke-width="2.5" marker-end="url(#axisArrow)"/>
+  <text x="419.38736244725396" y="292.8842736032369" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937">x₂</text>
+  <line x1="278.21152309412093" y1="359.4564977097315" x2="278.21152309412093" y2="183.85298089940227" stroke="#1f2937" stroke-width="2.5" marker-end="url(#axisArrow)"/>
+  <text x="268.7131963390833" y="171.0334210087414" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937">x₃</text>
+  <circle cx="278.21152309412093" cy="272.51273844928" r="4" fill="#1f2937"/>
+  <text x="235.63450483106007" y="298.38130331780695" font-family="Arial, sans-serif" font-size="10" fill="#6b7280" font-weight="500">(0,0,0)</text>
+  <polygon points="234.7413365893432,217.02580346783043 105.78599397044638,288.3145072955888 326.1517447010969,333.70538962436063 446.17694048478654,257.1197121771823" fill="#2563eb" opacity="0.25" stroke="#2563eb" stroke-width="2.5"/>
+  <line x1="234.7413365893432" y1="217.02580346783043" x2="446.17694048478654" y2="257.1197121771823" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
+  <line x1="234.7413365893432" y1="217.02580346783043" x2="105.78599397044638" y2="288.3145072955888" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
+  <line x1="105.78599397044638" y1="288.3145072955888" x2="326.1517447010969" y2="333.70538962436063" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
+  <line x1="446.17694048478654" y1="257.1197121771823" x2="326.1517447010969" y2="333.70538962436063" stroke="#3b82f6" stroke-width="1" opacity="0.4"/>
+  <text x="226.80889800187492" y="250.7034766560777" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#2563eb" text-anchor="middle">Decision Plane</text>
+  <polygon points="226.48144617761446,198.1822021266513 70.54382525331826,282.6157926806468 336.3979021949217,337.4476350763386 479.4436000005027,245.41926563574967" fill="#16a34a" opacity="0.06" stroke="none"/>
+  <polygon points="226.4336091507015,189.80541446563052 70.33724030707813,273.68851249000653 336.45843220179995,328.1691485529567 479.63757323392804,236.7330537171975" fill="#16a34a" opacity="0.054" stroke="none"/>
+  <polygon points="226.38568356798493,181.41311971290315 70.1302439358783,264.7434531438172 336.5190882758855,318.8713375169238 479.8319207806262,228.03007987559408" fill="#16a34a" opacity="0.048" stroke="none"/>
+  <polygon points="226.33766918333538,173.0052747685327 69.92283490943146,255.7805614769309 336.5798708114333,309.5541415339101 480.02664372512135,219.31029554545148" fill="#16a34a" opacity="0.041999999999999996" stroke="none"/>
+  <polygon points="226.28956574971062,164.58183637271344 69.71501199254016,246.79978411201432 336.64078020434425,300.2174999173244 480.221743156131,210.57365197348363" fill="#16a34a" opacity="0.036" stroke="none"/>
+  <polygon points="226.24137301915127,156.14276110502885 69.5067739450723,237.80106745848968 336.70181685217324,290.86135172699676 480.41722016658696,201.82010021769884" fill="#16a34a" opacity="0.03" stroke="none"/>
+  <polygon points="226.19309074277635,147.68800538370573 69.29811952193634,228.78435771146857 336.76298115413834,281.4856357678521 480.61307585365523,193.04959114648483" fill="#16a34a" opacity="0.024" stroke="none"/>
+  <polygon points="226.14471867077924,139.2175254648631 69.0890474730569,219.74960085067926 336.82427351112904,272.090290588577 480.8093113187571,184.26207543769016" fill="#16a34a" opacity="0.018000000000000002" stroke="none"/>
+  <polygon points="226.09625655242328,130.73127744175898 68.87955654334922,210.69674263938907 336.88569432571535,262.6752544802761 481.0059276675893,175.45750357769953" fill="#16a34a" opacity="0.011999999999999997" stroke="none"/>
+  <polygon points="226.04770413603737,122.2292172440306 68.66964547269444,201.6257286233172 336.9472440021564,253.24046547512202 481.2029260101448,166.63582586050364" fill="#16a34a" opacity="0.01" stroke="none"/>
+  <path d="M 105.2722738251125,261.594375330266 L 104.40923712689059,216.7052373883996" stroke="#16a34a" stroke-width="2.2" fill="none" marker-end="url(#arrow-green)" stroke-linecap="round"/>
+  <text x="68.66964547269444" y="201.6257286233172" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#16a34a">w·x + b &gt; 0</text>
+  <text x="68.66964547269444" y="215.6257286233172" font-family="Arial, sans-serif" font-size="9" fill="#16a34a" font-style="italic">(all x₃ &gt; 0)</text>
+  <polygon points="226.57685554400706,214.88942777839765 70.95576576766348,300.4172272012614 336.277218813944,355.9468750690114 479.0567721562229,262.7415970320803" fill="#dc2626" opacity="0.06" stroke="none"/>
+  <polygon points="226.6244283712183,223.2199511762715 71.16112377201125,309.2914868100552 336.2170646594861,365.16774815739944 478.8639153971083,271.37781270995123" fill="#dc2626" opacity="0.054" stroke="none"/>
+  <polygon points="226.67191361809745,231.53513829819093 71.36607522393217,318.14817782301446 336.1570350115018,374.36953597390965 478.6714286547066,279.9974588667373" fill="#dc2626" opacity="0.048" stroke="none"/>
+  <polygon points="226.71931152627167,239.83503145573377 71.57062132952561,326.98735236003654 336.0971294838375,383.55229771104393 478.479310865162,288.6005831423853" fill="#dc2626" opacity="0.041999999999999996" stroke="none"/>
+  <polygon points="226.76662233648017,248.11967280497493 71.77476329012484,335.80906233506107 336.03734769193443,392.71609231677894 478.2875609686938,297.18723299438767" fill="#dc2626" opacity="0.036" stroke="none"/>
+  <polygon points="226.8138462885783,256.38910434720066 71.97850230232046,344.613359457085 335.9776892528212,401.8609784958261 478.09617790957554,305.7574556986545" fill="#dc2626" opacity="0.03" stroke="none"/>
+  <polygon points="226.86098362154138,264.64336792961774 72.18183955798409,353.40029523117374 335.9181537851049,410.9870147108863 477.90516063611665,314.31129835038143" fill="#dc2626" opacity="0.024" stroke="none"/>
+  <polygon points="226.908034573469,272.8825052460598 72.38477624429129,362.16992095946546 335.85874090896357,420.0942591838948 477.71450810064323,322.84880786491203" fill="#dc2626" opacity="0.018000000000000002" stroke="none"/>
+  <polygon points="226.95499938158866,281.1065578376889 72.58731354374487,370.92228774216903 335.7994502461376,429.1827698972601 477.5242192594776,331.370030978596" fill="#dc2626" opacity="0.011999999999999997" stroke="none"/>
+  <polygon points="227.0018782822603,289.3155670936941 72.78945263419786,379.6574464785571 335.7402814199223,438.25260459509406 477.334293072921,339.8750142496417" fill="#dc2626" opacity="0.01" stroke="none"/>
+  <path d="M 445.69230377217673,283.08648608972754 L 444.89076101828965,326.0330457082629" stroke="#dc2626" stroke-width="2.2" fill="none" marker-end="url(#arrow-red)" stroke-linecap="round"/>
+  <text x="477.334293072921" y="339.8750142496417" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#dc2626" text-anchor="end">w·x + b &lt; 0</text>
+  <text x="477.334293072921" y="353.8750142496417" font-family="Arial, sans-serif" font-size="9" fill="#dc2626" font-style="italic" text-anchor="end">(all x₃ &lt; 0)</text>
+  <path d="M 243.20681914547487,253.10659240601962 L 243.37018414493764,295.12579299988465" stroke="#dc2626" stroke-width="2.2" fill="none" marker-end="url(#arrow-red)" stroke-linecap="round"/>
+  <text x="235.14258508702702" y="300.46574697204386" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#dc2626">w·x + b &lt; 0</text>
+  <text x="235.14258508702702" y="315.46574697204386" font-family="Arial, sans-serif" font-size="10" fill="#dc2626" font-style="italic">(all x₃ &lt; 0)</text>
+  <text x="193.77578881298" y="324.5532053440213" font-family="Arial, sans-serif" font-size="10" fill="#9ca3af" text-anchor="middle" font-style="italic">Plane divides 3D space</text>
 </svg>

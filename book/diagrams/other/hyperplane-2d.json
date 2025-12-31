@@ -2,17 +2,17 @@
   "metadata": {
     "id": "hyperplane-2d",
     "title": "2D Input (d=2)",
-    "width": 300,
-    "height": 250
+    "width": 400,
+    "height": 350
   },
   "components": [
     {
       "id": "axis_system",
       "type": "axis",
       "template": "axis_system",
-      "position": {"x": 20, "y": 60},
-      "width": 230,
-      "height": 160,
+      "position": {"x": 50, "y": 80},
+      "width": 250,
+      "height": 220,
       "custom_text": {
         "x_label": "x₁",
         "y_label": "x₂",
@@ -24,9 +24,9 @@
       "id": "decision_line",
       "type": "plot",
       "template": "plot_line",
-      "position": {"x": 20, "y": 60},
-      "width": 230,
-      "height": 160,
+      "position": {"x": 50, "y": 80},
+      "width": 250,
+      "height": 220,
       "custom_text": {
         "function": "decision line",
         "color": "#2563eb"
@@ -36,9 +36,9 @@
       "id": "positive_region",
       "type": "plot",
       "template": "plot_region",
-      "position": {"x": 20, "y": 60},
-      "width": 230,
-      "height": 160,
+      "position": {"x": 50, "y": 80},
+      "width": 250,
+      "height": 220,
       "custom_text": {
         "label": "w·x + b > 0",
         "color": "#16a34a"
@@ -48,9 +48,9 @@
       "id": "negative_region",
       "type": "plot",
       "template": "plot_region",
-      "position": {"x": 20, "y": 60},
-      "width": 230,
-      "height": 160,
+      "position": {"x": 50, "y": 80},
+      "width": 250,
+      "height": 220,
       "custom_text": {
         "label": "w·x + b < 0",
         "color": "#dc2626"
@@ -71,4 +71,3 @@
     }
   ]
 }
-
