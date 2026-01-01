@@ -33,11 +33,30 @@ A perceptron is a single neuron—the simplest possible neural network. It funct
 
 ### The Mathematical Story
 
-Mathematically, a perceptron computes its output using the following formula:
+A perceptron computes its output using the following formula:
 
 $$y = f(\mathbf{w} \cdot \mathbf{x} + b)$$
 
-In this equation, $\mathbf{x}$ represents the input, which is a vector of $d$ numbers (we write this as $\mathbf{x} \in \mathbb{R}^d$, where $\mathbb{R}$ means "the set of all real numbers" and $\mathbb{R}^d$ means "all vectors with $d$ components, each being a real number"). The variable $\mathbf{w}$ represents the weights, which determine how important each input is—this is also a $d$-dimensional vector ($\mathbf{w} \in \mathbb{R}^d$). The bias $b$ is a single real number ($b \in \mathbb{R}$) that provides a baseline offset, shifting the entire computation up or down. The function $f()$ is called the activation function ($f: \mathbb{R} \to \mathbb{R}$ means it takes one real number and produces another real number), and it shapes the output in a specific way. Finally, $y$ is the output—a single real number ($y \in \mathbb{R}$) representing the decision made by the perceptron.
+Let's break down each component of this equation:
+
+**1. The input ($\mathbf{x}$):** The input is a **vector** (an ordered list of numbers) containing $d$ numbers. We write this mathematically as $\mathbf{x} \in \mathbb{R}^d$, where:
+- $\mathbb{R}$ (pronounced "R") means "the set of all **real numbers**" (any number you can think of: positive, negative, whole numbers, decimals, fractions)
+- $\mathbb{R}^d$ means "all vectors with $d$ components, each being a real number" (a $d$-dimensional vector where each component is a real number)
+- The notation $\in$ means "belongs to" or "is a member of"
+
+For example, if $d=3$, then $\mathbf{x}$ is a 3-dimensional vector like $\begin{bmatrix} 0.5 \\ 0.3 \\ 0.2 \end{bmatrix}$, where each number is a real number.
+
+**2. The weights ($\mathbf{w}$):** The weights determine how important each input component is. This is also a $d$-dimensional vector ($\mathbf{w} \in \mathbb{R}^d$), meaning it has the same number of components as the input. Each weight corresponds to one input component—the first weight applies to the first input, the second weight to the second input, and so on.
+
+**3. The bias ($b$):** The bias is a single **real number** ($b \in \mathbb{R}$) that provides a baseline offset, shifting the entire computation up or down. Think of it like adjusting a scale to zero before weighing something—it shifts the starting point of the calculation.
+
+**4. The dot product ($\mathbf{w} \cdot \mathbf{x}$):** The dot product multiplies each weight by its corresponding input component and sums them all together, producing a single number (a **scalar**). This is the weighted sum of all inputs.
+
+**5. Adding the bias ($\mathbf{w} \cdot \mathbf{x} + b$):** We add the bias to the dot product result, giving us the **pre-activation value** (the value before applying the activation function).
+
+**6. The activation function ($f()$):** The activation function (written as $f: \mathbb{R} \to \mathbb{R}$, which means "a function that takes one real number as input and produces another real number as output") shapes the final output. It transforms the pre-activation value into the final decision.
+
+**7. The output ($y$):** The final output is a single real number ($y \in \mathbb{R}$) representing the decision made by the perceptron.
 
 **Notation Note:** When we write a vector like $\begin{bmatrix} 1 \\ 0 \end{bmatrix}$, this represents a single vector with two components (the first component is 1, the second is 0). This is different from a system of equations—it is one mathematical object (a vector), not multiple equations. The vertical arrangement is simply the standard mathematical notation for column vectors.
 
@@ -90,19 +109,31 @@ You might notice that the core computation $\mathbf{w} \cdot \mathbf{x} + b$ loo
 
 **Understanding Dot Products vs. Matrix Multiplication:**
 
-It's important to understand the difference between a dot product and matrix multiplication, as this distinction is crucial for understanding how neural networks work:
+It's important to understand the difference between a **dot product** and **matrix multiplication**, as this distinction is crucial for understanding how neural networks work. Both operations compute weighted sums, but they produce different types of results.
 
-- **Dot product** ($\mathbf{w} \cdot \mathbf{x}$): Takes two vectors of the same dimension and produces a **scalar** (single number). The formula is $\mathbf{w} \cdot \mathbf{x} = \sum_{i=1}^d w_i x_i = w_1 x_1 + w_2 x_2 + \cdots + w_d x_d$. This is a weighted sum—we multiply each component of $\mathbf{w}$ by the corresponding component of $\mathbf{x}$, then add all the products together. The result is always a single number.
+**1. Dot Product ($\mathbf{w} \cdot \mathbf{x}$):**
 
-- **Matrix multiplication** ($\mathbf{W}\mathbf{x}$): Takes a matrix and a vector and produces a **vector**. If $\mathbf{W}$ is an $n \times d$ matrix and $\mathbf{x}$ is a $d$-dimensional vector, then $\mathbf{W}\mathbf{x}$ is an $n$-dimensional vector. Each element of the result is computed as a dot product: the $i$-th element of $\mathbf{W}\mathbf{x}$ is the dot product of the $i$-th row of $\mathbf{W}$ with $\mathbf{x}$.
+A dot product takes two **vectors** of the same dimension and produces a **scalar** (a single number). Think of it like computing a weighted average: you multiply each component of one vector by the corresponding component of the other vector, then add all the products together.
 
-**Why We Use Dot Products in Perceptrons:**
+The formula is: $\mathbf{w} \cdot \mathbf{x} = \sum_{i=1}^d w_i x_i = w_1 x_1 + w_2 x_2 + \cdots + w_d x_d$
 
-A single perceptron produces one output value (a scalar), so we need a dot product, not matrix multiplication. The dot product $\mathbf{w} \cdot \mathbf{x}$ takes the $d$-dimensional input vector $\mathbf{x}$ and the $d$-dimensional weight vector $\mathbf{w}$, and produces a single number. This single number is then passed through the activation function to produce the final output.
+- **Input**: Two vectors of the same size (both have $d$ components)
+- **Output**: A single number (a **scalar**)
+- **What it does**: Computes one weighted sum
 
-**When We Use Matrix Multiplication:**
+**Why we use dot products in perceptrons:** A single perceptron produces one output value (a scalar), so we need a dot product. The dot product $\mathbf{w} \cdot \mathbf{x}$ takes the $d$-dimensional input vector $\mathbf{x}$ and the $d$-dimensional weight vector $\mathbf{w}$, multiplies corresponding components, sums them up, and produces a single number. This single number is then passed through the activation function to produce the final output.
 
-When we have multiple perceptrons (a layer), we use matrix multiplication. If we have $n$ perceptrons, each with its own weight vector $\mathbf{w}_i$, we can stack these weight vectors into a matrix $\mathbf{W}$ where each row is a weight vector. Then $\mathbf{W}\mathbf{x}$ computes all $n$ dot products simultaneously, producing an $n$-dimensional output vector (one value per perceptron). This is exactly what happens in a layer: multiple dot products computed in parallel via matrix multiplication.
+**2. Matrix Multiplication ($\mathbf{W}\mathbf{x}$):**
+
+Matrix multiplication takes a **matrix** and a **vector** and produces a **vector**. Think of it like computing multiple weighted sums simultaneously—one for each row of the matrix.
+
+- **Input**: A matrix $\mathbf{W}$ of size $n \times d$ (meaning it has $n$ rows and $d$ columns) and a vector $\mathbf{x}$ with $d$ components
+- **Output**: A vector with $n$ components
+- **What it does**: Computes $n$ dot products in parallel
+
+Each element of the result is computed as a dot product: the $i$-th element of $\mathbf{W}\mathbf{x}$ is the dot product of the $i$-th row of $\mathbf{W}$ with $\mathbf{x}$.
+
+**Why we use matrix multiplication in layers:** When we have multiple perceptrons (a layer), we use matrix multiplication. If we have $n$ perceptrons, each with its own weight vector $\mathbf{w}_i$, we can stack these weight vectors into a matrix $\mathbf{W}$ where each row is a weight vector. Then $\mathbf{W}\mathbf{x}$ computes all $n$ dot products simultaneously, producing an $n$-dimensional output vector (one value per perceptron). This is exactly what happens in a layer: multiple dot products computed in parallel via matrix multiplication.
 
 **Concrete Example:**
 
@@ -113,14 +144,21 @@ When we have multiple perceptrons (a layer), we use matrix multiplication. If we
   - Matrix multiplication: $\mathbf{W}\mathbf{x} = \begin{bmatrix} 0.1 \times 1 + 0.2 \times 0 \\ 0.3 \times 1 + 0.4 \times 0 \end{bmatrix} = \begin{bmatrix} 0.1 \\ 0.3 \end{bmatrix}$ (vector)
   - Notice: Each row of $\mathbf{W}$ is dotted with $\mathbf{x}$, producing one element of the result vector
 
-To understand what this generalization means geometrically, think of it this way: $y = mx + c$ defines a straight line in 2D space (the x-y plane). When we move to multiple dimensions with $\mathbf{w} \cdot \mathbf{x} + b$, we're not creating "a bunch of lines"—we're creating a single geometric object called a **hyperplane**. The equation $\mathbf{w} \cdot \mathbf{x} + b = 0$ defines a decision boundary that divides the input space:
+To understand what this generalization means geometrically, we need to see how the equation $\mathbf{w} \cdot \mathbf{x} + b = 0$ creates decision boundaries in different dimensions. The key insight is that this same equation creates different geometric objects depending on the number of input dimensions, but they all serve the same purpose: dividing space into two regions.
 
-- **1D input ($d=1$)**: $w_1 x_1 + b = 0$ defines a point on a number line (dividing positive from negative)
-- **2D input ($d=2$)**: $w_1 x_1 + w_2 x_2 + b = 0$ defines a straight line in the $(x_1, x_2)$ plane (dividing the plane into two regions)
-- **3D input ($d=3$)**: $w_1 x_1 + w_2 x_2 + w_3 x_3 + b = 0$ defines a plane in 3D space (dividing space into two regions)
-- **nD input ($d=n$)**: $\mathbf{w} \cdot \mathbf{x} + b = 0$ defines a hyperplane in $n$-dimensional space
+**From Lines to Hyperplanes: A Step-by-Step Progression**
 
-All points on one side of the hyperplane satisfy $\mathbf{w} \cdot \mathbf{x} + b > 0$, while all points on the other side satisfy $\mathbf{w} \cdot \mathbf{x} + b < 0$. This is why the vector form is so powerful: it's the same mathematical structure (a hyperplane) regardless of dimension, just like how a line in 2D, a plane in 3D, and a hyperplane in higher dimensions are all the same type of geometric object—they're all flat surfaces that divide space.
+**1. 1D input ($d=1$):** When we have a single input, the equation becomes $w_1 x_1 + b = 0$. This defines a **point** on a number line (specifically, the point $x_1 = -b/w_1$). This point divides the number line into two regions: all points to one side satisfy $w_1 x_1 + b > 0$ (positive), while all points to the other side satisfy $w_1 x_1 + b < 0$ (negative). Think of it like a temperature scale where zero degrees divides hot from cold.
+
+**2. 2D input ($d=2$):** When we have two inputs, the equation becomes $w_1 x_1 + w_2 x_2 + b = 0$. This defines a **straight line** in the $(x_1, x_2)$ plane. This line divides the plane into two regions (half-planes): all points on one side satisfy $w_1 x_1 + w_2 x_2 + b > 0$, while all points on the other side satisfy $w_1 x_1 + w_2 x_2 + b < 0$. This is exactly like the line equation $y = mx + c$ you learned in algebra, but written in a more general form.
+
+**3. 3D input ($d=3$):** When we have three inputs, the equation becomes $w_1 x_1 + w_2 x_2 + w_3 x_3 + b = 0$. This defines a **plane** in 3D space. This plane divides 3D space into two regions (half-spaces): all points on one side satisfy $w_1 x_1 + w_2 x_2 + w_3 x_3 + b > 0$, while all points on the other side satisfy $w_1 x_1 + w_2 x_2 + w_3 x_3 + b < 0$. Think of it like a wall that divides a room into two halves.
+
+**4. nD input ($d=n$):** When we have $n$ inputs (where $n$ can be any number), the equation $\mathbf{w} \cdot \mathbf{x} + b = 0$ defines a **hyperplane** in $n$-dimensional space. A hyperplane is the generalization of a point (1D), line (2D), and plane (3D) to higher dimensions. Just like a line divides 2D space and a plane divides 3D space, a hyperplane divides $n$-dimensional space into two regions.
+
+**The Power of the Vector Form**
+
+The equation $\mathbf{w} \cdot \mathbf{x} + b = 0$ is powerful because it's the same mathematical structure (a **hyperplane**) regardless of dimension. Whether you're working in 2D, 3D, or 1000D, the equation works the same way: it creates a flat surface that divides space into two regions. All points on one side satisfy $\mathbf{w} \cdot \mathbf{x} + b > 0$, while all points on the other side satisfy $\mathbf{w} \cdot \mathbf{x} + b < 0$. This is why we use the vector form—it's dimension-independent, meaning the same formula works for any number of inputs.
 
 | | | |
 |:---:|:---:|:---:|
@@ -180,7 +218,13 @@ This demonstrates that weights only affect the output when their corresponding i
 
 Weights are typically initialized to small random values (e.g., sampled from a normal distribution with mean 0 and standard deviation 0.01) to break symmetry. If all weights start at zero, all neurons in a layer would compute identical outputs and learn identical features, which would waste capacity. Random initialization ensures each neuron starts with different weights, enabling the network to learn diverse features.
 
-**Bias ($b$):** The bias acts as a baseline or offset that shifts the entire computation up or down. In algebra, this is like translating a graph: if you have $y = f(x)$ and you add a constant $c$ to get $y = f(x) + c$, the entire graph shifts up or down by $c$ units. The bias does the same thing—it shifts the entire function up or down. Think of it like setting a scale to zero before weighing something, or adjusting a thermostat's baseline temperature. The bias allows the perceptron to make decisions even when all inputs are zero, and it provides flexibility in how the decision boundary is positioned. Mathematically, without bias, a perceptron with all-zero inputs always outputs $f(0) = f(\mathbf{w} \cdot \mathbf{0}) = f(0)$, which severely limits expressivity. The bias term enables the network to learn decision boundaries that don't pass through the origin.
+**Bias ($b$):** The bias serves two critical purposes in a perceptron:
+
+**1. Baseline offset:** The bias acts as a baseline or offset that shifts the entire computation up or down. In algebra, this is like **translating a graph**: if you have $y = f(x)$ and you add a constant $c$ to get $y = f(x) + c$, the entire graph shifts up or down by $c$ units. The bias does the same thing—it shifts the entire function up or down. Think of it like setting a scale to zero before weighing something, or adjusting a thermostat's baseline temperature.
+
+**2. Decision boundary flexibility:** The bias allows the perceptron to make decisions even when all inputs are zero, and it provides flexibility in how the **decision boundary** (the line or hyperplane that separates different classes) is positioned. 
+
+**Why bias is essential:** Without bias, a perceptron with all-zero inputs always outputs $f(0) = f(\mathbf{w} \cdot \mathbf{0}) = f(0)$, which severely limits **expressivity** (the network's ability to represent different functions). More importantly, without bias, the decision boundary must always pass through the **origin** (the point where all coordinates are zero). The bias term enables the network to learn decision boundaries that don't pass through the origin, giving it much more flexibility in how it separates different classes of data.
 
 **Numerical Example:** Consider bias $b = 0.05$:
 - Given weighted sum 0.1, the value before activation becomes $0.1 + 0.05 = 0.15$
@@ -543,11 +587,27 @@ To see layers working together in detail, [Example 5: Feed-Forward Layers](10-ex
 
 A **feed-forward network** (FFN) is a type of layer that applies two linear transformations with an activation function in between. This creates a two-stage processing pipeline: first expanding the dimensions to give the network more room to work, then compressing back to the original dimensions. The activation function in between adds crucial non-linearity that enables the network to learn complex patterns.
 
-Mathematically, a feed-forward network is defined as:
+A feed-forward network is defined mathematically as:
 
 $$\text{FFN}(\mathbf{x}) = f(\mathbf{x}\mathbf{W}_1 + \mathbf{b}_1)\mathbf{W}_2 + \mathbf{b}_2$$
 
-where $\mathbf{x} \in \mathbb{R}^d$ is the input vector, $\mathbf{W}_1 \in \mathbb{R}^{d \times d'}$ is the first weight matrix that expands dimensions, $\mathbf{b}_1 \in \mathbb{R}^{d'}$ is the first bias vector, $\mathbf{W}_2 \in \mathbb{R}^{d' \times d}$ is the second weight matrix that compresses dimensions back, $\mathbf{b}_2 \in \mathbb{R}^{d}$ is the second bias vector, and $f()$ is a non-linear activation function applied element-wise. The expansion factor $d' > d$ (typically $d' = 4d$ in practice) gives the network more capacity to learn complex feature combinations.
+Let's break down each component of this equation:
+
+**1. The input ($\mathbf{x}$):** The input is a $d$-dimensional vector ($\mathbf{x} \in \mathbb{R}^d$), where $d$ is the number of input features.
+
+**2. The expansion phase ($\mathbf{x}\mathbf{W}_1 + \mathbf{b}_1$):** 
+- $\mathbf{W}_1$ is a weight matrix of size $d \times d'$ (meaning it has $d$ rows and $d'$ columns), where $d' > d$ (typically $d' = 4d$ in practice). This matrix **expands** the input from dimension $d$ to dimension $d'$, giving the network more "room" to work with the information.
+- $\mathbf{b}_1$ is a bias vector with $d'$ components ($\mathbf{b}_1 \in \mathbb{R}^{d'}$), which shifts the expanded representation.
+- The result is a $d'$-dimensional vector (larger than the input).
+
+**3. The activation function ($f()$):** A non-linear activation function (like ReLU) is applied **element-wise** (meaning it's applied to each component of the vector separately). This adds crucial **non-linearity** that enables the network to learn complex patterns. Without this non-linearity, the two linear transformations would collapse into a single linear transformation.
+
+**4. The compression phase ($f(\mathbf{x}\mathbf{W}_1 + \mathbf{b}_1)\mathbf{W}_2 + \mathbf{b}_2$):**
+- $\mathbf{W}_2$ is a weight matrix of size $d' \times d$ (meaning it has $d'$ rows and $d$ columns), which **compresses** the representation back from dimension $d'$ to dimension $d$.
+- $\mathbf{b}_2$ is a bias vector with $d$ components ($\mathbf{b}_2 \in \mathbb{R}^{d}$), which provides the final offset.
+- The result is a $d$-dimensional vector (same size as the input, but transformed).
+
+**Why the expansion-compression pattern works:** The expansion factor $d' > d$ (typically $d' = 4d$) gives the network more **capacity** (more neurons) to learn complex feature combinations in the higher-dimensional space. The compression phase then brings it back to the original dimension, but the information has been transformed in a meaningful way through the non-linear activation function.
 
 In practice, ReLU is the most commonly used activation function for feed-forward networks in transformers (and is what we use in our examples), though some models use alternatives like GELU (Gaussian Error Linear Unit). The key requirement is that the activation function must be non-linear—without it, the two linear transformations would collapse into a single linear transformation, losing the network's ability to learn complex patterns.
 
@@ -593,13 +653,27 @@ To see feed-forward networks in action, [Example 5: Feed-Forward Layers](10-exam
 
 A **loss function** (also called **cross-entropy loss**) measures how wrong the model's prediction is compared to the target. In basic algebra, this is like measuring the distance between two points. If you have a target point and a predicted point, you can compute how far apart they are. The loss function does something similar: it measures how far the model's prediction is from the correct answer. Think of loss like a score in a game: lower loss means better predictions, while higher loss means worse predictions. Our goal during training is to minimize the loss, which maximizes the model's accuracy.
 
-Mathematically, the cross-entropy loss is defined as:
+The cross-entropy loss is defined mathematically as:
 
 $$L = -\log P_{\text{model}}(y_{\text{target}})$$
 
-where $P_{\text{model}}(y_{\text{target}})$ is the probability assigned by the model to the correct class $y_{\text{target}}$. Notice that when the model assigns high probability to the correct answer, the loss is low (since the logarithm of a number close to 1 is close to 0). When the model assigns low probability to the correct answer, the loss is high (since the logarithm of a small number is a large negative number, and we negate it).
+Let's break down what this formula means:
 
-We use log probabilities rather than raw probabilities to avoid numerical underflow when probabilities are very small (e.g., $10^{-10}$). Direct probability multiplication would cause the result to underflow to zero in floating-point arithmetic, making gradient computation impossible. By working in log space, we maintain numerical stability while preserving the mathematical relationship between probabilities and loss.
+**1. The components:**
+- $P_{\text{model}}(y_{\text{target}})$ is the **probability** assigned by the model to the correct class $y_{\text{target}}$ (the true answer). This is a number between 0 and 1.
+- $\log$ is the **natural logarithm** (base $e$), which transforms probabilities into a different scale.
+- The negative sign ($-$) flips the sign so that lower loss means better predictions.
+
+**2. How it works:**
+- When the model assigns **high probability** to the correct answer (e.g., $P = 0.9$), the loss is **low** (since $\log(0.9) \approx -0.1$, and $-\log(0.9) \approx 0.1$).
+- When the model assigns **low probability** to the correct answer (e.g., $P = 0.1$), the loss is **high** (since $\log(0.1) \approx -2.3$, and $-\log(0.1) \approx 2.3$).
+
+**3. Why we use logarithms:**
+We use **log probabilities** rather than raw probabilities for two important reasons:
+
+- **Numerical stability:** When probabilities are very small (e.g., $10^{-10}$), direct probability multiplication would cause **numerical underflow** (the result becomes zero in floating-point arithmetic), making **gradient computation** impossible. By working in **log space**, we maintain **numerical stability** while preserving the mathematical relationship between probabilities and loss.
+
+- **Computational efficiency:** Logarithms convert multiplication into addition, which is computationally faster and more stable for gradient calculations.
 
 To understand this intuitively, think of loss like a golf score: lower is better. A perfect prediction gives you a loss near 0, while a wrong prediction gives you a high loss. Just as in golf, you want to minimize your score.
 
@@ -720,9 +794,25 @@ The gradient descent algorithm is mathematically defined as:
 
 $$\mathbf{W}_{\text{new}} = \mathbf{W}_{\text{old}} - \eta \cdot \nabla_{\mathbf{W}} L$$
 
-where $\mathbf{W} \in \mathbb{R}^{m \times n}$ is the weight matrix, $\eta \in \mathbb{R}^+$ is the learning rate, and $\nabla_{\mathbf{W}} L \in \mathbb{R}^{m \times n}$ is the gradient of the loss with respect to the weights.
+Let's break down each component:
 
-Gradient descent converges to a local minimum under certain conditions: the loss function must be differentiable (or at least have subgradients), the learning rate must be sufficiently small (typically $\eta < \frac{2}{\lambda_{\max}}$ where $\lambda_{\max}$ is the largest eigenvalue of the Hessian), and the initialization must be reasonable. In practice, neural network loss landscapes are non-convex, so gradient descent finds local minima rather than global minima. However, for overparameterized networks (which includes most modern architectures), local minima are often good enough for practical purposes.
+**1. The components:**
+- $\mathbf{W} \in \mathbb{R}^{m \times n}$ is the **weight matrix** (a matrix with $m$ rows and $n$ columns, where each element is a real number)
+- $\eta \in \mathbb{R}^+$ is the **learning rate** (a positive real number that controls step size)
+- $\nabla_{\mathbf{W}} L \in \mathbb{R}^{m \times n}$ is the **gradient** of the loss with respect to the weights (a matrix of the same size as $\mathbf{W}$, where each element tells us how much the loss changes when we change that weight)
+
+**2. How it works:**
+The formula says: "Take the old weights, subtract the gradient (scaled by the learning rate), and that gives us the new weights." The negative sign means we move in the direction opposite to the gradient (since the gradient points uphill, we want to go downhill to reduce loss).
+
+**3. Convergence conditions:**
+Gradient descent converges to a **local minimum** (a point where the loss is lower than all nearby points) under certain conditions:
+
+- The **loss function** must be **differentiable** (or at least have **subgradients**), meaning we can compute how the loss changes as we change the weights
+- The learning rate must be sufficiently small (typically $\eta < \frac{2}{\lambda_{\max}}$ where $\lambda_{\max}$ is the largest **eigenvalue** of the **Hessian** matrix, which measures the curvature of the loss function)
+- The **initialization** (starting values for the weights) must be reasonable
+
+**4. Local vs. global minima:**
+In practice, neural network **loss landscapes** (the shape of the loss function across all possible weight values) are **non-convex** (they have many hills and valleys, not just one smooth bowl). This means gradient descent finds **local minima** rather than **global minima** (the absolute lowest point). However, for **overparameterized networks** (networks with more parameters than training examples, which includes most modern architectures), local minima are often good enough for practical purposes—they typically have loss values very close to the global minimum.
 
 The gradient descent process follows these steps: First, we compute the loss by comparing the model's prediction to the target. Next, we compute the gradients, which tell us which direction to move each weight. Then we update the weights using the formula $W_{\text{new}} = W_{\text{old}} - \eta \times \frac{\partial L}{\partial W}$. This is like solving an equation iteratively. In algebra, if you're trying to find where a function equals zero, you might start with a guess, compute the slope at that point, and move in the direction that reduces the function value. Gradient descent does exactly this: it iteratively refines the weights until it finds values that minimize the loss. We repeat this process for many iterations, gradually moving the weights toward values that minimize the loss.
 
@@ -1026,7 +1116,28 @@ A **context vector** is a weighted combination of all token values, where the we
 
 **Layer Normalization**
 
-**Layer normalization** is a technique that normalizes the inputs to a layer by adjusting the mean and variance. In basic algebra and statistics, this is exactly like computing z-scores: you subtract the mean and divide by the standard deviation. The formula is $z = \frac{x - \mu}{\sigma}$, where $\mu$ is the mean and $\sigma$ is the standard deviation. This transforms any set of numbers so they have a mean of 0 and a standard deviation of 1. Think of layer normalization like standardizing test scores. Raw scores might vary widely (0-100), but after normalization (subtract mean, divide by standard deviation), the scores are centered around 0 with a consistent scale. To see layer normalization in a complete transformer implementation, [Example 6: Complete Transformer](11-example6-complete.md) includes layer normalization in all transformer blocks.
+**Layer normalization** is a technique that **normalizes** (standardizes) the inputs to a layer by adjusting the **mean** and **variance**. This technique serves two important purposes:
+
+**1. What it does:**
+Layer normalization transforms the inputs so they have consistent statistical properties. In basic algebra and statistics, this is exactly like computing **z-scores**: you subtract the **mean** (the average value) and divide by the **standard deviation** (a measure of how spread out the values are).
+
+The formula is: $z = \frac{x - \mu}{\sigma}$
+
+where:
+- $\mu$ (pronounced "mu") is the **mean** (average value)
+- $\sigma$ (pronounced "sigma") is the **standard deviation** (measure of spread)
+
+This transforms any set of numbers so they have a mean of 0 and a standard deviation of 1.
+
+**2. Why it matters:**
+Think of layer normalization like standardizing test scores. Raw scores might vary widely (0-100), but after normalization (subtract mean, divide by standard deviation), the scores are centered around 0 with a consistent scale. This helps the network learn more effectively because:
+
+- It prevents values from becoming too large or too small (which can cause numerical instability)
+- It makes the training process more stable and faster
+- It helps gradients flow better through deep networks
+
+**3. Where it's used:**
+To see layer normalization in a complete transformer implementation, [Example 6: Complete Transformer](11-example6-complete.md) includes layer normalization in all transformer blocks.
 
 **Residual Connections**
 
