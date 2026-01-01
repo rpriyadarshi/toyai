@@ -209,7 +209,13 @@ The bias parameter shifts the decision threshold, controlling the perceptron's s
 
 This comparison demonstrates that different activation functions produce distinct outputs from the same pre-activation value, enabling networks to learn different types of non-linear patterns.
 
-Activation functions must be (at least piecewise) differentiable for gradient descent to work. They introduce non-linearity, which is mathematically necessary for learning complex patterns. It can be proven (via the universal approximation theorem) that neural networks with non-linear activation functions can approximate any continuous function, given sufficient capacity. Without activation functions, multiple layers would collapse into a single linear layer, losing the hierarchical learning capability that makes deep networks powerful.
+**Why activation functions matter:** Activation functions serve two critical purposes. First, they must be **smooth enough** (technically, at least **piecewise differentiable**) so that **gradient descent** can calculate how to adjust the weights during training. Think of "smooth enough" as meaning the function has no sharp, discontinuous jumps that would break the gradient calculation—it can have corners (like ReLU at zero), but must be smooth in sections.
+
+Second, and more importantly, activation functions introduce **non-linearity**—the ability to create curves and complex shapes instead of just straight lines. To understand why this matters, imagine trying to draw a circle using only straight lines: you'd need infinitely many tiny straight segments. Similarly, without non-linearity, networks can only learn **straight-line relationships** between inputs and outputs, which severely limits what patterns they can represent. Real-world data rarely follows straight-line patterns—think of how image recognition, language understanding, or any complex task requires curved, non-linear decision boundaries.
+
+The power of non-linearity is captured by the **universal approximation theorem**, which states that a neural network with a single hidden layer and non-linear activation can approximate any **continuous function** to **arbitrary accuracy**, given enough neurons. In practical terms, this means that with non-linear activation functions, networks can learn to represent almost any pattern you can imagine, as long as they have enough neurons (what mathematicians call **sufficient capacity**).
+
+Without activation functions, multiple layers would be useless—they would all collapse into a single **linear layer**, losing the ability to learn **hierarchical patterns** (simple patterns in early layers building into complex patterns in later layers) that make deep networks powerful.
 
 ### How Activation Functions Enable Complex Pattern Learning
 
