@@ -322,6 +322,18 @@ This is why deep networks with activation functions can learn complex patterns: 
 
 Understanding that networks learn hierarchical patterns is only half the story. The crucial question is: how do these patterns actually help the network make correct classifications? The answer lies in how the final output layer uses these learned patterns.
 
+**Who Builds the Features? How Are They Assigned to Layers?**
+
+This is a critical point: **no one manually chooses or designs the features**. The network learns them automatically during training. Here's how it works:
+
+1. **Architecture is designed, features are learned**: You (the engineer) design the network architecture—how many layers, how many neurons per layer, which activation functions to use. But what each neuron actually learns to detect is determined automatically by the training process.
+
+2. **Hierarchical structure emerges naturally**: Early layers naturally learn simple patterns (edges, lines) because they only see raw input. Later layers naturally learn complex patterns (shapes, objects) because they see the outputs of earlier layers. This hierarchy emerges from the network structure itself—you don't tell Layer 1 to learn edges and Layer 3 to learn objects. The network figures this out through training.
+
+3. **Training guides feature learning**: During training, **backpropagation** and the **loss function** automatically guide which features are learned. If a feature helps reduce the loss (makes better predictions), its weights increase. If a feature hurts predictions, its weights decrease. Over many training examples, the network discovers which patterns are useful for the task.
+
+4. **Different layers learn different abstractions**: Because Layer 1 only sees raw pixels, it can only learn pixel-level patterns (edges, brightness). Layer 2 sees Layer 1's outputs, so it can learn combinations of edges (corners, curves). Layer 3 sees Layer 2's outputs, so it can learn combinations of those combinations (complete shapes). This abstraction hierarchy is a natural consequence of the layered structure.
+
 Consider our handwritten digit recognition example. The network doesn't just learn patterns for the sake of learning them—it learns patterns that are **useful for distinguishing between different digits**. Here's how the patterns contribute to the final classification:
 
 1. **Pattern Detection Creates Feature Vectors**: Each layer's output is a vector of numbers, where each number represents how strongly a particular pattern is detected. For example, after Layer 1, you might have a vector like $[0.8, 0.2, 0.0, 0.5]$, where:
@@ -1120,7 +1132,18 @@ A **context vector** is a weighted combination of all token values, where the we
 
 **Logits and Softmax**
 
-**Logits** are the raw, unnormalized scores output by the model before applying softmax. Think of logits like raw test scores before grading on a curve. You might have raw scores [85, 90, 75, 80], and after applying the curve (softmax), you get probabilities [0.2, 0.5, 0.1, 0.2]. Logits can be any real numbers (positive, negative, large, small), while probabilities must be between 0 and 1 and sum to 1. **Softmax** is a function that converts numbers into probabilities (they sum to 1.0). In basic arithmetic, this is like converting numbers to percentages that add up to 100%. If you have test scores [85, 90, 75] out of 100, you might convert them to percentages, but softmax does something more sophisticated: it ensures the largest number gets the biggest share while all numbers sum to exactly 1.0. Think of softmax like dividing a pie. If you have scores [5, 2, 1], softmax converts them to probabilities [0.7, 0.2, 0.1]. The largest score gets the biggest slice, and all slices sum to 1.0 (the whole pie).
+**Logits** (pronounced "low-jits") are the raw, unnormalized scores output by the model before applying softmax. The term "logit" was coined by American statistician Joseph Berkson in 1944, derived from "logistic unit"—it represents the **log-odds transformation** (the logarithm of the odds ratio).
+
+**Understanding the Original Meaning:**
+To understand what "logarithm of odds ratio" means, we need to break it down:
+- **Odds**: If the probability of an event is $p$, then the odds are $\frac{p}{1-p}$. For example, if the probability of rain is 0.75 (75%), the odds are $\frac{0.75}{1-0.75} = \frac{0.75}{0.25} = 3$ (often written as "3 to 1").
+- **Odds ratio**: The ratio of two odds. For example, if Group A has odds of 3 and Group B has odds of 1, the odds ratio is $\frac{3}{1} = 3$.
+- **Logarithm of odds ratio (logit)**: The natural logarithm of the odds: $\text{logit}(p) = \ln\left(\frac{p}{1-p}\right)$. This transformation converts probabilities (which range from 0 to 1) into real numbers (which can be any value from $-\infty$ to $+\infty$).
+
+**Why This Matters for Neural Networks:**
+In neural networks, we use "logit" more broadly to mean any raw score before it's converted to a probability, even though the original statistical meaning was more specific. The key insight is that logits are unconstrained real numbers, while probabilities are constrained to the range [0, 1]. This is why we need softmax to convert logits to probabilities.
+
+Think of logits like raw test scores before grading on a curve. You might have raw scores [85, 90, 75, 80], and after applying the curve (softmax), you get probabilities [0.2, 0.5, 0.1, 0.2]. Logits can be any real numbers (positive, negative, large, small), while probabilities must be between 0 and 1 and sum to 1. **Softmax** is a function that converts numbers into probabilities (they sum to 1.0). In basic arithmetic, this is like converting numbers to percentages that add up to 100%. If you have test scores [85, 90, 75] out of 100, you might convert them to percentages, but softmax does something more sophisticated: it ensures the largest number gets the biggest share while all numbers sum to exactly 1.0. Think of softmax like dividing a pie. If you have scores [5, 2, 1], softmax converts them to probabilities [0.7, 0.2, 0.1]. The largest score gets the biggest slice, and all slices sum to 1.0 (the whole pie).
 
 #### Training Techniques
 
