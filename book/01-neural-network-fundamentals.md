@@ -623,6 +623,169 @@ To see layers working together in detail, [Example 5: Feed-Forward Layers](10-ex
 
 ---
 
+## Designing Multilayer Networks: Activation Functions and Depth
+
+Now that we understand how layers work, two critical practical questions arise: **Do we use different activation functions in different layers to detect different curvatures?** And **How do we know if we have enough layers for our problem?** These questions get to the heart of network architecture design.
+
+### Activation Function Selection Across Layers
+
+**The Common Misconception:**
+
+You might think: "If ReLU creates sharp corners and Sigmoid creates smooth S-curves, shouldn't I use different activation functions in different layers to detect different types of curvatures in my data?" This is a natural intuition, but it's actually a **misconception** about how neural networks work.
+
+**The Reality: Most Networks Use the Same Activation Throughout**
+
+In practice, **most modern neural networks use the same activation function (typically ReLU) throughout all hidden layers**. Here's why this works and why you don't need different activations for different "curvatures":
+
+**1. Composition Creates Complexity, Not Individual Shapes:**
+
+The key insight is that **the composition of non-linear functions creates complexity**, not the individual shape of each activation function. When you stack multiple layers with the same activation function (say, ReLU), each layer applies a different weight matrix. The composition of these transformations—even with the same activation function—creates arbitrarily complex patterns.
+
+Think of it like this: A single ReLU layer can create sharp corners. But when you compose multiple ReLU layers with different weight matrices, you're not just adding more sharp corners—you're creating complex, curved decision boundaries that can approximate any continuous function. The **weights determine what patterns are learned**, not the activation function's shape.
+
+**2. The Weights Handle Different Curvatures:**
+
+Different "curvatures" in your data are captured by **different weight matrices**, not different activation functions. A network with ReLU throughout can learn:
+- Sharp, angular patterns (through specific weight configurations)
+- Smooth, curved patterns (through other weight configurations)
+- Complex combinations of both (through the composition of multiple layers)
+
+The activation function provides the non-linearity that makes this learning possible, but the specific patterns learned depend on the weights, which are optimized during training.
+
+**3. Simplicity and Empirical Effectiveness:**
+
+Using the same activation function throughout:
+- **Simplifies training**: You don't need to tune different activation functions for different layers
+- **Is empirically effective**: Modern deep learning practice shows that ReLU (or variants like GELU, Swish) throughout hidden layers works extremely well
+- **Reduces hyperparameter space**: Fewer choices to make means less chance of making poor architectural decisions
+
+**When Different Activations Are Actually Used:**
+
+There are legitimate cases where different activation functions appear in different parts of the network, but they're **not for detecting different curvatures**:
+
+1. **Output layers**: Task-specific functions are used here:
+   - **Sigmoid** for binary classification (outputs probabilities between 0 and 1)
+   - **Softmax** for multi-class classification (outputs probability distributions over classes)
+   - These are chosen for their mathematical properties (probabilistic outputs), not for "curvature detection"
+
+2. **Historical architectures**: Some older networks (from the 1990s-2000s) used Tanh in early layers and ReLU in later layers, but this was largely due to:
+   - Limited understanding of activation functions at the time
+   - Hardware constraints (Tanh was easier to compute on older hardware)
+   - Modern practice has largely converged on ReLU (or variants) throughout
+
+3. **Specialized architectures**: Some modern architectures use different activations for specific reasons:
+   - **GELU** (Gaussian Error Linear Unit) in some transformer models
+   - **Swish** in some vision models
+   - But these are typically used **consistently** throughout the network, not mixed
+
+**The Bottom Line:**
+
+You don't need different activation functions to detect different curvatures. The same activation function (ReLU), when composed across multiple layers with different learned weights, can create arbitrarily complex patterns. The weights do the work of learning what patterns to detect; the activation function just provides the necessary non-linearity.
+
+### Determining Sufficient Network Depth
+
+**The Challenge:**
+
+How do you know if your network has enough layers to solve your problem? Too few layers and the network **underfits** (can't learn the patterns). Too many layers and the network **overfits** (memorizes training data but fails to generalize). This is one of the most practical questions in neural network design.
+
+**The Empirical Approach: Start Small and Grow**
+
+The most practical method is **empirical**: start with a small network and add layers until you find the right balance. Here's the process:
+
+1. **Start small**: Begin with 1-2 hidden layers and a moderate number of neurons per layer (e.g., 64-128 neurons)
+2. **Train and evaluate**: Train on your training set and evaluate on a **validation set** (data held out from training)
+3. **Monitor both losses**: Track both training loss and validation loss
+4. **Add capacity if underfitting**: If both training and validation losses are high and plateau, add layers or neurons
+5. **Stop when validation performance plateaus**: When adding layers stops improving validation performance, you've likely reached sufficient depth
+6. **Watch for overfitting**: If training loss decreases but validation loss increases, you've gone too far—reduce capacity or add regularization
+
+**Signs of Insufficient Capacity (Underfitting):**
+
+Your network needs more layers or neurons if you see:
+- **High training loss**: The network can't even learn the training data well
+- **High validation loss**: The network can't generalize to new examples
+- **Both losses plateau at high values**: Adding more training doesn't help
+- **Simple patterns missed**: The network fails to capture obvious patterns in the data
+
+**Example**: For digit recognition, if a 1-layer network consistently misclassifies digits that humans can easily distinguish, it likely needs more capacity.
+
+**Signs of Sufficient Capacity:**
+
+Your network has enough layers when:
+- **Training loss decreases to low values**: The network can learn the training patterns
+- **Validation loss decreases and stabilizes**: The network generalizes well to new examples
+- **Good test performance**: Performance on held-out test data matches validation performance
+- **Adding layers doesn't help**: Further increases in depth don't improve validation performance
+
+**Signs of Excessive Capacity (Overfitting):**
+
+Your network has too many layers if you see:
+- **Training loss very low, validation loss much higher**: Large gap indicates memorization
+- **Validation loss increases while training loss decreases**: Classic overfitting signature
+- **Poor generalization**: Network performs well on training data but poorly on new examples
+- **Large gap between training and validation metrics**: Accuracy, F1-score, or other metrics diverge significantly
+
+**Theoretical Bounds: What Theory Tells Us**
+
+The **universal approximation theorem** (which we discussed earlier) tells us that a **single hidden layer with enough neurons** can approximate any continuous function to arbitrary accuracy. This means that, in theory, you don't need multiple layers—you just need enough neurons in one layer.
+
+However, **deeper networks are often more efficient**:
+- **Fewer total parameters**: A deep network with fewer neurons per layer can often achieve the same performance as a shallow network with many neurons per layer
+- **Hierarchical learning**: Depth enables the natural hierarchical feature learning we discussed (simple patterns → complex patterns)
+- **Better generalization**: In practice, deeper networks often generalize better than wide shallow networks
+
+**Practical Guidelines: How Many Layers for Your Problem?**
+
+While there's no universal formula, here are practical guidelines based on problem complexity:
+
+- **Simple problems** (linear/logistic regression, simple classification):
+  - **0-1 hidden layers** typically suffice
+  - Example: Predicting house prices from square footage and number of bedrooms
+
+- **Moderate complexity** (image classification, natural language processing, most practical ML tasks):
+  - **2-10 hidden layers** is common
+  - Example: Handwritten digit recognition (MNIST) typically needs 2-3 hidden layers
+  - Example: Text classification often uses 2-5 layers
+
+- **High complexity** (large-scale vision, language models, complex pattern recognition):
+  - **10-100+ layers** may be needed
+  - Example: ImageNet classification (ResNet uses 18-152 layers)
+  - Example: Modern language models (GPT, BERT) use 12-100+ transformer layers
+
+**Factors to Consider:**
+
+When deciding on network depth, consider:
+
+1. **Problem complexity**: More complex problems (more classes, more variation, more features) generally need deeper networks
+2. **Dataset size**: Larger datasets can support deeper networks without overfitting
+3. **Computational resources**: Deeper networks require more memory and training time
+4. **Training time**: Deeper networks take longer to train
+5. **Inference requirements**: Deeper networks are slower at inference (making predictions)
+
+**The Iterative Process:**
+
+In practice, network architecture design is **iterative**:
+1. Start with a baseline (e.g., 2-3 layers for a moderate problem)
+2. Train and evaluate
+3. If underfitting: add layers or neurons, try again
+4. If overfitting: reduce layers, add regularization (dropout, weight decay), or get more training data
+5. Repeat until you find the sweet spot where validation performance is good and stable
+
+**Concrete Example: Digit Recognition**
+
+For handwritten digit recognition (10 classes, 28×28 pixel images):
+- **Too shallow** (1 layer): Might achieve 85-90% accuracy, misses complex digit variations
+- **Sufficient** (2-3 layers): Typically achieves 95-98% accuracy, good generalization
+- **Too deep** (10+ layers): Might achieve 99%+ on training but only 96% on validation (overfitting)
+
+The "right" depth depends on your specific dataset, but 2-3 hidden layers is a good starting point for this problem.
+
+**Key Takeaway:**
+
+There's no magic formula for network depth. The right number of layers depends on your problem, your data, and your computational resources. The empirical approach—starting small, monitoring training and validation performance, and iteratively adjusting—is the most reliable method. Theory tells us that depth enables efficient hierarchical learning, and practice shows that 2-10 layers work well for most problems, with deeper networks needed for highly complex tasks.
+
+---
+
 ## Feedforward Networks: Multi-Layer Perceptrons
 
 A **feed-forward network** (FFN) is a type of layer that applies two linear transformations with an activation function in between. This creates a two-stage processing pipeline: first expanding the dimensions to give the network more room to work, then compressing back to the original dimensions. The activation function in between adds crucial non-linearity that enables the network to learn complex patterns.
