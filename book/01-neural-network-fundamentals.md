@@ -257,7 +257,7 @@ This comparison demonstrates that different activation functions produce distinc
 
 Second, and more importantly, activation functions introduce **non-linearity**—the ability to create curves and complex shapes instead of just straight lines. To understand why this matters, imagine trying to draw a circle using only straight lines: you'd need infinitely many tiny straight segments. Similarly, without non-linearity, networks can only learn **straight-line relationships** between inputs and outputs, which severely limits what patterns they can represent. Real-world data rarely follows straight-line patterns—think of how image recognition, language understanding, or any complex task requires curved, non-linear decision boundaries.
 
-The power of non-linearity is captured by the **universal approximation theorem**, which states that a neural network with a single hidden layer and non-linear activation can approximate any **continuous function** to **arbitrary accuracy**, given enough neurons. In practical terms, this means that with non-linear activation functions, networks can learn to represent almost any pattern you can imagine, as long as they have enough neurons (what mathematicians call **sufficient capacity**).
+The power of non-linearity is captured by the **universal approximation theorem** (proven by Cybenko in 1989 and Hornik et al. in 1991), which establishes that a neural network with a single hidden layer and non-linear activation can approximate any **continuous function** to **arbitrary accuracy**, given enough neurons. In practical terms, this means that with non-linear activation functions, networks can learn to represent almost any pattern you can imagine, as long as they have enough neurons (what mathematicians call **sufficient capacity**).
 
 Without activation functions, multiple layers would be useless—they would all collapse into a single **linear layer**, losing the ability to learn **hierarchical patterns** (simple patterns in early layers building into complex patterns in later layers) that make deep networks powerful.
 
@@ -725,9 +725,9 @@ Your network has too many layers if you see:
 - **Poor generalization**: Network performs well on training data but poorly on new examples
 - **Large gap between training and validation metrics**: Accuracy, F1-score, or other metrics diverge significantly
 
-**Theoretical Bounds: What Theory Tells Us**
+**Theoretical Bounds: Mathematical Foundations**
 
-The **universal approximation theorem** (which we discussed earlier) tells us that a **single hidden layer with enough neurons** can approximate any continuous function to arbitrary accuracy. This means that, in theory, you don't need multiple layers—you just need enough neurons in one layer.
+The **universal approximation theorem** (proven by Cybenko in 1989 and Hornik et al. in 1991) establishes that a **single hidden layer with enough neurons** can approximate any continuous function to arbitrary accuracy. This mathematical result demonstrates that, from a representational capacity perspective, multiple layers are not strictly necessary—a single sufficiently wide layer is theoretically sufficient.
 
 However, **deeper networks are often more efficient**:
 - **Fewer total parameters**: A deep network with fewer neurons per layer can often achieve the same performance as a shallow network with many neurons per layer
@@ -782,7 +782,7 @@ The "right" depth depends on your specific dataset, but 2-3 hidden layers is a g
 
 **Key Takeaway:**
 
-There's no magic formula for network depth. The right number of layers depends on your problem, your data, and your computational resources. The empirical approach—starting small, monitoring training and validation performance, and iteratively adjusting—is the most reliable method. Theory tells us that depth enables efficient hierarchical learning, and practice shows that 2-10 layers work well for most problems, with deeper networks needed for highly complex tasks.
+There's no magic formula for network depth. The right number of layers depends on your problem, your data, and your computational resources. The empirical approach—starting small, monitoring training and validation performance, and iteratively adjusting—is the most reliable method. Mathematical analysis (specifically, the theory of function approximation and empirical studies of network efficiency) demonstrates that depth enables efficient hierarchical learning with fewer total parameters than wide shallow networks. Empirical evidence from practice shows that 2-10 layers work well for most problems, with deeper networks needed for highly complex tasks.
 
 ---
 
