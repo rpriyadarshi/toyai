@@ -674,8 +674,8 @@ There are legitimate cases where different activation functions appear in differ
    - Modern practice has largely converged on ReLU (or variants) throughout
 
 3. **Specialized architectures**: Some modern architectures use different activations for specific reasons:
-   - **GELU** (Gaussian Error Linear Unit) in some transformer models
-   - **Swish** in some vision models
+   - **GELU** (Gaussian Error Linear Unit, $f(x) = x \cdot \Phi(x)$ where $\Phi$ is the standard normal CDF) in some transformer models—a smooth approximation of ReLU
+   - **Swish** ($f(x) = x \cdot \sigma(x)$ where $\sigma$ is sigmoid) in some vision models—a smooth, self-gated activation
    - But these are typically used **consistently** throughout the network, not mixed
 
 **The Bottom Line:**
