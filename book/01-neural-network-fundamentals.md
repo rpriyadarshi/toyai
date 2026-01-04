@@ -413,17 +413,35 @@ This is why the patterns have value: they're not just abstract features—they'r
 
 You might wonder: is this process like hashing, where ideally each data item gets a unique identifier? The answer is **no**—and understanding why reveals something fundamental about how neural networks work.
 
-**Hashing creates unique identifiers:**
+**1. Traditional Hashing: Unique Identifiers**
+
+**Hashing** creates unique identifiers:
 - Same input → same hash (deterministic)
 - Different inputs → different hashes (ideally unique)
 - Goal: Create a one-to-one mapping for lookup/identification
 - Example: Hash function might map "cat.jpg" → `0x3A7F2B1C` (unique identifier)
+
+The fundamental principle of hashing is: **"Make each input unique"**—even similar inputs should get different hashes.
+
+**2. Bloom Filters: Accidental Sharing**
+
+You might be thinking: "What about bloom filters? They also create shared representations where multiple items map to the same bits." This is a good observation, but there's a crucial difference:
+
+- **Bloom filters**: Shared representation is a **side effect** of hash collisions. Multiple items accidentally map to the same bits in a bit array, but the goal is still to distinguish items (though with false positives). The sharing happens because of limited space and hash collisions, not because items are semantically similar.
+
+- **Neural networks**: Shared representation is **intentional and learned**. Similar items (like different handwritten "6"s) are **designed** to produce similar representations because that's what enables classification.
+
+Bloom filters are probabilistic data structures for membership testing ("is this item in the set?"), while neural networks learn task-specific similarity for classification ("what class does this belong to?"). The key difference is that neural networks learn **semantic similarity** (what makes two "6"s similar), while bloom filters create **accidental collisions** (two different items happen to hash to the same bits).
+
+**3. Neural Networks: Intentional Shared Representations**
 
 **Neural networks learn shared representations:**
 - Similar inputs → similar representations (not unique!)
 - Goal: Learn features that help with classification/prediction
 - Different inputs that belong to the same class should produce similar patterns
 - Example: All images of "digit 6" should activate similar neurons, regardless of handwriting style
+
+The fundamental principle of neural networks is: **"Make similar inputs produce similar representations"**—this is the opposite of hashing.
 
 **Why We Want Shared Patterns, Not Unique Hashes:**
 
@@ -471,12 +489,12 @@ This is called **representation learning** or **feature learning**. The network 
 
 This is more like **clustering** than hashing—grouping similar things together rather than giving each thing a unique identifier.
 
-**Why This Matters:**
+**Why Shared Patterns Matter:**
 
-If you tried to design a neural network that created unique hashes for each input, it would:
-1. Fail to generalize to new examples
-2. Require storing every training example (defeating the purpose of learning)
-3. Be unable to classify anything it hasn't seen before
+If neural networks worked like hashing (creating unique identifiers for each input), they would be useless for classification:
+1. **No generalization**: They couldn't recognize new examples they haven't seen before
+2. **No learning**: They would need to store every training example (defeating the purpose of learning)
+3. **No classification**: They couldn't classify anything they haven't memorized
 
 The shared patterns are what make neural networks powerful: they learn to recognize the **essence** of what makes something a "6" (the pattern), not just memorize each individual "6" (a unique hash).
 
