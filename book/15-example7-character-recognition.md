@@ -192,6 +192,6 @@ See [code](../examples/example7_character_recognition/main.cpp)
 ---
 
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 6: Complete Transformer](11-example6-complete.md) | [Next: Appendix A →](appendix-a-matrix-calculus.md)
+- [← Index](00-index.md) | [← Previous: Example 6: Complete Transformer](14-example6-complete.md) | [Next: Appendix A →](appendix-a-matrix-calculus.md)
 ---
 

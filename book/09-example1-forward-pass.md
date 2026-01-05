@@ -14,7 +14,7 @@ Given input sequence "A B", predict the next token. We'll compute probabilities 
 
 ### Model Architecture
 
-This example demonstrates a minimal transformer architecture focusing on the forward pass only. For the complete transformer architecture with all components, see [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Complete Transformer Architecture".
+This example demonstrates a minimal transformer architecture focusing on the forward pass only. For the complete transformer architecture with all components, see [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "The Transformer Architecture".
 
 **Components in this example:**
 - Fixed token embeddings
@@ -144,5 +144,5 @@ See [code](../examples/example1_forward_only/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Why Transformers?](05-why-transformers.md) | [Next: Example 2: Single Step →](07-example2-single-step.md)
+- [← Index](00-index.md) | [← Previous: Why Transformers?](08-why-transformers.md) | [Next: Example 2: Single Step →](10-example2-single-step.md)
 ---

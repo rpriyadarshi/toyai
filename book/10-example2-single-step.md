@@ -16,7 +16,7 @@ We'll update only the output projection matrix $W_O$ in this example to keep it 
 
 ### Model Architecture
 
-This example extends Example 1 by adding training. For the complete transformer architecture, see [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Complete Transformer Architecture".
+This example extends Example 1 by adding training. For the complete transformer architecture, see [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "The Transformer Architecture".
 
 **Components:**
 - Same forward pass as Example 1
@@ -148,5 +148,5 @@ See [code](../examples/example2_single_step/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 1: Forward Pass](06-example1-forward-pass.md) | [Next: Example 3: Full Backprop →](08-example3-full-backprop.md)
+- [← Index](00-index.md) | [← Previous: Example 1: Forward Pass](09-example1-forward-pass.md) | [Next: Example 3: Full Backprop →](11-example3-full-backprop.md)
 ---

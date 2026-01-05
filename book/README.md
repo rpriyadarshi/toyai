@@ -9,19 +9,23 @@ This directory contains the complete book split into individual chapter files fo
 - **`00-index.md`** - Table of contents and navigation hub
 
 ### Part I: Foundations
-- **`01-neural-network-fundamentals.md`** - **START HERE!** Complete foundation: from perceptrons to transformers, all concepts with physical analogies
-- **`02-matrix-core.md`** - Matrix operations, transformations, calculus
-- **`03-embeddings.md`** - Tokens to vectors, semantic spaces
-- **`04-attention-intuition.md`** - Query/Key/Value, search metaphor
-- **`05-why-transformers.md`** - Why transformers? Problem, RNNs, attention
+- **`01-neural-networks-perceptron.md`** - **START HERE!** Neural networks and perceptrons, the fundamental building blocks
+- **`02-multilayer-networks-architecture.md`** - Layers, network design, and feedforward networks
+- **`03-learning-algorithms.md`** - Loss functions, gradient descent, and backpropagation
+- **`04-training-neural-networks.md`** - Training loops, batch processing, and transition to transformers
+- **`05-matrix-core.md`** - Matrix operations, transformations, calculus
+- **`06-embeddings.md`** - Tokens to vectors, semantic spaces
+- **`07-attention-intuition.md`** - Query/Key/Value, search metaphor
+- **`08-why-transformers.md`** - Why transformers? Problem, RNNs, attention
 
 ### Part II: Progressive Examples
-- **`06-example1-forward-pass.md`** - Minimal forward pass (no training)
-- **`07-example2-single-step.md`** - Single training step
-- **`08-example3-full-backprop.md`** - Complete backpropagation
-- **`09-example4-multiple-patterns.md`** - Batch training
-- **`10-example5-feedforward.md`** - Feed-forward layers
-- **`11-example6-complete.md`** - Complete transformer
+- **`09-example1-forward-pass.md`** - Minimal forward pass (no training)
+- **`10-example2-single-step.md`** - Single training step
+- **`11-example3-full-backprop.md`** - Complete backpropagation
+- **`12-example4-multiple-patterns.md`** - Batch training
+- **`13-example5-feedforward.md`** - Feed-forward layers
+- **`14-example6-complete.md`** - Complete transformer
+- **`15-example7-character-recognition.md`** - Character recognition
 
 ### Appendices
 - **`appendix-a-matrix-calculus.md`** - Matrix calculus reference
@@ -43,8 +47,8 @@ Each chapter file includes navigation links at the bottom:
 
 1. Start with `00-introduction.md` for philosophy and approach
 2. Review `00-index.md` for overview and table of contents
-3. Read foundations (01-05) in order
-4. Work through examples (06-11) sequentially
+3. Read foundations (01-08) in order
+4. Work through examples (09-15) sequentially
 5. Refer to appendices as needed
 6. End with conclusion
 

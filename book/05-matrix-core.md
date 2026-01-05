@@ -1,4 +1,4 @@
-## Chapter 2: The Matrix Core
+## Chapter 5: The Matrix Core
 
 ### Why Matrices?
 
@@ -242,5 +242,5 @@ But **NOT** matrix inverse because:
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Neural Network Fundamentals](01-neural-network-fundamentals.md) | [Next: Embeddings →](03-embeddings.md)
+- [← Index](00-index.md) | [← Previous: Training Neural Networks](04-training-neural-networks.md) | [Next: Embeddings →](06-embeddings.md)
 ---

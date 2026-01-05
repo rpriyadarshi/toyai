@@ -1,4 +1,4 @@
-## Chapter 4: Attention Intuition
+## Chapter 7: Attention Intuition
 
 ### The Core Question
 
@@ -259,5 +259,5 @@ $$\text{score} = Q \cdot K = \sum_i Q_i K_i$$
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Embeddings](03-embeddings.md) | [Next: Why Transformers? →](05-why-transformers.md)
+- [← Index](00-index.md) | [← Previous: Embeddings](06-embeddings.md) | [Next: Why Transformers? →](08-why-transformers.md)
 ---

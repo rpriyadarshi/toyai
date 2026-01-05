@@ -10,21 +10,24 @@
 
 ### Part I: Foundations
 
-1. [Neural Network Fundamentals](01-neural-network-fundamentals.md) - **START HERE!** Complete foundation: from perceptrons to transformers, all concepts with physical analogies
-2. [The Matrix Core](02-matrix-core.md) - Matrix operations, the foundation of all computations
-3. [Embeddings: Tokens to Vectors](03-embeddings.md) - How discrete tokens become continuous vectors
-4. [Attention Intuition](04-attention-intuition.md) - Query/Key/Value and the attention mechanism
-5. [Why Transformers?](05-why-transformers.md) - The problem transformers solve and why they're needed
+1. [Neural Networks and the Perceptron](01-neural-networks-perceptron.md) - **START HERE!** The fundamental building block: single neurons, activation functions, and decision boundaries
+2. [Multilayer Networks and Architecture](02-multilayer-networks-architecture.md) - Layers, network design, and feedforward networks
+3. [Learning Algorithms](03-learning-algorithms.md) - Loss functions, gradient descent, and backpropagation
+4. [Training Neural Networks](04-training-neural-networks.md) - Training loops, batch processing, and the transition to transformers
+5. [The Matrix Core](05-matrix-core.md) - Matrix operations, the foundation of all computations
+6. [Embeddings: Tokens to Vectors](06-embeddings.md) - How discrete tokens become continuous vectors
+7. [Attention Intuition](07-attention-intuition.md) - Query/Key/Value and the attention mechanism
+8. [Why Transformers?](08-why-transformers.md) - The problem transformers solve and why they're needed
 
 ### Part II: Progressive Examples
 
-6. [Example 1: Minimal Forward Pass](06-example1-forward-pass.md)
-7. [Example 2: Single Training Step](07-example2-single-step.md)
-8. [Example 3: Full Backpropagation](08-example3-full-backprop.md)
-9. [Example 4: Multiple Patterns](09-example4-multiple-patterns.md)
-10. [Example 5: Feed-Forward Layers](10-example5-feedforward.md)
-11. [Example 6: Complete Transformer](11-example6-complete.md)
-12. [Example 7: Character Recognition](12-example7-character-recognition.md)
+9. [Example 1: Minimal Forward Pass](09-example1-forward-pass.md)
+10. [Example 2: Single Training Step](10-example2-single-step.md)
+11. [Example 3: Full Backpropagation](11-example3-full-backprop.md)
+12. [Example 4: Multiple Patterns](12-example4-multiple-patterns.md)
+13. [Example 5: Feed-Forward Layers](13-example5-feedforward.md)
+14. [Example 6: Complete Transformer](14-example6-complete.md)
+15. [Example 7: Character Recognition](15-example7-character-recognition.md)
 
 ### Appendices
 
@@ -42,8 +45,8 @@
 ## How to Use This Book
 
 1. **Start with the Introduction**: Read `00-introduction.md` to understand the philosophy and approach
-2. **Read Foundations (Part I)**: Read chapters 1-5 in order to understand core concepts
-3. **Work through Examples (Part II)**: Follow examples 1-7 in order, each builds on the previous
+2. **Read Foundations (Part I)**: Read chapters 1-8 in order to understand core concepts
+3. **Work through Examples (Part II)**: Follow examples 9-15 in order, each builds on the previous
 4. **Use Worksheets**: Refer to `worksheets/` directory for hand-calculation guides
 5. **Run Code**: Build and run examples to see concepts in action
 6. **Refer to Appendices**: Use appendices as quick reference
@@ -53,5 +56,5 @@
 **Navigation**: Use the table of contents above to jump to any chapter.
 ---
 **Navigation:**
-- [← Introduction](00-introduction.md) | [Next: Neural Network Fundamentals →](01-neural-network-fundamentals.md)
+- [← Introduction](00-introduction.md) | [Next: Neural Networks and the Perceptron →](01-neural-networks-perceptron.md)
 ---

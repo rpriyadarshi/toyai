@@ -1,6 +1,6 @@
 ## Appendix B: Terminology Reference
 
-**This appendix provides quick reference for all terminology used in this book. Each term includes its definition, physical analogy, and cross-reference to Chapter 1 where it's first introduced.**
+**This appendix provides quick reference for all terminology used in this book. Each term includes its definition, physical analogy, and cross-reference to the chapter where it's first introduced.**
 
 **Note:** All definitions include physical analogies to connect abstract math to tangible reality. This breaks the cycle of memorizing math without understanding what it models.
 
@@ -20,7 +20,7 @@
 - **Sigmoid**: $f(x) = \frac{1}{1+e^{-x}}$ - Squashes to 0-1 range
 - **Tanh**: $f(x) = \tanh(x)$ - Squashes to -1 to 1 range
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "The Perceptron: The Basic Building Block"
+**See:** [Chapter 1: Neural Networks and the Perceptron](01-neural-networks-perceptron.md) - "The Perceptron: The Basic Building Block"
 
 ---
 
@@ -33,7 +33,7 @@
 - Low dot product = vectors point different directions = different = not relevant
 - Zero dot product = perpendicular = unrelated
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -47,7 +47,7 @@
 - Check each step: "Did this layer contribute to the error?"
 - Calculate how much each parameter should change
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Backpropagation: Computing Gradients"
+**See:** [Chapter 3: Learning Algorithms](03-learning-algorithms.md) - "Backpropagation: Computing Gradients"
 
 ---
 
@@ -57,7 +57,7 @@
 
 **Physical Analogy:** Think of backward pass like **tracing back the cause of a mistake**.
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Backpropagation: Computing Gradients"
+**See:** [Chapter 3: Learning Algorithms](03-learning-algorithms.md) - "Backpropagation: Computing Gradients"
 
 ---
 
@@ -70,7 +70,7 @@
 - More efficient (parallel processing)
 - Average the results across all papers
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Batch Training: Processing Multiple Examples"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "Batch Training: Processing Multiple Examples"
 
 ---
 
@@ -83,7 +83,7 @@
 - Or adjusting a thermostat's baseline temperature
 - Shifts the entire computation up or down
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "The Perceptron: The Basic Building Block"
+**See:** [Chapter 1: Neural Networks and the Perceptron](01-neural-networks-perceptron.md) - "The Perceptron: The Basic Building Block"
 
 ---
 
@@ -96,7 +96,7 @@
 - Each chunk fits within model's sequence length limit
 - Chunks can overlap to preserve context
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -109,7 +109,7 @@
 - Amount of each fruit = attention weight
 - Final smoothie = context vector (blended information)
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -122,7 +122,7 @@
 - 3D: (x, y, z) coordinates in space
 - Higher dimensions: More measurements/features
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -134,7 +134,7 @@
 - A word (discrete symbol) → A point on a map (continuous coordinates)
 - "cat" (just a symbol) → `[0.3, 0.7, -0.2]` (a location in meaning-space)
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -147,7 +147,7 @@
 - ID 12345 → File with [grades, attendance, address, ...]
 - Each ID maps to a specific file location
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -160,7 +160,7 @@
 - That's one epoch
 - Multiple epochs = reading the book multiple times to learn better
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Batch Training: Processing Multiple Examples"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "Batch Training: Processing Multiple Examples"
 
 ---
 
@@ -173,7 +173,7 @@
 - Stage 2: Compress (reduce back to original dimensions)
 - Activation in between adds non-linearity
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Feedforward Networks: Multi-Layer Perceptrons"
+**See:** [Chapter 2: Multilayer Networks and Architecture](02-multilayer-networks-architecture.md) - "Feedforward Networks: Multi-Layer Perceptrons"
 
 ---
 
@@ -187,7 +187,7 @@
 - End with final dish (prediction)
 - Data flows in one direction: Input → Layer 1 → Layer 2 → ... → Output
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Backpropagation: Computing Gradients"
+**See:** [Chapter 3: Learning Algorithms](03-learning-algorithms.md) - "Backpropagation: Computing Gradients"
 
 ---
 
@@ -201,7 +201,7 @@
 - Negative gradient = direction to go DOWN (reduce loss)
 - Magnitude = how steep the slope is
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Gradient Descent: How Networks Learn"
+**See:** [Chapter 3: Learning Algorithms](03-learning-algorithms.md) - "Gradient Descent: How Networks Learn"
 
 ---
 
@@ -215,7 +215,7 @@
 - Repeat until you reach the bottom (minimum loss)
 - Step size = learning rate
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Gradient Descent: How Networks Learn"
+**See:** [Chapter 3: Learning Algorithms](03-learning-algorithms.md) - "Gradient Descent: How Networks Learn"
 
 ---
 
@@ -229,7 +229,7 @@
 - Number of layers: How many processing stages
 - These are set BEFORE training, not learned DURING training
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -241,7 +241,7 @@
 - "cat" offers: "I am a noun, I am the subject"
 - Physical: An **advertisement** of what you contain
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -254,7 +254,7 @@
 - Each layer does a specific job (embedding, attention, feed-forward)
 - Multiple layers = multiple processing steps
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Layers: Stacking Neurons"
+**See:** [Chapter 2: Multilayer Networks and Architecture](02-multilayer-networks-architecture.md) - "Layers: Stacking Neurons"
 
 ---
 
@@ -267,7 +267,7 @@
 - Normalize: subtract mean, divide by standard deviation
 - Result: scores centered around 0 with consistent scale
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -281,7 +281,7 @@
 - Too large: You jump over the valley (divergence)
 - Too small: You take forever to reach the bottom (slow convergence)
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Gradient Descent: How Networks Learn"
+**See:** [Chapter 3: Learning Algorithms](03-learning-algorithms.md) - "Gradient Descent: How Networks Learn"
 
 ---
 
@@ -295,7 +295,7 @@
 - Logits can be any real numbers (positive, negative, large, small)
 - Probabilities must be 0-1 and sum to 1
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -308,7 +308,7 @@
 - Higher loss = worse prediction = you're losing
 - Goal: minimize loss (maximize accuracy)
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Loss Functions: Measuring Error"
+**See:** [Chapter 3: Learning Algorithms](03-learning-algorithms.md) - "Loss Functions: Measuring Error"
 
 ---
 
@@ -321,7 +321,7 @@
 - Matrix: transformation rules (rotate, scale, shift)
 - Output: a new vector (point B)
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -333,7 +333,7 @@
 - Context meaning (in semantic space) → Likelihood of each word (in vocabulary space)
 - Like converting "animal, four legs, meows" → "cat: 80%, dog: 15%, mat: 5%"
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -346,7 +346,7 @@
 - During training, we adjust knobs to make the machine work better
 - Once trained, knobs are fixed at their learned values
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -360,7 +360,7 @@
 - WK lens → Key view (what I'm advertising)
 - WV lens → Value view (what I actually contain)
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -372,7 +372,7 @@
 - "sat" asks: "What is the subject?"
 - Physical: A **question** you ask
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -385,7 +385,7 @@
 - Shortcut: Input → (directly to output)
 - Final: Output = Layer(Input) + Input
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -398,7 +398,7 @@
 - Fixed length: sequences have maximum length (e.g., 512 tokens)
 - Context: tokens relate to each other based on position
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -412,7 +412,7 @@
 - The largest score gets the biggest slice
 - All slices sum to 1.0 (the whole pie)
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -425,7 +425,7 @@
 - "the" = one token  
 - "!" = one token (punctuation is also a token)
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -439,7 +439,7 @@
 - Each student has a unique ID number
 - The ID is used to look up student records
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -452,7 +452,7 @@
 - After tokenization: ["The", "cat", "sat", "on", "the", "mat", "."]
 - Each piece is now a separate token
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -464,7 +464,7 @@
 - Once "cat" is identified as relevant, retrieve its meaning
 - Physical: The **actual information** you retrieve
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -476,7 +476,7 @@
 - `[0.3, 0.7]` = point at (0.3, 0.7) on a 2D map
 - `[0.3, 0.7, -0.2]` = point in 3D space
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -489,7 +489,7 @@
 - Limited size (e.g., 50,000 tokens for GPT models)
 - Each token has a unique ID/index
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "From Neural Networks to Transformers"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "From Neural Networks to Transformers"
 
 ---
 
@@ -502,7 +502,7 @@
 - Low weight = weak connection (input has small influence)
 - Negative weight = inhibitory connection (opposes the input)
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "The Perceptron: The Basic Building Block"
+**See:** [Chapter 1: Neural Networks and the Perceptron](01-neural-networks-perceptron.md) - "The Perceptron: The Basic Building Block"
 
 ---
 
@@ -517,7 +517,7 @@
 - Weight update = actually turning the dial
 - After many adjustments, you find the best frequency
 
-**See:** [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Training Loop: Putting It All Together"
+**See:** [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "Training Loop: Putting It All Together"
 
 ---
 

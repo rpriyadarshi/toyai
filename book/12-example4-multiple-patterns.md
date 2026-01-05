@@ -19,7 +19,7 @@ Learn all patterns simultaneously.
 
 ### Model Architecture
 
-This example demonstrates batch training with multiple patterns. For the complete transformer architecture, see [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Complete Transformer Architecture".
+This example demonstrates batch training with multiple patterns. For the complete transformer architecture, see [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "The Transformer Architecture".
 
 **Components:**
 - Same architecture as Example 3
@@ -129,5 +129,5 @@ See [code](../examples/example4_multiple_patterns/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 3: Full Backprop](08-example3-full-backprop.md) | [Next: Example 5: Feed-Forward →](10-example5-feedforward.md)
+- [← Index](00-index.md) | [← Previous: Example 3: Full Backprop](11-example3-full-backprop.md) | [Next: Example 5: Feed-Forward →](13-example5-feedforward.md)
 ---

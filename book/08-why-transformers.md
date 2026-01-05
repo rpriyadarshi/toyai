@@ -1,10 +1,13 @@
-## Chapter 5: Why Transformers?
+## Chapter 8: Why Transformers?
 
 **Prerequisites:** You should have read:
-- Chapter 1: Neural Network Fundamentals (all concepts explained with physical analogies)
-- Chapter 2: The Matrix Core (matrix operations)
-- Chapter 3: Embeddings (tokens to vectors)
-- Chapter 4: Attention Intuition (Q/K/V, attention mechanism)
+- Chapter 1: Neural Networks and the Perceptron (fundamental building blocks)
+- Chapter 2: Multilayer Networks and Architecture (layers and design)
+- Chapter 3: Learning Algorithms (loss, gradient descent, backpropagation)
+- Chapter 4: Training Neural Networks (training loops and transformers)
+- Chapter 5: The Matrix Core (matrix operations)
+- Chapter 6: Embeddings (tokens to vectors)
+- Chapter 7: Attention Intuition (Q/K/V, attention mechanism)
 
 Now we understand the building blocks, let's see why transformers are needed.
 
@@ -89,7 +92,7 @@ Let's break down each component of $h_t = f(W \cdot x_t + U \cdot h_{t-1} + b)$:
 **$x_t$ - Current Input (The New Information)**
 - **What it is**: The current word/token being processed (e.g., "cat", "sat", "mat")
 - **Physical analogy**: Like a new piece of mail arriving at your desk
-- **Example**: When processing "cat", $x_t$ is the **embedding** (see Chapter 1 and 3) vector for "cat": `[0.3, 0.7, -0.2, ...]`
+- **Example**: When processing "cat", $x_t$ is the **embedding** (see [Chapter 6: Embeddings](06-embeddings.md)) vector for "cat": `[0.3, 0.7, -0.2, ...]`
 - **Size**: Typically a vector of dimension $d$ (e.g., 128, 512, or 2 for our simple examples)
 
 **$h_{t-1}$ - Previous Hidden State (The Memory)**
@@ -416,5 +419,5 @@ The transformer's innovation isn't a single breakthrough, but a combination:
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Attention Intuition](04-attention-intuition.md) | [Next: Example 1: Forward Pass →](06-example1-forward-pass.md)
+- [← Index](00-index.md) | [← Previous: Attention Intuition](07-attention-intuition.md) | [Next: Example 1: Forward Pass →](09-example1-forward-pass.md)
 ---

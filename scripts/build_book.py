@@ -33,24 +33,29 @@ def get_chapter_order():
     return [
         # Part I: Foundations
         "00-index.md",
-        "01-terminology-foundations.md",  # Terminology FIRST - explains all concepts
-        "02-matrix-core.md",              # Matrix operations - foundation for everything
-        "03-embeddings.md",               # Tokens to vectors
-        "04-attention-intuition.md",      # Attention mechanism
-        "05-why-transformers.md",         # Why transformers (moved from 01)
+        "01-neural-networks-perceptron.md",      # Neural networks and perceptrons
+        "02-multilayer-networks-architecture.md", # Layers and architecture
+        "03-learning-algorithms.md",              # Loss, gradient descent, backprop
+        "04-training-neural-networks.md",         # Training loops and batches
+        "05-matrix-core.md",                      # Matrix operations
+        "06-embeddings.md",                       # Tokens to vectors
+        "07-attention-intuition.md",              # Attention mechanism
+        "08-why-transformers.md",                 # Why transformers
         
         # Part II: Examples
-        "06-example1-forward-pass.md",    # Renumbered from 05
-        "07-example2-single-step.md",     # Renumbered from 06
-        "08-example3-full-backprop.md",   # Renumbered from 07
-        "09-example4-multiple-patterns.md", # Renumbered from 08
-        "10-example5-feedforward.md",     # Renumbered from 09
-        "11-example6-complete.md",        # Renumbered from 10
+        "09-example1-forward-pass.md",
+        "10-example2-single-step.md",
+        "11-example3-full-backprop.md",
+        "12-example4-multiple-patterns.md",
+        "13-example5-feedforward.md",
+        "14-example6-complete.md",
+        "15-example7-character-recognition.md",
         
         # Appendices
         "appendix-a-matrix-calculus.md",
-        "appendix-b-hand-calculation-tips.md",
-        "appendix-c-common-mistakes.md",
+        "appendix-b-terminology-reference.md",
+        "appendix-c-hand-calculation-tips.md",
+        "appendix-d-common-mistakes.md",
         
         # Conclusion
         "conclusion.md",
@@ -281,10 +286,10 @@ header-includes:
                 continue
             
             # Check if this is an example chapter
-            is_example = chapter_file.startswith('0') and 'example' in chapter_file.lower()
+            is_example = 'example' in chapter_file.lower()
             example_num = None
             if is_example:
-                # Extract example number from filename (e.g., "06-example1-forward-pass.md" -> 1)
+                # Extract example number from filename (e.g., "09-example1-forward-pass.md" -> 1)
                 match = re.search(r'example(\d+)', chapter_file)
                 if match:
                     example_num = int(match.group(1))

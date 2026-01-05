@@ -18,7 +18,7 @@ Build complete transformer with:
 
 ### Model Architecture
 
-This example implements the complete transformer architecture as shown in [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Complete Transformer Architecture". All components are included.
+This example implements the complete transformer architecture as shown in [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "The Transformer Architecture". All components are included.
 
 **Complete Components:**
 - **Multiple Transformer Blocks**: Each block has Attention + FFN
@@ -50,7 +50,7 @@ graph LR
     style P fill:#c8e6c9
 ```
 
-**This is the complete transformer!** All previous examples built up to this. See Chapter 1 for the full architecture diagram with all components labeled.
+**This is the complete transformer!** All previous examples built up to this. See [Chapter 4: Training Neural Networks](04-training-neural-networks.md) for the full architecture diagram with all components labeled.
 
 ### Layer Normalization
 
@@ -120,5 +120,5 @@ See [code](../examples/example6_complete/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 5: Feed-Forward](10-example5-feedforward.md) | [Next: Example 7: Character Recognition →](12-example7-character-recognition.md)
+- [← Index](00-index.md) | [← Previous: Example 5: Feed-Forward](13-example5-feedforward.md) | [Next: Example 7: Character Recognition →](15-example7-character-recognition.md)
 ---

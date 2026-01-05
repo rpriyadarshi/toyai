@@ -15,7 +15,7 @@ Add a feed-forward network after attention:
 
 ### Model Architecture
 
-This example adds feed-forward networks and residual connections. For the complete transformer architecture, see [Chapter 1: Neural Network Fundamentals](01-neural-network-fundamentals.md) - "Complete Transformer Architecture".
+This example adds feed-forward networks and residual connections. For the complete transformer architecture, see [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "The Transformer Architecture".
 
 **New Components:**
 - **Feed-Forward Network (FFN)**: Two linear transformations with ReLU activation
@@ -101,5 +101,5 @@ See [code](../examples/example5_feedforward/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 4: Multiple Patterns](09-example4-multiple-patterns.md) | [Next: Example 6: Complete →](11-example6-complete.md)
+- [← Index](00-index.md) | [← Previous: Example 4: Multiple Patterns](12-example4-multiple-patterns.md) | [Next: Example 6: Complete →](14-example6-complete.md)
 ---
