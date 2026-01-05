@@ -596,6 +596,8 @@ To visualize this, imagine a multi-stage factory. Stage 1 (the input layer) is w
 
 We trace through an example to illustrate how data flows through multiple layers. The values shown are arbitrary examples chosen to demonstrate the transformation process. This example matches the network architecture shown in the diagram above, with 3 input neurons, 4 neurons in the first hidden layer, 3 neurons in the second hidden layer, and 4 output neurons.
 
+**Note:** This is an illustrative example. The weight matrices ($\mathbf{W}_1$, $\mathbf{W}_2$, $\mathbf{W}_{\text{out}}$) and bias vectors ($\mathbf{b}_1$, $\mathbf{b}_2$, $\mathbf{b}_{\text{out}}$) are not shown explicitly here—only the final outputs after applying the full computation $\mathbf{y} = f(\mathbf{W}\mathbf{x} + \mathbf{b})$ are displayed. This keeps the example concise while demonstrating the data flow through layers.
+
 **Equation to solve:**
 For each layer: $\mathbf{y} = f(\mathbf{W}\mathbf{x} + \mathbf{b})$
 
@@ -1063,6 +1065,8 @@ In a neural network, the forward pass follows a specific sequence of transformat
 ![Forward Pass Flow](images/flow-diagrams/forward-pass-flow.svg)
 
 We trace through a complete forward pass example using arbitrary values chosen to illustrate the transformation process:
+
+**Note:** This is an illustrative example. The weight matrices ($\mathbf{W}_1$, $\mathbf{W}_2$, $\mathbf{W}_{\text{out}}$) and bias vectors ($\mathbf{b}_1$, $\mathbf{b}_2$, $\mathbf{b}_{\text{out}}$) are not shown explicitly here—only the final outputs after applying the full computation $\mathbf{y} = f(\mathbf{W}\mathbf{x} + \mathbf{b})$ are displayed. This keeps the example concise while demonstrating the forward pass flow.
 
 **Equations to solve:**
 - Hidden Layer 1: $\mathbf{y}_1 = f\left(\mathbf{W}_1 \begin{bmatrix} 0.5 \\ 0.3 \end{bmatrix} + \mathbf{b}_1\right) = \begin{bmatrix} 0.1 \\ 0.2 \\ 0.4 \end{bmatrix}$
