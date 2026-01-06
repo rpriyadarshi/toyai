@@ -1,544 +1,395 @@
 #!/usr/bin/env python3
 """
-Build Complete PDF Book from Chapter Files
+Main Build Script - Compiler-Like Book Builder
 
-This script:
-1. Combines all chapter files into a single document
-2. Organizes content (foundations, examples, appendices, worksheets, code)
-3. Generates professional PDF with proper formatting
-4. Ensures all links work in PDF format
-5. Creates a maintainable, updatable book
-
-Usage:
-    python3 scripts/build_book.py [--format pdf|html|docx]
+Unified entry point for building the book in multiple formats with
+incremental builds, dependency tracking, and parallel processing.
 """
 
-import os
 import sys
-import subprocess
-import re
-import hashlib
-import tempfile
+import time
+import argparse
 from pathlib import Path
-from datetime import datetime
+from typing import List, Optional
 
-# Configuration
-BOOK_DIR = Path(__file__).parent.parent / "book"
-OUTPUT_DIR = Path(__file__).parent.parent / "output"
-WORKSHEETS_DIR = Path(__file__).parent.parent / "worksheets"
-EXAMPLES_DIR = Path(__file__).parent.parent / "examples"
+# Add scripts directory to path for imports
+_SCRIPT_DIR = Path(__file__).parent
+if str(_SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_DIR))
 
-def get_chapter_order():
-    """Define the order of chapters in the final book"""
-    return [
-        # Part I: Foundations
-        "00-index.md",
-        "01-neural-networks-perceptron.md",      # Neural networks and perceptrons
-        "02-multilayer-networks-architecture.md", # Layers and architecture
-        "03-learning-algorithms.md",              # Loss, gradient descent, backprop
-        "04-training-neural-networks.md",         # Training loops and batches
-        "05-matrix-core.md",                      # Matrix operations
-        "06-embeddings.md",                       # Tokens to vectors
-        "07-attention-intuition.md",              # Attention mechanism
-        "08-why-transformers.md",                 # Why transformers
+from build_cache import BuildCache
+from build_manifest import BuildManifest
+from build_latex_book import LaTeXBookBuilder
+from generate_pdf import PDFGenerator
+from generate_postscript import PostScriptGenerator
+from generate_word import WordGenerator
+from convert_svg_to_pdf import convert_diagrams_parallel
+from validate_diagram_quality import DiagramQualityValidator
+
+
+class BookBuilder:
+    """Main book builder with compiler-like features"""
+    
+    def __init__(self, book_dir: Path, output_dir: Path, 
+                 cache_dir: Path = Path(".build"),
+                 force: bool = False, verbose: bool = False, quiet: bool = False):
+        self.book_dir = book_dir
+        self.output_dir = output_dir
+        self.cache_dir = cache_dir
+        self.force = force
+        self.verbose = verbose
+        self.quiet = quiet
         
-        # Part II: Examples
-        "09-example1-forward-pass.md",
-        "10-example2-single-step.md",
-        "11-example3-full-backprop.md",
-        "12-example4-multiple-patterns.md",
-        "13-example5-feedforward.md",
-        "14-example6-complete.md",
-        "15-example7-character-recognition.md",
+        # Initialize cache and manifest
+        self.cache = BuildCache(cache_dir)
+        self.manifest = BuildManifest(self.cache)
         
-        # Appendices
-        "appendix-a-matrix-calculus.md",
-        "appendix-b-terminology-reference.md",
-        "appendix-c-hand-calculation-tips.md",
-        "appendix-d-common-mistakes.md",
+        # Track build statistics
+        self.stats = {
+            "diagrams_converted": 0,
+            "diagrams_skipped": 0,
+            "chapters_processed": 0,
+            "chapters_skipped": 0,
+            "errors": []
+        }
+    
+    def log(self, message: str, level: str = "info"):
+        """Log message with appropriate level"""
+        if self.quiet and level != "error":
+            return
         
-        # Conclusion
-        "conclusion.md",
-    ]
-
-def read_chapter(filename):
-    """Read a chapter file and return its content"""
-    filepath = BOOK_DIR / filename
-    if not filepath.exists():
-        print(f"Warning: {filename} not found")
-        return None
-    
-    with open(filepath, 'r', encoding='utf-8') as f:
-        content = f.read()
-    
-    # Remove navigation links (not needed in compiled book)
-    content = re.sub(r'\n---\n\*\*Navigation:\*\*.*?\n---\n', '', content, flags=re.DOTALL)
-    
-    return content
-
-def read_worksheet(example_num):
-    """Read a worksheet file and fix heading levels"""
-    filepath = WORKSHEETS_DIR / f"example{example_num}_worksheet.md"
-    if not filepath.exists():
-        return None
-    
-    with open(filepath, 'r', encoding='utf-8') as f:
-        content = f.read()
-    
-    # Fix heading levels: convert # Hand Calculation Worksheet to ## (section level)
-    # This prevents creating separate chapters
-    content = re.sub(r'^# Hand Calculation Worksheet: Example \d+', 
-                     r'## Hand Calculation Worksheet', content, flags=re.MULTILINE)
-    
-    # Convert all other headings down one level to maintain hierarchy
-    # ## becomes ###, ### becomes ####, etc.
-    lines = content.split('\n')
-    fixed_lines = []
-    for line in lines:
-        if line.startswith('## '):
-            # Skip the main heading we already fixed, convert others
-            if not line.startswith('## Hand Calculation Worksheet'):
-                fixed_lines.append('###' + line[2:])  # ## -> ###
-            else:
-                fixed_lines.append(line)
-        elif line.startswith('### '):
-            fixed_lines.append('####' + line[3:])  # ### -> ####
-        elif line.startswith('#### '):
-            fixed_lines.append('#####' + line[4:])  # #### -> #####
+        prefix = {
+            "info": "",
+            "success": "✓",
+            "warning": "⚠",
+            "error": "✗",
+            "progress": "[",
+        }
+        
+        if level == "progress":
+            print(message, end="", flush=True)
         else:
-            fixed_lines.append(line)
-    
-    return '\n'.join(fixed_lines)
-
-def read_code_example(example_num):
-    """Read a code example file"""
-    example_dirs = {
-        1: "example1_forward_only",
-        2: "example2_single_step",
-        3: "example3_full_backprop",
-        4: "example4_multiple_patterns",
-        5: "example5_feedforward",
-        6: "example6_complete",
-    }
-    
-    if example_num not in example_dirs:
-        return None
-    
-    filepath = EXAMPLES_DIR / example_dirs[example_num] / "main.cpp"
-    if not filepath.exists():
-        return None
-    
-    with open(filepath, 'r', encoding='utf-8') as f:
-        content = f.read()
-    
-    return content
-
-def convert_mermaid_to_images(content, output_dir):
-    """Convert Mermaid diagrams to images and replace in content"""
-    # DISABLED: Skip Mermaid conversion for now (only needed for PDF)
-    # Mermaid diagrams will remain as code blocks in Markdown
-    # This can be re-enabled when PDF generation is needed
-    return content
-    
-    # BELOW CODE IS DISABLED - uncomment when PDF generation is needed
-    # The code below converts Mermaid diagrams to PNG images for PDF rendering
-    # For now, we keep Mermaid as code blocks which work fine in Markdown viewers
-    """
-    print("  Converting Mermaid diagrams to images...")
-    
-    mermaid_dir = output_dir / "mermaid_images"
-    mermaid_dir.mkdir(exist_ok=True)
-    
-    mermaid_pattern = r'```mermaid\n(.*?)```'
-    
-    def replace_mermaid(match):
-        mermaid_code = match.group(1)
-        mermaid_code = re.sub(r",?\s*['\"]?fontSize['\"]?:\s*['\"]?\d+px", "", mermaid_code)
-        mermaid_code = re.sub(r"'themeVariables':\s*\{\s*\}", "", mermaid_code)
-        mermaid_code = re.sub(r",\s*'themeVariables':\s*\{\s*\}", "", mermaid_code)
-        
-        mermaid_hash = hashlib.md5(mermaid_code.encode()).hexdigest()[:8]
-        image_filename = f"mermaid_{mermaid_hash}.png"
-        image_path = mermaid_dir / image_filename
-        
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.mmd', delete=False) as tmp_file:
-            tmp_file.write(mermaid_code)
-            tmp_mmd = tmp_file.name
-        
-        try:
-            puppeteer_config = OUTPUT_DIR / "puppeteer-config.json"
-            with open(puppeteer_config, 'w') as f:
-                f.write('{"args": ["--no-sandbox", "--disable-setuid-sandbox"]}\n')
-            
-            result = subprocess.run([
-                'mmdc', '-i', tmp_mmd, '-o', str(image_path),
-                '-w', '2400', '-H', '1800', '-b', 'white', '-s', '4',
-                '--puppeteerConfigFile', str(puppeteer_config)
-            ], capture_output=True, text=True, timeout=30)
-            
-            if result.returncode == 0 and image_path.exists():
-                rel_path = f"mermaid_images/{image_filename}"
-                return f'![Mermaid Diagram]({rel_path})'
+            if prefix[level]:
+                print(f"{prefix[level]} {message}")
             else:
-                return match.group(0)
-        except Exception as e:
-            return match.group(0)
-        finally:
-            try:
-                os.unlink(tmp_mmd)
-            except:
-                pass
+                print(message)
     
-    content = re.sub(mermaid_pattern, replace_mermaid, content, flags=re.DOTALL)
-    return content
-    """
-
-def fix_links_for_pdf(content):
-    """Fix links to work in PDF format"""
-    # Convert relative links to work in compiled document
-    # For PDF, pandoc will handle internal links automatically
-    
-    # Fix links to other chapters (remove .md extension, pandoc handles section links)
-    # Keep chapter links as-is - pandoc will convert them to section references
-    content = re.sub(r'\[([^\]]+)\]\(([^)]+)\.md\)', r'[\1](\2)', content)
-    
-    # Fix links to worksheets (will be in same document with anchors)
-    content = re.sub(r'\[worksheet\]\(\.\./worksheets/example(\d+)_worksheet\.md\)', 
-                     r'[worksheet](#worksheet-example\1_worksheet)', content)
-    
-    # Fix links to code (will be in same document with anchors)
-    content = re.sub(r'\[code\]\(\.\./examples/([^)]+)/main\.cpp\)', 
-                     r'[code](#code-\1/main.cpp)', content)
-    
-    # Fix any remaining relative paths
-    content = re.sub(r'\(\.\./worksheets/([^)]+)\)', r'(#worksheet-\1)', content)
-    content = re.sub(r'\(\.\./examples/([^)]+)\)', r'(#code-\1)', content)
-    
-    # Escape special LaTeX characters in code blocks (but not in math mode)
-    # This is handled by pandoc, but we can ensure proper encoding
-    # Replace problematic Unicode arrows with LaTeX equivalents in non-code contexts
-    # (pandoc should handle this, but just in case)
-    
-    return content
-
-def build_complete_book():
-    """Build the complete book document"""
-    print("Building complete book...")
-    
-    # Create output directory
-    OUTPUT_DIR.mkdir(exist_ok=True)
-    
-    # Start building the document
-    book_content = []
-    
-    # Title page
-    book_content.append("""---
-title: "Understanding Transformers: From First Principles to Mastery"
-subtitle: "A Progressive Learning System with Hand-Calculable Examples"
-author: "ToyAI Educational Project"
-date: """ + datetime.now().strftime("%Y-%m-%d") + """
-documentclass: book
-geometry: margin=1in
-fontsize: 11pt
-linestretch: 1.2
-numbersections: true
-header-includes:
-  - \\usepackage{hyperref}
-  - \\usepackage{bookmark}
-  - \\usepackage{enumitem}
-  - \\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, bookmarksopen=true, bookmarksopenlevel=2}
-  - \\bookmarksetup{startatroot}
-  - \\setlist{nosep,leftmargin=*,itemsep=0.5em}
-  - \\renewenvironment{itemize}{\\begin{list}{$\\bullet$}{\\setlength{\\leftmargin}{1.5em}\\setlength{\\itemsep}{0.3em}\\setlength{\\parsep}{0pt}\\setlength{\\topsep}{0.5em}}}{\\end{list}}
-  - \\AtBeginDocument{\\pdfbookmark[0]{Title Page}{titlepage}}
-  - \\let\\oldmaketitle\\maketitle
-  - \\renewcommand\\maketitle{\\oldmaketitle}
-  - \\let\\oldtoc\\tableofcontents
-  - \\renewcommand\\tableofcontents{\\cleardoublepage\\phantomsection\\pdfbookmark[0]{Table of Contents}{toc}\\oldtoc}
----
-
-\\frontmatter
-
-\\begingroup
-\\hypersetup{bookmarks=false}
-\\addtocontents{toc}{}
-# Understanding Transformers: From First Principles to Mastery
-\\endgroup
-
-**A Progressive Learning System with Hand-Calculable Examples**
-
-*Learn transformers from first principles using 2x2 matrices you can compute by hand.*
-
-\\mainmatter
-
-""")
-    
-    # Add all chapters
-    chapter_order = get_chapter_order()
-    
-    for i, chapter_file in enumerate(chapter_order):
-        print(f"  Adding {chapter_file}...")
-        content = read_chapter(chapter_file)
+    def clean(self):
+        """Clean all build artifacts"""
+        import shutil
         
-        if content:
-            # Skip the index file entirely (we've already added "How to Use" section)
-            if chapter_file == "00-index.md":
-                continue
-            
-            # Check if this is an example chapter
-            is_example = 'example' in chapter_file.lower()
-            example_num = None
-            if is_example:
-                # Extract example number from filename (e.g., "09-example1-forward-pass.md" -> 1)
-                match = re.search(r'example(\d+)', chapter_file)
-                if match:
-                    example_num = int(match.group(1))
-            
-            # Fix links for PDF
-            content = fix_links_for_pdf(content)
-            
-            # Convert chapter headings from ## to # (level 2 to level 1)
-            # This ensures chapters are properly recognized in LaTeX book class
-            # Pattern: ## Chapter X: or ## Example X: or ## Appendix X:
-            content = re.sub(r'^## (Chapter \d+:|Example \d+:|Appendix [A-Z]:)', r'# \1', content, flags=re.MULTILINE)
-            # Also handle standalone chapter titles like "## Conclusion"
-            if 'conclusion' in chapter_file.lower() or 'appendix' in chapter_file.lower():
-                # For conclusion and appendices, convert first ## to #
-                lines = content.split('\n')
-                if lines and lines[0].startswith('## '):
-                    lines[0] = lines[0].replace('## ', '# ', 1)
-                    content = '\n'.join(lines)
-            
-            # For example chapters, wrap existing content in Theory section and add worksheet/code
-            if is_example and example_num:
-                # Remove navigation links at the end
-                content = re.sub(r'\n---\n\*\*Navigation:.*?\n---\n?$', '', content, flags=re.DOTALL)
-                
-                # Wrap existing content in ## Theory section
-                # Find where the content starts (after the chapter heading)
-                lines = content.split('\n')
-                theory_start = 0
-                for j, line in enumerate(lines):
-                    if line.startswith('# Example'):
-                        theory_start = j + 1
-                        break
-                
-                # Get everything after the chapter heading
-                theory_content = '\n'.join(lines[theory_start:])
-                theory_content = theory_content.strip()
-                
-                # Remove any standalone "## Theory" or "### Theory" subsections since we're wrapping everything in Theory
-                # These will become redundant
-                theory_content = re.sub(r'^## Theory\s*$', '', theory_content, flags=re.MULTILINE)
-                theory_content = re.sub(r'^### Theory\s*$', '', theory_content, flags=re.MULTILINE)
-                
-                # Remove old "## Code Implementation" section with just a link - we'll add the actual code later
-                # Match the entire section including the heading, link, and blank lines
-                # Handle various whitespace patterns
-                theory_content = re.sub(r'\n## Code Implementation\s*\n+See \[code\][^\n]*\n+', '\n\n', theory_content, flags=re.MULTILINE)
-                
-                # Convert first level of subsections from ### to ## (level 3 to level 2)
-                # In LaTeX book class: # = Chapter, ## = Section (1.1), ### = Subsection (1.1.1)
-                # Convert the top-level ### in the original content to ##
-                theory_lines = theory_content.split('\n')
-                fixed_theory = []
-                for line in theory_lines:
-                    if line.startswith('### ') and not line.startswith('#### '):
-                        # This is a top-level subsection in the original, convert to ##
-                        fixed_theory.append('##' + line[3:])
-                    else:
-                        fixed_theory.append(line)
-                theory_content = '\n'.join(fixed_theory)
-                
-                # Now remove the old "## Code Implementation" section that was just a link
-                # (it was originally ### Code Implementation, now converted to ##)
-                theory_content = re.sub(r'\n## Code Implementation\s*\n+See \[code\][^\n]*\n+', '\n\n', theory_content, flags=re.MULTILINE)
-                
-                # Rebuild content with Theory section wrapper
-                content = '\n'.join(lines[:theory_start]) + '\n\n## Theory\n\n' + theory_content
-                
-                # Add worksheet section (after Theory, before Code)
-                worksheet = read_worksheet(example_num)
-                if worksheet:
-                    content += "\n\n" + worksheet
-                
-                # Add code section (after Worksheet)
-                code = read_code_example(example_num)
-                if code:
-                    content += "\n\n## Code Implementation\n\n"
-                    content += "```cpp\n"
-                    content += code
-                    content += "\n```\n"
+        if self.cache_dir.exists():
+            shutil.rmtree(self.cache_dir)
+            self.log("Removed .build/ directory", "success")
+        
+        if self.output_dir.exists():
+            shutil.rmtree(self.output_dir)
+            self.log("Removed output/ directory", "success")
+        
+        self.log("Clean complete", "success")
+    
+    def build_diagrams(self) -> bool:
+        """Convert all SVG diagrams to PDF (incremental)"""
+        images_dir = self.book_dir / "images"
+        diagrams_dir = self.output_dir / "diagrams"
+        
+        if not images_dir.exists():
+            self.log(f"Images directory not found: {images_dir}", "error")
+            return False
+        
+        # Find all SVG files
+        svg_files = []
+        for svg_path in images_dir.rglob("*.svg"):
+            svg_files.append(svg_path)
+        svg_files = sorted(svg_files)
+        if not svg_files:
+            self.log("No SVG files found", "warning")
+            return True
+        
+        # Determine which need conversion
+        diagrams_to_convert = []
+        for svg_path in svg_files:
+            if self.force or self.cache.is_diagram_changed(svg_path):
+                diagrams_to_convert.append(svg_path)
             else:
-                # For non-example chapters, just convert subsection levels
-                # Convert first level of subsections from ### to ## (level 3 to level 2)
-                content = re.sub(r'^### ', r'## ', content, flags=re.MULTILINE)
+                self.stats["diagrams_skipped"] += 1
+        
+        if not diagrams_to_convert:
+            self.log("All diagrams up-to-date", "success")
+            return True
+        
+        self.log(f"Converting {len(diagrams_to_convert)} diagram(s)...", "info")
+        
+        # Convert in parallel
+        from convert_svg_to_pdf import convert_svg_to_pdf, find_converter
+        converter = find_converter()
+        
+        if converter is None:
+            self.log("No SVG to PDF converter found. Install inkscape, rsvg-convert, or cairosvg", "error")
+            return False
+        
+        success_count = 0
+        for i, svg_path in enumerate(diagrams_to_convert, 1):
+            if not self.quiet:
+                self.log(f"[{i}/{len(diagrams_to_convert)}] {svg_path.name}...", "progress")
             
-            # Append content for all chapters (both examples and non-examples)
-            book_content.append(content + "\n\n")
-    
-    # Combine everything
-    full_book = ''.join(book_content)
-    
-    # Convert Mermaid diagrams to images BEFORE writing
-    full_book = convert_mermaid_to_images(full_book, OUTPUT_DIR)
-    
-    # Write to file
-    output_md = OUTPUT_DIR / "COMPLETE_BOOK.md"
-    with open(output_md, 'w', encoding='utf-8') as f:
-        f.write(full_book)
-    
-    print(f"\n✓ Complete book written to: {output_md}")
-    return output_md
-
-def generate_pdf(md_file):
-    """Generate PDF from Markdown using pandoc"""
-    print("\nGenerating PDF...")
-    
-    pdf_file = OUTPUT_DIR / "Understanding_Transformers_Complete.pdf"
-    
-    try:
-        # Try XeLaTeX first (better Unicode support), fallback to pdflatex
-        # Use XeLaTeX for Unicode support
-        pdf_engine = 'xelatex'
-        try:
-            subprocess.run(['which', 'xelatex'], capture_output=True, check=True)
-        except (subprocess.CalledProcessError, FileNotFoundError):
-            # Fallback to pdflatex if xelatex not available
-            pdf_engine = 'pdflatex'
-            print("  Note: xelatex not found, using pdflatex (Unicode may be limited)")
+            # Determine output path
+            rel_path = svg_path.relative_to(images_dir)
+            pdf_path = diagrams_dir / rel_path.with_suffix('.pdf')
+            pdf_path.parent.mkdir(parents=True, exist_ok=True)
+            
+            # Convert
+            success, error = convert_svg_to_pdf(svg_path, pdf_path, converter)
+            
+            if success:
+                self.cache.update_diagram_cache(svg_path, pdf_path)
+                self.manifest.update_manifest_from_conversion(svg_path, pdf_path)
+                success_count += 1
+                self.stats["diagrams_converted"] += 1
+                if not self.quiet:
+                    print(" ✓")
+            else:
+                self.log(f"Failed to convert {svg_path.name}: {error}", "error")
+                self.stats["errors"].append(f"Diagram {svg_path.name}: {error}")
+                if not self.quiet:
+                    print(" ✗")
         
-        cmd = [
-            'pandoc',
-            str(md_file),
-            '-o', str(pdf_file),
-            f'--pdf-engine={pdf_engine}',
-            '--from=markdown+tex_math_dollars+raw_tex+lists_without_preceding_blankline',
-            '--to=pdf',
-            '-V', 'geometry:margin=1in',
-            '-V', 'fontsize=11pt',
-            '-V', 'linestretch=1.2',
-            '-V', 'documentclass=book',
-            '-V', 'classoption=openany',  # Allow chapters to start on any page
-            '-V', 'colorlinks=true',
-            '-V', 'linkcolor=blue',
-            '-V', 'urlcolor=blue',
-            '--toc',
-            '--toc-depth=3',
-            '--number-sections',
-            '--highlight-style=tango',
-            '--standalone',
-        ]
-        
-        # Add Unicode support only for XeLaTeX
-        if pdf_engine == 'xelatex':
-            # Use system fonts that are typically available
-            # XeLaTeX will use default fonts if these aren't found
-            cmd.extend([
-            '-V', 'mainfont=Liberation Serif',
-            '-V', 'sansfont=Liberation Sans',
-            '-V', 'monofont=Liberation Mono',
-            ])
-        
-        # Add LaTeX packages for better code/diagram rendering
-        header_includes = r'''
-\usepackage{fancyvrb}
-\usepackage{adjustbox}
-\fvset{fontsize=\normalsize}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},formatcom=\color[rgb]{0,0,0}}
-'''
-        cmd.extend(['-H', '/dev/stdin'])
-        
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        
-        if result.returncode == 0:
-            print(f"✓ PDF generated: {pdf_file}")
-            print(f"  File size: {pdf_file.stat().st_size / 1024 / 1024:.2f} MB")
+        if success_count == len(diagrams_to_convert):
+            self.log(f"All {success_count} diagram(s) converted successfully", "success")
             return True
         else:
-            print(f"✗ PDF generation failed:")
-            print(result.stderr)
-            return False
-            
-    except FileNotFoundError:
-        print("✗ pandoc not found. Install with: sudo apt-get install pandoc texlive-latex-base")
-        return False
-
-def generate_html(md_file):
-    """Generate HTML version"""
-    print("\nGenerating HTML...")
+            self.log(f"Converted {success_count}/{len(diagrams_to_convert)} diagram(s)", "warning")
+            return success_count > 0
     
-    html_file = OUTPUT_DIR / "Understanding_Transformers_Complete.html"
-    
-    try:
-        cmd = [
-            'pandoc',
-            str(md_file),
-            '-o', str(html_file),
-            '--standalone',
-            '--toc',
-            '--toc-depth=3',
-            '--mathjax',
-            '--css', 'https://cdn.jsdelivr.net/npm/water.css@2/out/water.css',
-        ]
+    def build_latex(self) -> Optional[Path]:
+        """Build LaTeX source from Markdown chapters"""
+        self.log("Building LaTeX source...", "info")
         
-        result = subprocess.run(cmd, capture_output=True, text=True)
+        builder = LaTeXBookBuilder(self.book_dir, self.output_dir, 
+                                  self.cache, self.manifest, self.force)
+        main_tex = builder.build_complete_latex()
         
-        if result.returncode == 0:
-            print(f"✓ HTML generated: {html_file}")
-            return True
+        if main_tex:
+            self.log(f"LaTeX source built: {main_tex}", "success")
+            return main_tex
         else:
-            print(f"✗ HTML generation failed: {result.stderr}")
+            self.log("Failed to build LaTeX source", "error")
+            return None
+    
+    def build_pdf(self, latex_file: Optional[Path] = None) -> Optional[Path]:
+        """Build PDF from LaTeX source"""
+        if latex_file is None:
+            latex_file = self.output_dir / "latex" / "book.tex"
+        
+        if not latex_file.exists():
+            self.log(f"LaTeX file not found: {latex_file}", "error")
+            return None
+        
+        self.log("Generating PDF...", "info")
+        
+        output_pdf = self.output_dir / "pdf" / "book.pdf"
+        generator = PDFGenerator(latex_file, output_pdf, self.cache, self.force)
+        success, error = generator.generate()
+        
+        if success:
+            if error and "up-to-date" in error:
+                self.log("PDF up-to-date", "success")
+            else:
+                self.log(f"PDF generated: {output_pdf}", "success")
+            return output_pdf
+        else:
+            self.log(f"Failed to generate PDF: {error}", "error")
+            return None
+    
+    def build_postscript(self, pdf_file: Optional[Path] = None) -> Optional[Path]:
+        """Build PostScript from PDF"""
+        if pdf_file is None:
+            pdf_file = self.output_dir / "pdf" / "book.pdf"
+        
+        if not pdf_file.exists():
+            self.log(f"PDF file not found: {pdf_file}", "error")
+            return None
+        
+        self.log("Generating PostScript...", "info")
+        
+        output_ps = self.output_dir / "postscript" / "book.ps"
+        generator = PostScriptGenerator(pdf_file, output_ps, self.cache, self.force)
+        success, error = generator.generate()
+        
+        if success:
+            if error and "up-to-date" in error:
+                self.log("PostScript up-to-date", "success")
+            else:
+                self.log(f"PostScript generated: {output_ps}", "success")
+            return output_ps
+        else:
+            self.log(f"Failed to generate PostScript: {error}", "error")
+            return None
+    
+    def build_word(self) -> Optional[Path]:
+        """Build Word document"""
+        self.log("Generating Word document...", "info")
+        
+        generator = WordGenerator(self.book_dir, self.output_dir, 
+                                 self.cache, self.manifest, self.force)
+        output_docx = generator.build_word_document()
+        
+        if output_docx:
+            self.log(f"Word document generated: {output_docx}", "success")
+            return output_docx
+        else:
+            self.log("Failed to generate Word document", "error")
+            return None
+    
+    def build_all(self):
+        """Build all formats"""
+        start_time = time.time()
+        
+        self.log("=" * 70, "info")
+        self.log("Building Complete Book", "info")
+        self.log("=" * 70, "info")
+        self.log("", "info")
+        
+        # Build diagrams first (needed by all formats)
+        if not self.build_diagrams():
+            self.log("Diagram conversion failed, continuing anyway...", "warning")
+        
+        # Build LaTeX
+        latex_file = self.build_latex()
+        if not latex_file:
+            self.log("LaTeX build failed", "error")
             return False
-            
-    except FileNotFoundError:
-        print("✗ pandoc not found")
-        return False
+        
+        # Build PDF
+        pdf_file = self.build_pdf(latex_file)
+        
+        # Build PostScript (if PDF succeeded)
+        if pdf_file:
+            self.build_postscript(pdf_file)
+        
+        # Build Word
+        self.build_word()
+        
+        # Save cache
+        self.cache.save_cache()
+        
+        # Print summary
+        elapsed = time.time() - start_time
+        self.log("", "info")
+        self.log("=" * 70, "info")
+        self.log("Build Summary", "info")
+        self.log("=" * 70, "info")
+        self.log(f"Diagrams: {self.stats['diagrams_converted']} converted, "
+                f"{self.stats['diagrams_skipped']} skipped", "info")
+        self.log(f"Chapters: {self.stats['chapters_processed']} processed, "
+                f"{self.stats['chapters_skipped']} skipped", "info")
+        if self.stats['errors']:
+            self.log(f"Errors: {len(self.stats['errors'])}", "error")
+        self.log(f"Build time: {elapsed:.1f}s", "info")
+        self.log("=" * 70, "info")
+        
+        return len(self.stats['errors']) == 0
+
 
 def main():
-    """Main function"""
-    import argparse
+    """Main entry point"""
+    parser = argparse.ArgumentParser(
+        description='Build book in multiple formats (compiler-like build system)',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  python3 scripts/build_book.py --all              # Build all formats
+  python3 scripts/build_book.py --latex --pdf      # Build LaTeX and PDF
+  python3 scripts/build_book.py --pdf --force      # Force rebuild PDF
+  python3 scripts/build_book.py --clean            # Clean build artifacts
+        """
+    )
     
-    parser = argparse.ArgumentParser(description='Build complete book from chapters')
+    # Build targets
+    parser.add_argument('--latex', action='store_true',
+                       help='Generate LaTeX source')
     parser.add_argument('--pdf', action='store_true',
-                       help='Generate PDF (requires pandoc and LaTeX)')
-    parser.add_argument('--html', action='store_true',
-                       help='Generate HTML (requires pandoc)')
+                       help='Generate PDF (requires LaTeX)')
+    parser.add_argument('--ps', action='store_true',
+                       help='Generate PostScript (requires PDF)')
+    parser.add_argument('--word', action='store_true',
+                       help='Generate Word document')
+    parser.add_argument('--all', action='store_true',
+                       help='Generate all formats')
+    
+    # Build options
+    parser.add_argument('--force', action='store_true',
+                       help='Force rebuild everything (ignore cache)')
+    parser.add_argument('--clean', action='store_true',
+                       help='Clean all build artifacts')
+    parser.add_argument('--verbose', action='store_true',
+                       help='Verbose output')
+    parser.add_argument('--quiet', action='store_true',
+                       help='Quiet mode (errors only)')
+    
+    # Paths
+    parser.add_argument('--book-dir', type=Path, default=Path("book"),
+                       help='Directory containing Markdown chapters')
+    parser.add_argument('--output-dir', type=Path, default=Path("output"),
+                       help='Output directory')
+    parser.add_argument('--cache-dir', type=Path, default=Path(".build"),
+                       help='Build cache directory')
     
     args = parser.parse_args()
     
-    print("=" * 70)
-    print("Building Complete Book")
-    print("=" * 70)
-    print()
+    # Initialize builder
+    builder = BookBuilder(
+        args.book_dir,
+        args.output_dir,
+        args.cache_dir,
+        args.force,
+        args.verbose,
+        args.quiet
+    )
     
-    # Build the complete book
-    md_file = build_complete_book()
+    # Handle clean
+    if args.clean:
+        builder.clean()
+        return 0
     
-    if not md_file:
-        print("✗ Failed to build book")
-        sys.exit(1)
+    # Determine build targets
+    if args.all:
+        success = builder.build_all()
+    else:
+        success = True
+        
+        # Build diagrams if needed
+        if args.latex or args.pdf or args.ps or args.word:
+            if not builder.build_diagrams():
+                success = False
+        
+        # Build LaTeX
+        if args.latex or args.pdf or args.ps:
+            latex_file = builder.build_latex()
+            if not latex_file:
+                success = False
+        
+        # Build PDF
+        if args.pdf or args.ps:
+            pdf_file = builder.build_pdf()
+            if not pdf_file:
+                success = False
+        
+        # Build PostScript
+        if args.ps:
+            if not builder.build_postscript():
+                success = False
+        
+        # Build Word
+        if args.word:
+            if not builder.build_word():
+                success = False
+        
+        # Save cache
+        builder.cache.save_cache()
     
-    # Generate output formats only if explicitly requested
-    if args.pdf:
-        generate_pdf(md_file)
-    
-    if args.html:
-        generate_html(md_file)
-    
-    print("\n" + "=" * 70)
-    print("Book build complete!")
-    print("=" * 70)
-    print(f"\nOutput files in: {OUTPUT_DIR}")
-    print(f"  - COMPLETE_BOOK.md (source)")
-    if args.pdf:
-        print(f"  - Understanding_Transformers_Complete.pdf")
-    if args.html:
-        print(f"  - Understanding_Transformers_Complete.html")
-    if not args.pdf and not args.html:
-        print("\nNote: PDF/HTML generation skipped. Use --pdf or --html to generate.")
-    print()
+    return 0 if success else 1
+
 
 if __name__ == '__main__':
-    main()
-
+    sys.exit(main())

@@ -1,0 +1,122 @@
+% Professional LaTeX Book Template
+% Understanding Transformers: From First Principles to Mastery
+
+\documentclass[11pt,openany]{book}
+
+% Page geometry and layout
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% Fonts (XeLaTeX/LuaLaTeX)
+\usepackage{fontspec}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+\setmonofont{Liberation Mono}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+% Graphics and images
+\usepackage{graphicx}
+\usepackage{svg}  % For SVG inclusion (requires inkscape)
+\usepackage{adjustbox}  % For image scaling
+
+% Tables
+\usepackage{longtable}  % For multi-page tables
+\usepackage{booktabs}  % For better table formatting
+
+% Hyperlinks and bookmarks
+\usepackage{hyperref}
+\usepackage{bookmark}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    bookmarksopen=true,
+    bookmarksopenlevel=2
+}
+
+% Code listings
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Listings configuration for C++
+\lstset{
+    language=C++,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numberstyle=\tiny\color{gray},
+    numbers=left,
+    numbersep=5pt,
+    frame=single,
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=4,
+    showstringspaces=false,
+    captionpos=b
+}
+
+% Theorem environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{example}{Example}[chapter]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+% Custom commands
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Pandoc compatibility commands
+\newcommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Title page information (will be set by build script)
+\title{Understanding Transformers: From First Principles to Mastery}
+\author{ToyAI Educational Project}
+\date{\today}
+
+% Document structure
+\begin{document}
+
+% Front matter
+\frontmatter
+
+% Title page
+\maketitle
+
+% Table of contents
+\tableofcontents
+\cleardoublepage
+
+% Main matter
+\mainmatter
+
+% Chapters will be included here by build script
+% \input{chapters/chapter01.tex}
+% \input{chapters/chapter02.tex}
+% etc.
+
+% Back matter
+\backmatter
+
+% Appendices (if any)
+% \appendix
+% \input{appendices/appendix_a.tex}
+
+\end{document}
+
