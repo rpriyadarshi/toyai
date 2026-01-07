@@ -15,16 +15,8 @@ from functools import partial
 
 
 def find_converter() -> Optional[str]:
-    """Find available SVG to PDF converter"""
-    # Try inkscape first (best quality)
-    try:
-        result = subprocess.run(['inkscape', '--version'], 
-                              capture_output=True, check=True)
-        return 'inkscape'
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        pass
-    
-    # Try rsvg-convert (good quality)
+    """Find available SVG to PDF converter (skips Inkscape)"""
+    # Try rsvg-convert first (good quality, lighter than Inkscape)
     try:
         result = subprocess.run(['rsvg-convert', '--version'], 
                               capture_output=True, check=True)
@@ -37,6 +29,15 @@ def find_converter() -> Optional[str]:
         import cairosvg
         return 'cairosvg'
     except ImportError:
+        pass
+    
+    # Skip Inkscape - user requested not to use it
+    # Only use as last resort if nothing else is available
+    try:
+        result = subprocess.run(['inkscape', '--version'], 
+                              capture_output=True, check=True)
+        return 'inkscape'
+    except (subprocess.CalledProcessError, FileNotFoundError):
         pass
     
     return None

@@ -106,7 +106,7 @@ class LaTeXBookBuilder:
         return diagram_paths
     
     def fix_image_references(self, latex_content: str, chapter_path: Path) -> str:
-        """Fix image references in LaTeX to point to PDF diagrams"""
+        """Fix image references in LaTeX to point to PDF diagrams with professional scaling"""
         # Pandoc converts markdown images to \includesvg{images/...} or \includegraphics{images/...}
         # We need to replace these with \includegraphics pointing to PDF files in output/diagrams/
         
@@ -136,51 +136,50 @@ class LaTeXBookBuilder:
             rel_pdf_path = self._get_relative_path(self.latex_dir, pdf_path)
             latex_path_str = str(rel_pdf_path).replace('\\', '/')
             
-            # Replace \includesvg with \includegraphics
-            # If there are options like [width=...], preserve them
+            # Professional figure scaling: use width constraint with aspect ratio preservation
+            # This ensures images fit properly and maintain their proportions
+            figure_options = 'width=0.85\\textwidth, keepaspectratio'
+            
             if '\\includesvg' in full_match:
-                # \includesvg{path} -> \includegraphics[width=\textwidth]{path}
-                return f'\\includegraphics[width=\\textwidth]{{{latex_path_str}}}'
+                return f'\\includegraphics[{figure_options}]{{{latex_path_str}}}'
             else:
-                # \includegraphics[options]{path} -> \includegraphics[options]{new_path}
-                # Extract options if present
-                options_match = re.search(r'\\includegraphics(\[[^\]]*\])?', full_match)
-                if options_match and options_match.group(1):
-                    options = options_match.group(1)
-                    return f'\\includegraphics{options}{{{latex_path_str}}}'
-                else:
-                    return f'\\includegraphics[width=\\textwidth]{{{latex_path_str}}}'
+                # Always use professional scaling for figures
+                return f'\\includegraphics[{figure_options}]{{{latex_path_str}}}'
         
         # Match \includesvg{images/...} or \includegraphics{images/...}
         image_pattern = r'\\(?:includesvg|includegraphics)(?:\[[^\]]*\])?\{([^}]+)\}'
         latex_content = re.sub(image_pattern, replace_image, latex_content)
         
-        # Now fix images in tables: use \columnwidth to fit properly in table cells
-        # This handles longtable, table, and tabular environments
+        # Professional table image handling: detect column count and scale appropriately
         def fix_table_images(match):
             table_content = match.group(0)
-            # For table cells, use \columnwidth which is the actual column width
-            # Use 0.9 to leave some margin and prevent overflow
+            
+            # Detect number of columns in the table
+            # Count column specifications: >{...}p{...} patterns
+            column_matches = re.findall(r'>\{[^}]*\}[cp]', table_content)
+            num_columns = len(column_matches) if column_matches else 3  # Default to 3 if can't detect
+            
+            # Professional scaling based on column count
+            # Calculate proper width based on available space
+            # For 3 columns: each column is ~0.31\textwidth (accounting for spacing)
+            # Use width constraint with keepaspectratio for professional results
+            if num_columns >= 3:
+                # 3+ columns: use 0.30\textwidth per image to ensure all fit on one page
+                # This accounts for column spacing and ensures proper fit
+                table_image_options = 'width=0.30\\textwidth, keepaspectratio'
+            elif num_columns == 2:
+                # 2 columns: use 0.45\textwidth per image
+                table_image_options = 'width=0.45\\textwidth, keepaspectratio'
+            else:
+                # Single column: use 0.85\textwidth
+                table_image_options = 'width=0.85\\textwidth, keepaspectratio'
+            
+            # Replace any existing image width/height specifications with professional constraints
+            # Escape the options string properly for regex replacement
+            escaped_options = table_image_options.replace('\\', '\\\\')
             table_content = re.sub(
-                r'\\includegraphics\[width=\\textwidth\]',
-                r'\\includegraphics[width=0.9\\columnwidth]',
-                table_content
-            )
-            # Replace width=\linewidth with width=0.9\columnwidth for table cells
-            table_content = re.sub(
-                r'\\includegraphics\[width=\\linewidth\]',
-                r'\\includegraphics[width=0.9\\columnwidth]',
-                table_content
-            )
-            # Also handle cases with other options - replace any width in table
-            table_content = re.sub(
-                r'\\includegraphics\[([^\]]*?)width=\\textwidth([^\]]*?)\]',
-                r'\\includegraphics[\1width=0.9\\columnwidth\2]',
-                table_content
-            )
-            table_content = re.sub(
-                r'\\includegraphics\[([^\]]*?)width=\\linewidth([^\]]*?)\]',
-                r'\\includegraphics[\1width=0.9\\columnwidth\2]',
+                r'\\includegraphics\[[^\]]+\]',
+                f'\\\\includegraphics[{escaped_options}]',
                 table_content
             )
             return table_content
