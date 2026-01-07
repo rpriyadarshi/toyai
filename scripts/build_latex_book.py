@@ -34,12 +34,18 @@ class LaTeXBookBuilder:
         self.diagrams_dir.mkdir(parents=True, exist_ok=True)
         (self.latex_dir / "chapters").mkdir(exist_ok=True)
     
-    def get_chapter_order(self) -> List[str]:
-        """Get ordered list of chapter files"""
+    def get_front_matter_order(self) -> List[str]:
+        """Get ordered list of front matter files"""
         return [
-            # Introduction and Index
-            "00-introduction.md",
-            "00-index.md",
+            "00a-preface.md",
+            "00b-toc.md",  # Table of Contents (for markdown navigation)
+        ]
+    
+    def get_main_matter_order(self) -> List[str]:
+        """Get ordered list of main matter chapter files"""
+        return [
+            # Introduction
+            "00c-introduction.md",
             # Part I: Foundations
             "01-neural-networks-perceptron.md",
             "02-multilayer-networks-architecture.md",
@@ -64,10 +70,19 @@ class LaTeXBookBuilder:
             "appendix-b-terminology-reference.md",
             "appendix-c-hand-calculation-tips.md",
             "appendix-d-common-mistakes.md",
-            
-            # Conclusion
+        ]
+    
+    def get_back_matter_order(self) -> List[str]:
+        """Get ordered list of back matter files"""
+        return [
             "conclusion.md",
         ]
+    
+    def get_chapter_order(self) -> List[str]:
+        """Get ordered list of all chapter files (for backward compatibility)"""
+        return (self.get_front_matter_order() + 
+                self.get_main_matter_order() + 
+                self.get_back_matter_order())
     
     def convert_diagrams_for_chapter(self, chapter_path: Path) -> List[Path]:
         """Convert all diagrams needed for a chapter"""
@@ -294,6 +309,17 @@ class LaTeXBookBuilder:
         with open(output_tex, 'r', encoding='utf-8') as f:
             latex_content = f.read()
         
+        # Special handling for front matter: remove duplicate headings
+        if chapter_path.stem == "00a-preface":
+            # Remove first \chapter, \section, or similar heading command
+            latex_content = re.sub(r'\\chapter\*?\{[^}]+\}.*?\n', '', latex_content, count=1)
+            latex_content = re.sub(r'\\section\*?\{[^}]+\}.*?\n', '', latex_content, count=1)
+        elif chapter_path.stem == "00b-toc":
+            # For TOC, remove the book title heading but keep the "Table of Contents" section
+            # Remove first heading (usually the book title)
+            latex_content = re.sub(r'\\chapter\*?\{[^}]+\}.*?\n', '', latex_content, count=1)
+            # Keep the "Table of Contents" section heading
+        
         # Fix image references
         latex_content = self.fix_image_references(latex_content, chapter_path)
         
@@ -309,27 +335,55 @@ class LaTeXBookBuilder:
     
     def build_complete_latex(self) -> Optional[Path]:
         """Build complete LaTeX book from all chapters"""
-        chapter_files = []
-        for chapter_name in self.get_chapter_order():
+        # Process front matter
+        front_matter_files = []
+        for chapter_name in self.get_front_matter_order():
             chapter_path = self.book_dir / chapter_name
             if chapter_path.exists():
-                chapter_files.append(chapter_path)
+                front_matter_files.append(chapter_path)
+        
+        # Process main matter
+        main_matter_files = []
+        for chapter_name in self.get_main_matter_order():
+            chapter_path = self.book_dir / chapter_name
+            if chapter_path.exists():
+                main_matter_files.append(chapter_path)
+        
+        # Process back matter
+        back_matter_files = []
+        for chapter_name in self.get_back_matter_order():
+            chapter_path = self.book_dir / chapter_name
+            if chapter_path.exists():
+                back_matter_files.append(chapter_path)
         
         # Convert all chapters
-        latex_chapters = []
-        for chapter_path in chapter_files:
+        front_matter_latex = []
+        for chapter_path in front_matter_files:
             latex_path = self.convert_chapter_to_latex(chapter_path)
             if latex_path:
-                latex_chapters.append(latex_path)
+                front_matter_latex.append(latex_path)
+        
+        main_matter_latex = []
+        for chapter_path in main_matter_files:
+            latex_path = self.convert_chapter_to_latex(chapter_path)
+            if latex_path:
+                main_matter_latex.append(latex_path)
+        
+        back_matter_latex = []
+        for chapter_path in back_matter_files:
+            latex_path = self.convert_chapter_to_latex(chapter_path)
+            if latex_path:
+                back_matter_latex.append(latex_path)
         
         # Build main LaTeX file
         main_tex = self.latex_dir / "book.tex"
-        self._create_main_latex(main_tex, latex_chapters)
+        self._create_main_latex(main_tex, front_matter_latex, main_matter_latex, back_matter_latex)
         
         return main_tex
     
-    def _create_main_latex(self, main_tex: Path, chapter_files: List[Path]):
-        """Create main LaTeX file that includes all chapters"""
+    def _create_main_latex(self, main_tex: Path, front_matter_files: List[Path], 
+                          main_matter_files: List[Path], back_matter_files: List[Path]):
+        """Create main LaTeX file that includes all chapters in proper order"""
         template_path = Path(__file__).parent.parent / "templates" / "book_template.tex"
         
         # Read template
@@ -354,30 +408,65 @@ class LaTeXBookBuilder:
 \\end{document}
 """
         
-        # Generate chapter includes
-        chapter_includes = []
-        for chapter_file in chapter_files:
+        # Generate front matter includes (preface)
+        front_matter_includes = []
+        for chapter_file in front_matter_files:
             rel_path = chapter_file.relative_to(main_tex.parent)
-            chapter_includes.append(f"\\input{{{rel_path.as_posix()}}}")
+            front_matter_includes.append(f"\\input{{{rel_path.as_posix()}}}")
         
-        # Replace placeholder or add chapters
-        if "{chapters}" in template:
-            template = template.replace("{chapters}", "\n".join(chapter_includes))
-        elif "\\mainmatter" in template:
-            # Find \mainmatter and insert chapters after it
+        # Generate main matter includes
+        main_matter_includes = []
+        for chapter_file in main_matter_files:
+            rel_path = chapter_file.relative_to(main_tex.parent)
+            main_matter_includes.append(f"\\input{{{rel_path.as_posix()}}}")
+        
+        # Generate back matter includes
+        back_matter_includes = []
+        for chapter_file in back_matter_files:
+            rel_path = chapter_file.relative_to(main_tex.parent)
+            back_matter_includes.append(f"\\input{{{rel_path.as_posix()}}}")
+        
+        # Insert front matter (preface and TOC) after the Preface chapter declaration
+        if front_matter_includes:
+            # Separate preface and TOC files
+            preface_files = [f for f in front_matter_includes if '00a-preface' in f]
+            toc_files = [f for f in front_matter_includes if '00b-toc' in f]
+            
+            # Insert preface after Preface chapter declaration
+            if preface_files:
+                preface_pattern = r'(% Preface content will be included here by build script\n)'
+                preface_content = '\n'.join(preface_files) + '\n'
+                def preface_replacer(match):
+                    return match.group(1) + preface_content
+                template = re.sub(preface_pattern, preface_replacer, template)
+            
+            # Insert TOC as a separate chapter (optional - since LaTeX auto-generates TOC)
+            # We'll include it as "Detailed Table of Contents" for completeness
+            if toc_files:
+                toc_pattern = r'(% TOC content will be included here by build script if present\n)'
+                toc_content = '\\chapter*{Detailed Table of Contents}\n\\addcontentsline{toc}{chapter}{Detailed Table of Contents}\n' + '\n'.join(toc_files) + '\n'
+                def toc_replacer(match):
+                    return match.group(1) + toc_content
+                template = re.sub(toc_pattern, toc_replacer, template)
+        
+        # Insert main matter chapters after \mainmatter
+        if main_matter_includes:
             template = template.replace("\\mainmatter", 
-                                      "\\mainmatter\n" + "\n".join(chapter_includes))
-        else:
-            # No placeholder found, append chapters before \end{document}
-            template = template.replace("\\end{document}", 
-                                      "\n".join(chapter_includes) + "\n\\end{document}")
+                                      "\\mainmatter\n" + "\n".join(main_matter_includes))
+        
+        # Insert back matter chapters before bibliography
+        if back_matter_includes:
+            # Insert before \bibliographystyle
+            template = template.replace("\\bibliographystyle{plain}", 
+                                      "\n".join(back_matter_includes) + "\n\\bibliographystyle{plain}")
         
         # Write main file
         with open(main_tex, 'w', encoding='utf-8') as f:
             f.write(template)
         
         # Update cache
-        source_deps = [str(f) for f in chapter_files]
+        all_files = front_matter_files + main_matter_files + back_matter_files
+        source_deps = [str(f) for f in all_files]
         self.cache.update_output_cache(main_tex, source_deps)
 
 

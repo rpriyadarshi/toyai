@@ -133,5 +133,5 @@ See [code](../examples/example4_multiple_patterns/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 3: Full Backprop](11-example3-full-backprop.md) | [Next: Example 5: Feed-Forward →](13-example5-feedforward.md)
+- [← Index](00b-toc.md) | [← Previous: Example 3: Full Backprop](11-example3-full-backprop.md) | [Next: Example 5: Feed-Forward →](13-example5-feedforward.md)
 ---

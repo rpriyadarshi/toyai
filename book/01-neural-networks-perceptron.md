@@ -3,7 +3,7 @@
 This chapter establishes the foundation for understanding neural networks by starting with the simplest possible unit: a single neuron, called a perceptron. We explain every concept using physical analogies that connect abstract mathematics to tangible reality, making the material more accessible and memorable. Understanding how a single perceptron works provides the essential foundation for understanding more complex networks, including the transformers we'll study in later chapters.
 
 **Navigation:**
-- [← Introduction](00-introduction.md) | [Table of Contents](00-index.md) | [Next: Multilayer Networks and Architecture →](02-multilayer-networks-architecture.md)
+- [← Introduction](00c-introduction.md) | [Table of Contents](00b-toc.md) | [Next: Multilayer Networks and Architecture →](02-multilayer-networks-architecture.md)
 
 ### Why This Chapter First?
 
@@ -627,5 +627,5 @@ While a single perceptron is limited, understanding it provides the foundation f
 ---
 
 **Navigation:**
-- [← Introduction](00-introduction.md) | [← Index](00-index.md) | [Next: Multilayer Networks and Architecture →](02-multilayer-networks-architecture.md)
+- [← Introduction](00c-introduction.md) | [← Index](00b-toc.md) | [Next: Multilayer Networks and Architecture →](02-multilayer-networks-architecture.md)
 

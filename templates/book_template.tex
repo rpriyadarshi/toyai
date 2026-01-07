@@ -29,6 +29,10 @@
 \usepackage{longtable}  % For multi-page tables
 \usepackage{booktabs}  % For better table formatting
 
+% Index and bibliography
+\usepackage{makeidx}  % For index generation
+\makeindex
+
 % Hyperlinks and bookmarks
 \usepackage{hyperref}
 \usepackage{bookmark}
@@ -99,8 +103,37 @@
 % Title page
 \maketitle
 
+% Copyright page
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+\small
+Copyright \copyright\ \the\year\ ToyAI Educational Project\\
+All rights reserved.
+\end{center}
+\vspace*{\fill}
+\cleardoublepage
+
 % Table of contents
 \tableofcontents
+\cleardoublepage
+
+% List of figures
+\listoffigures
+\cleardoublepage
+
+% List of tables
+\listoftables
+\cleardoublepage
+
+% Preface (front matter - no chapter numbering)
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+% Preface content will be included here by build script
+\cleardoublepage
+
+% Detailed Table of Contents (front matter - optional, for markdown navigation)
+% TOC content will be included here by build script if present
 \cleardoublepage
 
 % Main matter
@@ -114,9 +147,14 @@
 % Back matter
 \backmatter
 
-% Appendices (if any)
-% \appendix
-% \input{appendices/appendix_a.tex}
+% Bibliography
+\bibliographystyle{plain}
+\bibliography{references}
+\cleardoublepage
+
+% Subject Index
+\printindex
+\cleardoublepage
 
 \end{document}
 

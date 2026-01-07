@@ -248,5 +248,5 @@ But **NOT** matrix inverse because:
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Training Neural Networks](04-training-neural-networks.md) | [Next: Embeddings →](06-embeddings.md)
+- [← Index](00b-toc.md) | [← Previous: Training Neural Networks](04-training-neural-networks.md) | [Next: Embeddings →](06-embeddings.md)
 ---

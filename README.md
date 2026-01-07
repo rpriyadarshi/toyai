@@ -20,8 +20,9 @@ The book is organized in two ways:
 
 ### Individual Chapters (`book/` directory)
 - **Modular format**: Each chapter is a separate file for easy navigation
-- **Start with**: [Introduction](book/00-introduction.md) for philosophy and approach
-- **Then**: [Table of Contents](book/00-index.md) for navigation
+- **Start with**: [Preface](book/00a-preface.md) for what this book is and how to use it
+- **Then**: [Introduction](book/00c-introduction.md) for philosophy and approach
+- **Then**: [Table of Contents](book/00b-toc.md) for navigation
 - **Read online**: View chapters directly in your editor or on GitHub
 
 ### Complete PDF Book
@@ -81,7 +82,7 @@ toyai-1/
 
 ### 1. Read the Book
 
-Start with **[Introduction](book/00-introduction.md)** to understand the philosophy and approach of this book. Then read **[Table of Contents](book/00-index.md)** or **[BOOK.md](BOOK.md)** for navigation. Read Part I (Foundations, Chapters 1-8) to understand the core concepts. **[Chapter 1: Neural Networks and the Perceptron](book/01-neural-networks-perceptron.md)** explains the fundamental building blocks with physical analogies - start there!
+Start with **[Preface](book/00a-preface.md)** to understand what this book is and how to use it. Then read **[Introduction](book/00c-introduction.md)** for the philosophy and approach. Review **[Table of Contents](book/00b-toc.md)** or **[BOOK.md](BOOK.md)** for navigation. Read Part I (Foundations, Chapters 1-8) to understand the core concepts. **[Chapter 1: Neural Networks and the Perceptron](book/01-neural-networks-perceptron.md)** explains the fundamental building blocks with physical analogies - start there!
 
 ### 2. Work Through Examples
 
@@ -113,7 +114,8 @@ make
 
 ## 📖 Learning Path
 
-1. **Read Introduction** - Understand the philosophy and approach ([book/00-introduction.md](book/00-introduction.md))
+1. **Read Preface** - Understand what this book is and how to use it ([book/00a-preface.md](book/00a-preface.md))
+2. **Read Introduction** - Understand the philosophy and approach ([book/00c-introduction.md](book/00c-introduction.md))
 2. **Read Foundations (Chapters 1-5)** - Start with terminology, then matrix operations, embeddings, attention, and why transformers
    - [Chapter 1: Neural Networks and the Perceptron](book/01-neural-networks-perceptron.md) (**START HERE!**)
    - [Chapter 2: Multilayer Networks and Architecture](book/02-multilayer-networks-architecture.md)
@@ -225,4 +227,4 @@ This is an educational project. Suggestions for clarity, additional examples, or
 
 ---
 
-**Start your journey**: Read [Introduction](book/00-introduction.md) first, then proceed to [Part I: Foundations](book/00-index.md#part-i-foundations).
+**Start your journey**: Read [Preface](book/00a-preface.md) first, then [Introduction](book/00c-introduction.md), then proceed to [Part I: Foundations](book/00b-toc.md#part-i-foundations).

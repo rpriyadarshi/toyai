@@ -27,5 +27,5 @@
 ---
 ---
 **Navigation:**
-- [← Introduction](00-introduction.md) | [← Index](00-index.md) | [← Previous: Appendix C](appendix-c-hand-calculation-tips.md) | [Next: Conclusion →](conclusion.md)
+- [← Introduction](00c-introduction.md) | [← Index](00b-toc.md) | [← Previous: Appendix C](appendix-c-hand-calculation-tips.md) | [Next: Conclusion →](conclusion.md)
 ---

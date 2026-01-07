@@ -25,5 +25,5 @@
 ---
 ---
 **Navigation:**
-- [← Introduction](00-introduction.md) | [← Index](00-index.md) | [← Previous: Appendix B](appendix-b-terminology-reference.md) | [Next: Appendix D →](appendix-d-common-mistakes.md)
+- [← Introduction](00c-introduction.md) | [← Index](00b-toc.md) | [← Previous: Appendix B](appendix-b-terminology-reference.md) | [Next: Appendix D →](appendix-d-common-mistakes.md)
 ---

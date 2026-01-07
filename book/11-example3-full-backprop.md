@@ -172,5 +172,5 @@ See [code](../examples/example3_full_backprop/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 2: Single Step](10-example2-single-step.md) | [Next: Example 4: Multiple Patterns →](12-example4-multiple-patterns.md)
+- [← Index](00b-toc.md) | [← Previous: Example 2: Single Step](10-example2-single-step.md) | [Next: Example 4: Multiple Patterns →](12-example4-multiple-patterns.md)
 ---

@@ -263,5 +263,5 @@ $$\text{score} = Q \cdot K = \sum_i Q_i K_i$$
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Embeddings](06-embeddings.md) | [Next: Why Transformers? →](08-why-transformers.md)
+- [← Index](00b-toc.md) | [← Previous: Embeddings](06-embeddings.md) | [Next: Why Transformers? →](08-why-transformers.md)
 ---

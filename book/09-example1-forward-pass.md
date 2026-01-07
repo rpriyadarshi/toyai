@@ -144,5 +144,5 @@ See [code](../examples/example1_forward_only/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Why Transformers?](08-why-transformers.md) | [Next: Example 2: Single Step →](10-example2-single-step.md)
+- [← Index](00b-toc.md) | [← Previous: Why Transformers?](08-why-transformers.md) | [Next: Example 2: Single Step →](10-example2-single-step.md)
 ---

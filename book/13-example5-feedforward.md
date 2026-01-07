@@ -101,5 +101,5 @@ See [code](../examples/example5_feedforward/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 4: Multiple Patterns](12-example4-multiple-patterns.md) | [Next: Example 6: Complete →](14-example6-complete.md)
+- [← Index](00b-toc.md) | [← Previous: Example 4: Multiple Patterns](12-example4-multiple-patterns.md) | [Next: Example 6: Complete →](14-example6-complete.md)
 ---

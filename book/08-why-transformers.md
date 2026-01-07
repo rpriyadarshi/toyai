@@ -423,5 +423,5 @@ The transformer's innovation isn't a single breakthrough, but a combination:
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Attention Intuition](07-attention-intuition.md) | [Next: Example 1: Forward Pass →](09-example1-forward-pass.md)
+- [← Index](00b-toc.md) | [← Previous: Attention Intuition](07-attention-intuition.md) | [Next: Example 1: Forward Pass →](09-example1-forward-pass.md)
 ---

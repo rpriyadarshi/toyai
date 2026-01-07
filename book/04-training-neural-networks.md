@@ -5,7 +5,7 @@ In the previous chapters, we've learned about network architecture (perceptrons,
 We'll also introduce key transformer concepts that build on the neural network fundamentals we've established. This chapter serves as a bridge between the neural network foundations and the transformer-specific topics that follow.
 
 **Navigation:**
-- [← Previous: Learning Algorithms](03-learning-algorithms.md) | [Table of Contents](00-index.md) | [Next: The Matrix Core →](05-matrix-core.md)
+- [← Previous: Learning Algorithms](03-learning-algorithms.md) | [Table of Contents](00b-toc.md) | [Next: The Matrix Core →](05-matrix-core.md)
 
 ---
 
@@ -278,5 +278,5 @@ Remember: Every concept in this chapter has a physical analogy. If you ever forg
 ---
 
 **Navigation:**
-- [← Previous: Learning Algorithms](03-learning-algorithms.md) | [← Index](00-index.md) | [Next: The Matrix Core →](05-matrix-core.md)
+- [← Previous: Learning Algorithms](03-learning-algorithms.md) | [← Index](00b-toc.md) | [Next: The Matrix Core →](05-matrix-core.md)
 

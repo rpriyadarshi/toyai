@@ -5,8 +5,8 @@ This directory contains the complete book split into individual chapter files fo
 ## File Organization
 
 ### Introduction and Index
-- **`00-introduction.md`** - Philosophy and approach of this book
-- **`00-index.md`** - Table of contents and navigation hub
+- **`00c-introduction.md`** - Philosophy and approach of this book
+- **`00b-toc.md`** - Table of contents and navigation hub
 
 ### Part I: Foundations
 - **`01-neural-networks-perceptron.md`** - **START HERE!** Neural networks and perceptrons, the fundamental building blocks
@@ -45,8 +45,8 @@ Each chapter file includes navigation links at the bottom:
 
 ## Reading Order
 
-1. Start with `00-introduction.md` for philosophy and approach
-2. Review `00-index.md` for overview and table of contents
+1. Start with `00c-introduction.md` for philosophy and approach
+2. Review `00b-toc.md` for overview and table of contents
 3. Read foundations (01-08) in order
 4. Work through examples (09-15) sequentially
 5. Refer to appendices as needed

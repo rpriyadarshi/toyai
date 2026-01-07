@@ -5,7 +5,7 @@ Now that we understand network architecture—how perceptrons form layers and ho
 These algorithms work together: the loss function tells us how wrong we are, backpropagation computes how to fix it, and gradient descent actually makes the fix. Understanding these three components is essential for understanding how neural networks improve their predictions through training.
 
 **Navigation:**
-- [← Previous: Multilayer Networks and Architecture](02-multilayer-networks-architecture.md) | [Table of Contents](00-index.md) | [Next: Training Neural Networks →](04-training-neural-networks.md)
+- [← Previous: Multilayer Networks and Architecture](02-multilayer-networks-architecture.md) | [Table of Contents](00b-toc.md) | [Next: Training Neural Networks →](04-training-neural-networks.md)
 
 ---
 
@@ -333,5 +333,5 @@ These three algorithms work together: loss functions tell us what's wrong, backp
 ---
 
 **Navigation:**
-- [← Previous: Multilayer Networks and Architecture](02-multilayer-networks-architecture.md) | [← Index](00-index.md) | [Next: Training Neural Networks →](04-training-neural-networks.md)
+- [← Previous: Multilayer Networks and Architecture](02-multilayer-networks-architecture.md) | [← Index](00b-toc.md) | [Next: Training Neural Networks →](04-training-neural-networks.md)
 

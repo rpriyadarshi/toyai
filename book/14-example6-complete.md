@@ -120,5 +120,5 @@ See [code](../examples/example6_complete/main.cpp)
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: Example 5: Feed-Forward](13-example5-feedforward.md) | [Next: Example 7: Character Recognition →](15-example7-character-recognition.md)
+- [← Index](00b-toc.md) | [← Previous: Example 5: Feed-Forward](13-example5-feedforward.md) | [Next: Example 7: Character Recognition →](15-example7-character-recognition.md)
 ---

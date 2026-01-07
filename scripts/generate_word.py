@@ -81,7 +81,9 @@ class WordGenerator:
     def get_chapter_order(self) -> List[str]:
         """Get ordered list of chapter files"""
         return [
-            "00-introduction.md",
+            "00a-preface.md",
+            "00b-toc.md",
+            "00c-introduction.md",
             "01-neural-networks-perceptron.md",
             "02-multilayer-networks-architecture.md",
             "03-learning-algorithms.md",

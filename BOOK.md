@@ -8,9 +8,11 @@
 
 This book has been split into individual chapter files for easier navigation. 
 
-**👉 Start here:** [`book/00-introduction.md`](book/00-introduction.md) - Philosophy and approach
+**👉 Start here:** [`book/00a-preface.md`](book/00a-preface.md) - What this book is and how to use it
 
-**👉 Then:** [`book/00-index.md`](book/00-index.md) - Table of contents
+**👉 Then:** [`book/00c-introduction.md`](book/00c-introduction.md) - Philosophy and approach
+
+**👉 Then:** [`book/00b-toc.md`](book/00b-toc.md) - Table of contents
 
 ### Quick Links
 
@@ -42,8 +44,9 @@ This book has been split into individual chapter files for easier navigation.
 
 ## 📖 How to Read
 
-1. **Start with the introduction**: [`book/00-introduction.md`](book/00-introduction.md) for philosophy and approach
-2. **Review the index**: [`book/00-index.md`](book/00-index.md) for table of contents
+1. **Start with the preface**: [`book/00a-preface.md`](book/00a-preface.md) for what this book is and how to use it
+2. **Read the introduction**: [`book/00c-introduction.md`](book/00c-introduction.md) for philosophy and approach
+3. **Review the table of contents**: [`book/00b-toc.md`](book/00b-toc.md) for navigation
 3. **Read foundations first**: Chapters 1-5 establish core concepts
 3. **Work through examples**: Examples 1-6 build progressively
 4. **Use worksheets**: See `worksheets/` directory for hand-calculation guides

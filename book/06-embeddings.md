@@ -197,5 +197,5 @@ Where $E$ is the embedding matrix and $i$ is the token index.
 ---
 ---
 **Navigation:**
-- [← Index](00-index.md) | [← Previous: The Matrix Core](05-matrix-core.md) | [Next: Attention Intuition →](07-attention-intuition.md)
+- [← Index](00b-toc.md) | [← Previous: The Matrix Core](05-matrix-core.md) | [Next: Attention Intuition →](07-attention-intuition.md)
 ---

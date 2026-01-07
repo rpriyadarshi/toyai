@@ -32,5 +32,5 @@ For $C = A^T$:
 ---
 ---
 **Navigation:**
-- [← Introduction](00-introduction.md) | [← Index](00-index.md) | [← Previous: Example 7: Character Recognition](12-example7-character-recognition.md) | [Next: Appendix B →](appendix-b-terminology-reference.md)
+- [← Introduction](00c-introduction.md) | [← Index](00b-toc.md) | [← Previous: Example 7: Character Recognition](12-example7-character-recognition.md) | [Next: Appendix B →](appendix-b-terminology-reference.md)
 ---
