@@ -72,7 +72,9 @@ Here, the model assigned only 5% probability to the correct answer (class C), wh
 |:---:|:---:|
 | ![Correct Prediction](images/training/loss-correct.svg) | ![Wrong Prediction](images/training/loss-wrong.svg) |
 
-![Cross-Entropy Loss: L = -log(P(target))](images/training/cross-entropy-loss.svg)
+| |
+|:---:|
+| ![Cross-Entropy Loss: L = -log(P(target))](images/training/cross-entropy-loss.svg) |
 
 Loss functions are essential because they tell us how well the model is learning. During training, we compute the loss after each prediction and use it to guide how we update the model's parameters. The entire training process is essentially a search for parameter values that minimize this loss function.
 
@@ -111,7 +113,11 @@ In this example, the negative gradient tells us that increasing the weight will 
 
 **Gradient Visualization:**
 
-![Gradient Visualization](images/training/gradient-visualization.svg)
+
+| |
+|:---:|
+| ![Gradient Visualization](images/training/gradient-visualization.svg) |
+
 
 ### The Learning Rate
 
@@ -217,7 +223,11 @@ The forward pass is the process of computing predictions by passing input data t
 
 In a neural network, the forward pass follows a specific sequence of transformations. First, the input data is received by the input layer. Then each hidden layer processes the data, applying weight matrices, adding biases, and applying activation functions. The output layer produces the final predictions. For classification tasks, the output is typically converted to probabilities using a softmax function. For a concrete classification example, see [Example 7: Character Recognition](15-example7-character-recognition.md), which shows how pixel inputs become class predictions through the same process.
 
-![Forward Pass Flow](images/flow-diagrams/forward-pass-flow.svg)
+
+| |
+|:---:|
+| ![Forward Pass Flow](images/flow-diagrams/forward-pass-flow.svg) |
+
 
 We trace through a complete forward pass example using arbitrary values chosen to illustrate the transformation process:
 
@@ -259,7 +269,11 @@ $$\frac{\partial L}{\partial \mathbf{W}_1} = \frac{\partial L}{\partial y} \frac
 
 Each term in this product is computed during the backward pass, with gradients flowing from the output back to the input. This is exactly what backpropagation does: it applies the chain rule at each layer, computing gradients layer by layer from output to input.
 
-![Backward Pass Flow](images/flow-diagrams/backward-pass-flow.svg)
+
+| |
+|:---:|
+| ![Backward Pass Flow](images/flow-diagrams/backward-pass-flow.svg) |
+
 
 We trace through a backward pass example using arbitrary gradient values chosen to illustrate the propagation process:
 

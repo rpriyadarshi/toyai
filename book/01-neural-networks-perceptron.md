@@ -21,7 +21,11 @@ Neural networks are computational systems inspired by how the brain processes in
 
 Neural networks matter because they can learn complex patterns from data without being explicitly programmed for each pattern. This ability to learn from examples makes them the foundation of modern AI, including the transformer models we'll study in later chapters. They excel at tasks where the rules are too complex to write down explicitly, but where we have many examples of the desired behavior.
 
-![Neural Network Structure: Factory Assembly Line](images/network-structure/neural-network-structure.svg)
+
+| |
+|:---:|
+| ![Neural Network Structure: Factory Assembly Line](images/network-structure/neural-network-structure.svg) |
+
 
 To see a neural network in action, [Example 1: Minimal Forward Pass](09-example1-forward-pass.md) demonstrates how a transformer makes predictions step by step through the forward pass.
 
@@ -273,7 +277,11 @@ $$\mathbf{y}_2 = \mathbf{W}_2 (\mathbf{W}_1 \mathbf{x} + \mathbf{b}_1) + \mathbf
 
 This simplifies to $\mathbf{y}_2 = \mathbf{W}_{\text{combined}} \mathbf{x} + \mathbf{b}_{\text{combined}}$, where $\mathbf{W}_{\text{combined}} = \mathbf{W}_2 \mathbf{W}_1$ and $\mathbf{b}_{\text{combined}} = \mathbf{W}_2 \mathbf{b}_1 + \mathbf{b}_2$. This is just a single linear transformation! No matter how many linear layers you stack, the result is always equivalent to a single linear layer. This is why linear layers "collapse"—they can't create any complexity beyond what a single layer can do.
 
-![Linear Layers Collapse: Two layers combine into one](images/activation-functions/linear-layers-collapse.svg)
+
+| |
+|:---:|
+| ![Linear Layers Collapse: Two layers combine into one](images/activation-functions/linear-layers-collapse.svg) |
+
 
 **How Non-Linear Activation Functions Prevent Collapse:**
 
@@ -283,7 +291,11 @@ $$\mathbf{y}_2 = f(\mathbf{W}_2 f(\mathbf{W}_1 \mathbf{x} + \mathbf{b}_1) + \mat
 
 Because $f()$ is non-linear, we cannot simplify this to a single linear transformation. The non-linearity "breaks" the composition, preventing collapse. Each layer now contributes something unique that cannot be replicated by a single layer.
 
-![Non-Linear Activation Prevents Collapse: Activation functions break linear composition](images/activation-functions/nonlinear-prevents-collapse.svg)
+
+| |
+|:---:|
+| ![Non-Linear Activation Prevents Collapse: Activation functions break linear composition](images/activation-functions/nonlinear-prevents-collapse.svg) |
+
 
 **How Non-Linear Composition Creates Complex Patterns:**
 
@@ -294,7 +306,11 @@ Think of it like this: A single non-linear function can create simple curves (li
 2. **Combine simple patterns** in middle layers (e.g., "is this a corner?" or "does this look like part of a face?")
 3. **Recognize complex patterns** in later layers (e.g., "is this a complete face?" or "does this sentence make sense?")
 
-![Hierarchical Pattern Learning: Simple patterns in early layers build to complex patterns in later layers](images/activation-functions/hierarchical-pattern-learning.svg)
+
+| |
+|:---:|
+| ![Hierarchical Pattern Learning: Simple patterns in early layers build to complex patterns in later layers](images/activation-functions/hierarchical-pattern-learning.svg) |
+
 
 **Concrete Example: Hierarchical Pattern Learning**
 
@@ -310,7 +326,11 @@ With ReLU activation functions, here's what happens:
 
 Each layer builds on the previous layer's output, and the non-linear activation function is what makes this hierarchical composition possible. Without it, Layer 2 would just be a linear combination of Layer 1's outputs, which could be replicated by a single layer. With non-linear activation, Layer 2 creates genuinely new patterns that Layer 1 couldn't represent.
 
-![Digit Recognition Through Layers: Visual progression from input image through layer detections to final classification](images/activation-functions/digit-recognition-layers.svg)
+
+| |
+|:---:|
+| ![Digit Recognition Through Layers: Visual progression from input image through layer detections to final classification](images/activation-functions/digit-recognition-layers.svg) |
+
 
 **Mathematical Intuition:**
 
@@ -356,7 +376,11 @@ Consider our handwritten digit recognition example. The network doesn't just lea
    - Output layer computes: $\text{logit}_i = \mathbf{w}_i \cdot \mathbf{h}_3 + b_i$ for each class $i$ (where a logit is the raw, unnormalized score before converting to probabilities; we'll define this formally in [Chapter 3: Learning Algorithms](03-learning-algorithms.md))
    - The class with the highest logit becomes the prediction
 
-![Feature Vectors to Classification: How feature vectors flow through layers to final classification decision](images/activation-functions/feature-vectors-classification.svg)
+
+| |
+|:---:|
+| ![Feature Vectors to Classification: How feature vectors flow through layers to final classification decision](images/activation-functions/feature-vectors-classification.svg) |
+
 
 **Concrete Example: Recognizing the Digit "6"**
 
@@ -564,7 +588,11 @@ The most common activation functions you'll encounter are:
 
 **Perceptron Diagram:**
 
-![The Perceptron: Single Neuron Decision-Making Unit](images/network-structure/perceptron-diagram.svg)
+
+| |
+|:---:|
+| ![The Perceptron: Single Neuron Decision-Making Unit](images/network-structure/perceptron-diagram.svg) |
+
 
 **Activation Function Behavior:**
 

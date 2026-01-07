@@ -33,7 +33,11 @@ $$C = AB = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} e & f \\
 
 **Example:**
 
-![Matrix Multiplication: Identity Matrix A × B = B](images/other/matrix-multiplication-identity.svg)
+
+| |
+|:---:|
+| ![Matrix Multiplication: Identity Matrix A × B = B](images/other/matrix-multiplication-identity.svg) |
+
 
 The identity matrix $A$ doesn't change $B$ - this is like a "pass-through" layer.
 
@@ -48,7 +52,9 @@ When we multiply a vector by a matrix, we:
 
 **Example:**
 
-![Vector Rotation: [1,0] rotated 90° to [0,1]](images/other/vector-rotation-90deg.svg)
+| |
+|:---:|
+| ![Vector Rotation: [1,0] rotated 90° to [0,1]](images/other/vector-rotation-90deg.svg) |
 
 **Why this matters for learning:**
 - Different matrices = different transformations

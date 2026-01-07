@@ -180,7 +180,11 @@ graph LR
 
 **Attention Weights Probability Distribution:**
 
-![Attention Weights: Probability Distribution Over Tokens](images/other/attention-weights-distribution.svg)
+
+| |
+|:---:|
+| ![Attention Weights: Probability Distribution Over Tokens](images/other/attention-weights-distribution.svg) |
+
 
 **Example:**
 ```

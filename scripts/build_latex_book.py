@@ -136,9 +136,10 @@ class LaTeXBookBuilder:
             rel_pdf_path = self._get_relative_path(self.latex_dir, pdf_path)
             latex_path_str = str(rel_pdf_path).replace('\\', '/')
             
-            # Professional figure scaling: use width constraint with aspect ratio preservation
-            # This ensures images fit properly and maintain their proportions
-            figure_options = 'width=0.85\\textwidth, keepaspectratio'
+            # Professional figure scaling: use consistent, moderate width
+            # 0.65\textwidth provides professional appearance - large enough for detail,
+            # but leaves proper margins and ensures consistency across all diagrams
+            figure_options = 'width=0.65\\textwidth, keepaspectratio'
             
             if '\\includesvg' in full_match:
                 return f'\\includegraphics[{figure_options}]{{{latex_path_str}}}'
@@ -155,24 +156,45 @@ class LaTeXBookBuilder:
             table_content = match.group(0)
             
             # Detect number of columns in the table
-            # Count column specifications: >{...}p{...} patterns
+            # Method 1: Count column specifications: >{...}p{...} or >{...}c patterns
             column_matches = re.findall(r'>\{[^}]*\}[cp]', table_content)
-            num_columns = len(column_matches) if column_matches else 3  # Default to 3 if can't detect
+            
+            # Method 2: Count standalone column types (c, l, r, p{...}) in table definition
+            # Look for patterns like @{}c@{} or p{...} or c|l|r
+            if not column_matches:
+                # Check for simple column definitions like @{}c@{} or c|l|r
+                table_def_match = re.search(r'\\begin\{(?:longtable|table|tabular)\}.*?\{([^}]+)\}', table_content)
+                if table_def_match:
+                    col_def = table_def_match.group(1)
+                    # Count column separators (|) and column types
+                    # Each | or column type (c, l, r, p) indicates a column
+                    col_count = len(re.findall(r'[clrp]\{', col_def)) + len(re.findall(r'[clr](?![a-z])', col_def))
+                    if col_count > 0:
+                        num_columns = col_count
+                    else:
+                        # Fallback: count images in the table
+                        image_count = len(re.findall(r'\\includegraphics', table_content))
+                        num_columns = image_count if image_count > 0 else 1
+                else:
+                    # Fallback: count images in the table
+                    image_count = len(re.findall(r'\\includegraphics', table_content))
+                    num_columns = image_count if image_count > 0 else 1
+            else:
+                num_columns = len(column_matches)
             
             # Professional scaling based on column count
-            # Calculate proper width based on available space
-            # For 3 columns: each column is ~0.31\textwidth (accounting for spacing)
-            # Use width constraint with keepaspectratio for professional results
+            # Use consistent, moderate scaling that works well for most diagram types
+            # All use keepaspectratio to maintain proper proportions
             if num_columns >= 3:
                 # 3+ columns: use 0.30\textwidth per image to ensure all fit on one page
-                # This accounts for column spacing and ensures proper fit
                 table_image_options = 'width=0.30\\textwidth, keepaspectratio'
             elif num_columns == 2:
                 # 2 columns: use 0.45\textwidth per image
                 table_image_options = 'width=0.45\\textwidth, keepaspectratio'
             else:
-                # Single column: use 0.85\textwidth
-                table_image_options = 'width=0.85\\textwidth, keepaspectratio'
+                # Single column: use 0.65\textwidth (professional, consistent size)
+                # Slightly reduced from 0.70 to ensure better consistency across different image types
+                table_image_options = 'width=0.65\\textwidth, keepaspectratio'
             
             # Replace any existing image width/height specifications with professional constraints
             # Escape the options string properly for regex replacement

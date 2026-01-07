@@ -42,7 +42,11 @@ For each layer: $\mathbf{y} = f(\mathbf{W}\mathbf{x} + \mathbf{b})$
 
 Each layer transforms the data in a specific way. The input layer receives the raw input data, the first hidden layer converts it into a numerical representation, the second hidden layer refines that representation, and the output layer produces the final output values. The specific numerical values are illustrative; in a trained network, these would result from the learned weight matrices and activation functions.
 
-![Multi-Layer Neural Network: Input → Hidden Layers → Output](images/network-structure/multi-layer-network.svg)
+
+| |
+|:---:|
+| ![Multi-Layer Neural Network: Input → Hidden Layers → Output](images/network-structure/multi-layer-network.svg) |
+
 
 Layers enable complex transformations that a single perceptron cannot achieve. In algebra, this is like composing functions. If you have two functions $f(x)$ and $g(x)$, composing them gives you $f(g(x))$—you apply $g$ first, then apply $f$ to the result. Multiple layers work the same way: Layer 2 processes the output of Layer 1, Layer 3 processes the output of Layer 2, and so on. By stacking layers, networks can learn hierarchical patterns—simple patterns in early layers, and increasingly complex patterns in deeper layers. This hierarchical learning is what makes deep neural networks so powerful.
 
@@ -271,7 +275,11 @@ $$\text{FFN}\left(\begin{bmatrix} 0.3 \\ 0.7 \end{bmatrix}\right) = \text{ReLU}\
 
 The input starts as a 2-dimensional vector, expands to 4 dimensions in the middle (where the network can learn complex feature combinations), and then compresses back to 2 dimensions. The expansion gives the network capacity to learn, while the compression ensures the output has the correct shape for the next layer. The specific numerical values are illustrative; in practice, these would be determined by the learned weight matrices.
 
-![Feed-Forward Network Structure](images/network-structure/ffn-structure.svg)
+
+| |
+|:---:|
+| ![Feed-Forward Network Structure](images/network-structure/ffn-structure.svg) |
+
 
 Feed-forward networks are crucial because they add both non-linearity and capacity to neural networks. The expansion phase allows the network to learn complex feature combinations that wouldn't be possible with just linear transformations. This is why FFNs are a core component of many modern neural network architectures.
 

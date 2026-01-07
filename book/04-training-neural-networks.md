@@ -15,7 +15,11 @@ The training loop combines forward pass, loss computation, backward pass, and we
 
 The complete cycle works as follows. First, the forward pass computes a prediction by passing input data through the network. Next, we compute the loss by comparing this prediction to the target. Then the backward pass computes gradients, telling us how much each parameter should change. Finally, we perform a weight update, changing the parameters using gradient descent. We then repeat this entire cycle with the next example.
 
-![Training Loop](images/training/training-loop.svg)
+
+| |
+|:---:|
+| ![Training Loop](images/training/training-loop.svg) |
+
 
 To understand this intuitively, think of learning to play a musical instrument. You play a note (forward pass), hear if it's wrong (loss), figure out what to adjust (backward pass), and adjust your fingers (weight update). You repeat this process until you play correctly. Neural network training follows the same pattern, but instead of adjusting your fingers, the model adjusts its weights.
 
@@ -70,7 +74,11 @@ All 4 sequences are processed together in parallel, and their gradients are aver
 
 The sequences shown are illustrative examples. In practice, these would be converted to numerical vectors before processing (we'll explain how tokens become vectors in [Chapter 6: Embeddings](06-embeddings.md)). The key point is that all sequences in the batch are processed in parallel, and their gradients are averaged.
 
-![Batch Training](images/training/batch-training.svg)
+
+| |
+|:---:|
+| ![Batch Training](images/training/batch-training.svg) |
+
 
 Batching matters because it enables efficient GPU utilization and provides stable gradient estimates. Larger batches give more stable gradients (since you're averaging over more examples) but require more memory. Smaller batches use less memory but may have noisier gradients.
 
@@ -99,7 +107,11 @@ The specific numbers (1000 sequences, batch size 32) are chosen for illustration
 
 Models typically need multiple epochs to learn effectively. Each epoch gives the model another opportunity to see all training data and improve its predictions. Early epochs show rapid improvement as the model learns basic patterns, while later epochs show slower, more refined improvements.
 
-![Training Progress: Loss Decreases Over Epochs](images/training/training-loss-epochs.svg)
+
+| |
+|:---:|
+| ![Training Progress: Loss Decreases Over Epochs](images/training/training-loss-epochs.svg) |
+
 
 ---
 
@@ -115,7 +127,11 @@ Second, transformer blocks (of which there can be multiple) perform the core pro
 
 Third, the output component converts the processed information into predictions. This includes an output projection that converts to vocabulary predictions, and a softmax function that converts those predictions into probabilities.
 
-![Complete Transformer Architecture](images/network-structure/complete-transformer-architecture.svg)
+
+| |
+|:---:|
+| ![Complete Transformer Architecture](images/network-structure/complete-transformer-architecture.svg) |
+
 
 To see the complete transformer architecture implemented with all components working together, [Example 6: Complete Transformer](14-example6-complete.md) demonstrates the full implementation including multiple transformer blocks, layer normalization, residual connections, and the complete training pipeline.
 
