@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="856.8pt"
-   height="424.637812pt"
-   viewBox="0 0 856.8 424.637812"
+   width="640.492pt"
+   height="337.13901pt"
+   viewBox="0 0 640.49201 337.13901"
    version="1.1"
    id="svg469"
    sodipodi:docname="linear-layers-collapse.svg"
@@ -27,14 +27,14 @@
      inkscape:document-units="pt"
      showgrid="false"
      inkscape:zoom="1.1467087"
-     inkscape:cx="571.19999"
-     inkscape:cy="289.08824"
+     inkscape:cx="429.05404"
+     inkscape:cy="155.6629"
      inkscape:window-width="3840"
      inkscape:window-height="2091"
      inkscape:window-x="0"
      inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg469" />
+     inkscape:current-layer="figure_1" />
   <metadata
      id="metadata2">
     <rdf:RDF>
@@ -64,7 +64,7 @@
        refY="3"
        orient="auto">
       <polygon
-         points="0 0, 8 3, 0 6"
+         points="0,6 0,0 8,3 "
          fill="#2563eb"
          id="polygon6" />
     </marker>
@@ -76,16 +76,18 @@
        refY="3"
        orient="auto">
       <polygon
-         points="0 0, 8 3, 0 6"
+         points="0,6 0,0 8,3 "
          fill="#dc2626"
          id="polygon9" />
     </marker>
   </defs>
   <g
      id="figure_1"
-     style="display:inline">
+     style="display:inline"
+     transform="translate(-34.28,-65.434227)">
     <g
-       id="axes_1">
+       id="axes_1"
+       transform="translate(27.01388,31.109889)">
       <g
          id="box_layer1">
         <g
@@ -100,7 +102,7 @@
       <g
          id="patch_3">
         <path
-           d="m 189.72,227.63781 h 56.16"
+           d="m 189.72,227.63781 56.16,1e-5"
            clip-path="url(#pa13fa18ed5)"
            style="fill:none;stroke:#2563eb;stroke-width:2"
            inkscape:connector-type="polyline"
@@ -133,7 +135,8 @@
         </g>
       </g>
       <g
-         id="patch_6">
+         id="patch_6"
+         transform="translate(-31.376155,2.2546696)">
         <path
            d="m 395.30094,132.73781 q 68.20065,0 134.16523,0"
            clip-path="url(#pa13fa18ed5)"
@@ -735,7 +738,8 @@
         </g>
       </g>
       <g
-         id="text_9">
+         id="text_9"
+         transform="translate(-29.393259,8.1972888)">
         <!-- Collapse! -->
         <g
            style="fill:#dc2626"
@@ -802,7 +806,8 @@
         </g>
       </g>
       <g
-         id="text_10">
+         id="text_10"
+         transform="translate(-6.4370657)">
         <!-- Input $\mathbf{x}$ -->
         <g
            transform="matrix(0.11,0,0,-0.11,42.3,132.73781)"
@@ -845,7 +850,8 @@
         </g>
       </g>
       <g
-         id="text_11">
+         id="text_11"
+         transform="translate(-47.765143,1.9449718)">
         <!-- Output $\mathbf{y}_2$ -->
         <g
            transform="matrix(0.11,0,0,-0.11,603.9,132.73781)"
@@ -896,10 +902,11 @@
         </g>
       </g>
       <g
-         id="text_12">
+         id="text_12"
+         transform="translate(-9.8534011,13.816198)">
         <!-- Linear Layers Collapse: Two layers = One layer -->
         <g
-           transform="matrix(0.14,0,0,-0.14,244.15562,17.837812)"
+           transform="matrix(0.14,0,0,-0.14,159.30915,62.255841)"
            id="g459">
           <defs
              id="defs365">
@@ -1108,10 +1115,10 @@
     <clipPath
        id="pa13fa18ed5">
       <rect
-         x="7.2"
-         y="37.837812"
-         width="842.4"
-         height="379.6"
+         x="7.1999998"
+         y="37.837811"
+         width="842.40002"
+         height="379.60001"
          id="rect464" />
     </clipPath>
   </defs>
