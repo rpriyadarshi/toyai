@@ -1,5 +1,10 @@
 # Preface
 
+**Navigation:**
+- [Table of Contents](00b-toc.md) | [Next: Introduction →](00c-introduction.md)
+
+---
+
 ## What This Book Is
 
 This book is a progressive learning system for understanding transformers—the architecture behind modern language models like GPT, BERT, and others. It takes you from first principles to a complete implementation, with every step verifiable by hand.
@@ -75,3 +80,7 @@ By the end of this book, you will:
 
 This understanding is not superficial. It is the kind of understanding that comes from seeing every step, computing every value, and verifying every result. It is the understanding that enables real engineering work.
 
+---
+
+**Navigation:**
+- [Table of Contents](00b-toc.md) | [Next: Introduction →](00c-introduction.md)

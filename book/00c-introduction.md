@@ -1,5 +1,10 @@
 # Introduction
 
+**Navigation:**
+- [← Previous: Preface](00a-preface.md) | [Table of Contents](00b-toc.md) | [Next: Chapter 1 →](01-neural-networks-perceptron.md)
+
+---
+
 ## On Mathematics and Computation
 
 This book treats mathematics as a system of operations on symbols, not as abstract philosophy or aesthetic expression. This section establishes the operational framework that guides every presentation in this book.
@@ -88,3 +93,8 @@ This means:
 This approach aligns mathematics with engineering and computer science practice, where systems are understood through execution, inspection, and verification—not through compressed notation or symbolic performance.
 
 The goal is not to impress, but to make systems understandable, reproducible, and correct.
+
+---
+
+**Navigation:**
+- [← Previous: Preface](00a-preface.md) | [Table of Contents](00b-toc.md) | [Next: Chapter 1 →](01-neural-networks-perceptron.md)
