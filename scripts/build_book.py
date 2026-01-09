@@ -32,13 +32,15 @@ class BookBuilder:
     
     def __init__(self, book_dir: Path, output_dir: Path, 
                  cache_dir: Path = Path(".build"),
-                 force: bool = False, verbose: bool = False, quiet: bool = False):
+                 force: bool = False, verbose: bool = False, quiet: bool = False,
+                 sage_template: bool = True):
         self.book_dir = book_dir
         self.output_dir = output_dir
         self.cache_dir = cache_dir
         self.force = force
         self.verbose = verbose
         self.quiet = quiet
+        self.sage_template = sage_template
         
         # Initialize cache and manifest
         self.cache = BuildCache(cache_dir)
@@ -166,7 +168,7 @@ class BookBuilder:
         self.log("Building LaTeX source...", "info")
         
         builder = LaTeXBookBuilder(self.book_dir, self.output_dir, 
-                                  self.cache, self.manifest, self.force)
+                                  self.cache, self.manifest, self.force, self.sage_template)
         main_tex = builder.build_complete_latex()
         
         if main_tex:
@@ -326,6 +328,10 @@ Examples:
                        help='Verbose output')
     parser.add_argument('--quiet', action='store_true',
                        help='Quiet mode (errors only)')
+    parser.add_argument('--standard', action='store_true',
+                       help='Use standard template instead of SAGE (SAGE is default)')
+    # SAGE is default, so we track it as "not standard"
+    parser.set_defaults(sage=True)
     
     # Paths
     parser.add_argument('--book-dir', type=Path, default=Path("book"),
@@ -337,6 +343,9 @@ Examples:
     
     args = parser.parse_args()
     
+    # Determine template: SAGE is default unless --standard is specified
+    use_sage = not getattr(args, 'standard', False)
+    
     # Initialize builder
     builder = BookBuilder(
         args.book_dir,
@@ -344,7 +353,8 @@ Examples:
         args.cache_dir,
         args.force,
         args.verbose,
-        args.quiet
+        args.quiet,
+        use_sage
     )
     
     # Handle clean

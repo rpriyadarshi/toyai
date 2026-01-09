@@ -13,6 +13,68 @@ These algorithms work together: the loss function tells us how wrong we are, bac
 
 A **loss function** (also called **cross-entropy loss**) measures how wrong the model's prediction is compared to the target. In basic algebra, this is like measuring the distance between two points. If you have a target point and a predicted point, you can compute how far apart they are. The loss function does something similar: it measures how far the model's prediction is from the correct answer. Think of loss like a score in a game: lower loss means better predictions, while higher loss means worse predictions. Our goal during training is to minimize the loss, which maximizes the model's accuracy.
 
+### Understanding Entropy and Cross-Entropy
+
+Before we dive into the cross-entropy loss formula, let's understand what **entropy** and **cross-entropy** mean. These concepts come from information theory, and understanding them will help you see why this loss function works so well for neural networks.
+
+#### What is Entropy?
+
+**Entropy** measures uncertainty or randomness in a probability distribution. Think of it as measuring how "surprised" you would be by an outcome:
+
+- **High entropy** = High uncertainty (outcomes are unpredictable, like a fair coin flip)
+- **Low entropy** = Low uncertainty (outcome is predictable, like a heavily biased coin)
+
+Mathematically, entropy is defined as:
+
+$$H(P) = -\sum_{i} P(i) \log P(i)$$
+
+Where $P(i)$ is the probability of outcome $i$. The entropy is the average amount of "surprise" or information in the distribution.
+
+**Example:** Consider a fair coin with 50% heads, 50% tails:
+- Entropy = $-[0.5 \log(0.5) + 0.5 \log(0.5)] = -[-0.347 - 0.347] = 0.693$ (high entropy = very uncertain)
+
+**Example:** Consider a biased coin with 99% heads, 1% tails:
+- Entropy = $-[0.99 \log(0.99) + 0.01 \log(0.01)] \approx 0.056$ (low entropy = very predictable)
+
+#### What is Cross-Entropy?
+
+**Cross-entropy** measures how different two probability distributions are. In neural networks, we use it to compare:
+- The **true distribution** (what actually happened: 100% probability on the correct class, 0% on others)
+- The **predicted distribution** (what the model thinks: probabilities assigned to each class)
+
+Mathematically, cross-entropy is:
+
+$$H(P, Q) = -\sum_{i} P(i) \log Q(i)$$
+
+Where:
+- $P$ = True distribution (one-hot: [0, 0, 1, 0] for class C)
+- $Q$ = Predicted distribution (e.g., [0.1, 0.2, 0.6, 0.1])
+
+**Why "cross"?** We're crossing two distributions: we take probabilities from the true distribution $P$ and apply the log of probabilities from the predicted distribution $Q$.
+
+#### Why Cross-Entropy for Classification?
+
+For classification problems, the true distribution is **one-hot**: it assigns 100% probability to the correct class and 0% to all others. For example, if the correct answer is class C in a 4-class problem:
+
+$$\mathbf{y}_{\text{true}} = \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}$$
+
+When we compute cross-entropy with a one-hot true distribution, most terms become zero (because $P(i) = 0$ for all incorrect classes), and we're left with:
+
+$$H(P, Q) = -\log Q(\text{target})$$
+
+This is exactly the formula we use for loss! The cross-entropy loss simplifies to just the negative log of the predicted probability for the correct class.
+
+**Why this works well:**
+- If the model is **confident and correct** (e.g., 90% probability on correct class): Loss = $-\log(0.9) \approx 0.1$ (low loss ✓)
+- If the model is **confident but wrong** (e.g., 90% on wrong class, 5% on correct): Loss = $-\log(0.05) \approx 3.0$ (high loss ✗)
+- If the model is **uncertain** (e.g., 25% on each of 4 classes): Loss = $-\log(0.25) = 1.39$ (moderate loss)
+
+The cross-entropy loss naturally penalizes confident wrong predictions and rewards confident correct predictions, which is exactly what we want for training.
+
+### The Cross-Entropy Loss Formula
+
+Now that we understand entropy and cross-entropy, the loss function we use is:
+
 The cross-entropy loss is defined mathematically as:
 
 $$L = -\log P_{\text{model}}(y_{\text{target}})$$
@@ -35,7 +97,9 @@ We use **log probabilities** rather than raw probabilities for two important rea
 
 - **Computational efficiency:** Logarithms convert multiplication into addition, which is computationally faster and more stable for gradient calculations.
 
-To understand this intuitively, think of loss like a golf score: lower is better. A perfect prediction gives you a loss near 0, while a wrong prediction gives you a high loss. Just as in golf, you want to minimize your score.
+To understand this intuitively, think of loss like the distance from a target: lower is better. A perfect prediction gives you a loss near 0 (you hit the bullseye), while a wrong prediction gives you a high loss (you're far from the target). Just like in archery or darts, you want to minimize your distance from the target.
+
+**Note for programmers:** In this context, "class" refers to a **classification category** (like "cat", "dog", "bird" in image classification), not a programming class (like `class Matrix`). A "4-class classification problem" means there are 4 possible categories the model can predict.
 
 We illustrate this with a numerical example. For clarity, we use a simple 4-class classification problem with arbitrary class labels:
 

@@ -15,8 +15,16 @@ from functools import partial
 
 
 def find_converter() -> Optional[str]:
-    """Find available SVG to PDF converter (skips Inkscape)"""
-    # Try rsvg-convert first (good quality, lighter than Inkscape)
+    """Find available SVG to PDF converter (prefers Inkscape for best quality)"""
+    # Try Inkscape first (best quality, handles Inkscape connectors properly)
+    try:
+        result = subprocess.run(['inkscape', '--version'], 
+                              capture_output=True, check=True)
+        return 'inkscape'
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        pass
+    
+    # Try rsvg-convert (good quality, lighter than Inkscape)
     try:
         result = subprocess.run(['rsvg-convert', '--version'], 
                               capture_output=True, check=True)
@@ -31,25 +39,18 @@ def find_converter() -> Optional[str]:
     except ImportError:
         pass
     
-    # Skip Inkscape - user requested not to use it
-    # Only use as last resort if nothing else is available
-    try:
-        result = subprocess.run(['inkscape', '--version'], 
-                              capture_output=True, check=True)
-        return 'inkscape'
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        pass
-    
     return None
 
 
 def convert_with_inkscape(svg_path: Path, pdf_path: Path) -> Tuple[bool, str]:
-    """Convert SVG to PDF using Inkscape"""
+    """Convert SVG to PDF using Inkscape with optimal settings for diagrams"""
     try:
         result = subprocess.run([
             'inkscape',
             '--export-filename', str(pdf_path),
             '--export-type', 'pdf',
+            '--export-area-drawing',  # Export only the drawing area, not the full page
+            '--export-text-to-path',  # Convert text to paths for better compatibility
             str(svg_path)
         ], capture_output=True, text=True, check=True)
         return True, ""

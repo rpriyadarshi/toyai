@@ -1,26 +1,48 @@
-% Professional LaTeX Book Template
+% SAGE Publications Book Template
 % Understanding Transformers: From First Principles to Mastery
+% Prepared for SAGE Publications submission
 
-\documentclass[11pt,openany]{book}
+\documentclass[12pt,openany]{book}
 
-% Page geometry and layout
+% Page geometry - SAGE prefers standard margins
 \usepackage[letterpaper,margin=1in]{geometry}
+
+% Double spacing (SAGE requirement)
 \usepackage{setspace}
-\onehalfspacing
+\doublespacing
 
-% Fonts (XeLaTeX/LuaLaTeX)
-\usepackage{fontspec}
-\setmainfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-\setmonofont{Liberation Mono}
+% Fonts - Use standard fonts compatible with SAGE production
+% Note: SAGE will handle final font selection, but we use standard fonts here
+% Check if we're using XeLaTeX/LuaLaTeX (fontspec) or pdfLaTeX (times)
+\RequirePackage{iftex}
+\ifXeTeX
+    % XeLaTeX - use fontspec
+    \usepackage{fontspec}
+    \setmainfont{Times New Roman}
+    \setsansfont{Arial}
+    \setmonofont{Courier New}
+\else
+    \ifLuaTeX
+        % LuaLaTeX - use fontspec
+        \usepackage{fontspec}
+        \setmainfont{Times New Roman}
+        \setsansfont{Arial}
+        \setmonofont{Courier New}
+    \else
+        % pdfLaTeX - use times package
+        \usepackage{times}
+        \usepackage{mathptmx}  % Math in Times
+    \fi
+\fi
 
-% Math packages
+% Math packages (SAGE requires editable equations, not images)
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{mathtools}
 
 % Graphics and images
+% SAGE requires high-quality figures (300 dpi minimum)
 \usepackage{graphicx}
 \usepackage{svg}  % For SVG inclusion (requires inkscape)
 \usepackage{adjustbox}  % For image scaling
@@ -30,12 +52,18 @@
 \usepackage{booktabs}  % For better table formatting
 
 % Index and bibliography
+% SAGE requires .bib and .bst files to be included
 \usepackage{makeidx}  % For index generation
 \makeindex
 
-% Hyperlinks and bookmarks
+% Bibliography - SAGE will format according to their style
+% Include your .bib file with submission
+\usepackage{natbib}
+% Use a standard style - SAGE will convert to their house style
+\bibliographystyle{plainnat}
+
+% Hyperlinks (for review/editing - SAGE may remove in final production)
 \usepackage{hyperref}
-\usepackage{bookmark}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -92,6 +120,13 @@
 % Pandoc table column width compatibility
 \newcommand{\real}[1]{#1}
 
+% SAGE-specific notes:
+% - No headers or footers (SAGE will add these in production)
+% - All equations must be editable (use LaTeX math, not images)
+% - Figures should be 300 dpi minimum
+% - Include .bib and .bst files with submission
+% - Double-spaced throughout (already set above)
+
 % Title page information (will be set by build script)
 \title{Understanding Transformers: From First Principles to Mastery}
 \author{ToyAI Educational Project}
@@ -106,7 +141,7 @@
 % Title page
 \maketitle
 
-% Copyright page
+% Copyright page (SAGE will handle final copyright page)
 \thispagestyle{empty}
 \vspace*{\fill}
 \begin{center}
@@ -151,7 +186,8 @@ All rights reserved.
 \backmatter
 
 % Bibliography
-\bibliographystyle{plain}
+% SAGE requires .bib file to be included with submission
+% They will format according to their house style
 \bibliography{references}
 \cleardoublepage
 
@@ -160,4 +196,3 @@ All rights reserved.
 \cleardoublepage
 
 \end{document}
-

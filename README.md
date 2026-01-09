@@ -26,10 +26,10 @@ The book is organized in two ways:
 - **Read online**: View chapters directly in your editor or on GitHub
 
 ### Complete PDF Book
-Generate a professional, downloadable PDF with all content:
+Generate a professional, downloadable PDF with all content (SAGE Publications format by default):
 
 ```bash
-python3 scripts/build_book.py
+python3 scripts/build_book.py --pdf
 ```
 
 This creates `output/Understanding_Transformers_Complete.pdf` containing:

@@ -20,7 +20,7 @@ class LaTeXBookBuilder:
     """Builds LaTeX book from Markdown chapters"""
     
     def __init__(self, book_dir: Path, output_dir: Path, cache: BuildCache, 
-                 manifest: BuildManifest, force: bool = False):
+                 manifest: BuildManifest, force: bool = False, sage_template: bool = True):
         self.book_dir = book_dir
         self.output_dir = output_dir
         self.latex_dir = output_dir / "latex"
@@ -28,6 +28,7 @@ class LaTeXBookBuilder:
         self.cache = cache
         self.manifest = manifest
         self.force = force
+        self.sage_template = sage_template
         
         # Ensure directories exist
         self.latex_dir.mkdir(parents=True, exist_ok=True)
@@ -384,7 +385,12 @@ class LaTeXBookBuilder:
     def _create_main_latex(self, main_tex: Path, front_matter_files: List[Path], 
                           main_matter_files: List[Path], back_matter_files: List[Path]):
         """Create main LaTeX file that includes all chapters in proper order"""
-        template_path = Path(__file__).parent.parent / "templates" / "book_template.tex"
+        # Select template based on sage_template flag
+        if self.sage_template:
+            template_name = "book_template_sage.tex"
+        else:
+            template_name = "book_template.tex"
+        template_path = Path(__file__).parent.parent / "templates" / template_name
         
         # Read template
         if template_path.exists():
@@ -481,6 +487,10 @@ def main():
                        help='Output directory for LaTeX files')
     parser.add_argument('--force', action='store_true',
                        help='Force rebuild all chapters')
+    parser.add_argument('--standard', action='store_true',
+                       help='Use standard template instead of SAGE (SAGE is default)')
+    # SAGE is default
+    parser.set_defaults(sage=True)
     
     args = parser.parse_args()
     
@@ -489,8 +499,11 @@ def main():
     cache = BuildCache(cache_dir)
     manifest = BuildManifest(cache)
     
+    # Determine template: SAGE is default unless --standard is specified
+    use_sage = not getattr(args, 'standard', False)
+    
     # Build LaTeX book
-    builder = LaTeXBookBuilder(args.book_dir, args.output_dir, cache, manifest, args.force)
+    builder = LaTeXBookBuilder(args.book_dir, args.output_dir, cache, manifest, args.force, use_sage)
     main_tex = builder.build_complete_latex()
     
     if main_tex:

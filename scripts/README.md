@@ -21,6 +21,8 @@ Compiles all chapter files into a complete, professionally formatted book.
 python3 scripts/build_book.py
 
 # Generate PDF (requires pandoc and LaTeX)
+# Note: SAGE Publications template is used by default
+# Use --standard flag to use the original template instead
 python3 scripts/build_book.py --pdf
 
 # Generate HTML (requires pandoc)
