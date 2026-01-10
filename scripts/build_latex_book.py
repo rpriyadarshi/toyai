@@ -324,6 +324,33 @@ class LaTeXBookBuilder:
         # Fix image references
         latex_content = self.fix_image_references(latex_content, chapter_path)
         
+        # Fix \real command in table column widths (pandoc generates this but calc package doesn't like it)
+        # Replace \real{1.0000} with just the number
+        latex_content = re.sub(r'\\real\{([0-9.]+)\}', r'\1', latex_content)
+        # Fix table column widths - \columnwidth is not available in table context
+        # Replace with \textwidth which is always available
+        # Replace any occurrence of \columnwidth with \textwidth in table specs
+        latex_content = re.sub(r'\\columnwidth', r'\\textwidth', latex_content)
+        # Fix calc package syntax in table columns - simplify expressions
+        # Pattern: (\textwidth - 0\tabcolsep) * 1.0000 -> 0.95\textwidth (simplify)
+        latex_content = re.sub(r'\(\\textwidth - 0\\tabcolsep\) \* 1\.0+', r'0.95\\textwidth', latex_content)
+        # Pattern: (\textwidth - X\tabcolsep) * Y -> Y\textwidth (simplify, lose tabcolsep precision)
+        latex_content = re.sub(r'\(\\textwidth - \d+\\tabcolsep\) \* ([0-9.]+)', r'\1\\textwidth', latex_content)
+        # Also handle cases where there's a space: (\textwidth - 0\tabcolsep) * 1.0000
+        latex_content = re.sub(r'\(\\textwidth - 0\\tabcolsep\)\s*\*\s*1\.0+', r'0.95\\textwidth', latex_content)
+        latex_content = re.sub(r'\(\\textwidth - \d+\\tabcolsep\)\s*\*\s*([0-9.]+)', r'\1\\textwidth', latex_content)
+        
+        # Fix hypertarget commands (pandoc generates malformed ones that break compilation)
+        # Remove all hypertarget commands - they're not needed in the book format
+        # Pattern 1: \hypertarget{id}{% on its own line
+        latex_content = re.sub(r'\\hypertarget\{[^}]+\}\{%\s*\n', '', latex_content)
+        # Pattern 2: \hypertarget{id}{% followed by subsection/other command on same line
+        latex_content = re.sub(r'\\hypertarget\{[^}]+\}\{%\s*\\', r'\\', latex_content)
+        # Pattern 3: Any remaining hypertarget
+        latex_content = re.sub(r'\\hypertarget\{[^}]+\}\{%\s*', '', latex_content)
+        # Fix extra closing braces left by hypertarget removal (pattern: \label{id}})
+        latex_content = re.sub(r'\\label\{([^}]+)\}\}', r'\\label{\1}', latex_content)
+        
         # Write back
         with open(output_tex, 'w', encoding='utf-8') as f:
             f.write(latex_content)

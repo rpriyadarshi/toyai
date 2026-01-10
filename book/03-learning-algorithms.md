@@ -5,7 +5,7 @@ Now that we understand network architecture—how perceptrons form layers and ho
 These algorithms work together: the loss function tells us how wrong we are, backpropagation computes how to fix it, and gradient descent actually makes the fix. Understanding these three components is essential for understanding how neural networks improve their predictions through training.
 
 **Navigation:**
-- [← Previous: Multilayer Networks and Architecture](02-multilayer-networks-architecture.md) | [Table of Contents](00b-toc.md) | [Next: Training Neural Networks →](04-training-neural-networks.md)
+- [← Previous: Probability and Statistics](02a-probability-statistics.md) | [Table of Contents](00b-toc.md) | [Next: Training Neural Networks →](04-training-neural-networks.md)
 
 ---
 
@@ -28,7 +28,14 @@ Mathematically, entropy is defined as:
 
 $$H(P) = -\sum_{i} P(i) \log P(i)$$
 
-Where $P(i)$ is the probability of outcome $i$. The entropy is the average amount of "surprise" or information in the distribution.
+Where $P(i)$ is the probability of outcome $i$. 
+
+**Why is this an average?** The entropy is the **weighted average** (expected value) of the "surprise" for each outcome:
+- The "surprise" of outcome $i$ is $-\log P(i)$ (rare events are more surprising)
+- The probability of outcome $i$ is $P(i)$
+- The average surprise is: $\sum_{i} P(i) \cdot (-\log P(i)) = -\sum_{i} P(i) \log P(i)$
+
+This follows the standard expected value formula: $E[X] = \sum_{i} P(i) \cdot X(i)$, where $X(i) = -\log P(i)$ is the surprise function. So entropy is indeed the average amount of "surprise" or information in the distribution.
 
 **Example:** Consider a fair coin with 50% heads, 50% tails:
 - Entropy = $-[0.5 \log(0.5) + 0.5 \log(0.5)] = -[-0.347 - 0.347] = 0.693$ (high entropy = very uncertain)
@@ -397,5 +404,5 @@ These three algorithms work together: loss functions tell us what's wrong, backp
 ---
 
 **Navigation:**
-- [← Previous: Multilayer Networks and Architecture](02-multilayer-networks-architecture.md) | [← Index](00b-toc.md) | [Next: Training Neural Networks →](04-training-neural-networks.md)
+- [← Previous: Probability and Statistics](02a-probability-statistics.md) | [← Index](00b-toc.md) | [Next: Training Neural Networks →](04-training-neural-networks.md)
 

@@ -5,7 +5,7 @@ In the previous chapter, we explored the perceptron—a single neuron that can m
 We'll see how layers enable hierarchical learning—simple patterns in early layers building into complex patterns in deeper layers. We'll also explore practical questions about network design: how many layers are needed, which activation functions to use, and how feedforward networks create the expansion-compression pattern that's fundamental to modern architectures.
 
 **Navigation:**
-- [← Previous: Neural Networks and the Perceptron](01-neural-networks-perceptron.md) | [Table of Contents](00b-toc.md) | [Next: Learning Algorithms →](03-learning-algorithms.md)
+- [← Previous: Neural Networks and the Perceptron](01-neural-networks-perceptron.md) | [Table of Contents](00b-toc.md) | [Next: Probability and Statistics →](02a-probability-statistics.md)
 
 ---
 
@@ -302,5 +302,5 @@ Now that we understand network architecture, we need to understand how networks 
 ---
 
 **Navigation:**
-- [← Previous: Neural Networks and the Perceptron](01-neural-networks-perceptron.md) | [← Index](00b-toc.md) | [Next: Learning Algorithms →](03-learning-algorithms.md)
+- [← Previous: Neural Networks and the Perceptron](01-neural-networks-perceptron.md) | [← Index](00b-toc.md) | [Next: Probability and Statistics →](02a-probability-statistics.md)
 

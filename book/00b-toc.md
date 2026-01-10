@@ -21,6 +21,8 @@
 
 2. **[Chapter 2: Multilayer Networks and Architecture](02-multilayer-networks-architecture.md)** - Layers, network design, feedforward networks, and how hierarchical learning emerges from simple building blocks
 
+2a. **[Chapter 2a: Probability and Statistics](02a-probability-statistics.md)** - Probability distributions, expected value, entropy, cross-entropy, and statistical concepts essential for understanding loss functions, softmax, and normalization
+
 3. **[Chapter 3: Learning Algorithms](03-learning-algorithms.md)** - Loss functions, gradient descent, and backpropagation: the three fundamental algorithms that enable neural networks to learn
 
 4. **[Chapter 4: Training Neural Networks](04-training-neural-networks.md)** - Training loops, batch processing, epochs, and the transition from neural networks to transformers
@@ -89,7 +91,8 @@ This book is designed for progressive learning. Follow this path for maximum und
 Read **Chapters 1-8 in order**. Each chapter builds on previous material:
 
 - **Chapter 1** is the foundation—start here even if you have prior experience
-- **Chapters 2-4** cover neural network fundamentals
+- **Chapters 2-2a** cover neural network fundamentals and probability foundations
+- **Chapters 3-4** cover learning algorithms and training
 - **Chapters 5-8** establish transformer-specific concepts
 
 **Do not skip ahead.** The material is cumulative, and later chapters assume understanding of earlier concepts.
