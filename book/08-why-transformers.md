@@ -2,10 +2,10 @@
 
 **Prerequisites:** You should have read:
 - Chapter 1: Neural Networks and the Perceptron (fundamental building blocks)
-- Chapter 2: Multilayer Networks and Architecture (layers and design)
-- Chapter 3: Learning Algorithms (loss, gradient descent, backpropagation)
-- Chapter 4: Training Neural Networks (training loops and transformers)
-- Chapter 5: The Matrix Core (matrix operations)
+- Chapter 2: Probability and Statistics (foundations for loss functions)
+- Chapter 3: Multilayer Networks and Architecture (layers and design)
+- Chapter 4: Learning Algorithms (loss, gradient descent, backpropagation)
+- Chapter 5: Training Neural Networks (training loops and transformers)
 - Chapter 6: Embeddings (tokens to vectors)
 - Chapter 7: Attention Intuition (Q/K/V, attention mechanism)
 
@@ -38,8 +38,8 @@ In the sentence "The cat that I saw yesterday sat on the mat", the word "sat" mu
 ### Previous Solutions: RNNs and Their Limitations
 
 **Recurrent Neural Networks (RNNs)** were the previous solution:
-- Process sequence one **token** (see Chapter 1) at a time
-- Maintain **hidden state** (a vector - see Chapter 1) that carries information forward
+- Process sequence one **token** (see [Chapter 1: Neural Networks and the Perceptron](01-neural-networks-perceptron.md)) at a time
+- Maintain **hidden state** (a vector - see [Chapter 1: Neural Networks and the Perceptron](01-neural-networks-perceptron.md)) that carries information forward
 - Can theoretically handle long sequences
 
 **But RNNs have problems:**

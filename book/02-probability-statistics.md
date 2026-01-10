@@ -1,9 +1,9 @@
-## Chapter 2a: Probability and Statistics
+## Chapter 2: Probability and Statistics
 
 This chapter establishes the probability and statistics foundations needed to understand neural networks. We explain every concept operationally—as explicit transformations on outcomes and values—following the same approach used throughout this book. Understanding probability distributions, expected values, and information theory is essential for understanding loss functions, softmax, normalization, and how neural networks make predictions.
 
 **Navigation:**
-- [← Previous: Multilayer Networks and Architecture](02-multilayer-networks-architecture.md) | [Table of Contents](00b-toc.md) | [Next: Learning Algorithms →](03-learning-algorithms.md)
+- [← Previous: Neural Networks and the Perceptron](01-neural-networks-perceptron.md) | [Table of Contents](00b-toc.md) | [Next: Multilayer Networks and Architecture →](03-multilayer-networks-architecture.md)
 
 ---
 
@@ -979,9 +979,9 @@ This chapter established the probability and statistics foundations needed for u
 
 Every concept was explained operationally—as explicit transformations that can be computed step-by-step. This foundation is essential for understanding loss functions, softmax, normalization, and the probabilistic nature of neural network predictions.
 
-**Next Steps:** In [Chapter 3: Learning Algorithms](03-learning-algorithms.md), we'll see how these probability concepts are used in loss functions and training algorithms.
+**Next Steps:** In [Chapter 4: Learning Algorithms](04-learning-algorithms.md), we'll see how these probability concepts are used in loss functions and training algorithms.
 
 ---
 
 **Navigation:**
-- [← Previous: Multilayer Networks and Architecture](02-multilayer-networks-architecture.md) | [Table of Contents](00b-toc.md) | [Next: Learning Algorithms →](03-learning-algorithms.md)
+- [← Previous: Neural Networks and the Perceptron](01-neural-networks-perceptron.md) | [Table of Contents](00b-toc.md) | [Next: Multilayer Networks and Architecture →](03-multilayer-networks-architecture.md)

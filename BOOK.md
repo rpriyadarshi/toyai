@@ -17,22 +17,26 @@ This book has been split into individual chapter files for easier navigation.
 ### Quick Links
 
 **Part I: Foundations**
-- [Chapter 1: Neural Network Fundamentals](book/01-neural-network-fundamentals.md) - **START HERE!** Complete foundation with all concepts
-- [Chapter 2: The Matrix Core](book/02-matrix-core.md)
-- [Chapter 3: Embeddings: Tokens to Vectors](book/03-embeddings.md)
-- [Chapter 4: Attention Intuition](book/04-attention-intuition.md)
-- [Chapter 5: Why Transformers?](book/05-why-transformers.md)
+- [Chapter 1: Neural Networks and the Perceptron](book/01-neural-networks-perceptron.md) - **START HERE!** The fundamental building block
+- [Chapter 2: Probability and Statistics](book/02-probability-statistics.md) - Probability distributions, entropy, cross-entropy, and statistics
+- [Chapter 3: Multilayer Networks and Architecture](book/03-multilayer-networks-architecture.md) - Layers, network design, feedforward networks
+- [Chapter 4: Learning Algorithms](book/04-learning-algorithms.md) - Loss functions, gradient descent, backpropagation
+- [Chapter 5: Training Neural Networks](book/05-training-neural-networks.md) - Training loops, batch processing, epochs
+- [Chapter 6: Embeddings: Tokens to Vectors](book/06-embeddings.md) - How discrete tokens become continuous vectors
+- [Chapter 7: Attention Intuition](book/07-attention-intuition.md) - Query/Key/Value mechanism, attention scores
+- [Chapter 8: Why Transformers?](book/08-why-transformers.md) - The problems transformers solve
 
 **Part II: Progressive Examples**
-- [Example 1: Minimal Forward Pass](book/06-example1-forward-pass.md)
-- [Example 2: Single Training Step](book/07-example2-single-step.md)
-- [Example 3: Full Backpropagation](book/08-example3-full-backprop.md)
-- [Example 4: Multiple Patterns](book/09-example4-multiple-patterns.md)
-- [Example 5: Feed-Forward Layers](book/10-example5-feedforward.md)
-- [Example 6: Complete Transformer](book/11-example6-complete.md)
+- [Example 1: Minimal Forward Pass](book/09-example1-forward-pass.md)
+- [Example 2: Single Training Step](book/10-example2-single-step.md)
+- [Example 3: Full Backpropagation](book/11-example3-full-backprop.md)
+- [Example 4: Multiple Patterns](book/12-example4-multiple-patterns.md)
+- [Example 5: Feed-Forward Layers](book/13-example5-feedforward.md)
+- [Example 6: Complete Transformer](book/14-example6-complete.md)
+- [Example 7: Character Recognition](book/15-example7-character-recognition.md)
 
 **Appendices**
-- [Appendix A: Matrix Calculus Reference](book/appendix-a-matrix-calculus.md)
+- [Appendix A: Matrix Operations and Calculus Reference](book/appendix-a-matrix-calculus.md)
 - [Appendix B: Terminology Reference](book/appendix-b-terminology-reference.md) - Quick reference for all terminology
 - [Appendix C: Hand Calculation Tips](book/appendix-c-hand-calculation-tips.md)
 - [Appendix D: Common Mistakes and Solutions](book/appendix-d-common-mistakes.md)
@@ -47,8 +51,8 @@ This book has been split into individual chapter files for easier navigation.
 1. **Start with the preface**: [`book/00a-preface.md`](book/00a-preface.md) for what this book is and how to use it
 2. **Read the introduction**: [`book/00c-introduction.md`](book/00c-introduction.md) for philosophy and approach
 3. **Review the table of contents**: [`book/00b-toc.md`](book/00b-toc.md) for navigation
-3. **Read foundations first**: Chapters 1-5 establish core concepts
-3. **Work through examples**: Examples 1-6 build progressively
+3. **Read foundations first**: Chapters 1-8 establish core concepts
+3. **Work through examples**: Examples 1-7 build progressively
 4. **Use worksheets**: See `worksheets/` directory for hand-calculation guides
 5. **Run code**: Build and run examples to see concepts in action
 

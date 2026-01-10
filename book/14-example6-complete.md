@@ -18,7 +18,7 @@ Build complete transformer with:
 
 ### Model Architecture
 
-This example implements the complete transformer architecture as shown in [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "The Transformer Architecture". All components are included.
+This example implements the complete transformer architecture as shown in [Chapter 5: Training Neural Networks](05-training-neural-networks.md) - "The Transformer Architecture". All components are included.
 
 **Complete Components:**
 - **Multiple Transformer Blocks**: Each block has Attention + FFN
@@ -50,7 +50,7 @@ graph LR
     style P fill:#c8e6c9
 ```
 
-**This is the complete transformer!** All previous examples built up to this. See [Chapter 4: Training Neural Networks](04-training-neural-networks.md) for the full architecture diagram with all components labeled.
+**This is the complete transformer!** All previous examples built up to this. See [Chapter 5: Training Neural Networks](05-training-neural-networks.md) for the full architecture diagram with all components labeled.
 
 ### Layer Normalization
 

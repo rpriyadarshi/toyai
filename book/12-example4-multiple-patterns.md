@@ -19,7 +19,7 @@ Learn all patterns simultaneously.
 
 ### Model Architecture
 
-This example demonstrates batch training with multiple patterns. For the complete transformer architecture, see [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "The Transformer Architecture".
+This example demonstrates batch training with multiple patterns. For the complete transformer architecture, see [Chapter 5: Training Neural Networks](05-training-neural-networks.md) - "The Transformer Architecture".
 
 **Components:**
 - Same architecture as Example 3

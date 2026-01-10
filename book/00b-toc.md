@@ -19,15 +19,13 @@
 
 1. **[Chapter 1: Neural Networks and the Perceptron](01-neural-networks-perceptron.md)** - **START HERE!** The fundamental building block: single neurons, activation functions, decision boundaries, and physical analogies that connect abstract mathematics to tangible reality
 
-2. **[Chapter 2: Multilayer Networks and Architecture](02-multilayer-networks-architecture.md)** - Layers, network design, feedforward networks, and how hierarchical learning emerges from simple building blocks
+2. **[Chapter 2: Probability and Statistics](02-probability-statistics.md)** - Probability distributions, expected value, entropy, cross-entropy, and statistical concepts essential for understanding loss functions, softmax, and normalization
 
-2a. **[Chapter 2a: Probability and Statistics](02a-probability-statistics.md)** - Probability distributions, expected value, entropy, cross-entropy, and statistical concepts essential for understanding loss functions, softmax, and normalization
+3. **[Chapter 3: Multilayer Networks and Architecture](03-multilayer-networks-architecture.md)** - Layers, network design, feedforward networks, and how hierarchical learning emerges from simple building blocks
 
-3. **[Chapter 3: Learning Algorithms](03-learning-algorithms.md)** - Loss functions, gradient descent, and backpropagation: the three fundamental algorithms that enable neural networks to learn
+4. **[Chapter 4: Learning Algorithms](04-learning-algorithms.md)** - Loss functions, gradient descent, and backpropagation: the three fundamental algorithms that enable neural networks to learn
 
-4. **[Chapter 4: Training Neural Networks](04-training-neural-networks.md)** - Training loops, batch processing, epochs, and the transition from neural networks to transformers
-
-5. **[Chapter 5: The Matrix Core](05-matrix-core.md)** - Matrix operations as the foundation of all neural network computations: why matrices, how they enable learning, and the core operations
+5. **[Chapter 5: Training Neural Networks](05-training-neural-networks.md)** - Training loops, batch processing, epochs, and the transition from neural networks to transformers
 
 6. **[Chapter 6: Embeddings: Tokens to Vectors](06-embeddings.md)** - How discrete tokens (words, characters) become continuous vectors that neural networks can process
 
@@ -61,7 +59,7 @@
 
 Quick reference materials for matrix calculus, terminology, calculation tips, and common mistakes.
 
-- **[Appendix A: Matrix Calculus Reference](appendix-a-matrix-calculus.md)** - Essential matrix calculus formulas, differentiation rules, and computational techniques
+- **[Appendix A: Matrix Operations and Calculus Reference](appendix-a-matrix-calculus.md)** - Matrix operations, matrix inverse, and essential matrix calculus formulas for backpropagation
 
 - **[Appendix B: Terminology Reference](appendix-b-terminology-reference.md)** - Quick reference for all terminology with physical analogies and intuitive explanations
 
@@ -91,9 +89,9 @@ This book is designed for progressive learning. Follow this path for maximum und
 Read **Chapters 1-8 in order**. Each chapter builds on previous material:
 
 - **Chapter 1** is the foundation—start here even if you have prior experience
-- **Chapters 2-2a** cover neural network fundamentals and probability foundations
-- **Chapters 3-4** cover learning algorithms and training
-- **Chapters 5-8** establish transformer-specific concepts
+- **Chapter 2** covers probability and statistics foundations needed for learning algorithms
+- **Chapters 3-5** cover neural network fundamentals, learning algorithms, and training
+- **Chapters 6-8** establish transformer-specific concepts
 
 **Do not skip ahead.** The material is cumulative, and later chapters assume understanding of earlier concepts.
 

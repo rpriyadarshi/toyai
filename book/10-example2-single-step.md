@@ -16,7 +16,7 @@ We'll update only the output projection matrix $W_O$ in this example to keep it 
 
 ### Model Architecture
 
-This example extends Example 1 by adding training. For the complete transformer architecture, see [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "The Transformer Architecture".
+This example extends Example 1 by adding training. For the complete transformer architecture, see [Chapter 5: Training Neural Networks](05-training-neural-networks.md) - "The Transformer Architecture".
 
 **Components:**
 - Same forward pass as Example 1

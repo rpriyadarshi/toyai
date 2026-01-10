@@ -15,7 +15,7 @@ Add a feed-forward network after attention:
 
 ### Model Architecture
 
-This example adds feed-forward networks and residual connections. For the complete transformer architecture, see [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "The Transformer Architecture".
+This example adds feed-forward networks and residual connections. For the complete transformer architecture, see [Chapter 5: Training Neural Networks](05-training-neural-networks.md) - "The Transformer Architecture".
 
 **New Components:**
 - **Feed-Forward Network (FFN)**: Two linear transformations with ReLU activation

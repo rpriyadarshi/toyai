@@ -14,7 +14,7 @@ Train on "A B" → "C" with all weights trainable: $W_Q$, $W_K$, $W_V$, $W_O$
 
 ### Model Architecture
 
-This example demonstrates complete backpropagation through all components. For the complete transformer architecture, see [Chapter 4: Training Neural Networks](04-training-neural-networks.md) - "The Transformer Architecture".
+This example demonstrates complete backpropagation through all components. For the complete transformer architecture, see [Chapter 5: Training Neural Networks](05-training-neural-networks.md) - "The Transformer Architecture".
 
 **Components:**
 - **All projection matrices are trainable**: $W_Q$, $W_K$, $W_V$, $W_O$

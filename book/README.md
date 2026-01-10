@@ -10,10 +10,10 @@ This directory contains the complete book split into individual chapter files fo
 
 ### Part I: Foundations
 - **`01-neural-networks-perceptron.md`** - **START HERE!** Neural networks and perceptrons, the fundamental building blocks
-- **`02-multilayer-networks-architecture.md`** - Layers, network design, and feedforward networks
-- **`03-learning-algorithms.md`** - Loss functions, gradient descent, and backpropagation
-- **`04-training-neural-networks.md`** - Training loops, batch processing, and transition to transformers
-- **`05-matrix-core.md`** - Matrix operations, transformations, calculus
+- **`02-probability-statistics.md`** - Probability distributions, expected value, entropy, cross-entropy, and statistics for neural networks
+- **`03-multilayer-networks-architecture.md`** - Layers, network design, and feedforward networks
+- **`04-learning-algorithms.md`** - Loss functions, gradient descent, and backpropagation
+- **`05-training-neural-networks.md`** - Training loops, batch processing, and transition to transformers
 - **`06-embeddings.md`** - Tokens to vectors, semantic spaces
 - **`07-attention-intuition.md`** - Query/Key/Value, search metaphor
 - **`08-why-transformers.md`** - Why transformers? Problem, RNNs, attention
@@ -28,7 +28,7 @@ This directory contains the complete book split into individual chapter files fo
 - **`15-example7-character-recognition.md`** - Character recognition
 
 ### Appendices
-- **`appendix-a-matrix-calculus.md`** - Matrix calculus reference
+- **`appendix-a-matrix-calculus.md`** - Matrix operations, matrix inverse, and calculus reference
 - **`appendix-b-terminology-reference.md`** - Quick reference for all terminology with physical analogies
 - **`appendix-c-hand-calculation-tips.md`** - Hand calculation guide
 - **`appendix-d-common-mistakes.md`** - Common mistakes and solutions
@@ -47,7 +47,7 @@ Each chapter file includes navigation links at the bottom:
 
 1. Start with `00c-introduction.md` for philosophy and approach
 2. Review `00b-toc.md` for overview and table of contents
-3. Read foundations (01-08) in order
+3. Read foundations (01-08) in order - note that Chapter 2 is now Probability and Statistics
 4. Work through examples (09-15) sequentially
 5. Refer to appendices as needed
 6. End with conclusion

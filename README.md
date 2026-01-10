@@ -33,7 +33,7 @@ python3 scripts/build_book.py --pdf
 ```
 
 This creates `output/Understanding_Transformers_Complete.pdf` containing:
-- **Part I: Foundations** - Neural networks, learning algorithms, matrix operations, embeddings, attention intuition
+- **Part I: Foundations** - Neural networks, probability/statistics, learning algorithms, training, embeddings, attention intuition
 - **Part II: Progressive Examples** - 7 examples from simple forward pass to complete transformer
 - **Appendices** - Reference materials
 - **Worksheets** - All hand-calculation guides
@@ -88,13 +88,13 @@ Start with **[Preface](book/00a-preface.md)** to understand what this book is an
 
 Each example in `examples/` demonstrates one new concept:
 
-- **Example 9**: Forward pass only - understand how predictions are made
-- **Example 10**: Single training step - see how one weight update works
-- **Example 11**: Full backpropagation - complete gradient flow
-- **Example 12**: Multiple patterns - batch training
-- **Example 13**: Feed-forward layers - non-linearity and depth
-- **Example 14**: Complete transformer - everything together
-- **Example 15**: Character recognition - complete classification example
+- **Example 1**: Forward pass only - understand how predictions are made
+- **Example 2**: Single training step - see how one weight update works
+- **Example 3**: Full backpropagation - complete gradient flow
+- **Example 4**: Multiple patterns - batch training
+- **Example 5**: Feed-forward layers - non-linearity and depth
+- **Example 6**: Complete transformer - everything together
+- **Example 7**: Character recognition - complete classification example
 
 ### 3. Verify by Hand
 
@@ -116,22 +116,22 @@ make
 
 1. **Read Preface** - Understand what this book is and how to use it ([book/00a-preface.md](book/00a-preface.md))
 2. **Read Introduction** - Understand the philosophy and approach ([book/00c-introduction.md](book/00c-introduction.md))
-2. **Read Foundations (Chapters 1-5)** - Start with terminology, then matrix operations, embeddings, attention, and why transformers
+2. **Read Foundations (Chapters 1-8)** - Start with neural networks, probability/statistics, then architecture, learning, training, embeddings, attention, and why transformers
    - [Chapter 1: Neural Networks and the Perceptron](book/01-neural-networks-perceptron.md) (**START HERE!**)
-   - [Chapter 2: Multilayer Networks and Architecture](book/02-multilayer-networks-architecture.md)
-   - [Chapter 3: Learning Algorithms](book/03-learning-algorithms.md)
-   - [Chapter 4: Training Neural Networks](book/04-training-neural-networks.md)
-   - [Chapter 5: The Matrix Core](book/05-matrix-core.md)
+   - [Chapter 2: Probability and Statistics](book/02-probability-statistics.md)
+   - [Chapter 3: Multilayer Networks and Architecture](book/03-multilayer-networks-architecture.md)
+   - [Chapter 4: Learning Algorithms](book/04-learning-algorithms.md)
+   - [Chapter 5: Training Neural Networks](book/05-training-neural-networks.md)
    - [Chapter 6: Embeddings: Tokens to Vectors](book/06-embeddings.md)
    - [Chapter 7: Attention Intuition](book/07-attention-intuition.md)
    - [Chapter 8: Why Transformers?](book/08-why-transformers.md)
-2. **Study Example 9** - Read chapter, understand code, do worksheet
-3. **Study Example 10** - Add training concepts
-4. **Study Example 11** - Master backpropagation
-5. **Study Example 12** - Understand batch learning
-6. **Study Example 13** - Add non-linearity
-7. **Study Example 14** - Complete architecture
-8. **Study Example 15** - Character recognition
+2. **Study Example 1** - Read chapter, understand code, do worksheet
+3. **Study Example 2** - Add training concepts
+4. **Study Example 3** - Master backpropagation
+5. **Study Example 4** - Understand batch learning
+6. **Study Example 5** - Add non-linearity
+7. **Study Example 6** - Complete architecture
+8. **Study Example 7** - Character recognition
 
 Each example builds on the previous, so work through them sequentially.
 

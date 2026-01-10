@@ -57,8 +57,8 @@ The compiled book includes:
 
 1. **Title Page** - Book title and metadata
 2. **Table of Contents** - Auto-generated
-3. **Part I: Foundations** - Chapters 1-4
-4. **Part II: Progressive Examples** - Examples 1-6
+3. **Part I: Foundations** - Chapters 1-8
+4. **Part II: Progressive Examples** - Examples 1-7
 5. **Appendices** - Reference materials
 6. **Conclusion**
 7. **Part: Worksheets** - All hand-calculation guides

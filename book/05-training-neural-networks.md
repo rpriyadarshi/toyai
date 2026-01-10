@@ -1,11 +1,11 @@
-## Chapter 4: Training Neural Networks
+## Chapter 5: Training Neural Networks
 
 In the previous chapters, we've learned about network architecture (perceptrons, layers, feedforward networks) and learning algorithms (loss functions, gradient descent, backpropagation). Now we'll see how these components combine into a complete training system. This chapter covers the training loop, batch processing, epochs, and the transition from neural networks to transformers.
 
 We'll also introduce key transformer concepts that build on the neural network fundamentals we've established. This chapter serves as a bridge between the neural network foundations and the transformer-specific topics that follow.
 
 **Navigation:**
-- [← Previous: Learning Algorithms](03-learning-algorithms.md) | [Table of Contents](00b-toc.md) | [Next: The Matrix Core →](05-matrix-core.md)
+- [← Previous: Learning Algorithms](04-learning-algorithms.md) | [Table of Contents](00b-toc.md) | [Next: Embeddings →](06-embeddings.md)
 
 ---
 
@@ -249,7 +249,7 @@ During the forward pass, the model makes predictions. First, tokenization breaks
 
 During the backward pass, the model learns from its mistakes. The loss function compares the prediction to the target. The backward pass then computes gradients, which flow backward through the network using the chain rule. Finally, weight updates change the parameters (weights and biases) to reduce the loss, using the gradient descent algorithm we learned earlier.
 
-To see these concepts in action, we've prepared several examples that build from simple to complex. [Example 1: Minimal Forward Pass](09-example1-forward-pass.md) demonstrates the forward pass only, showing how predictions are made. [Example 2: Single Training Step](10-example2-single-step.md) shows one complete training cycle, combining forward pass, loss computation, and weight updates. [Example 3: Full Backpropagation](11-example3-full-backprop.md) traces the complete gradient flow through all components. [Example 4: Multiple Patterns](12-example4-multiple-patterns.md) demonstrates batch training with multiple sequences. [Example 5: Feed-Forward Layers](13-example5-feedforward.md) adds feed-forward networks and residual connections to the architecture. Finally, [Example 6: Complete Transformer](14-example6-complete.md) shows the full architecture with all components working together.
+To see these concepts in action, we've prepared several examples that build from simple to complex. [Example 1: Minimal Forward Pass](09-example1-forward-pass.md) demonstrates the forward pass only, showing how predictions are made. [Example 2: Single Training Step](10-example2-single-step.md) shows one complete training cycle, combining forward pass, loss computation, and weight updates. [Example 3: Full Backpropagation](11-example3-full-backprop.md) traces the complete gradient flow through all components. [Example 4: Multiple Patterns](12-example4-multiple-patterns.md) demonstrates batch training with multiple sequences. [Example 5: Feed-Forward Layers](13-example5-feedforward.md) adds feed-forward networks and residual connections to the architecture. [Example 6: Complete Transformer](14-example6-complete.md) shows the full architecture with all components working together. Finally, [Example 7: Character Recognition](15-example7-character-recognition.md) demonstrates classification tasks using the same fundamental principles.
 
 ---
 
@@ -269,7 +269,7 @@ Fifth, learning equals gradient descent. Gradients show how to update weights to
 
 ## What's Next?
 
-Now that you understand neural network fundamentals and how they apply to transformers, you're ready to dive deeper into the specific components that make transformers work. In [Chapter 5: The Matrix Core](05-matrix-core.md), we'll take a deep dive into matrix operations, which are the mathematical foundation of everything transformers do. [Chapter 6: Embeddings](06-embeddings.md) will show you exactly how tokens become vectors and why this representation is so powerful. [Chapter 7: Attention Intuition](07-attention-intuition.md) will help you develop a deep understanding of how attention finds relevant information. Finally, [Chapter 8: Why Transformers?](08-why-transformers.md) will explain the specific problems that transformers solve and why they've become so dominant in modern AI.
+Now that you understand neural network fundamentals and how they apply to transformers, you're ready to dive deeper into the specific components that make transformers work. [Chapter 6: Embeddings](06-embeddings.md) will show you exactly how tokens become vectors and why this representation is so powerful. [Chapter 7: Attention Intuition](07-attention-intuition.md) will help you develop a deep understanding of how attention finds relevant information. Finally, [Chapter 8: Why Transformers?](08-why-transformers.md) will explain the specific problems that transformers solve and why they've become so dominant in modern AI.
 
 For quick reference as you continue reading, see [Appendix B: Terminology Reference](appendix-b-terminology-reference.md) for all definitions with their physical analogies.
 
@@ -278,5 +278,5 @@ Remember: Every concept in this chapter has a physical analogy. If you ever forg
 ---
 
 **Navigation:**
-- [← Previous: Learning Algorithms](03-learning-algorithms.md) | [← Index](00b-toc.md) | [Next: The Matrix Core →](05-matrix-core.md)
+- [← Previous: Learning Algorithms](04-learning-algorithms.md) | [← Index](00b-toc.md) | [Next: Embeddings →](06-embeddings.md)
 

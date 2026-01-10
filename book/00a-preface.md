@@ -26,11 +26,14 @@ We use 2×2 matrices throughout so that every calculation can be done manually. 
 The book is organized into two parts:
 
 **Part I: Foundations** establishes the core concepts:
-- Neural networks and their components
-- Matrix operations and transformations
-- Embeddings and vector spaces
-- Attention mechanisms
-- Why transformers solve problems that previous architectures could not
+- Neural networks and their components (Chapter 1)
+- Probability and statistics foundations (Chapter 2)
+- Multilayer networks and architecture (Chapter 3)
+- Learning algorithms: loss functions, gradient descent, backpropagation (Chapter 4)
+- Training neural networks (Chapter 5)
+- Embeddings and vector spaces (Chapter 6)
+- Attention mechanisms (Chapter 7)
+- Why transformers solve problems that previous architectures could not (Chapter 8)
 
 **Part II: Progressive Examples** builds from simple to complex:
 - Example 1: Minimal forward pass (no training)
@@ -39,6 +42,7 @@ The book is organized into two parts:
 - Example 4: Multiple training patterns
 - Example 5: Feed-forward layers
 - Example 6: Complete transformer
+- Example 7: Character recognition
 
 Each example includes:
 - Step-by-step mathematical derivations with intermediate values shown
@@ -48,9 +52,9 @@ Each example includes:
 
 ### How to Use This Book
 
-1. **Read the foundations first** (Chapters 1-5) to understand core concepts. Do not skip ahead—each chapter builds on previous material.
+1. **Read the foundations first** (Chapters 1-8) to understand core concepts. Do not skip ahead—each chapter builds on previous material.
 
-2. **Work through examples sequentially** (Examples 1-6). Each example builds on the previous one. Attempting later examples without completing earlier ones will leave gaps in understanding.
+2. **Work through examples sequentially** (Examples 1-7). Each example builds on the previous one. Attempting later examples without completing earlier ones will leave gaps in understanding.
 
 3. **Use the worksheets** to verify calculations by hand. The worksheets are not optional—they are essential for building intuition and catching errors.
 

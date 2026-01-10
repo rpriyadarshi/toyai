@@ -3,7 +3,7 @@
 This chapter establishes the foundation for understanding neural networks by starting with the simplest possible unit: a single neuron, called a perceptron. We explain every concept using physical analogies that connect abstract mathematics to tangible reality, making the material more accessible and memorable. Understanding how a single perceptron works provides the essential foundation for understanding more complex networks, including the transformers we'll study in later chapters.
 
 **Navigation:**
-- [← Previous: Introduction](00c-introduction.md) | [Table of Contents](00b-toc.md) | [Next: Multilayer Networks and Architecture →](02-multilayer-networks-architecture.md)
+- [← Previous: Introduction](00c-introduction.md) | [Table of Contents](00b-toc.md) | [Next: Probability and Statistics →](02-probability-statistics.md)
 
 ### Why This Chapter First?
 
@@ -373,7 +373,7 @@ Consider our handwritten digit recognition example. The network doesn't just lea
    - Layer 1 detects simple patterns → outputs feature vector $\mathbf{h}_1$
    - Layer 2 combines patterns → outputs feature vector $\mathbf{h}_2$
    - Layer 3 recognizes complex patterns → outputs feature vector $\mathbf{h}_3$
-   - Output layer computes: $\text{logit}_i = \mathbf{w}_i \cdot \mathbf{h}_3 + b_i$ for each class $i$ (where a logit is the raw, unnormalized score before converting to probabilities; we'll define this formally in [Chapter 3: Learning Algorithms](03-learning-algorithms.md))
+   - Output layer computes: $\text{logit}_i = \mathbf{w}_i \cdot \mathbf{h}_3 + b_i$ for each class $i$ (where a logit is the raw, unnormalized score before converting to probabilities; we'll define this formally in [Chapter 4: Learning Algorithms](04-learning-algorithms.md))
    - The class with the highest logit becomes the prediction
 
 
@@ -408,7 +408,7 @@ Let's trace through what happens when the network sees an image of the digit "6"
   - Logit for "digit 2": $\mathbf{w}_2 \cdot [0.1, 0.05, 0.95, 0.2] + b_2 = 0.2$
   - **Logit for "digit 6": $\mathbf{w}_6 \cdot [0.1, 0.05, 0.95, 0.2] + b_6 = 2.5$** (highest!)
 
-- **Softmax** (a function that converts scores to probabilities; we'll define this formally in [Chapter 3: Learning Algorithms](03-learning-algorithms.md)): Converts logits to probabilities
+- **Softmax** (a function that converts scores to probabilities; we'll define this formally in [Chapter 4: Learning Algorithms](04-learning-algorithms.md)): Converts logits to probabilities
   - $P(\text{digit 0}) = 0.05$
   - $P(\text{digit 1}) = 0.02$
   - $P(\text{digit 2}) = 0.03$
@@ -622,10 +622,10 @@ In this chapter, we've established the foundation of neural networks by examinin
 
 4. **The universal approximation theorem** tells us that with non-linear activation functions, networks can learn to represent almost any pattern, given sufficient capacity.
 
-While a single perceptron is limited, understanding it provides the foundation for understanding more complex networks. In the next chapter, we'll see how stacking multiple perceptrons into layers creates powerful networks capable of learning hierarchical patterns.
+While a single perceptron is limited, understanding it provides the foundation for understanding more complex networks. In [Chapter 2: Probability and Statistics](02-probability-statistics.md), we'll establish the probability and statistics foundations needed for understanding loss functions and training. Then in [Chapter 3: Multilayer Networks and Architecture](03-multilayer-networks-architecture.md), we'll see how stacking multiple perceptrons into layers creates powerful networks capable of learning hierarchical patterns.
 
 ---
 
 **Navigation:**
-- [← Previous: Introduction](00c-introduction.md) | [Table of Contents](00b-toc.md) | [Next: Multilayer Networks and Architecture →](02-multilayer-networks-architecture.md)
+- [← Previous: Introduction](00c-introduction.md) | [Table of Contents](00b-toc.md) | [Next: Probability and Statistics →](02-probability-statistics.md)
 

@@ -1,11 +1,11 @@
-## Chapter 2: Multilayer Networks and Architecture
+## Chapter 3: Multilayer Networks and Architecture
 
-In the previous chapter, we explored the perceptron—a single neuron that can make simple decisions. While a single perceptron is limited, stacking many perceptrons together creates powerful networks capable of learning complex patterns. This chapter shows how multiple perceptrons form layers, how layers combine to create networks, and how to design effective network architectures.
+In [Chapter 1: Neural Networks and the Perceptron](01-neural-networks-perceptron.md), we explored the perceptron—a single neuron that can make simple decisions. While a single perceptron is limited, stacking many perceptrons together creates powerful networks capable of learning complex patterns. This chapter shows how multiple perceptrons form layers, how layers combine to create networks, and how to design effective network architectures.
 
 We'll see how layers enable hierarchical learning—simple patterns in early layers building into complex patterns in deeper layers. We'll also explore practical questions about network design: how many layers are needed, which activation functions to use, and how feedforward networks create the expansion-compression pattern that's fundamental to modern architectures.
 
 **Navigation:**
-- [← Previous: Neural Networks and the Perceptron](01-neural-networks-perceptron.md) | [Table of Contents](00b-toc.md) | [Next: Probability and Statistics →](02a-probability-statistics.md)
+- [← Previous: Probability and Statistics](02-probability-statistics.md) | [Table of Contents](00b-toc.md) | [Next: Learning Algorithms →](04-learning-algorithms.md)
 
 ---
 
@@ -297,10 +297,10 @@ In this chapter, we've seen how multiple perceptrons combine to form layers, and
 
 3. **Feedforward networks use expansion-compression**: The expansion phase gives the network capacity to learn complex feature combinations, while compression ensures the output has the correct shape.
 
-Now that we understand network architecture, we need to understand how networks learn. In the next chapter, we'll explore the learning algorithms that enable networks to improve their predictions: loss functions, gradient descent, and backpropagation.
+Now that we understand network architecture, we need to understand how networks learn. In [Chapter 4: Learning Algorithms](04-learning-algorithms.md), we'll explore the learning algorithms that enable networks to improve their predictions: loss functions, gradient descent, and backpropagation.
 
 ---
 
 **Navigation:**
-- [← Previous: Neural Networks and the Perceptron](01-neural-networks-perceptron.md) | [← Index](00b-toc.md) | [Next: Probability and Statistics →](02a-probability-statistics.md)
+- [← Previous: Probability and Statistics](02-probability-statistics.md) | [← Index](00b-toc.md) | [Next: Learning Algorithms →](04-learning-algorithms.md)
 
