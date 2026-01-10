@@ -1,0 +1,52 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <text x="400.0" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle">Entropy: High Uncertainty vs Low Uncertainty</text>
+  
+  <!-- Left panel -->
+  <g transform="translate(50, 50)">
+    <text x="175.0" y="-20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Fair Coin</text>
+    <rect x="0" y="0" width="350.0" height="250" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" rx="6"/>
+    <text x="175.0" y="25" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">High Entropy</text>
+    <!-- Left axes -->
+    <line x1="40" y1="220" x2="310.0" y2="220" stroke="#333" stroke-width="2"/>
+    <line x1="40" y1="220" x2="40" y2="50" stroke="#333" stroke-width="2"/>
+    <line x1="40" y1="220.0" x2="310.0" y2="220.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="152.0" x2="310.0" y2="152.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="84.0" x2="310.0" y2="84.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="16.0" x2="310.0" y2="16.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="-52.0" x2="310.0" y2="-52.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="-120.0" x2="310.0" y2="-120.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <rect x="50.0" y="50.0" width="115.0" height="170.0" fill="#2563eb" opacity="0.8"/>
+    <text x="107.5" y="45.0" font-family="Arial" font-size="11" text-anchor="middle">0.50</text>
+    <text x="107.5" y="235" font-family="Arial" font-size="11" text-anchor="middle">Heads</text>
+    <rect x="175.0" y="50.0" width="115.0" height="170.0" fill="#2563eb" opacity="0.8"/>
+    <text x="232.5" y="45.0" font-family="Arial" font-size="11" text-anchor="middle">0.50</text>
+    <text x="232.5" y="235" font-family="Arial" font-size="11" text-anchor="middle">Tails</text>
+    <text x="175.0" y="240" font-family="Arial" font-size="12" fill="#dc2626" text-anchor="middle" font-weight="bold">H(P) = 0.693</text>
+  </g>
+  
+  <!-- Right panel -->
+  <g transform="translate(450.0, 50)">
+    <text x="175.0" y="-20" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Biased Coin</text>
+    <rect x="0" y="0" width="350.0" height="250" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" rx="6"/>
+    <text x="175.0" y="25" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">Low Entropy</text>
+    <!-- Right axes -->
+    <line x1="40" y1="220" x2="310.0" y2="220" stroke="#333" stroke-width="2"/>
+    <line x1="40" y1="220" x2="40" y2="50" stroke="#333" stroke-width="2"/>
+    <line x1="40" y1="220.0" x2="310.0" y2="220.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="185.65656565656565" x2="310.0" y2="185.65656565656565" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="151.3131313131313" x2="310.0" y2="151.3131313131313" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="116.96969696969697" x2="310.0" y2="116.96969696969697" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="82.62626262626262" x2="310.0" y2="82.62626262626262" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="40" y1="48.28282828282826" x2="310.0" y2="48.28282828282826" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <rect x="50.0" y="50.0" width="115.0" height="170.0" fill="#16a34a" opacity="0.8"/>
+    <text x="107.5" y="45.0" font-family="Arial" font-size="11" text-anchor="middle">0.99</text>
+    <text x="107.5" y="235" font-family="Arial" font-size="11" text-anchor="middle">Heads</text>
+    <rect x="175.0" y="218.2828282828283" width="115.0" height="1.7171717171717173" fill="#dc2626" opacity="0.8"/>
+    <text x="232.5" y="213.2828282828283" font-family="Arial" font-size="11" text-anchor="middle">0.01</text>
+    <text x="232.5" y="235" font-family="Arial" font-size="11" text-anchor="middle">Tails</text>
+    <text x="175.0" y="240" font-family="Arial" font-size="12" fill="#dc2626" text-anchor="middle" font-weight="bold">H(P) = 0.056</text>
+  </g>
+  
+  <!-- Note -->
+  <text x="400.0" y="380" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Left: Uniform distribution → High entropy (0.693) | Right: Concentrated distribution → Low entropy (0.056)</text>
+</svg>

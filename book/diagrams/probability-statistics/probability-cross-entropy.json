@@ -1,0 +1,125 @@
+{
+  "metadata": {
+    "id": "probability-cross-entropy",
+    "title": "Cross-Entropy: Comparing True vs Predicted Distribution",
+    "width": 800,
+    "height": 400,
+    "diagram_type": "graph"
+  },
+  "components": [
+    {
+      "id": "panel_left",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 50, "y": 50},
+      "width": 300,
+      "height": 300,
+      "custom_text": {
+        "label": "True Distribution",
+        "subtext": "One-Hot: [0, 0, 1, 0]"
+      }
+    },
+    {
+      "id": "axis_left",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 80, "y": 100},
+      "width": 240,
+      "height": 200,
+      "custom_text": {
+        "x_label": "Class",
+        "y_label": "Probability",
+        "x_range": [0, 4],
+        "y_range": [0, 1]
+      }
+    },
+    {
+      "id": "bar_left",
+      "type": "plot",
+      "template": "bar_chart",
+      "position": {"x": 80, "y": 100},
+      "width": 240,
+      "height": 200,
+      "custom_text": {
+        "data": [
+          {"label": "A", "value": 0, "color": "#dc2626"},
+          {"label": "B", "value": 0, "color": "#dc2626"},
+          {"label": "C", "value": 1, "color": "#16a34a"},
+          {"label": "D", "value": 0, "color": "#dc2626"}
+        ]
+      }
+    },
+    {
+      "id": "panel_right",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 450, "y": 50},
+      "width": 300,
+      "height": 300,
+      "custom_text": {
+        "label": "Predicted Distribution",
+        "subtext": "[0.1, 0.2, 0.6, 0.1]"
+      }
+    },
+    {
+      "id": "axis_right",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 480, "y": 100},
+      "width": 240,
+      "height": 200,
+      "custom_text": {
+        "x_label": "Class",
+        "y_label": "Probability",
+        "x_range": [0, 4],
+        "y_range": [0, 1]
+      }
+    },
+    {
+      "id": "bar_right",
+      "type": "plot",
+      "template": "bar_chart",
+      "position": {"x": 480, "y": 100},
+      "width": 240,
+      "height": 200,
+      "custom_text": {
+        "data": [
+          {"label": "A", "value": 0.1, "color": "#f59e0b"},
+          {"label": "B", "value": 0.2, "color": "#f59e0b"},
+          {"label": "C", "value": 0.6, "color": "#16a34a"},
+          {"label": "D", "value": 0.1, "color": "#f59e0b"}
+        ]
+      }
+    },
+    {
+      "id": "cross_entropy_label",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 300, "y": 320},
+      "custom_text": {
+        "label": "H(P, Q) = 0.511",
+        "subtext": "Cross-Entropy Loss"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "panel_left",
+      "to": "panel_right",
+      "style": "forward",
+      "routing": "direct"
+    }
+  ],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Cross-Entropy: Comparing True vs Predicted Distribution",
+      "priority": 1
+    },
+    {
+      "type": "note",
+      "text": "Left: True one-hot [0,0,1,0] | Right: Predicted [0.1,0.2,0.6,0.1] | H(P,Q) = -log(0.6) ≈ 0.511",
+      "priority": 5
+    }
+  ]
+}

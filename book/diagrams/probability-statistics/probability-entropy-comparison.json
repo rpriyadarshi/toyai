@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "id": "probability-entropy-comparison",
+    "title": "Entropy: High Uncertainty vs Low Uncertainty",
+    "width": 800,
+    "height": 400,
+    "diagram_type": "graph"
+  },
+  "components": [
+    {
+      "id": "panel_left",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 50, "y": 50},
+      "width": 300,
+      "height": 300,
+      "custom_text": {
+        "label": "Fair Coin",
+        "subtext": "High Entropy"
+      }
+    },
+    {
+      "id": "axis_left",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 80, "y": 100},
+      "width": 240,
+      "height": 200,
+      "custom_text": {
+        "x_label": "Outcome",
+        "y_label": "Probability",
+        "x_range": [0, 2],
+        "y_range": [0, 1]
+      }
+    },
+    {
+      "id": "bar_left",
+      "type": "plot",
+      "template": "bar_chart",
+      "position": {"x": 80, "y": 100},
+      "width": 240,
+      "height": 200,
+      "custom_text": {
+        "data": [
+          {"label": "Heads", "value": 0.5, "color": "#2563eb"},
+          {"label": "Tails", "value": 0.5, "color": "#2563eb"}
+        ]
+      }
+    },
+    {
+      "id": "entropy_left",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 150, "y": 320},
+      "custom_text": {
+        "label": "H(P) = 0.693",
+        "subtext": "High uncertainty"
+      }
+    },
+    {
+      "id": "panel_right",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 450, "y": 50},
+      "width": 300,
+      "height": 300,
+      "custom_text": {
+        "label": "Biased Coin",
+        "subtext": "Low Entropy"
+      }
+    },
+    {
+      "id": "axis_right",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 480, "y": 100},
+      "width": 240,
+      "height": 200,
+      "custom_text": {
+        "x_label": "Outcome",
+        "y_label": "Probability",
+        "x_range": [0, 2],
+        "y_range": [0, 1]
+      }
+    },
+    {
+      "id": "bar_right",
+      "type": "plot",
+      "template": "bar_chart",
+      "position": {"x": 480, "y": 100},
+      "width": 240,
+      "height": 200,
+      "custom_text": {
+        "data": [
+          {"label": "Heads", "value": 0.99, "color": "#16a34a"},
+          {"label": "Tails", "value": 0.01, "color": "#dc2626"}
+        ]
+      }
+    },
+    {
+      "id": "entropy_right",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 550, "y": 320},
+      "custom_text": {
+        "label": "H(P) = 0.056",
+        "subtext": "Low uncertainty"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Entropy: High Uncertainty vs Low Uncertainty",
+      "priority": 1
+    },
+    {
+      "type": "note",
+      "text": "Left: Uniform distribution → High entropy (0.693) | Right: Concentrated distribution → Low entropy (0.056)",
+      "priority": 5
+    }
+  ]
+}

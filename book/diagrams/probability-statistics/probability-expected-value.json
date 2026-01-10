@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "id": "probability-expected-value",
+    "title": "Expected Value = 3.5: Weighted Average of Outcomes",
+    "width": 600,
+    "height": 400,
+    "diagram_type": "graph"
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 100, "y": 50},
+      "width": 450,
+      "height": 300,
+      "custom_text": {
+        "x_label": "Outcome",
+        "y_label": "Weighted Contribution",
+        "x_range": [0, 7],
+        "y_range": [0, 1.2]
+      }
+    },
+    {
+      "id": "bar_chart",
+      "type": "plot",
+      "template": "bar_chart",
+      "position": {"x": 100, "y": 50},
+      "width": 450,
+      "height": 300,
+      "custom_text": {
+        "data": [
+          {"label": "1", "value": 0.167, "color": "#2563eb"},
+          {"label": "2", "value": 0.333, "color": "#2563eb"},
+          {"label": "3", "value": 0.5, "color": "#2563eb"},
+          {"label": "4", "value": 0.667, "color": "#2563eb"},
+          {"label": "5", "value": 0.833, "color": "#2563eb"},
+          {"label": "6", "value": 1.0, "color": "#2563eb"}
+        ]
+      }
+    },
+    {
+      "id": "mean_line",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 100, "y": 50},
+      "width": 450,
+      "height": 300,
+      "custom_text": {
+        "points": [
+          {"x": 0, "y": 0.583},
+          {"x": 7, "y": 0.583}
+        ],
+        "stroke": "#dc2626",
+        "stroke_width": 2,
+        "dasharray": "4,4"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Expected Value = 3.5: Weighted Average of Outcomes",
+      "priority": 1
+    },
+    {
+      "type": "note",
+      "text": "E[X] = Σ x_i · P(x_i) = 1·(1/6) + 2·(1/6) + ... + 6·(1/6) = 21/6 = 3.5",
+      "priority": 5
+    },
+    {
+      "type": "element",
+      "text": "Mean = 3.5",
+      "target": "mean_line",
+      "priority": 4
+    }
+  ]
+}

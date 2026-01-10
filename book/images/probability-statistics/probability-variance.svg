@@ -1,0 +1,53 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(100, 50)">
+    <text x="200.0" y="-20" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle">Variance: Average Squared Deviation from Mean</text>
+    <!-- Axes -->
+    <line x1="0" y1="250" x2="400" y2="250" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="250" x2="0" y2="0" stroke="#333" stroke-width="2"/>
+    <!-- Axis labels -->
+    <text x="200.0" y="285" font-family="Arial" font-size="14" text-anchor="middle">Outcome</text>
+    <text x="-40" y="125.0" font-family="Arial" font-size="14" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90, -40, 125.0)">Squared Deviation</text>
+    <!-- Y-axis labels and grid -->
+    <line x1="0" y1="250.0" x2="400" y2="250.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-20" y="255.0" font-family="Arial" font-size="11">0.00</text>
+    <line x1="0" y1="200.0" x2="400" y2="200.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-20" y="205.0" font-family="Arial" font-size="11">1.40</text>
+    <line x1="0" y1="150.0" x2="400" y2="150.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-20" y="155.0" font-family="Arial" font-size="11">2.80</text>
+    <line x1="0" y1="100.0" x2="400" y2="100.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-20" y="105.0" font-family="Arial" font-size="11">4.20</text>
+    <line x1="0" y1="50.0" x2="400" y2="50.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-20" y="55.0" font-family="Arial" font-size="11">5.60</text>
+    <line x1="0" y1="0.0" x2="400" y2="0.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-20" y="5.0" font-family="Arial" font-size="11">7.00</text>
+    <!-- Reference line -->
+    <line x1="0" y1="250.0" x2="400" y2="250.0" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
+    <text x="410" y="255.0" font-family="Arial" font-size="12" fill="#dc2626">Mean = 3.5</text>
+    <!-- 1 -->
+    <rect x="20.0" y="26.785714285714278" width="43.333333333333336" height="223.21428571428572" fill="#dc2626" opacity="0.8"/>
+    <text x="41.66666666666667" y="21.785714285714278" font-family="Arial" font-size="12" text-anchor="middle">6.250</text>
+    <text x="41.66666666666667" y="270" font-family="Arial" font-size="12" text-anchor="middle">1</text>
+    <!-- 2 -->
+    <rect x="83.33333333333334" y="169.64285714285714" width="43.333333333333336" height="80.35714285714286" fill="#f59e0b" opacity="0.8"/>
+    <text x="105.00000000000001" y="164.64285714285714" font-family="Arial" font-size="12" text-anchor="middle">2.250</text>
+    <text x="105.00000000000001" y="270" font-family="Arial" font-size="12" text-anchor="middle">2</text>
+    <!-- 3 -->
+    <rect x="146.66666666666669" y="241.07142857142858" width="43.333333333333336" height="8.928571428571429" fill="#16a34a" opacity="0.8"/>
+    <text x="168.33333333333334" y="236.07142857142858" font-family="Arial" font-size="12" text-anchor="middle">0.250</text>
+    <text x="168.33333333333334" y="270" font-family="Arial" font-size="12" text-anchor="middle">3</text>
+    <!-- 4 -->
+    <rect x="210.0" y="241.07142857142858" width="43.333333333333336" height="8.928571428571429" fill="#16a34a" opacity="0.8"/>
+    <text x="231.66666666666666" y="236.07142857142858" font-family="Arial" font-size="12" text-anchor="middle">0.250</text>
+    <text x="231.66666666666666" y="270" font-family="Arial" font-size="12" text-anchor="middle">4</text>
+    <!-- 5 -->
+    <rect x="273.33333333333337" y="169.64285714285714" width="43.333333333333336" height="80.35714285714286" fill="#f59e0b" opacity="0.8"/>
+    <text x="295.00000000000006" y="164.64285714285714" font-family="Arial" font-size="12" text-anchor="middle">2.250</text>
+    <text x="295.00000000000006" y="270" font-family="Arial" font-size="12" text-anchor="middle">5</text>
+    <!-- 6 -->
+    <rect x="336.6666666666667" y="26.785714285714278" width="43.333333333333336" height="223.21428571428572" fill="#dc2626" opacity="0.8"/>
+    <text x="358.33333333333337" y="21.785714285714278" font-family="Arial" font-size="12" text-anchor="middle">6.250</text>
+    <text x="358.33333333333337" y="270" font-family="Arial" font-size="12" text-anchor="middle">6</text>
+    <!-- Note -->
+    <text x="200.0" y="305" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Var(X) = Σ (x_i - μ)² · P(x_i) = 2.92 | Mean μ = 3.5</text>
+  </g>
+</svg>

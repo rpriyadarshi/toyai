@@ -1,0 +1,50 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(100, 50)">
+    <text x="200.0" y="-20" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle">Fair Die PMF: Uniform Distribution</text>
+    <!-- Axes -->
+    <line x1="0" y1="250" x2="400" y2="250" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="250" x2="0" y2="0" stroke="#333" stroke-width="2"/>
+    <!-- Axis labels -->
+    <text x="200.0" y="285" font-family="Arial" font-size="14" text-anchor="middle">Outcome</text>
+    <text x="-40" y="125.0" font-family="Arial" font-size="14" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90, -40, 125.0)">Probability</text>
+    <!-- Y-axis labels and grid -->
+    <line x1="0" y1="250.0" x2="400" y2="250.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-15" y="255.0" font-family="Arial" font-size="11">0.00</text>
+    <line x1="0" y1="200.0" x2="400" y2="200.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-15" y="205.0" font-family="Arial" font-size="11">0.03</text>
+    <line x1="0" y1="150.0" x2="400" y2="150.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-15" y="155.0" font-family="Arial" font-size="11">0.07</text>
+    <line x1="0" y1="100.0" x2="400" y2="100.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-15" y="105.0" font-family="Arial" font-size="11">0.10</text>
+    <line x1="0" y1="50.0" x2="400" y2="50.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-15" y="55.0" font-family="Arial" font-size="11">0.13</text>
+    <line x1="0" y1="0.0" x2="400" y2="0.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-15" y="5.0" font-family="Arial" font-size="11">0.17</text>
+    <!-- 1 -->
+    <rect x="20.0" y="0.0" width="43.333333333333336" height="250.0" fill="#2563eb" opacity="0.8"/>
+    <text x="41.66666666666667" y="-5.0" font-family="Arial" font-size="12" text-anchor="middle">0.167</text>
+    <text x="41.66666666666667" y="270" font-family="Arial" font-size="12" text-anchor="middle">1</text>
+    <!-- 2 -->
+    <rect x="83.33333333333334" y="0.0" width="43.333333333333336" height="250.0" fill="#2563eb" opacity="0.8"/>
+    <text x="105.00000000000001" y="-5.0" font-family="Arial" font-size="12" text-anchor="middle">0.167</text>
+    <text x="105.00000000000001" y="270" font-family="Arial" font-size="12" text-anchor="middle">2</text>
+    <!-- 3 -->
+    <rect x="146.66666666666669" y="0.0" width="43.333333333333336" height="250.0" fill="#2563eb" opacity="0.8"/>
+    <text x="168.33333333333334" y="-5.0" font-family="Arial" font-size="12" text-anchor="middle">0.167</text>
+    <text x="168.33333333333334" y="270" font-family="Arial" font-size="12" text-anchor="middle">3</text>
+    <!-- 4 -->
+    <rect x="210.0" y="0.0" width="43.333333333333336" height="250.0" fill="#2563eb" opacity="0.8"/>
+    <text x="231.66666666666666" y="-5.0" font-family="Arial" font-size="12" text-anchor="middle">0.167</text>
+    <text x="231.66666666666666" y="270" font-family="Arial" font-size="12" text-anchor="middle">4</text>
+    <!-- 5 -->
+    <rect x="273.33333333333337" y="0.0" width="43.333333333333336" height="250.0" fill="#2563eb" opacity="0.8"/>
+    <text x="295.00000000000006" y="-5.0" font-family="Arial" font-size="12" text-anchor="middle">0.167</text>
+    <text x="295.00000000000006" y="270" font-family="Arial" font-size="12" text-anchor="middle">5</text>
+    <!-- 6 -->
+    <rect x="336.6666666666667" y="0.0" width="43.333333333333336" height="250.0" fill="#2563eb" opacity="0.8"/>
+    <text x="358.33333333333337" y="-5.0" font-family="Arial" font-size="12" text-anchor="middle">0.167</text>
+    <text x="358.33333333333337" y="270" font-family="Arial" font-size="12" text-anchor="middle">6</text>
+    <!-- Note -->
+    <text x="200.0" y="305" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">P(X = i) = 1/6 ≈ 0.167 for all i ∈ {1, 2, 3, 4, 5, 6}</text>
+  </g>
+</svg>

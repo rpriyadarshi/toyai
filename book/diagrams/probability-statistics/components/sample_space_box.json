@@ -1,0 +1,40 @@
+{
+  "visual": {
+    "width": 300,
+    "height": 250,
+    "class": "sample-space-box"
+  },
+  "structure": {
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 300,
+      "height": 250,
+      "rx": 4,
+      "fill": "#f8fafc",
+      "stroke": "#64748b",
+      "stroke-width": 2,
+      "stroke-dasharray": "4,4"
+    },
+    "text": [
+      {
+        "content": "Sample Space",
+        "x": 150,
+        "y": 20,
+        "class": "box-label"
+      }
+    ]
+  },
+  "pins": {
+    "input": {
+      "side": "left",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    },
+    "output": {
+      "side": "right",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}

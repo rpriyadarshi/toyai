@@ -1,0 +1,119 @@
+{
+  "metadata": {
+    "id": "probability-sample-space-events",
+    "title": "Sample Space and Events: Die Roll Example",
+    "width": 700,
+    "height": 400,
+    "diagram_type": "geometric"
+  },
+  "components": [
+    {
+      "id": "sample_space",
+      "type": "container",
+      "template": "sample_space_box",
+      "position": {"x": 50, "y": 50},
+      "width": 600,
+      "height": 300},
+    {
+      "id": "outcome_1",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 100, "y": 120},
+      "custom_text": {
+        "label": "1"
+      }
+    },
+    {
+      "id": "outcome_2",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 200, "y": 120},
+      "custom_text": {
+        "label": "2",
+        "subtext": "E"
+      }
+    },
+    {
+      "id": "outcome_3",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 300, "y": 120},
+      "custom_text": {
+        "label": "3"
+      }
+    },
+    {
+      "id": "outcome_4",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 400, "y": 120},
+      "custom_text": {
+        "label": "4",
+        "subtext": "E"
+      }
+    },
+    {
+      "id": "outcome_5",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 500, "y": 120},
+      "custom_text": {
+        "label": "5",
+        "subtext": "F"
+      }
+    },
+    {
+      "id": "outcome_6",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 600, "y": 120},
+      "custom_text": {
+        "label": "6",
+        "subtext": "E, F"
+      }
+    },
+    {
+      "id": "label_e",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 100, "y": 220},
+      "custom_text": {
+        "label": "Event E = {2, 4, 6}",
+        "subtext": "Even numbers"
+      }
+    },
+    {
+      "id": "label_f",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 400, "y": 220},
+      "custom_text": {
+        "label": "Event F = {5, 6}",
+        "subtext": "Greater than 4"
+      }
+    },
+    {
+      "id": "label_intersection",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 250, "y": 280},
+      "custom_text": {
+        "label": "E ∩ F = {6}",
+        "subtext": "Intersection"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Sample Space and Events: Die Roll Example",
+      "priority": 1
+    },
+    {
+      "type": "note",
+      "text": "Ω = {1, 2, 3, 4, 5, 6} | E = {2, 4, 6} (even) | F = {5, 6} (>4) | E ∩ F = {6}",
+      "priority": 5
+    }
+  ]
+}

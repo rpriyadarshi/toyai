@@ -1,0 +1,24 @@
+{
+  "visual": {
+    "width": 200,
+    "height": 200,
+    "class": "venn-circle"
+  },
+  "structure": {
+    "circle": {
+      "cx": 100,
+      "cy": 100,
+      "r": 80,
+      "fill": "none",
+      "stroke": "#2563eb",
+      "stroke-width": 2
+    }
+  },
+  "pins": {
+    "center": {
+      "side": "bottom",
+      "position": "middle",
+      "offset": {"x": 0, "y": 0}
+    }
+  }
+}

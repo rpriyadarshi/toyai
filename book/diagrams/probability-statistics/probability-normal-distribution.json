@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "id": "probability-normal-distribution",
+    "title": "Normal Distribution: μ=0, σ=1 with 68-95-99.7 Rule",
+    "width": 700,
+    "height": 500,
+    "diagram_type": "graph"
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 100, "y": 50},
+      "width": 500,
+      "height": 400,
+      "custom_text": {
+        "x_label": "x",
+        "y_label": "f(x)",
+        "x_range": [-4, 4],
+        "y_range": [0, 0.5]
+      }
+    },
+    {
+      "id": "bell_curve",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 100, "y": 50},
+      "width": 500,
+      "height": 400,
+      "custom_text": {
+        "points": [
+          {"x": -4, "y": 0.001},
+          {"x": -3, "y": 0.004},
+          {"x": -2, "y": 0.054},
+          {"x": -1, "y": 0.242},
+          {"x": 0, "y": 0.399},
+          {"x": 1, "y": 0.242},
+          {"x": 2, "y": 0.054},
+          {"x": 3, "y": 0.004},
+          {"x": 4, "y": 0.001}
+        ],
+        "stroke": "#2563eb",
+        "stroke_width": 3
+      }
+    },
+    {
+      "id": "region_68",
+      "type": "plot",
+      "template": "plot_region",
+      "position": {"x": 100, "y": 50},
+      "width": 500,
+      "height": 400,
+      "custom_text": {
+        "points": [
+          {"x": -1, "y": 0},
+          {"x": -1, "y": 0.242},
+          {"x": 0, "y": 0.399},
+          {"x": 1, "y": 0.242},
+          {"x": 1, "y": 0}
+        ],
+        "fill": "#16a34a",
+        "opacity": 0.3
+      }
+    },
+    {
+      "id": "region_95",
+      "type": "plot",
+      "template": "plot_region",
+      "position": {"x": 100, "y": 50},
+      "width": 500,
+      "height": 400,
+      "custom_text": {
+        "points": [
+          {"x": -2, "y": 0},
+          {"x": -2, "y": 0.054},
+          {"x": -1, "y": 0.242},
+          {"x": 0, "y": 0.399},
+          {"x": 1, "y": 0.242},
+          {"x": 2, "y": 0.054},
+          {"x": 2, "y": 0}
+        ],
+        "fill": "#f59e0b",
+        "opacity": 0.2
+      }
+    },
+    {
+      "id": "mean_line",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 100, "y": 50},
+      "width": 500,
+      "height": 400,
+      "custom_text": {
+        "points": [
+          {"x": 0, "y": 0},
+          {"x": 0, "y": 0.5}
+        ],
+        "stroke": "#dc2626",
+        "stroke_width": 2,
+        "dasharray": "4,4"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Normal Distribution: μ=0, σ=1 with 68-95-99.7 Rule",
+      "priority": 1
+    },
+    {
+      "type": "note",
+      "text": "68% within 1σ (green) | 95% within 2σ (orange) | 99.7% within 3σ | Mean μ = 0",
+      "priority": 5
+    },
+    {
+      "type": "element",
+      "text": "μ = 0",
+      "target": "mean_line",
+      "priority": 4
+    }
+  ]
+}

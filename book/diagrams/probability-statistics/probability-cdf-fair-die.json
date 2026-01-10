@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "id": "probability-cdf-fair-die",
+    "title": "Fair Die CDF: P(X ≤ x)",
+    "width": 600,
+    "height": 400,
+    "diagram_type": "graph"
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 100, "y": 50},
+      "width": 450,
+      "height": 300,
+      "custom_text": {
+        "x_label": "x",
+        "y_label": "F(x) = P(X ≤ x)",
+        "x_range": [0, 7],
+        "y_range": [0, 1]
+      }
+    },
+    {
+      "id": "cdf_line",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 100, "y": 50},
+      "width": 450,
+      "height": 300,
+      "custom_text": {
+        "points": [
+          {"x": 0, "y": 0},
+          {"x": 1, "y": 0.167},
+          {"x": 2, "y": 0.333},
+          {"x": 3, "y": 0.5},
+          {"x": 4, "y": 0.667},
+          {"x": 5, "y": 0.833},
+          {"x": 6, "y": 1.0},
+          {"x": 7, "y": 1.0}
+        ],
+        "stroke": "#2563eb",
+        "stroke_width": 3,
+        "step": true
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Fair Die CDF: P(X ≤ x)",
+      "priority": 1
+    },
+    {
+      "type": "note",
+      "text": "Step function: F(0)=0, F(1)=1/6, F(2)=2/6, ..., F(6)=1, F(7)=1",
+      "priority": 5
+    }
+  ]
+}

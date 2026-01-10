@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "id": "probability-variance",
+    "title": "Variance: Average Squared Deviation from Mean",
+    "width": 600,
+    "height": 400,
+    "diagram_type": "graph"
+  },
+  "components": [
+    {
+      "id": "axis_system",
+      "type": "axis",
+      "template": "axis_system",
+      "position": {"x": 100, "y": 50},
+      "width": 450,
+      "height": 300,
+      "custom_text": {
+        "x_label": "Outcome",
+        "y_label": "Squared Deviation",
+        "x_range": [0, 7],
+        "y_range": [0, 7]
+      }
+    },
+    {
+      "id": "bar_chart",
+      "type": "plot",
+      "template": "bar_chart",
+      "position": {"x": 100, "y": 50},
+      "width": 450,
+      "height": 300,
+      "custom_text": {
+        "data": [
+          {"label": "1", "value": 6.25, "color": "#dc2626"},
+          {"label": "2", "value": 2.25, "color": "#f59e0b"},
+          {"label": "3", "value": 0.25, "color": "#16a34a"},
+          {"label": "4", "value": 0.25, "color": "#16a34a"},
+          {"label": "5", "value": 2.25, "color": "#f59e0b"},
+          {"label": "6", "value": 6.25, "color": "#dc2626"}
+        ]
+      }
+    },
+    {
+      "id": "mean_line",
+      "type": "plot",
+      "template": "plot_line",
+      "position": {"x": 100, "y": 50},
+      "width": 450,
+      "height": 300,
+      "custom_text": {
+        "points": [
+          {"x": 0, "y": 0},
+          {"x": 7, "y": 0}
+        ],
+        "stroke": "#2563eb",
+        "stroke_width": 2,
+        "dasharray": "4,4"
+      }
+    }
+  ],
+  "connections": [],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Variance: Average Squared Deviation from Mean",
+      "priority": 1
+    },
+    {
+      "type": "note",
+      "text": "Var(X) = Σ (x_i - μ)² · P(x_i) = 2.92 | Mean μ = 3.5",
+      "priority": 5
+    },
+    {
+      "type": "element",
+      "text": "Mean = 3.5",
+      "target": "mean_line",
+      "priority": 4
+    }
+  ]
+}

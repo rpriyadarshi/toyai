@@ -47,6 +47,8 @@ A **sample space** is the set of all possible outcomes of an experiment. An **ev
 - Number of outcomes in $F$: $|F| = 2$
 - Total possible outcomes: $|\Omega| = 6$
 
+| ![Sample Space and Events: Die Roll Example](images/probability-statistics/probability-sample-space-events.svg) |
+
 ### Probability Axioms
 
 Probability is defined by three axioms (fundamental rules) that all probability functions must satisfy:
@@ -122,6 +124,8 @@ where $A \cap B$ (read "A intersect B") is the event that both $A$ and $B$ occur
    $$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{\frac{2}{6}}{\frac{3}{6}} = \frac{2}{3} \approx 0.667$$
 
 **Interpretation:** Given that we rolled a number greater than 3, the probability that it's even is $\frac{2}{3}$. This makes sense: of the three outcomes $\{4, 5, 6\}$ that satisfy $B$, two of them ($\{4, 6\}$) also satisfy $A$.
+
+| ![Conditional Probability: P(A|B) = P(A ∩ B) / P(B)](images/probability-statistics/probability-conditional.svg) |
 
 ### Independence
 
@@ -206,6 +210,8 @@ For a discrete random variable $X$ that can take values $x_1, x_2, \ldots, x_n$,
 - Non-negativity: $0.7 \geq 0$ ✓, $0.3 \geq 0$ ✓
 - Normalization: $0.7 + 0.3 = 1.0$ ✓
 
+| ![Biased Coin PMF: P(Heads) = 0.7](images/probability-statistics/probability-pmf-biased-coin.svg) |
+
 **Example: Fair Die PMF**
 
 **Given:**
@@ -222,6 +228,8 @@ For a discrete random variable $X$ that can take values $x_1, x_2, \ldots, x_n$,
 
 **Verification:**
 - Normalization: $6 \times \frac{1}{6} = 1.0$ ✓
+
+| ![Fair Die PMF: Uniform Distribution](images/probability-statistics/probability-pmf-fair-die.svg) |
 
 ### Continuous Distributions
 
@@ -264,6 +272,8 @@ $$F(x) = \int_{-\infty}^{x} f(t) \, dt$$
 - $F(5) = P(X \leq 5) = \frac{5}{6} \approx 0.833$
 - $F(6) = P(X \leq 6) = \frac{6}{6} = 1.0$
 - $F(7) = P(X \leq 7) = 1.0$ (all outcomes are $\leq 7$)
+
+| ![Fair Die CDF: P(X ≤ x)](images/probability-statistics/probability-cdf-fair-die.svg) |
 
 ---
 
@@ -314,6 +324,8 @@ $$E[X] = \sum_{i=1}^{6} x_i \cdot P(X = x_i) = \sum_{i=1}^{6} x_i \cdot \frac{1}
 **Result:** $E[X] = 3.5$
 
 **Interpretation:** The expected value of a fair die roll is 3.5. This is the long-run average if we roll the die many times.
+
+| ![Expected Value = 3.5: Weighted Average of Outcomes](images/probability-statistics/probability-expected-value.svg) |
 
 **Example: Biased Coin Expected Value**
 
@@ -391,6 +403,8 @@ $$\text{Var}(X) = E[X^2] - (E[X])^2$$
    $$\text{Var}(X) = E[X^2] - (E[X])^2 = 15.167 - (3.5)^2 = 15.167 - 12.25 = 2.917 \approx 2.92$$
 
 Both methods give the same result ✓
+
+| ![Variance: Average Squared Deviation from Mean](images/probability-statistics/probability-variance.svg) |
 
 ### Standard Deviation
 
@@ -554,6 +568,8 @@ $$f(0) = \frac{1}{1 \cdot \sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{0-0}{1}\right)
 **PDF at $x = 1$:**
 $$f(1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{1-0}{1}\right)^2} = \frac{1}{\sqrt{2\pi}} e^{-0.5} \approx 0.242$$
 
+| ![Normal Distribution: μ=0, σ=1 with 68-95-99.7 Rule](images/probability-statistics/probability-normal-distribution.svg) |
+
 **Why Used for Weight Initialization**
 
 Neural network weights are typically initialized by sampling from a normal distribution with mean 0 and small standard deviation (e.g., $\sigma = 0.01$).
@@ -644,6 +660,8 @@ $$H(P) = -[0.99 \log(0.99) + 0.01 \log(0.01)]$$
 
 **Interpretation:** Low entropy (0.056) indicates low uncertainty—the outcome is very predictable (almost always Heads).
 
+| ![Entropy: High Uncertainty vs Low Uncertainty](images/probability-statistics/probability-entropy-comparison.svg) |
+
 **Maximum Entropy Principle**
 
 For a distribution with $n$ outcomes, entropy is maximized when all outcomes are equally likely (uniform distribution):
@@ -701,6 +719,8 @@ $$H(P, Q) = -\sum_{i=1}^{4} P(i) \log Q(i)$$
 $$H(P, Q) = -\log Q(\text{target})$$
 
 This is exactly the cross-entropy loss formula used in neural networks!
+
+| ![Cross-Entropy: Comparing True vs Predicted Distribution](images/probability-statistics/probability-cross-entropy.svg) |
 
 **Connection to Neural Networks:** Cross-entropy loss compares the true one-hot distribution with the model's predicted categorical distribution (from softmax). Lower cross-entropy means the distributions are more similar, which means better predictions.
 
@@ -843,6 +863,8 @@ Normalization (computing z-scores) helps neural network training because:
 3. **Faster convergence:** Training converges faster when inputs are normalized
 
 **Connection to Layer Normalization:** Layer normalization in transformers applies this exact transformation: subtract the mean, divide by the standard deviation. This stabilizes training in deep networks.
+
+| ![Z-Score Normalization: Transform to Mean 0, Std 1](images/probability-statistics/probability-zscore-normalization.svg) |
 
 ### Sample vs Population Statistics
 

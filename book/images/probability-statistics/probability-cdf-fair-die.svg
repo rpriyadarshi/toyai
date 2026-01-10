@@ -1,0 +1,36 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(100, 50)">
+    <text x="200.0" y="-20" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle">Fair Die CDF: P(X ≤ x)</text>
+    <!-- Axes -->
+    <line x1="0" y1="250" x2="400" y2="250" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="250" x2="0" y2="0" stroke="#333" stroke-width="2"/>
+    <!-- Axis labels -->
+    <text x="200.0" y="285" font-family="Arial" font-size="14" text-anchor="middle">x</text>
+    <text x="-40" y="125.0" font-family="Arial" font-size="14" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90, -40, 125.0)">F(x) = P(X ≤ x)</text>
+    <!-- Y-axis labels and grid -->
+    <line x1="0" y1="250.0" x2="400" y2="250.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-10" y="255.0" font-family="Arial" font-size="11">0.00</text>
+    <line x1="0" y1="200.0" x2="400" y2="200.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-10" y="205.0" font-family="Arial" font-size="11">0.20</text>
+    <line x1="0" y1="150.0" x2="400" y2="150.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-10" y="155.0" font-family="Arial" font-size="11">0.40</text>
+    <line x1="0" y1="100.0" x2="400" y2="100.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-10" y="105.0" font-family="Arial" font-size="11">0.60</text>
+    <line x1="0" y1="50.0" x2="400" y2="50.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-10" y="55.0" font-family="Arial" font-size="11">0.80</text>
+    <line x1="0" y1="0.0" x2="400" y2="0.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="-10" y="5.0" font-family="Arial" font-size="11">1.00</text>
+    <!-- Step function -->
+    <path d="M 0.0 250.0 H 57.14285714285714 V 208.25 H 114.28571428571428 V 166.75 H 171.42857142857142 V 125.0 H 228.57142857142856 V 83.25 H 285.7142857142857 V 41.75 H 342.85714285714283 V 0.0 H 400.0 V 0.0" stroke="#2563eb" stroke-width="3" fill="none"/>
+    <text x="0.0" y="270" font-family="Arial" font-size="11" text-anchor="middle">0</text>
+    <text x="57.14285714285714" y="270" font-family="Arial" font-size="11" text-anchor="middle">1</text>
+    <text x="114.28571428571428" y="270" font-family="Arial" font-size="11" text-anchor="middle">2</text>
+    <text x="171.42857142857142" y="270" font-family="Arial" font-size="11" text-anchor="middle">3</text>
+    <text x="228.57142857142856" y="270" font-family="Arial" font-size="11" text-anchor="middle">4</text>
+    <text x="285.7142857142857" y="270" font-family="Arial" font-size="11" text-anchor="middle">5</text>
+    <text x="342.85714285714283" y="270" font-family="Arial" font-size="11" text-anchor="middle">6</text>
+    <text x="400.0" y="270" font-family="Arial" font-size="11" text-anchor="middle">7</text>
+    <!-- Note -->
+    <text x="200.0" y="305" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Step function: F(0)=0, F(1)=1/6, F(2)=2/6, ..., F(6)=1, F(7)=1</text>
+  </g>
+</svg>

@@ -1,0 +1,105 @@
+{
+  "metadata": {
+    "id": "probability-conditional",
+    "title": "Conditional Probability: P(A|B) = P(A ∩ B) / P(B)",
+    "width": 800,
+    "height": 400,
+    "diagram_type": "geometric"
+  },
+  "components": [
+    {
+      "id": "panel_left",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 50, "y": 100},
+      "width": 300,
+      "height": 250,
+      "custom_text": {
+        "label": "Full Sample Space",
+        "subtext": "Ω = {1, 2, 3, 4, 5, 6}"
+      }
+    },
+    {
+      "id": "event_a",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 100, "y": 150},
+      "custom_text": {
+        "label": "A = {2, 4, 6}",
+        "subtext": "Even numbers"
+      }
+    },
+    {
+      "id": "event_b",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 200, "y": 150},
+      "custom_text": {
+        "label": "B = {4, 5, 6}",
+        "subtext": "> 3"
+      }
+    },
+    {
+      "id": "intersection",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 150, "y": 200},
+      "custom_text": {
+        "label": "A ∩ B = {4, 6}",
+        "subtext": "Intersection"
+      }
+    },
+    {
+      "id": "panel_right",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 450, "y": 100},
+      "width": 300,
+      "height": 250,
+      "custom_text": {
+        "label": "Conditioned on B",
+        "subtext": "Restricted to B = {4, 5, 6}"
+      }
+    },
+    {
+      "id": "b_restricted",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 500, "y": 150},
+      "custom_text": {
+        "label": "B = {4, 5, 6}",
+        "subtext": "Shaded region"
+      }
+    },
+    {
+      "id": "a_given_b",
+      "type": "simple",
+      "template": "simple_box",
+      "position": {"x": 550, "y": 200},
+      "custom_text": {
+        "label": "A|B = {4, 6}",
+        "subtext": "P(A|B) = 2/3"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "panel_left",
+      "to": "panel_right",
+      "style": "forward",
+      "routing": "direct"
+    }
+  ],
+  "labels": [
+    {
+      "type": "title",
+      "text": "Conditional Probability: P(A|B) = P(A ∩ B) / P(B)",
+      "priority": 1
+    },
+    {
+      "type": "note",
+      "text": "Left: Full space with A and B | Right: Restricted to B, showing P(A|B) = 2/3",
+      "priority": 5
+    }
+  ]
+}
