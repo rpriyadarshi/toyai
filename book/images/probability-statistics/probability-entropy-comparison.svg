@@ -16,10 +16,10 @@
     <line x1="40" y1="-52.0" x2="310.0" y2="-52.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
     <line x1="40" y1="-120.0" x2="310.0" y2="-120.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
     <rect x="50.0" y="50.0" width="115.0" height="170.0" fill="#2563eb" opacity="0.8"/>
-    <text x="107.5" y="45.0" font-family="Arial" font-size="11" text-anchor="middle">0.50</text>
+    <text x="107.5" y="135.0" font-family="Arial" font-size="11" text-anchor="middle" fill="white">0.50</text>
     <text x="107.5" y="235" font-family="Arial" font-size="11" text-anchor="middle">Heads</text>
     <rect x="175.0" y="50.0" width="115.0" height="170.0" fill="#2563eb" opacity="0.8"/>
-    <text x="232.5" y="45.0" font-family="Arial" font-size="11" text-anchor="middle">0.50</text>
+    <text x="232.5" y="135.0" font-family="Arial" font-size="11" text-anchor="middle" fill="white">0.50</text>
     <text x="232.5" y="235" font-family="Arial" font-size="11" text-anchor="middle">Tails</text>
     <text x="175.0" y="240" font-family="Arial" font-size="12" fill="#dc2626" text-anchor="middle" font-weight="bold">H(P) = 0.693</text>
   </g>
@@ -39,10 +39,10 @@
     <line x1="40" y1="82.62626262626262" x2="310.0" y2="82.62626262626262" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
     <line x1="40" y1="48.28282828282826" x2="310.0" y2="48.28282828282826" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
     <rect x="50.0" y="50.0" width="115.0" height="170.0" fill="#16a34a" opacity="0.8"/>
-    <text x="107.5" y="45.0" font-family="Arial" font-size="11" text-anchor="middle">0.99</text>
+    <text x="107.5" y="135.0" font-family="Arial" font-size="11" text-anchor="middle" fill="white">0.99</text>
     <text x="107.5" y="235" font-family="Arial" font-size="11" text-anchor="middle">Heads</text>
     <rect x="175.0" y="218.2828282828283" width="115.0" height="1.7171717171717173" fill="#dc2626" opacity="0.8"/>
-    <text x="232.5" y="213.2828282828283" font-family="Arial" font-size="11" text-anchor="middle">0.01</text>
+    <text x="232.5" y="213.2828282828283" font-family="Arial" font-size="11" text-anchor="middle" fill="#1e293b">0.01</text>
     <text x="232.5" y="235" font-family="Arial" font-size="11" text-anchor="middle">Tails</text>
     <text x="175.0" y="240" font-family="Arial" font-size="12" fill="#dc2626" text-anchor="middle" font-weight="bold">H(P) = 0.056</text>
   </g>

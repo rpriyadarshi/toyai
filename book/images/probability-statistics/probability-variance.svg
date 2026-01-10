@@ -22,7 +22,7 @@
     <text x="-20" y="5.0" font-family="Arial" font-size="11">7.00</text>
     <!-- Reference line -->
     <line x1="0" y1="250.0" x2="400" y2="250.0" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
-    <text x="410" y="255.0" font-family="Arial" font-size="12" fill="#dc2626">Mean = 3.5</text>
+    <text x="320" y="245.0" font-family="Arial" font-size="12" fill="#dc2626" text-anchor="end">Mean = 3.5</text>
     <!-- 1 -->
     <rect x="20.0" y="26.785714285714278" width="43.333333333333336" height="223.21428571428572" fill="#dc2626" opacity="0.8"/>
     <text x="41.66666666666667" y="21.785714285714278" font-family="Arial" font-size="12" text-anchor="middle">6.250</text>

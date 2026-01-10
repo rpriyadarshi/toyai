@@ -22,11 +22,11 @@
     <text x="-15" y="5.0" font-family="Arial" font-size="11">0.70</text>
     <!-- Heads -->
     <rect x="20.0" y="0.0" width="120.0" height="250.0" fill="#16a34a" opacity="0.8"/>
-    <text x="80.0" y="-5.0" font-family="Arial" font-size="12" text-anchor="middle">0.700</text>
+    <text x="80.0" y="125.0" font-family="Arial" font-size="12" text-anchor="middle" fill="white">0.700</text>
     <text x="80.0" y="270" font-family="Arial" font-size="12" text-anchor="middle">Heads</text>
     <!-- Tails -->
     <rect x="160.0" y="142.85714285714283" width="120.0" height="107.14285714285715" fill="#dc2626" opacity="0.8"/>
-    <text x="220.0" y="137.85714285714283" font-family="Arial" font-size="12" text-anchor="middle">0.300</text>
+    <text x="220.0" y="196.42857142857142" font-family="Arial" font-size="12" text-anchor="middle" fill="white">0.300</text>
     <text x="220.0" y="270" font-family="Arial" font-size="12" text-anchor="middle">Tails</text>
     <!-- Note -->
     <text x="150.0" y="305" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">P(Heads) = 0.7, P(Tails) = 0.3 | Sum = 1.0 ✓</text>

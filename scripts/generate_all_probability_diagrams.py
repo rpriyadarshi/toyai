@@ -47,9 +47,14 @@ def create_bar_chart_svg(title, width, height, bars, x_label, y_label, note, out
             bar_height = (bar['value'] / y_max) * chart_height
             bar_x = 20 + i * (bar_width + 20) if len(bars) > 1 else 20
             bar_y = chart_height - bar_height
+            # Place value label inside bar if tall enough, otherwise above (but not negative)
+            if bar_height > 20:
+                value_label_y = bar_y + bar_height / 2
+            else:
+                value_label_y = max(5, bar_y - 5)
             svg += f'''    <!-- {bar['label']} -->
     <rect x="{bar_x}" y="{bar_y}" width="{bar_width}" height="{bar_height}" fill="{bar['color']}" opacity="0.8"/>
-    <text x="{bar_x + bar_width/2}" y="{bar_y - 5}" font-family="Arial" font-size="12" text-anchor="middle">{bar['value']:.3f}</text>
+    <text x="{bar_x + bar_width/2}" y="{value_label_y}" font-family="Arial" font-size="12" text-anchor="middle" fill="{'white' if bar_height > 20 else '#1e293b'}">{bar['value']:.3f}</text>
     <text x="{bar_x + bar_width/2}" y="{chart_height + 20}" font-family="Arial" font-size="12" text-anchor="middle">{bar['label']}</text>
 '''
     
@@ -96,7 +101,7 @@ def create_bar_chart_with_line_svg(title, width, height, bars, line_y, line_labe
         line_y_pos = chart_height - (line_y / y_max) * chart_height
         svg += f'''    <!-- Reference line -->
     <line x1="0" y1="{line_y_pos}" x2="{chart_width}" y2="{line_y_pos}" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
-    <text x="{chart_width + 10}" y="{line_y_pos + 5}" font-family="Arial" font-size="12" fill="#dc2626">{line_label}</text>
+    <text x="{chart_width - 80}" y="{line_y_pos - 5}" font-family="Arial" font-size="12" fill="#dc2626" text-anchor="end">{line_label}</text>
 '''
     
     # Bars
@@ -305,8 +310,13 @@ def create_side_by_side_bar_charts_svg(title, width, height, left_title, left_ba
             bar_height = (bar['value'] / max_val) * chart_h
             bar_x = chart_x_offset + 10 + i * (bar_width + 10)
             bar_y = chart_y_offset + chart_h - bar_height
+            # Place value label inside bar if tall enough, otherwise above (but not negative)
+            if bar_height > 18:
+                value_label_y = bar_y + bar_height / 2
+            else:
+                value_label_y = max(chart_y_offset + 5, bar_y - 5)
             svg += f'''    <rect x="{bar_x}" y="{bar_y}" width="{bar_width}" height="{bar_height}" fill="{bar['color']}" opacity="0.8"/>
-    <text x="{bar_x + bar_width/2}" y="{bar_y - 5}" font-family="Arial" font-size="11" text-anchor="middle">{bar['value']:.2f}</text>
+    <text x="{bar_x + bar_width/2}" y="{value_label_y}" font-family="Arial" font-size="11" text-anchor="middle" fill="{'white' if bar_height > 18 else '#1e293b'}">{bar['value']:.2f}</text>
     <text x="{bar_x + bar_width/2}" y="{chart_y_offset + chart_h + 15}" font-family="Arial" font-size="11" text-anchor="middle">{bar['label']}</text>
 '''
     
@@ -340,8 +350,13 @@ def create_side_by_side_bar_charts_svg(title, width, height, left_title, left_ba
             bar_height = (bar['value'] / max_val) * chart_h
             bar_x = chart_x_offset + 10 + i * (bar_width + 10)
             bar_y = chart_y_offset + chart_h - bar_height
+            # Place value label inside bar if tall enough, otherwise above (but not negative)
+            if bar_height > 18:
+                value_label_y = bar_y + bar_height / 2
+            else:
+                value_label_y = max(chart_y_offset + 5, bar_y - 5)
             svg += f'''    <rect x="{bar_x}" y="{bar_y}" width="{bar_width}" height="{bar_height}" fill="{bar['color']}" opacity="0.8"/>
-    <text x="{bar_x + bar_width/2}" y="{bar_y - 5}" font-family="Arial" font-size="11" text-anchor="middle">{bar['value']:.2f}</text>
+    <text x="{bar_x + bar_width/2}" y="{value_label_y}" font-family="Arial" font-size="11" text-anchor="middle" fill="{'white' if bar_height > 18 else '#1e293b'}">{bar['value']:.2f}</text>
     <text x="{bar_x + bar_width/2}" y="{chart_y_offset + chart_h + 15}" font-family="Arial" font-size="11" text-anchor="middle">{bar['label']}</text>
 '''
     
@@ -400,8 +415,13 @@ def create_cross_entropy_svg(title, width, height, left_title, left_bars, right_
             bar_height = (bar['value'] / max_val) * chart_h
             bar_x = chart_x_offset + 10 + i * (bar_width + 5)
             bar_y = chart_y_offset + chart_h - bar_height
+            # Place value label inside bar if tall enough, otherwise above (but not negative)
+            if bar_height > 18:
+                value_label_y = bar_y + bar_height / 2
+            else:
+                value_label_y = max(chart_y_offset + 5, bar_y - 5)
             svg += f'''    <rect x="{bar_x}" y="{bar_y}" width="{bar_width}" height="{bar_height}" fill="{bar['color']}" opacity="0.8"/>
-    <text x="{bar_x + bar_width/2}" y="{bar_y - 5}" font-family="Arial" font-size="11" text-anchor="middle">{bar['value']:.1f}</text>
+    <text x="{bar_x + bar_width/2}" y="{value_label_y}" font-family="Arial" font-size="11" text-anchor="middle" fill="{'white' if bar_height > 18 else '#1e293b'}">{bar['value']:.1f}</text>
     <text x="{bar_x + bar_width/2}" y="{chart_y_offset + chart_h + 15}" font-family="Arial" font-size="11" text-anchor="middle">{bar['label']}</text>
 '''
     
@@ -435,15 +455,20 @@ def create_cross_entropy_svg(title, width, height, left_title, left_bars, right_
             bar_height = (bar['value'] / max_val) * chart_h
             bar_x = chart_x_offset + 10 + i * (bar_width + 5)
             bar_y = chart_y_offset + chart_h - bar_height
+            # Place value label inside bar if tall enough, otherwise above (but not negative)
+            if bar_height > 18:
+                value_label_y = bar_y + bar_height / 2
+            else:
+                value_label_y = max(chart_y_offset + 5, bar_y - 5)
             svg += f'''    <rect x="{bar_x}" y="{bar_y}" width="{bar_width}" height="{bar_height}" fill="{bar['color']}" opacity="0.8"/>
-    <text x="{bar_x + bar_width/2}" y="{bar_y - 5}" font-family="Arial" font-size="11" text-anchor="middle">{bar['value']:.2f}</text>
+    <text x="{bar_x + bar_width/2}" y="{value_label_y}" font-family="Arial" font-size="11" text-anchor="middle" fill="{'white' if bar_height > 18 else '#1e293b'}">{bar['value']:.2f}</text>
     <text x="{bar_x + bar_width/2}" y="{chart_y_offset + chart_h + 15}" font-family="Arial" font-size="11" text-anchor="middle">{bar['label']}</text>
 '''
     
     svg += f'''  </g>
   
   <!-- Cross-entropy label -->
-  <text x="{width/2}" y="{chart_y + panel_height - 10}" font-family="Arial" font-size="14" fill="#dc2626" text-anchor="middle" font-weight="bold">H(P, Q) = {cross_entropy_val:.3f} (Cross-Entropy Loss)</text>
+  <text x="{width/2}" y="{chart_y + panel_height + 20}" font-family="Arial" font-size="14" fill="#dc2626" text-anchor="middle" font-weight="bold">H(P, Q) = {cross_entropy_val:.3f} (Cross-Entropy Loss)</text>
   
   <!-- Note -->
   <text x="{width/2}" y="{height - 20}" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">{note}</text>
