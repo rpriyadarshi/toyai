@@ -1,34 +1,228 @@
-<svg width="500" height="400" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(100, 50)">
-    <text x="150.0" y="-20" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle">Biased Coin PMF: P(Heads) = 0.7</text>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="500"
+   height="400"
+   version="1.1"
+   id="svg52"
+   sodipodi:docname="probability-pmf-biased-coin.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs56" />
+  <sodipodi:namedview
+     id="namedview54"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="2.5675"
+     inkscape:cx="250.04869"
+     inkscape:cy="200.38948"
+     inkscape:window-width="3840"
+     inkscape:window-height="2091"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g50" />
+  <g
+     transform="translate(100, 50)"
+     id="g50">
+    <text
+       x="150.0"
+       y="-20"
+       font-family="Arial"
+       font-size="18"
+       font-weight="bold"
+       text-anchor="middle"
+       id="text2">Biased Coin PMF: P(Heads) = 0.7</text>
     <!-- Axes -->
-    <line x1="0" y1="250" x2="300" y2="250" stroke="#333" stroke-width="2"/>
-    <line x1="0" y1="250" x2="0" y2="0" stroke="#333" stroke-width="2"/>
+    <line
+       x1="0"
+       y1="250"
+       x2="300"
+       y2="250"
+       stroke="#333"
+       stroke-width="2"
+       id="line4" />
+    <line
+       x1="0"
+       y1="250"
+       x2="0"
+       y2="0"
+       stroke="#333"
+       stroke-width="2"
+       id="line6" />
     <!-- Axis labels -->
-    <text x="150.0" y="285" font-family="Arial" font-size="14" text-anchor="middle">Outcome</text>
-    <text x="-40" y="125.0" font-family="Arial" font-size="14" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90, -40, 125.0)">Probability</text>
+    <text
+       x="150.0"
+       y="285"
+       font-family="Arial"
+       font-size="14"
+       text-anchor="middle"
+       id="text8">Outcome</text>
+    <text
+       x="-40"
+       y="125.0"
+       font-family="Arial"
+       font-size="14"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       transform="rotate(-90, -40, 125.0)"
+       id="text10">Probability</text>
     <!-- Y-axis labels and grid -->
-    <line x1="0" y1="250.0" x2="300" y2="250.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <text x="-15" y="255.0" font-family="Arial" font-size="11">0.00</text>
-    <line x1="0" y1="200.0" x2="300" y2="200.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <text x="-15" y="205.0" font-family="Arial" font-size="11">0.14</text>
-    <line x1="0" y1="150.0" x2="300" y2="150.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <text x="-15" y="155.0" font-family="Arial" font-size="11">0.28</text>
-    <line x1="0" y1="100.0" x2="300" y2="100.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <text x="-15" y="105.0" font-family="Arial" font-size="11">0.42</text>
-    <line x1="0" y1="50.00000000000003" x2="300" y2="50.00000000000003" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <text x="-15" y="55.00000000000003" font-family="Arial" font-size="11">0.56</text>
-    <line x1="0" y1="0.0" x2="300" y2="0.0" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-    <text x="-15" y="5.0" font-family="Arial" font-size="11">0.70</text>
+    <line
+       x1="0"
+       y1="250.0"
+       x2="300"
+       y2="250.0"
+       stroke="#ccc"
+       stroke-width="1"
+       stroke-dasharray="2,2"
+       id="line12" />
+    <text
+       x="-25.487967"
+       y="254.35681"
+       font-family="Arial"
+       font-size="11px"
+       id="text14">0.00</text>
+    <line
+       x1="0"
+       y1="200.0"
+       x2="300"
+       y2="200.0"
+       stroke="#ccc"
+       stroke-width="1"
+       stroke-dasharray="2,2"
+       id="line16" />
+    <text
+       x="-25.487967"
+       y="204.35681"
+       font-family="Arial"
+       font-size="11px"
+       id="text18">0.14</text>
+    <line
+       x1="0"
+       y1="150.0"
+       x2="300"
+       y2="150.0"
+       stroke="#ccc"
+       stroke-width="1"
+       stroke-dasharray="2,2"
+       id="line20" />
+    <text
+       x="-25.487967"
+       y="154.35681"
+       font-family="Arial"
+       font-size="11px"
+       id="text22">0.28</text>
+    <line
+       x1="0"
+       y1="100.0"
+       x2="300"
+       y2="100.0"
+       stroke="#ccc"
+       stroke-width="1"
+       stroke-dasharray="2,2"
+       id="line24" />
+    <text
+       x="-25.487967"
+       y="104.35682"
+       font-family="Arial"
+       font-size="11px"
+       id="text26">0.42</text>
+    <line
+       x1="0"
+       y1="50.00000000000003"
+       x2="300"
+       y2="50.00000000000003"
+       stroke="#ccc"
+       stroke-width="1"
+       stroke-dasharray="2,2"
+       id="line28" />
+    <text
+       x="-25.487967"
+       y="54.356819"
+       font-family="Arial"
+       font-size="11px"
+       id="text30">0.56</text>
+    <line
+       x1="0"
+       y1="0.0"
+       x2="300"
+       y2="0.0"
+       stroke="#ccc"
+       stroke-width="1"
+       stroke-dasharray="2,2"
+       id="line32" />
+    <text
+       x="-25.487967"
+       y="4.3568192"
+       font-family="Arial"
+       font-size="11px"
+       id="text34">0.70</text>
     <!-- Heads -->
-    <rect x="20.0" y="0.0" width="120.0" height="250.0" fill="#16a34a" opacity="0.8"/>
-    <text x="80.0" y="125.0" font-family="Arial" font-size="12" text-anchor="middle" fill="white">0.700</text>
-    <text x="80.0" y="270" font-family="Arial" font-size="12" text-anchor="middle">Heads</text>
+    <rect
+       x="20.0"
+       y="0.0"
+       width="120.0"
+       height="250.0"
+       fill="#16a34a"
+       opacity="0.8"
+       id="rect36" />
+    <text
+       x="80.0"
+       y="125.0"
+       font-family="Arial"
+       font-size="12"
+       text-anchor="middle"
+       fill="white"
+       id="text38">0.700</text>
+    <text
+       x="80.0"
+       y="270"
+       font-family="Arial"
+       font-size="12"
+       text-anchor="middle"
+       id="text40">Heads</text>
     <!-- Tails -->
-    <rect x="160.0" y="142.85714285714283" width="120.0" height="107.14285714285715" fill="#dc2626" opacity="0.8"/>
-    <text x="220.0" y="196.42857142857142" font-family="Arial" font-size="12" text-anchor="middle" fill="white">0.300</text>
-    <text x="220.0" y="270" font-family="Arial" font-size="12" text-anchor="middle">Tails</text>
+    <rect
+       x="160.0"
+       y="142.85714285714283"
+       width="120.0"
+       height="107.14285714285715"
+       fill="#dc2626"
+       opacity="0.8"
+       id="rect42" />
+    <text
+       x="220.0"
+       y="196.42857142857142"
+       font-family="Arial"
+       font-size="12"
+       text-anchor="middle"
+       fill="white"
+       id="text44">0.300</text>
+    <text
+       x="220.0"
+       y="270"
+       font-family="Arial"
+       font-size="12"
+       text-anchor="middle"
+       id="text46">Tails</text>
     <!-- Note -->
-    <text x="150.0" y="305" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">P(Heads) = 0.7, P(Tails) = 0.3 | Sum = 1.0 ✓</text>
+    <text
+       x="150.0"
+       y="305"
+       font-family="Arial"
+       font-size="12"
+       fill="#666"
+       text-anchor="middle"
+       id="text48">P(Heads) = 0.7, P(Tails) = 0.3 | Sum = 1.0 ✓</text>
   </g>
 </svg>

@@ -1,63 +1,267 @@
-<svg width="700" height="500" xmlns="http://www.w3.org/2000/svg">
-  <text x="350.0" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle">Z-Score Normalization: Transform to Mean 0, Std 1</text>
-  
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="700"
+   height="500"
+   version="1.1"
+   id="svg65"
+   sodipodi:docname="probability-zscore-normalization.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview67"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.8714286"
+     inkscape:cx="350"
+     inkscape:cy="250.34351"
+     inkscape:window-width="3840"
+     inkscape:window-height="2091"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g32" />
+  <text
+     x="350.0"
+     y="30"
+     font-family="Arial"
+     font-size="18"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text2">Z-Score Normalization: Transform to Mean 0, Std 1</text>
   <!-- Top panel: Original -->
-  <g transform="translate(50, 50)">
-    <rect x="0" y="0" width="600" height="150.0" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" rx="6"/>
-    <text x="300.0" y="25" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Original Distribution</text>
-    <text x="300.0" y="45" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">Mean μ, Standard Deviation σ</text>
-    
+  <g
+     transform="translate(50, 50)"
+     id="g26">
+    <rect
+       x="0"
+       y="0"
+       width="600"
+       height="150.0"
+       fill="#f8fafc"
+       stroke="#cbd5e1"
+       stroke-width="2"
+       rx="6"
+       id="rect4" />
+    <text
+       x="300.0"
+       y="25"
+       font-family="Arial"
+       font-size="16"
+       font-weight="bold"
+       text-anchor="middle"
+       id="text6">Original Distribution</text>
+    <text
+       x="300.0"
+       y="45"
+       font-family="Arial"
+       font-size="12"
+       fill="#64748b"
+       text-anchor="middle"
+       id="text8">Mean μ, Standard Deviation σ</text>
     <!-- Chart -->
-    <g transform="translate(50, 70)">
-      <line x1="0" y1="50.0" x2="500" y2="50.0" stroke="#333" stroke-width="2"/>
-      <line x1="0" y1="50.0" x2="0" y2="0" stroke="#333" stroke-width="2"/>
-      <text x="250.0" y="80.0" font-family="Arial" font-size="12" text-anchor="middle">Value</text>
-      <text x="-25" y="25.0" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90, -25, 25.0)">Frequency</text>
-      
+    <g
+       transform="translate(50, 70)"
+       id="g24">
+      <line
+         x1="0"
+         y1="50.0"
+         x2="500"
+         y2="50.0"
+         stroke="#333"
+         stroke-width="2"
+         id="line10" />
+      <line
+         x1="0"
+         y1="50.0"
+         x2="0"
+         y2="0"
+         stroke="#333"
+         stroke-width="2"
+         id="line12" />
+      <text
+         x="250"
+         y="73.132782"
+         font-family="Arial"
+         font-size="12px"
+         text-anchor="middle"
+         id="text14">Value</text>
+      <text
+         x="-25"
+         y="25.0"
+         font-family="Arial"
+         font-size="12"
+         text-anchor="middle"
+         dominant-baseline="middle"
+         transform="rotate(-90, -25, 25.0)"
+         id="text16">Frequency</text>
       <!-- Distribution curve (simplified bell-like) -->
-      <path d="M 50,50.0 Q 150,0.0 250,30.0 T 450,50.0" 
-            stroke="#2563eb" stroke-width="2" fill="none"/>
-      
+      <path
+         d="M 50,50.0 Q 150,0.0 250,30.0 T 450,50.0"
+         stroke="#2563eb"
+         stroke-width="2"
+         fill="none"
+         id="path18" />
       <!-- Mean line -->
-      <line x1="250" y1="0" x2="250" y2="50.0" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
-      <text x="255" y="15" font-family="Arial" font-size="11" fill="#dc2626">μ</text>
+      <line
+         x1="250"
+         y1="0"
+         x2="250"
+         y2="50.0"
+         stroke="#dc2626"
+         stroke-width="2"
+         stroke-dasharray="4,4"
+         id="line20" />
+      <text
+         x="255"
+         y="15"
+         font-family="Arial"
+         font-size="11"
+         fill="#dc2626"
+         id="text22">μ</text>
     </g>
   </g>
-  
   <!-- Arrow -->
-  <g transform="translate(300.0, 220.0)">
-    <text x="50" y="15" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle">z = (x - μ) / σ</text>
-    <path d="M 50,25 L 50,35" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-down)"/>
+  <g
+     transform="translate(300.0, 220.0)"
+     id="g32">
+    <text
+       x="50"
+       y="15"
+       font-family="Arial"
+       font-size="12"
+       font-weight="bold"
+       text-anchor="middle"
+       id="text28">z = (x - μ) / σ</text>
+    <path
+       d="M 42.213391,25 V 51.607692"
+       stroke="#2563eb"
+       stroke-width="3.26238"
+       marker-end="url(#arrow-down)"
+       id="path30" />
   </g>
-  <defs>
-    <marker id="arrow-down" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-      <polygon points="0,0 8,8 0,8" fill="#2563eb"/>
+  <defs
+     id="defs37">
+    <marker
+       id="arrow-down"
+       markerWidth="8"
+       markerHeight="8"
+       refX="4"
+       refY="4"
+       orient="auto">
+      <polygon
+         points="0,0 8,8 0,8"
+         fill="#2563eb"
+         id="polygon34" />
     </marker>
   </defs>
-  
   <!-- Bottom panel: Normalized -->
-  <g transform="translate(50, 300.0)">
-    <rect x="0" y="0" width="600" height="150.0" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" rx="6"/>
-    <text x="300.0" y="25" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Normalized Distribution</text>
-    <text x="300.0" y="45" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">Mean 0, Standard Deviation 1</text>
-    
+  <g
+     transform="translate(50, 300.0)"
+     id="g61">
+    <rect
+       x="0"
+       y="0"
+       width="600"
+       height="150.0"
+       fill="#f8fafc"
+       stroke="#cbd5e1"
+       stroke-width="2"
+       rx="6"
+       id="rect39" />
+    <text
+       x="300.0"
+       y="25"
+       font-family="Arial"
+       font-size="16"
+       font-weight="bold"
+       text-anchor="middle"
+       id="text41">Normalized Distribution</text>
+    <text
+       x="300.0"
+       y="45"
+       font-family="Arial"
+       font-size="12"
+       fill="#64748b"
+       text-anchor="middle"
+       id="text43">Mean 0, Standard Deviation 1</text>
     <!-- Chart -->
-    <g transform="translate(50, 70)">
-      <line x1="0" y1="50.0" x2="500" y2="50.0" stroke="#333" stroke-width="2"/>
-      <line x1="0" y1="50.0" x2="0" y2="0" stroke="#333" stroke-width="2"/>
-      <text x="250.0" y="80.0" font-family="Arial" font-size="12" text-anchor="middle">Z-Score</text>
-      <text x="-25" y="25.0" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90, -25, 25.0)">Frequency</text>
-      
+    <g
+       transform="translate(50, 70)"
+       id="g59">
+      <line
+         x1="0"
+         y1="50.0"
+         x2="500"
+         y2="50.0"
+         stroke="#333"
+         stroke-width="2"
+         id="line45" />
+      <line
+         x1="0"
+         y1="50.0"
+         x2="0"
+         y2="0"
+         stroke="#333"
+         stroke-width="2"
+         id="line47" />
+      <text
+         x="250"
+         y="71.939461"
+         font-family="Arial"
+         font-size="12px"
+         text-anchor="middle"
+         id="text49">Z-Score</text>
+      <text
+         x="-25"
+         y="25.0"
+         font-family="Arial"
+         font-size="12"
+         text-anchor="middle"
+         dominant-baseline="middle"
+         transform="rotate(-90, -25, 25.0)"
+         id="text51">Frequency</text>
       <!-- Distribution curve centered at 0 -->
-      <path d="M 50,50.0 Q 150,0.0 250,30.0 T 450,50.0" 
-            stroke="#16a34a" stroke-width="2" fill="none"/>
-      
+      <path
+         d="M 50,50.0 Q 150,0.0 250,30.0 T 450,50.0"
+         stroke="#16a34a"
+         stroke-width="2"
+         fill="none"
+         id="path53" />
       <!-- Mean line at 0 -->
-      <line x1="250" y1="0" x2="250" y2="50.0" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
-      <text x="255" y="15" font-family="Arial" font-size="11" fill="#dc2626">μ = 0</text>
+      <line
+         x1="250"
+         y1="0"
+         x2="250"
+         y2="50.0"
+         stroke="#dc2626"
+         stroke-width="2"
+         stroke-dasharray="4,4"
+         id="line55" />
+      <text
+         x="255"
+         y="15"
+         font-family="Arial"
+         font-size="11"
+         fill="#dc2626"
+         id="text57">μ = 0</text>
     </g>
   </g>
-  
   <!-- Note -->
-  <text x="350.0" y="480" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Top: Original data (μ, σ) | Bottom: Normalized (μ=0, σ=1) | All z-scores have mean 0, std 1</text>
+  <text
+     x="350.0"
+     y="480"
+     font-family="Arial"
+     font-size="12"
+     fill="#666"
+     text-anchor="middle"
+     id="text63">Top: Original data (μ, σ) | Bottom: Normalized (μ=0, σ=1) | All z-scores have mean 0, std 1</text>
 </svg>

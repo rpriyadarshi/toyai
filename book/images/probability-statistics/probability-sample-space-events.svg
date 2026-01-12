@@ -1,54 +1,316 @@
-<svg width="700" height="400" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(50, 50)">
-    <text x="250.0" y="-20" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle">Sample Space and Events: Die Roll Example</text>
-    
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="700"
+   height="400"
+   version="1.1"
+   id="svg68"
+   sodipodi:docname="probability-sample-space-events.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs72" />
+  <sodipodi:namedview
+     id="namedview70"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.8714286"
+     inkscape:cx="350"
+     inkscape:cy="200.64885"
+     inkscape:window-width="3840"
+     inkscape:window-height="2091"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g66" />
+  <g
+     transform="translate(50, 50)"
+     id="g66">
+    <text
+       x="308.04584"
+       y="-18.441401"
+       font-family="Arial"
+       font-size="18px"
+       font-weight="bold"
+       text-anchor="middle"
+       id="text2">Sample Space and Events: Die Roll Example</text>
     <!-- Sample space box -->
-    <rect x="0" y="0" width="600" height="250" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="4,4" rx="4"/>
-    <text x="300.0" y="20" font-family="Arial" font-size="14" font-weight="bold" fill="#1e293b">Sample Space Ω = (1, 2, 3, 4, 5, 6)</text>
-    
+    <rect
+       x="0"
+       y="0"
+       width="600"
+       height="250"
+       fill="#f8fafc"
+       stroke="#64748b"
+       stroke-width="2"
+       stroke-dasharray="4,4"
+       rx="4"
+       id="rect4" />
+    <text
+       x="362.27505"
+       y="17.375242"
+       font-family="Arial"
+       font-size="14px"
+       font-weight="bold"
+       fill="#1e293b"
+       id="text6">Sample Space Ω = (1, 2, 3, 4, 5, 6)</text>
     <!-- Outcomes -->
-    <g transform="translate(50, 70)">
-      <rect x="0" y="0" width="60" height="50" fill="#e1f5ff" stroke="#2563eb" stroke-width="2" rx="6"/>
-      <text x="30" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">1</text>
-      
-      <rect x="100" y="0" width="60" height="50" fill="#c8e6c9" stroke="#16a34a" stroke-width="2" rx="6"/>
-      <text x="130" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">2</text>
-      <text x="130" y="45" font-family="Arial" font-size="11" text-anchor="middle" fill="#16a34a">E</text>
-      
-      <rect x="200" y="0" width="60" height="50" fill="#e1f5ff" stroke="#2563eb" stroke-width="2" rx="6"/>
-      <text x="230" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">3</text>
-      
-      <rect x="300" y="0" width="60" height="50" fill="#c8e6c9" stroke="#16a34a" stroke-width="2" rx="6"/>
-      <text x="330" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">4</text>
-      <text x="330" y="45" font-family="Arial" font-size="11" text-anchor="middle" fill="#16a34a">E</text>
-      
-      <rect x="400" y="0" width="60" height="50" fill="#fff4e1" stroke="#f59e0b" stroke-width="2" rx="6"/>
-      <text x="430" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">5</text>
-      <text x="430" y="45" font-family="Arial" font-size="11" text-anchor="middle" fill="#f59e0b">F</text>
-      
-      <rect x="500" y="0" width="60" height="50" fill="#f3e5f5" stroke="#9333ea" stroke-width="2" rx="6"/>
-      <text x="530" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">6</text>
-      <text x="530" y="45" font-family="Arial" font-size="11" text-anchor="middle" fill="#9333ea">E, F</text>
+    <g
+       transform="translate(18.610262,33.690931)"
+       id="g40">
+      <rect
+         x="0"
+         y="0"
+         width="60"
+         height="50"
+         fill="#e1f5ff"
+         stroke="#2563eb"
+         stroke-width="2"
+         rx="6"
+         id="rect8" />
+      <text
+         x="30"
+         y="30"
+         font-family="Arial"
+         font-size="16px"
+         font-weight="bold"
+         text-anchor="middle"
+         fill="#1e293b"
+         id="text10">1</text>
+      <rect
+         x="100"
+         y="0"
+         width="60"
+         height="50"
+         fill="#c8e6c9"
+         stroke="#16a34a"
+         stroke-width="2"
+         rx="6"
+         id="rect12" />
+      <text
+         x="130"
+         y="30"
+         font-family="Arial"
+         font-size="16px"
+         font-weight="bold"
+         text-anchor="middle"
+         fill="#1e293b"
+         id="text14">2</text>
+      <text
+         x="130"
+         y="45"
+         font-family="Arial"
+         font-size="11px"
+         text-anchor="middle"
+         fill="#16a34a"
+         id="text16">E</text>
+      <rect
+         x="200"
+         y="0"
+         width="60"
+         height="50"
+         fill="#e1f5ff"
+         stroke="#2563eb"
+         stroke-width="2"
+         rx="6"
+         id="rect18" />
+      <text
+         x="230"
+         y="30"
+         font-family="Arial"
+         font-size="16px"
+         font-weight="bold"
+         text-anchor="middle"
+         fill="#1e293b"
+         id="text20">3</text>
+      <rect
+         x="300"
+         y="0"
+         width="60"
+         height="50"
+         fill="#c8e6c9"
+         stroke="#16a34a"
+         stroke-width="2"
+         rx="6"
+         id="rect22" />
+      <text
+         x="330"
+         y="30"
+         font-family="Arial"
+         font-size="16px"
+         font-weight="bold"
+         text-anchor="middle"
+         fill="#1e293b"
+         id="text24">4</text>
+      <text
+         x="330"
+         y="45"
+         font-family="Arial"
+         font-size="11px"
+         text-anchor="middle"
+         fill="#16a34a"
+         id="text26">E</text>
+      <rect
+         x="400"
+         y="0"
+         width="60"
+         height="50"
+         fill="#fff4e1"
+         stroke="#f59e0b"
+         stroke-width="2"
+         rx="6"
+         id="rect28" />
+      <text
+         x="430"
+         y="30"
+         font-family="Arial"
+         font-size="16px"
+         font-weight="bold"
+         text-anchor="middle"
+         fill="#1e293b"
+         id="text30">5</text>
+      <text
+         x="430"
+         y="45"
+         font-family="Arial"
+         font-size="11px"
+         text-anchor="middle"
+         fill="#f59e0b"
+         id="text32">F</text>
+      <rect
+         x="500"
+         y="0"
+         width="60"
+         height="50"
+         fill="#f3e5f5"
+         stroke="#9333ea"
+         stroke-width="2"
+         rx="6"
+         id="rect34" />
+      <text
+         x="530"
+         y="30"
+         font-family="Arial"
+         font-size="16px"
+         font-weight="bold"
+         text-anchor="middle"
+         fill="#1e293b"
+         id="text36">6</text>
+      <text
+         x="530"
+         y="45"
+         font-family="Arial"
+         font-size="11px"
+         text-anchor="middle"
+         fill="#9333ea"
+         id="text38">E, F</text>
     </g>
-    
     <!-- Labels -->
-    <g transform="translate(50, 170)">
-      <rect x="0" y="0" width="200" height="50" fill="#c8e6c9" stroke="#16a34a" stroke-width="2" rx="6"/>
-      <text x="100" y="25" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e293b">Event E = (2, 4, 6)</text>
-      <text x="100" y="40" font-family="Arial" font-size="11" text-anchor="middle" fill="#64748b">Even numbers</text>
-      
-      <rect x="300" y="0" width="200" height="50" fill="#fff4e1" stroke="#f59e0b" stroke-width="2" rx="6"/>
-      <text x="400" y="25" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e293b">Event F = (5, 6)</text>
-      <text x="400" y="40" font-family="Arial" font-size="11" text-anchor="middle" fill="#64748b">Greater than 4</text>
+    <g
+       transform="translate(48.666601,106.27791)"
+       id="g54">
+      <rect
+         x="0"
+         y="0"
+         width="200"
+         height="50"
+         fill="#c8e6c9"
+         stroke="#16a34a"
+         stroke-width="2"
+         rx="6"
+         id="rect42" />
+      <text
+         x="100"
+         y="25"
+         font-family="Arial"
+         font-size="14px"
+         font-weight="bold"
+         text-anchor="middle"
+         fill="#1e293b"
+         id="text44">Event E = (2, 4, 6)</text>
+      <text
+         x="100"
+         y="40"
+         font-family="Arial"
+         font-size="11px"
+         text-anchor="middle"
+         fill="#64748b"
+         id="text46">Even numbers</text>
+      <rect
+         x="300"
+         y="0"
+         width="200"
+         height="50"
+         fill="#fff4e1"
+         stroke="#f59e0b"
+         stroke-width="2"
+         rx="6"
+         id="rect48" />
+      <text
+         x="400"
+         y="25"
+         font-family="Arial"
+         font-size="14px"
+         font-weight="bold"
+         text-anchor="middle"
+         fill="#1e293b"
+         id="text50">Event F = (5, 6)</text>
+      <text
+         x="400"
+         y="40"
+         font-family="Arial"
+         font-size="11px"
+         text-anchor="middle"
+         fill="#64748b"
+         id="text52">Greater than 4</text>
     </g>
-    
-    <g transform="translate(200, 250)">
-      <rect x="0" y="0" width="200" height="50" fill="#f3e5f5" stroke="#9333ea" stroke-width="2" rx="6"/>
-      <text x="100" y="25" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e293b">E ∩ F = 6</text>
-      <text x="100" y="40" font-family="Arial" font-size="11" text-anchor="middle" fill="#64748b">Intersection</text>
+    <g
+       transform="translate(198.02945,177.59875)"
+       id="g62">
+      <rect
+         x="0"
+         y="0"
+         width="200"
+         height="50"
+         fill="#f3e5f5"
+         stroke="#9333ea"
+         stroke-width="2"
+         rx="6"
+         id="rect56" />
+      <text
+         x="100"
+         y="25"
+         font-family="Arial"
+         font-size="14px"
+         font-weight="bold"
+         text-anchor="middle"
+         fill="#1e293b"
+         id="text58">E ∩ F = 6</text>
+      <text
+         x="100"
+         y="40"
+         font-family="Arial"
+         font-size="11px"
+         text-anchor="middle"
+         fill="#64748b"
+         id="text60">Intersection</text>
     </g>
-    
     <!-- Note -->
-    <text x="300.0" y="300" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Ω = {1, 2, 3, 4, 5, 6} | E = {2, 4, 6} (even) | F = {5, 6} (>4) | E ∩ F = {6}</text>
+    <text
+       x="299.35345"
+       y="276.30481"
+       font-family="Arial"
+       font-size="12px"
+       fill="#666666"
+       text-anchor="middle"
+       id="text64">Ω = {1, 2, 3, 4, 5, 6} | E = {2, 4, 6} (even) | F = {5, 6} (&gt;4) | E ∩ F = {6}</text>
   </g>
 </svg>
