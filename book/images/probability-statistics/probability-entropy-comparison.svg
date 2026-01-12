@@ -1,365 +1,56 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   width="800"
-   height="400"
-   version="1.1"
-   id="svg82"
-   sodipodi:docname="probability-entropy-comparison.svg"
-   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs86" />
-  <sodipodi:namedview
-     id="namedview84"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     showgrid="false"
-     inkscape:zoom="1.6375"
-     inkscape:cx="400"
-     inkscape:cy="200.61069"
-     inkscape:window-width="3840"
-     inkscape:window-height="2091"
-     inkscape:window-x="0"
-     inkscape:window-y="32"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg82" />
-  <text
-     x="430.10571"
-     y="5.4028506"
-     font-family="Arial"
-     font-size="18px"
-     font-weight="bold"
-     text-anchor="middle"
-     id="text2">Entropy: High Uncertainty vs Low Uncertainty</text>
-  <!-- Left panel -->
-  <g
-     transform="translate(50, 50)"
-     id="g40">
-    <text
-       x="175.0"
-       y="-20"
-       font-family="Arial"
-       font-size="16"
-       font-weight="bold"
-       text-anchor="middle"
-       id="text4">Fair Coin</text>
-    <rect
-       x="0"
-       y="0"
-       width="350.0"
-       height="250"
-       fill="#f8fafc"
-       stroke="#cbd5e1"
-       stroke-width="2"
-       rx="6"
-       id="rect6" />
-    <text
-       x="175.0"
-       y="25"
-       font-family="Arial"
-       font-size="12"
-       fill="#64748b"
-       text-anchor="middle"
-       id="text8">High Entropy</text>
-    <!-- Left axes -->
-    <line
-       x1="40"
-       y1="220"
-       x2="310.0"
-       y2="220"
-       stroke="#333"
-       stroke-width="2"
-       id="line10" />
-    <line
-       x1="40"
-       y1="220"
-       x2="40"
-       y2="50"
-       stroke="#333"
-       stroke-width="2"
-       id="line12" />
-    <line
-       x1="40"
-       y1="220.0"
-       x2="310.0"
-       y2="220.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line14" />
-    <line
-       x1="40"
-       y1="152.0"
-       x2="310.0"
-       y2="152.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line16" />
-    <line
-       x1="40"
-       y1="84.0"
-       x2="310.0"
-       y2="84.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line18" />
-    <line
-       x1="40"
-       y1="16.0"
-       x2="310.0"
-       y2="16.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line20" />
-    <line
-       x1="40"
-       y1="-52.0"
-       x2="310.0"
-       y2="-52.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line22" />
-    <line
-       x1="40"
-       y1="-120.0"
-       x2="310.0"
-       y2="-120.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line24" />
-    <rect
-       x="50.0"
-       y="50.0"
-       width="115.0"
-       height="170.0"
-       fill="#2563eb"
-       opacity="0.8"
-       id="rect26" />
-    <text
-       x="107.5"
-       y="135.0"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       fill="white"
-       id="text28">0.50</text>
-    <text
-       x="107.5"
-       y="235"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       id="text30">Heads</text>
-    <rect
-       x="175.0"
-       y="50.0"
-       width="115.0"
-       height="170.0"
-       fill="#2563eb"
-       opacity="0.8"
-       id="rect32" />
-    <text
-       x="232.5"
-       y="135.0"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       fill="white"
-       id="text34">0.50</text>
-    <text
-       x="232.5"
-       y="235"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       id="text36">Tails</text>
-    <text
-       x="175.0"
-       y="240"
-       font-family="Arial"
-       font-size="12"
-       fill="#dc2626"
-       text-anchor="middle"
-       font-weight="bold"
-       id="text38">H(P) = 0.693</text>
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ns1="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:ns2="http://www.inkscape.org/namespaces/inkscape" width="792" height="382.43976" version="1.1" id="svg82" ns1:docname="probability-entropy-comparison.svg" ns2:version="1.2.2 (b0a8486541, 2022-12-01)" viewBox="0 0 792.0 382.44">
+  <defs id="defs86" />
+  <ns1:namedview id="namedview84" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" ns2:showpageshadow="2" ns2:pageopacity="0.0" ns2:pagecheckerboard="0" ns2:deskcolor="#d1d1d1" showgrid="false" ns2:zoom="1.6375" ns2:cx="351.14504" ns2:cy="272.06107" ns2:window-width="3840" ns2:window-height="2091" ns2:window-x="0" ns2:window-y="32" ns2:window-maximized="1" ns2:current-layer="g78" fit-margin-top="20" fit-margin-left="20" fit-margin-right="20" fit-margin-bottom="20" />
+  <text x="401.10571" y="32.884766" font-family="Arial" font-size="18px" font-weight="bold" text-anchor="middle" id="text2">Entropy: High Uncertainty vs Low Uncertainty</text>
+  
+  <g transform="translate(43.915375,30.861454)" id="g40">
+    <text x="152.08463" y="26.620461" font-family="Arial" font-size="16px" font-weight="bold" text-anchor="middle" id="text4">Fair Coin</text>
+    <rect x="-22.915375" y="46.620461" width="350" height="250" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" rx="6" id="rect6" />
+    <text x="152.08463" y="71.620461" font-family="Arial" font-size="12px" fill="#64748b" text-anchor="middle" id="text8">High Entropy</text>
+    
+    <line x1="17.084625" y1="266.62045" x2="287.08463" y2="266.62045" stroke="#333333" stroke-width="2" id="line10" />
+    <line x1="17.084625" y1="266.62045" x2="17.084625" y2="96.620461" stroke="#333333" stroke-width="2" id="line12" />
+    <g id="g209" transform="matrix(1,0,0,0.50441534,0,132.3808)">
+      <line x1="17.084625" y1="266.62045" x2="287.08463" y2="266.62045" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line14" />
+      <line x1="17.084625" y1="198.62045" x2="287.08463" y2="198.62045" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line16" />
+      <line x1="17.084625" y1="130.62045" x2="287.08463" y2="130.62045" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line18" />
+      <line x1="17.084625" y1="62.620461" x2="287.08463" y2="62.620461" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line20" />
+      <line x1="17.084625" y1="-5.37954" x2="287.08463" y2="-5.37954" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line22" />
+      <line x1="17.084625" y1="-73.379539" x2="287.08463" y2="-73.379539" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line24" />
+    </g>
+    <rect x="27.084625" y="96.620461" width="115" height="170" fill="#2563eb" opacity="0.8" id="rect26" />
+    <text x="84.584625" y="181.62045" font-family="Arial" font-size="11px" text-anchor="middle" fill="#ffffff" id="text28">0.50</text>
+    <text x="84.584625" y="281.62045" font-family="Arial" font-size="11px" text-anchor="middle" id="text30">Heads</text>
+    <rect x="152.08463" y="96.620461" width="115" height="170" fill="#2563eb" opacity="0.8" id="rect32" />
+    <text x="209.58463" y="181.62045" font-family="Arial" font-size="11px" text-anchor="middle" fill="#ffffff" id="text34">0.50</text>
+    <text x="209.58463" y="281.62045" font-family="Arial" font-size="11px" text-anchor="middle" id="text36">Tails</text>
+    <text x="152.08463" y="286.62045" font-family="Arial" font-size="12px" fill="#dc2626" text-anchor="middle" font-weight="bold" id="text38">H(P) = 0.693</text>
   </g>
-  <!-- Right panel -->
-  <g
-     transform="translate(450.0, 50)"
-     id="g78">
-    <text
-       x="175.0"
-       y="-20"
-       font-family="Arial"
-       font-size="16"
-       font-weight="bold"
-       text-anchor="middle"
-       id="text42">Biased Coin</text>
-    <rect
-       x="0"
-       y="0"
-       width="350.0"
-       height="250"
-       fill="#f8fafc"
-       stroke="#cbd5e1"
-       stroke-width="2"
-       rx="6"
-       id="rect44" />
-    <text
-       x="175.0"
-       y="25"
-       font-family="Arial"
-       font-size="12"
-       fill="#64748b"
-       text-anchor="middle"
-       id="text46">Low Entropy</text>
-    <!-- Right axes -->
-    <line
-       x1="40"
-       y1="220"
-       x2="310.0"
-       y2="220"
-       stroke="#333"
-       stroke-width="2"
-       id="line48" />
-    <line
-       x1="40"
-       y1="220"
-       x2="40"
-       y2="50"
-       stroke="#333"
-       stroke-width="2"
-       id="line50" />
-    <line
-       x1="40"
-       y1="220.0"
-       x2="310.0"
-       y2="220.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line52" />
-    <line
-       x1="40"
-       y1="185.65656565656565"
-       x2="310.0"
-       y2="185.65656565656565"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line54" />
-    <line
-       x1="40"
-       y1="151.3131313131313"
-       x2="310.0"
-       y2="151.3131313131313"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line56" />
-    <line
-       x1="40"
-       y1="116.96969696969697"
-       x2="310.0"
-       y2="116.96969696969697"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line58" />
-    <line
-       x1="40"
-       y1="82.62626262626262"
-       x2="310.0"
-       y2="82.62626262626262"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line60" />
-    <line
-       x1="40"
-       y1="48.28282828282826"
-       x2="310.0"
-       y2="48.28282828282826"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line62" />
-    <rect
-       x="50.0"
-       y="50.0"
-       width="115.0"
-       height="170.0"
-       fill="#16a34a"
-       opacity="0.8"
-       id="rect64" />
-    <text
-       x="107.5"
-       y="135.0"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       fill="white"
-       id="text66">0.99</text>
-    <text
-       x="107.5"
-       y="235"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       id="text68">Heads</text>
-    <rect
-       x="175.0"
-       y="218.2828282828283"
-       width="115.0"
-       height="1.7171717171717173"
-       fill="#dc2626"
-       opacity="0.8"
-       id="rect70" />
-    <text
-       x="232.5"
-       y="213.2828282828283"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       fill="#1e293b"
-       id="text72">0.01</text>
-    <text
-       x="232.5"
-       y="235"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       id="text74">Tails</text>
-    <text
-       x="175.0"
-       y="240"
-       font-family="Arial"
-       font-size="12"
-       fill="#dc2626"
-       text-anchor="middle"
-       font-weight="bold"
-       id="text76">H(P) = 0.056</text>
+  
+  <g transform="translate(421,77.481914)" id="g78">
+    <text x="175" y="-20" font-family="Arial" font-size="16px" font-weight="bold" text-anchor="middle" id="text42">Biased Coin</text>
+    <rect x="0" y="0" width="350" height="250" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" rx="6" id="rect44" />
+    <text x="175" y="25" font-family="Arial" font-size="12px" fill="#64748b" text-anchor="middle" id="text46">Low Entropy</text>
+    
+    <line x1="40" y1="220" x2="310" y2="220" stroke="#333333" stroke-width="2" id="line48" />
+    <line x1="40" y1="220" x2="40" y2="50" stroke="#333333" stroke-width="2" id="line50" />
+    <g id="g217">
+      <line x1="40" y1="220" x2="310" y2="220" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line52" />
+      <line x1="40" y1="185.65657" x2="310" y2="185.65657" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line54" />
+      <line x1="40" y1="151.31313" x2="310" y2="151.31313" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line56" />
+      <line x1="40" y1="116.9697" x2="310" y2="116.9697" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line58" />
+      <line x1="40" y1="82.626259" x2="310" y2="82.626259" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line60" />
+      <line x1="40" y1="48.282829" x2="310" y2="48.282829" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line62" />
+    </g>
+    <rect x="50" y="50" width="115" height="170" fill="#16a34a" opacity="0.8" id="rect64" />
+    <text x="107.5" y="135" font-family="Arial" font-size="11px" text-anchor="middle" fill="#ffffff" id="text66">0.99</text>
+    <text x="107.5" y="235" font-family="Arial" font-size="11px" text-anchor="middle" id="text68">Heads</text>
+    <rect x="175" y="218.28282" width="115" height="1.7171717" fill="#dc2626" opacity="0.8" id="rect70" />
+    <text x="232.5" y="213.28282" font-family="Arial" font-size="11px" text-anchor="middle" fill="#1e293b" id="text72">0.01</text>
+    <text x="232.5" y="235" font-family="Arial" font-size="11px" text-anchor="middle" id="text74">Tails</text>
+    <text x="175" y="240" font-family="Arial" font-size="12px" fill="#dc2626" text-anchor="middle" font-weight="bold" id="text76">H(P) = 0.056</text>
   </g>
-  <!-- Note -->
-  <text
-     x="413.98727"
-     y="332.43246"
-     font-family="Arial"
-     font-size="12px"
-     fill="#666666"
-     text-anchor="middle"
-     id="text80">Left: Uniform distribution → High entropy (0.693) | Right: Concentrated distribution → Low entropy (0.056)</text>
+  
+  <text x="384.98727" y="359.91437" font-family="Arial" font-size="12px" fill="#666666" text-anchor="middle" id="text80">Left: Uniform distribution → High entropy (0.693) | Right: Concentrated distribution → Low entropy (0.056)</text>
 </svg>

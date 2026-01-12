@@ -1,481 +1,68 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   width="800"
-   height="400"
-   version="1.1"
-   id="svg112"
-   sodipodi:docname="probability-cross-entropy.svg"
-   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs116" />
-  <sodipodi:namedview
-     id="namedview114"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     showgrid="false"
-     inkscape:zoom="1.6375"
-     inkscape:cx="400"
-     inkscape:cy="200.61069"
-     inkscape:window-width="3840"
-     inkscape:window-height="2091"
-     inkscape:window-x="0"
-     inkscape:window-y="32"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg112" />
-  <text
-     x="433.45822"
-     y="0.70990878"
-     font-family="Arial"
-     font-size="18px"
-     font-weight="bold"
-     text-anchor="middle"
-     id="text2">Cross-Entropy: Comparing True vs Predicted Distribution</text>
-  <!-- Left panel -->
-  <g
-     transform="translate(50, 50)"
-     id="g54">
-    <text
-       x="175.0"
-       y="-20"
-       font-family="Arial"
-       font-size="16"
-       font-weight="bold"
-       text-anchor="middle"
-       id="text4">True Distribution</text>
-    <rect
-       x="0"
-       y="0"
-       width="350.0"
-       height="250"
-       fill="#f8fafc"
-       stroke="#cbd5e1"
-       stroke-width="2"
-       rx="6"
-       id="rect6" />
-    <text
-       x="175.0"
-       y="25"
-       font-family="Arial"
-       font-size="12"
-       fill="#64748b"
-       text-anchor="middle"
-       id="text8">One-Hot: [0, 0, 1, 0]</text>
-    <!-- Left axes -->
-    <line
-       x1="40"
-       y1="220"
-       x2="310.0"
-       y2="220"
-       stroke="#333"
-       stroke-width="2"
-       id="line10" />
-    <line
-       x1="40"
-       y1="220"
-       x2="40"
-       y2="50"
-       stroke="#333"
-       stroke-width="2"
-       id="line12" />
-    <text
-       x="175.0"
-       y="245"
-       font-family="Arial"
-       font-size="12"
-       text-anchor="middle"
-       id="text14">Class</text>
-    <text
-       x="15"
-       y="135.0"
-       font-family="Arial"
-       font-size="12"
-       text-anchor="middle"
-       dominant-baseline="middle"
-       transform="rotate(-90, 15, 135.0)"
-       id="text16">Probability</text>
-    <line
-       x1="40"
-       y1="220.0"
-       x2="310.0"
-       y2="220.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line18" />
-    <line
-       x1="40"
-       y1="186.0"
-       x2="310.0"
-       y2="186.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line20" />
-    <line
-       x1="40"
-       y1="152.0"
-       x2="310.0"
-       y2="152.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line22" />
-    <line
-       x1="40"
-       y1="118.0"
-       x2="310.0"
-       y2="118.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line24" />
-    <line
-       x1="40"
-       y1="84.0"
-       x2="310.0"
-       y2="84.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line26" />
-    <line
-       x1="40"
-       y1="50.0"
-       x2="310.0"
-       y2="50.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line28" />
-    <rect
-       x="50.0"
-       y="220.0"
-       width="57.5"
-       height="0.0"
-       fill="#dc2626"
-       opacity="0.8"
-       id="rect30" />
-    <text
-       x="78.75"
-       y="215.0"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       fill="#1e293b"
-       id="text32">0.0</text>
-    <text
-       x="78.75"
-       y="235"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       id="text34">A</text>
-    <rect
-       x="112.5"
-       y="220.0"
-       width="57.5"
-       height="0.0"
-       fill="#dc2626"
-       opacity="0.8"
-       id="rect36" />
-    <text
-       x="141.25"
-       y="215.0"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       fill="#1e293b"
-       id="text38">0.0</text>
-    <text
-       x="141.25"
-       y="235"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       id="text40">B</text>
-    <rect
-       x="175.0"
-       y="50.0"
-       width="57.5"
-       height="170.0"
-       fill="#16a34a"
-       opacity="0.8"
-       id="rect42" />
-    <text
-       x="203.75"
-       y="135.0"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       fill="white"
-       id="text44">1.0</text>
-    <text
-       x="203.75"
-       y="235"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       id="text46">C</text>
-    <rect
-       x="237.5"
-       y="220.0"
-       width="57.5"
-       height="0.0"
-       fill="#dc2626"
-       opacity="0.8"
-       id="rect48" />
-    <text
-       x="266.25"
-       y="215.0"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       fill="#1e293b"
-       id="text50">0.0</text>
-    <text
-       x="266.25"
-       y="235"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       id="text52">D</text>
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ns1="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:ns2="http://www.inkscape.org/namespaces/inkscape" width="792" height="402.98645" version="1.1" id="svg112" ns1:docname="probability-cross-entropy.svg" ns2:version="1.2.2 (b0a8486541, 2022-12-01)" viewBox="0 0 792.0 402.99">
+  <defs id="defs116" />
+  <ns1:namedview id="namedview114" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" ns2:showpageshadow="2" ns2:pageopacity="0.0" ns2:pagecheckerboard="0" ns2:deskcolor="#d1d1d1" showgrid="false" ns2:zoom="1.6375" ns2:cx="400" ns2:cy="200.61069" ns2:window-width="3840" ns2:window-height="2091" ns2:window-x="0" ns2:window-y="32" ns2:window-maximized="1" ns2:current-layer="svg112" fit-margin-top="20" fit-margin-left="20" fit-margin-right="20" fit-margin-bottom="20" />
+  <text x="404.45822" y="33.104492" font-family="Arial" font-size="18px" font-weight="bold" text-anchor="middle" id="text2">Cross-Entropy: Comparing True vs Predicted Distribution</text>
+  
+  <g transform="translate(21,82.394583)" id="g54">
+    <text x="175" y="-20" font-family="Arial" font-size="16px" font-weight="bold" text-anchor="middle" id="text4">True Distribution</text>
+    <rect x="0" y="0" width="350" height="250" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" rx="6" id="rect6" />
+    <text x="175" y="25" font-family="Arial" font-size="12px" fill="#64748b" text-anchor="middle" id="text8">One-Hot: [0, 0, 1, 0]</text>
+    
+    <line x1="40" y1="220" x2="310" y2="220" stroke="#333333" stroke-width="2" id="line10" />
+    <line x1="40" y1="220" x2="40" y2="50" stroke="#333333" stroke-width="2" id="line12" />
+    <text x="175" y="245" font-family="Arial" font-size="12px" text-anchor="middle" id="text14">Class</text>
+    <text x="15" y="135" font-family="Arial" font-size="12px" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90,15,135)" id="text16">Probability</text>
+    <line x1="40" y1="220" x2="310" y2="220" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line18" />
+    <line x1="40" y1="186" x2="310" y2="186" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line20" />
+    <line x1="40" y1="152" x2="310" y2="152" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line22" />
+    <line x1="40" y1="118" x2="310" y2="118" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line24" />
+    <line x1="40" y1="84" x2="310" y2="84" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line26" />
+    <line x1="40" y1="50" x2="310" y2="50" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line28" />
+    <rect x="50" y="220" width="57.5" height="0" fill="#dc2626" opacity="0.8" id="rect30" />
+    <text x="78.75" y="215" font-family="Arial" font-size="11px" text-anchor="middle" fill="#1e293b" id="text32">0.0</text>
+    <text x="78.75" y="235" font-family="Arial" font-size="11px" text-anchor="middle" id="text34">A</text>
+    <rect x="112.5" y="220" width="57.5" height="0" fill="#dc2626" opacity="0.8" id="rect36" />
+    <text x="141.25" y="215" font-family="Arial" font-size="11px" text-anchor="middle" fill="#1e293b" id="text38">0.0</text>
+    <text x="141.25" y="235" font-family="Arial" font-size="11px" text-anchor="middle" id="text40">B</text>
+    <rect x="175" y="50" width="57.5" height="170" fill="#16a34a" opacity="0.8" id="rect42" />
+    <text x="203.75" y="135" font-family="Arial" font-size="11px" text-anchor="middle" fill="#ffffff" id="text44">1.0</text>
+    <text x="203.75" y="235" font-family="Arial" font-size="11px" text-anchor="middle" id="text46">C</text>
+    <rect x="237.5" y="220" width="57.5" height="0" fill="#dc2626" opacity="0.8" id="rect48" />
+    <text x="266.25" y="215" font-family="Arial" font-size="11px" text-anchor="middle" fill="#1e293b" id="text50">0.0</text>
+    <text x="266.25" y="235" font-family="Arial" font-size="11px" text-anchor="middle" id="text52">D</text>
   </g>
-  <!-- Right panel -->
-  <g
-     transform="translate(450.0, 50)"
-     id="g106">
-    <text
-       x="175.0"
-       y="-20"
-       font-family="Arial"
-       font-size="16"
-       font-weight="bold"
-       text-anchor="middle"
-       id="text56">Predicted Distribution</text>
-    <rect
-       x="0"
-       y="0"
-       width="350.0"
-       height="250"
-       fill="#f8fafc"
-       stroke="#cbd5e1"
-       stroke-width="2"
-       rx="6"
-       id="rect58" />
-    <text
-       x="175.0"
-       y="25"
-       font-family="Arial"
-       font-size="12"
-       fill="#64748b"
-       text-anchor="middle"
-       id="text60">[0.1, 0.2, 0.6, 0.1]</text>
-    <!-- Right axes -->
-    <line
-       x1="40"
-       y1="220"
-       x2="310.0"
-       y2="220"
-       stroke="#333"
-       stroke-width="2"
-       id="line62" />
-    <line
-       x1="40"
-       y1="220"
-       x2="40"
-       y2="50"
-       stroke="#333"
-       stroke-width="2"
-       id="line64" />
-    <text
-       x="175.0"
-       y="245"
-       font-family="Arial"
-       font-size="12"
-       text-anchor="middle"
-       id="text66">Class</text>
-    <text
-       x="15"
-       y="135.0"
-       font-family="Arial"
-       font-size="12"
-       text-anchor="middle"
-       dominant-baseline="middle"
-       transform="rotate(-90, 15, 135.0)"
-       id="text68">Probability</text>
-    <line
-       x1="40"
-       y1="220.0"
-       x2="310.0"
-       y2="220.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line70" />
-    <line
-       x1="40"
-       y1="186.0"
-       x2="310.0"
-       y2="186.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line72" />
-    <line
-       x1="40"
-       y1="152.0"
-       x2="310.0"
-       y2="152.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line74" />
-    <line
-       x1="40"
-       y1="118.0"
-       x2="310.0"
-       y2="118.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line76" />
-    <line
-       x1="40"
-       y1="84.0"
-       x2="310.0"
-       y2="84.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line78" />
-    <line
-       x1="40"
-       y1="50.0"
-       x2="310.0"
-       y2="50.0"
-       stroke="#ccc"
-       stroke-width="1"
-       stroke-dasharray="2,2"
-       id="line80" />
-    <rect
-       x="50.0"
-       y="203.0"
-       width="57.5"
-       height="17.0"
-       fill="#f59e0b"
-       opacity="0.8"
-       id="rect82" />
-    <text
-       x="78.75"
-       y="198.0"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       fill="#1e293b"
-       id="text84">0.10</text>
-    <text
-       x="78.75"
-       y="235"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       id="text86">A</text>
-    <rect
-       x="112.5"
-       y="186.0"
-       width="57.5"
-       height="34.0"
-       fill="#f59e0b"
-       opacity="0.8"
-       id="rect88" />
-    <text
-       x="141.25"
-       y="203.0"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       fill="white"
-       id="text90">0.20</text>
-    <text
-       x="141.25"
-       y="235"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       id="text92">B</text>
-    <rect
-       x="175.0"
-       y="118.0"
-       width="57.5"
-       height="102.0"
-       fill="#16a34a"
-       opacity="0.8"
-       id="rect94" />
-    <text
-       x="203.75"
-       y="169.0"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       fill="white"
-       id="text96">0.60</text>
-    <text
-       x="203.75"
-       y="235"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       id="text98">C</text>
-    <rect
-       x="237.5"
-       y="203.0"
-       width="57.5"
-       height="17.0"
-       fill="#f59e0b"
-       opacity="0.8"
-       id="rect100" />
-    <text
-       x="266.25"
-       y="198.0"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       fill="#1e293b"
-       id="text102">0.10</text>
-    <text
-       x="266.25"
-       y="235"
-       font-family="Arial"
-       font-size="11"
-       text-anchor="middle"
-       id="text104">D</text>
+  
+  <g transform="translate(421,82.394583)" id="g106">
+    <text x="175" y="-20" font-family="Arial" font-size="16px" font-weight="bold" text-anchor="middle" id="text56">Predicted Distribution</text>
+    <rect x="0" y="0" width="350" height="250" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" rx="6" id="rect58" />
+    <text x="175" y="25" font-family="Arial" font-size="12px" fill="#64748b" text-anchor="middle" id="text60">[0.1, 0.2, 0.6, 0.1]</text>
+    
+    <line x1="40" y1="220" x2="310" y2="220" stroke="#333333" stroke-width="2" id="line62" />
+    <line x1="40" y1="220" x2="40" y2="50" stroke="#333333" stroke-width="2" id="line64" />
+    <text x="175" y="245" font-family="Arial" font-size="12px" text-anchor="middle" id="text66">Class</text>
+    <text x="15" y="135" font-family="Arial" font-size="12px" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90,15,135)" id="text68">Probability</text>
+    <line x1="40" y1="220" x2="310" y2="220" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line70" />
+    <line x1="40" y1="186" x2="310" y2="186" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line72" />
+    <line x1="40" y1="152" x2="310" y2="152" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line74" />
+    <line x1="40" y1="118" x2="310" y2="118" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line76" />
+    <line x1="40" y1="84" x2="310" y2="84" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line78" />
+    <line x1="40" y1="50" x2="310" y2="50" stroke="#cccccc" stroke-width="1" stroke-dasharray="2, 2" id="line80" />
+    <rect x="50" y="203" width="57.5" height="17" fill="#f59e0b" opacity="0.8" id="rect82" />
+    <text x="78.75" y="198" font-family="Arial" font-size="11px" text-anchor="middle" fill="#1e293b" id="text84">0.10</text>
+    <text x="78.75" y="235" font-family="Arial" font-size="11px" text-anchor="middle" id="text86">A</text>
+    <rect x="112.5" y="186" width="57.5" height="34" fill="#f59e0b" opacity="0.8" id="rect88" />
+    <text x="141.25" y="203" font-family="Arial" font-size="11px" text-anchor="middle" fill="#ffffff" id="text90">0.20</text>
+    <text x="141.25" y="235" font-family="Arial" font-size="11px" text-anchor="middle" id="text92">B</text>
+    <rect x="175" y="118" width="57.5" height="102" fill="#16a34a" opacity="0.8" id="rect94" />
+    <text x="203.75" y="169" font-family="Arial" font-size="11px" text-anchor="middle" fill="#ffffff" id="text96">0.60</text>
+    <text x="203.75" y="235" font-family="Arial" font-size="11px" text-anchor="middle" id="text98">C</text>
+    <rect x="237.5" y="203" width="57.5" height="17" fill="#f59e0b" opacity="0.8" id="rect100" />
+    <text x="266.25" y="198" font-family="Arial" font-size="11px" text-anchor="middle" fill="#1e293b" id="text102">0.10</text>
+    <text x="266.25" y="235" font-family="Arial" font-size="11px" text-anchor="middle" id="text104">D</text>
   </g>
-  <!-- Cross-entropy label -->
-  <text
-     x="400.0"
-     y="320"
-     font-family="Arial"
-     font-size="14"
-     fill="#dc2626"
-     text-anchor="middle"
-     font-weight="bold"
-     id="text108">H(P, Q) = 0.511 (Cross-Entropy Loss)</text>
-  <!-- Note -->
-  <text
-     x="403.00073"
-     y="348.06647"
-     font-family="Arial"
-     font-size="12px"
-     fill="#666666"
-     text-anchor="middle"
-     id="text110">Left: True one-hot [0,0,1,0] | Right: Predicted [0.1,0.2,0.6,0.1] | H(P,Q) = -log(0.6) ≈ 0.511</text>
+  
+  <text x="371" y="352.39459" font-family="Arial" font-size="14px" fill="#dc2626" text-anchor="middle" font-weight="bold" id="text108">H(P, Q) = 0.511 (Cross-Entropy Loss)</text>
+  
+  <text x="374.00073" y="380.46106" font-family="Arial" font-size="12px" fill="#666666" text-anchor="middle" id="text110">Left: True one-hot [0,0,1,0] | Right: Predicted [0.1,0.2,0.6,0.1] | H(P,Q) = -log(0.6) ≈ 0.511</text>
 </svg>
