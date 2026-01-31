@@ -139,7 +139,7 @@ where $A \cap B$ (read "A intersect B") is the event that both $A$ and $B$ occur
 
 | |
 |:---:|
-| ![Conditional Probability: P(A|B) = P(A ∩ B) / P(B)](images/probability-statistics/probability-conditional.svg) |
+| ![Conditional Probability: P(A given B) = P(A ∩ B) / P(B)](images/probability-statistics/probability-conditional.svg) |
 
 ### Independence
 
