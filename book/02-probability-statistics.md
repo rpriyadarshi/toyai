@@ -9,7 +9,7 @@ This chapter establishes the probability and statistics foundations needed to un
 
 ## Why Probability and Statistics Matter
 
-Neural networks are fundamentally probabilistic systems. When a network predicts that an image is 80% likely to be a cat, it's expressing a probability. When we compute loss using cross-entropy, we're comparing probability distributions. When we normalize layer inputs, we're using statistical properties (mean and variance). Understanding probability and statistics is not optional—it's essential for understanding how neural networks work.
+Neural networks are fundamentally probabilistic systems. When a network predicts that an image is 80% likely to be a cat, it's expressing a probability. When we compute loss using cross-entropy (see [*Information Theory Foundations*](#information-theory-foundations) below), we're comparing probability distributions. When we normalize layer inputs, we're using statistical properties (mean and variance). Understanding probability and statistics is not optional—it's essential for understanding how neural networks work.
 
 This chapter treats probability and statistics as operations on outcomes and values, not as abstract mathematical concepts. Every formula is computable step-by-step, every concept is demonstrated with hand-calculable examples, and every idea connects directly to neural network applications.
 
@@ -234,6 +234,8 @@ For a discrete random variable $X$ that can take values $x_1, x_2, \ldots, x_n$,
 
 **Verification:**
 - Normalization: $6 \times \frac{1}{6} = 1.0$ ✓
+
+This is a uniform distribution; see [*Uniform Distribution*](#uniform-distribution).
 
 | |
 |:---:|
@@ -469,7 +471,7 @@ This is a uniform distribution because all outcomes are equally likely.
 - Possible classes: $\{A, B, C, D\}$ (4 classes)
 - Uniform distribution: $P(X = A) = P(X = B) = P(X = C) = P(X = D) = \frac{1}{4} = 0.25$
 
-**Connection to Neural Networks:** When a neural network hasn't learned yet (random initialization), its predictions are often close to uniform—each class gets roughly equal probability.
+**Connection to Neural Networks:** When a neural network hasn't learned yet (random initialization), its predictions are often close to uniform—each class gets roughly equal probability. We discuss weight initialization in [*Weight Initialization from Distributions*](#weight-initialization-from-distributions).
 
 ### Bernoulli Distribution
 
@@ -531,7 +533,7 @@ $$P(X = i) = p_i \text{ for } i \in \{1, 2, \ldots, n\}$$
 **Verification:**
 - Normalization: $0.1 + 0.2 + 0.6 + 0.1 = 1.0$ ✓
 
-**Connection to Neural Networks:** When a neural network applies softmax to logits, it produces a categorical distribution. The softmax output $[0.1, 0.2, 0.6, 0.1]$ is exactly a categorical distribution over 4 classes.
+**Connection to Neural Networks:** When a neural network applies softmax (see [*How Softmax Creates Probability Distributions*](#how-softmax-creates-probability-distributions)) to logits (raw scores), it produces a categorical distribution. The softmax output $[0.1, 0.2, 0.6, 0.1]$ is exactly a categorical distribution over 4 classes.
 
 **One-Hot Encoding as Degenerate Categorical**
 
@@ -551,7 +553,7 @@ $$P(X = i) = p_i \text{ for } i \in \{1, 2, \ldots, n\}$$
 
 **Vector representation:** $\mathbf{p} = \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}$
 
-**Connection to Neural Networks:** In classification, the true label is represented as a one-hot vector. The model predicts a categorical distribution (from softmax). Cross-entropy loss compares these two distributions.
+**Connection to Neural Networks:** In classification, the true label is represented as a one-hot vector. The model predicts a categorical distribution (from softmax). We compare these two distributions using cross-entropy loss; see [*Cross-Entropy: Comparing Distributions*](#cross-entropy-comparing-distributions) and [*How Softmax Creates Probability Distributions*](#how-softmax-creates-probability-distributions).
 
 ### Normal (Gaussian) Distribution
 
@@ -588,7 +590,7 @@ $$f(1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{1-0}{1}\right)^2} = \f
 
 **Why Used for Weight Initialization**
 
-Neural network weights are typically initialized by sampling from a normal distribution with mean 0 and small standard deviation (e.g., $\sigma = 0.01$).
+Neural network weights are typically initialized by sampling from a normal distribution with mean 0 and small standard deviation (e.g., $\sigma = 0.01$). We develop this further in [*Weight Initialization from Distributions*](#weight-initialization-from-distributions).
 
 **Reasons:**
 1. **Symmetry:** Mean of 0 ensures no initial bias
@@ -882,7 +884,7 @@ Normalization (computing z-scores) helps neural network training because:
 2. **Stable gradients:** Normalized inputs lead to more stable gradients during backpropagation
 3. **Faster convergence:** Training converges faster when inputs are normalized
 
-**Connection to Layer Normalization:** Layer normalization in transformers applies this exact transformation: subtract the mean, divide by the standard deviation. This stabilizes training in deep networks.
+**Connection to Layer Normalization:** Layer normalization (see [*How Normalization Stabilizes Training*](#how-normalization-stabilizes-training)) in transformers applies this exact transformation: subtract the mean, divide by the standard deviation. This stabilizes training in deep networks.
 
 | |
 |:---:|

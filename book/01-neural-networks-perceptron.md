@@ -257,7 +257,7 @@ The bias parameter shifts the decision threshold, controlling the perceptron's s
 
 This comparison demonstrates that different activation functions produce distinct outputs from the same pre-activation value, enabling networks to learn different types of non-linear patterns.
 
-**Why activation functions matter:** Activation functions serve two critical purposes. First, they must be **smooth enough** (technically, at least **piecewise differentiable**) so that **gradient descent** can calculate how to adjust the weights during training. Think of "smooth enough" as meaning the function has no sharp, discontinuous jumps that would break the gradient calculation—it can have corners (like ReLU at zero), but must be smooth in sections.
+**Why activation functions matter:** Activation functions serve two critical purposes. First, they must be **smooth enough** (technically, at least **piecewise differentiable**) so that **gradient descent** (see [Chapter 4: Learning Algorithms](04-learning-algorithms.md)) can calculate how to adjust the weights during training. Think of "smooth enough" as meaning the function has no sharp, discontinuous jumps that would break the gradient calculation—it can have corners (like ReLU at zero), but must be smooth in sections.
 
 Second, and more importantly, activation functions introduce **non-linearity**—the ability to create curves and complex shapes instead of just straight lines. To understand why this matters, imagine trying to draw a circle using only straight lines: you'd need infinitely many tiny straight segments. Similarly, without non-linearity, networks can only learn **straight-line relationships** between inputs and outputs, which severely limits what patterns they can represent. Real-world data rarely follows straight-line patterns—think of how image recognition, language understanding, or any complex task requires curved, non-linear decision boundaries.
 
@@ -350,7 +350,7 @@ This is a critical point: **no one manually chooses or designs the features**. T
 
 2. **Hierarchical structure emerges naturally**: Early layers naturally learn simple patterns (edges, lines) because they only see raw input. Later layers naturally learn complex patterns (shapes, objects) because they see the outputs of earlier layers. This hierarchy emerges from the network structure itself—you don't tell Layer 1 to learn edges and Layer 3 to learn objects. The network figures this out through training.
 
-3. **Training guides feature learning**: During training, **backpropagation** and the **loss function** automatically guide which features are learned. If a feature helps reduce the loss (makes better predictions), its weights increase. If a feature hurts predictions, its weights decrease. Over many training examples, the network discovers which patterns are useful for the task.
+3. **Training guides feature learning**: During training, **backpropagation** and the **loss function** (see [Chapter 4: Learning Algorithms](04-learning-algorithms.md)) automatically guide which features are learned. If a feature helps reduce the loss (makes better predictions), its weights increase. If a feature hurts predictions, its weights decrease. Over many training examples, the network discovers which patterns are useful for the task.
 
 4. **Different layers learn different abstractions**: Because Layer 1 only sees raw pixels, it can only learn pixel-level patterns (edges, brightness). Layer 2 sees Layer 1's outputs, so it can learn combinations of edges (corners, curves). Layer 3 sees Layer 2's outputs, so it can learn combinations of those combinations (complete shapes). This abstraction hierarchy is a natural consequence of the layered structure.
 
@@ -408,7 +408,7 @@ Let's trace through what happens when the network sees an image of the digit "6"
   - Logit for "digit 2": $\mathbf{w}_2 \cdot [0.1, 0.05, 0.95, 0.2] + b_2 = 0.2$
   - **Logit for "digit 6": $\mathbf{w}_6 \cdot [0.1, 0.05, 0.95, 0.2] + b_6 = 2.5$** (highest!)
 
-- **Softmax** (a function that converts scores to probabilities; we'll define this formally in [Chapter 4: Learning Algorithms](04-learning-algorithms.md)): Converts logits to probabilities
+- **Softmax** (a function that converts scores to probabilities; see [Chapter 2: Probability and Statistics](02-probability-statistics.md#how-softmax-creates-probability-distributions)): Converts logits to probabilities
   - $P(\text{digit 0}) = 0.05$
   - $P(\text{digit 1}) = 0.02$
   - $P(\text{digit 2}) = 0.03$
@@ -416,7 +416,7 @@ Let's trace through what happens when the network sees an image of the digit "6"
 
 **Why This Works: Training Guides Pattern Learning**
 
-The key insight is that the network doesn't learn arbitrary patterns—it learns patterns that are **useful for reducing the loss function**. During training:
+The key insight is that the network doesn't learn arbitrary patterns—it learns patterns that are **useful for reducing the loss function** (see [Chapter 4: Learning Algorithms](04-learning-algorithms.md)). During training:
 
 1. The network makes a prediction (e.g., "digit 6" with 90% confidence)
 2. The loss function compares this to the true label (e.g., "digit 6")
@@ -582,7 +582,7 @@ The most common activation functions you'll encounter are:
 
 - **ReLU** (Rectified Linear Unit): $f(x) = \max(0, x)$ - This function keeps positive values unchanged and zeros out any negative values. It's the most commonly used activation in modern neural networks because it's simple, efficient, and works well in practice. Note that ReLU is non-differentiable at $x=0$, but in practice this rarely causes issues since the probability of exactly hitting zero is negligible.
 
-- **Sigmoid**: $f(x) = \frac{1}{1+e^{-x}}$ - This function squashes any input into the range $(0, 1)$, making it useful when you need outputs that represent probabilities. The sigmoid function is smooth and differentiable everywhere, but it saturates (gradient approaches zero) for very large positive or negative inputs, which can slow down learning. While sigmoid can represent probabilities, modern networks typically use softmax for multi-class classification (see [Example 7: Character Recognition](15-example7-character-recognition.md)).
+- **Sigmoid**: $f(x) = \frac{1}{1+e^{-x}}$ - This function squashes any input into the range $(0, 1)$, making it useful when you need outputs that represent probabilities. The sigmoid function is smooth and differentiable everywhere, but it saturates (gradient approaches zero) for very large positive or negative inputs, which can slow down learning. While sigmoid can represent probabilities, modern networks typically use softmax for multi-class classification (see [Chapter 2: Probability and Statistics](02-probability-statistics.md#how-softmax-creates-probability-distributions) and [Example 7: Character Recognition](15-example7-character-recognition.md)).
 
 - **Tanh**: $f(x) = \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$ - Similar to sigmoid but squashes inputs into the range $(-1, 1)$, providing a symmetric output around zero. Like sigmoid, tanh is smooth and differentiable everywhere, but also saturates at the extremes. The hyperbolic tangent function can also be written as $\tanh(x) = \frac{\sinh(x)}{\cosh(x)}$, where $\sinh(x) = \frac{e^x - e^{-x}}{2}$ and $\cosh(x) = \frac{e^x + e^{-x}}{2}$ are the hyperbolic sine and cosine functions, respectively.
 

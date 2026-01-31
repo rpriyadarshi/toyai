@@ -980,6 +980,13 @@ When completing this book, maintain these principles:
 - [ ] Examples illustrate concepts
 - [ ] Practice opportunities provided
 
+### Textbook Publication Style
+
+- [ ] No undefined terms (or forward ref to definition with section title)
+- [ ] Cross-references use section/chapter names and read well in print
+- [ ] Consistent cross-reference format across chapters
+- [ ] Chapter flow and forward refs follow textbook conventions (roadmaps, short signposts)
+
 ---
 
 ## Part VII: Publication Readiness Assessment
@@ -1014,6 +1021,7 @@ When completing this book, maintain these principles:
 ⚠️ **Cross-References:** Need more integration  
 ⚠️ **Consistency:** Some chapters shorter than others  
 ⚠️ **Polish:** Final review and proofreading needed  
+⚠️ **Textbook publication style:** Define-before-use (or forward refs with section names); print-readable cross-references; consistent flow and cross-ref pattern  
 
 ---
 

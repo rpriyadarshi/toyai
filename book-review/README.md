@@ -137,8 +137,9 @@ Following the phased plan in comprehensive-review.md
 
 **Read:** completion-prompt.md
 - Section: "Quality Checklist"
+- Section: "Textbook Publication Style"
 
-**Action:** Verify your work meets all standards
+**Action:** Verify your work meets all standards; verify no undefined terms and that cross-refs follow the instructions
 
 ---
 
@@ -152,6 +153,7 @@ When writing or expanding any section:
 4. **Observability**: Show all intermediate values
 5. **Physical Analogies**: Use concrete explanations
 6. **No Mathematical Maturity Assumed**: Teach patterns explicitly
+7. **Textbook publication style**: No undefined terms (or "see *Section Title*" forward refs); cross-references readable in print; consistent pattern
 
 ---
 
@@ -169,6 +171,7 @@ When writing or expanding any section:
 - All calculations verifiable by hand
 - Consistent style and depth throughout
 - Professional publication quality
+- Textbook publication style: define-before-use, print-readable cross-refs, consistent flow
 
 ---
 

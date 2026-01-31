@@ -879,6 +879,12 @@ Before considering any section complete, verify:
 - [ ] Follows same structure patterns
 - [ ] Maintains same tone
 
+### Textbook Publication Style
+- [ ] No undefined terms; every technical term either defined in-section or given a forward ref (see *Section Title*)
+- [ ] Cross-references readable in print (section/chapter name in text, not only a link)
+- [ ] Same cross-reference pattern used throughout (e.g. "see *Section Title*" with link on section title)
+- [ ] Forward refs are short and natural (no long parentheticals)
+
 ---
 
 ## Writing Guidelines
@@ -902,6 +908,9 @@ Before considering any section complete, verify:
 - Reference relevant examples from theory chapters
 - Use consistent reference format: `[Chapter X]` or `[Example Y]`
 - Include section references when specific
+- Cross-references must be **print-readable** (section/chapter name visible in text)
+- Use **section titles** for within-chapter refs (e.g. *Entropy: Measuring Uncertainty*), not only "Chapter X"
+- When a term is used **before** its definition, add a forward reference to the section where it is defined
 
 ### Diagrams
 - Use mermaid diagrams for flow
@@ -914,6 +923,16 @@ Before considering any section complete, verify:
 - Explain how code implements mathematics
 - Show expected output
 - Include verification steps
+
+### Textbook Publication Style (Strict)
+
+Follow these rules so the book reads like a published textbook in both print and digital:
+
+- **Define-before-use:** Do not use a technical term before it is defined. If a term must appear earlier (e.g. in an intro), add a forward reference: "see *Section Title* below" or "we define X in *Section Title*."
+- **Forward references:** Use the **section title** (e.g. *Information Theory Foundations*, *Cross-Entropy: Comparing Distributions*) so the sentence reads correctly in **print** without a hyperlink. In digital, link the section title to the correct heading. Use one short signpost per mention; avoid long parentheticals.
+- **Cross-reference format:** Same pattern everywhere. Within chapter: "term (see *Section Title*)" with *Section Title* linked. Between chapters: "[Chapter N: Title](filename.md)" or "see [Chapter N: Title](filename.md)." No bare "see Section 2.5" if the book does not use section numbers; use section/chapter names.
+- **Flow:** Where helpful, add a one-sentence chapter roadmap after the opening blurb. In "Connection to…" paragraphs, prefer one forward pointer at the end (e.g. "…see *Cross-Entropy: Comparing Distributions*") rather than multiple inline links.
+- **Consistency:** Same cross-reference pattern in every chapter; same terminology; same structure for similar sections.
 
 ---
 
