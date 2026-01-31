@@ -51,6 +51,16 @@ A **sample space** is the set of all possible outcomes of an experiment. An **ev
 |:---:|
 | ![Sample Space and Events: Die Roll Example](images/probability-statistics/probability-sample-space-events.svg) |
 
+### Set Notation for Events
+
+When we combine events, we use standard set notation:
+
+- **Union** $E \cup F$ (read "E union F"): the set of outcomes that are in $E$ or in $F$ or in both. So $E \cup F$ is the event "at least one of $E$ or $F$ occurs."
+- **Intersection** $E \cap F$ (read "E intersect F"): the set of outcomes that are in both $E$ and $F$. So $E \cap F$ is the event "both $E$ and $F$ occur."
+- **Empty set** $\emptyset$: the set with no outcomes. So $E \cap F = \emptyset$ means "no outcome is in both $E$ and $F$"—i.e., $E$ and $F$ cannot happen at the same time (they are **mutually exclusive**).
+
+**Example (die roll):** If $E = \{2, 4, 6\}$ (even) and $F = \{5, 6\}$ (greater than 4), then $E \cup F = \{2, 4, 5, 6\}$ and $E \cap F = \{6\}$ (only 6 is even and greater than 4). If $E = \{2, 4, 6\}$ and $G = \{1, 3, 5\}$ (odd), then $E \cap G = \emptyset$ (no number is both even and odd).
+
 ### Probability Axioms
 
 Probability is defined by three axioms (fundamental rules) that all probability functions must satisfy:
