@@ -19,7 +19,7 @@ This chapter treats probability and statistics as operations on outcomes and val
 
 ### Sample Spaces and Events
 
-A **sample space** is the set of all possible outcomes of an experiment. An **event** is a subset of the sample space—a collection of outcomes we're interested in.
+An **experiment** is any process whose outcome is uncertain (e.g., flipping a coin, rolling a die). The **sample space** is the set of all possible outcomes of that experiment. An **event** is a subset of the sample space—that is, any collection of outcomes we care about (from a single outcome to many). The probability of an event is the chance that the experiment's outcome falls inside that collection.
 
 **Example: Coin Flip**
 
@@ -63,7 +63,7 @@ When we combine events, we use standard set notation:
 
 ### Probability Axioms
 
-Probability is defined by three axioms (fundamental rules) that all probability functions must satisfy:
+Probability is defined by three axioms (fundamental rules) that all probability functions must satisfy. Everything else in probability (conditional probability, expected value, etc.) can be derived from these three.
 
 **Axiom 1: Non-negativity**
 For any event $E$, the probability $P(E) \geq 0$. Probabilities cannot be negative.
@@ -72,8 +72,9 @@ For any event $E$, the probability $P(E) \geq 0$. Probabilities cannot be negati
 The probability of the entire sample space is 1: $P(\Omega) = 1$. Something must happen.
 
 **Axiom 3: Additivity**
-For mutually exclusive events (events that cannot happen simultaneously), the probability of their union equals the sum of their individual probabilities:
+For mutually exclusive events (events that cannot happen at the same time), the probability that one *or* the other happens is the sum of their probabilities:
 $$P(E \cup F) = P(E) + P(F) \text{ when } E \cap F = \emptyset$$
+So when two outcomes don't overlap, we simply add their probabilities.
 
 **Example: Fair Coin**
 
@@ -113,7 +114,7 @@ $$P(E \cup F) = P(E) + P(F) \text{ when } E \cap F = \emptyset$$
 
 $$P(A|B) = \frac{P(A \cap B)}{P(B)}$$
 
-where $A \cap B$ (read "A intersect B") is the event that both $A$ and $B$ occur.
+where $A \cap B$ (read "A intersect B") is the event that both $A$ and $B$ occur. We require $P(B) > 0$ so that we don't divide by zero (conditioning on an impossible event doesn't make sense).
 
 **Why this formula?** When we condition on $B$, we restrict our attention to outcomes where $B$ occurred. We then ask: of those outcomes, what fraction also satisfy $A$? This is exactly $\frac{P(A \cap B)}{P(B)}$.
 
@@ -183,17 +184,21 @@ $$P(A \cap B) = P(A) \cdot P(B)$$
 
 A **probability distribution** assigns probabilities to all possible outcomes. It's a function that maps each outcome to its probability.
 
+A **random variable** is a quantity that takes on different numerical values depending on the outcome of an experiment. For example, "number showing on a die" is a random variable that takes values in $\{1, 2, 3, 4, 5, 6\}$; "1 if Heads, 0 if Tails" is a random variable that takes values in $\{0, 1\}$. We use capital letters (e.g., $X$) for the random variable and lowercase (e.g., $x_i$) for the specific values it can take.
+
 ### Discrete Distributions
 
-A **discrete distribution** assigns probabilities to a countable set of outcomes (like coin flips, dice rolls, or classification classes).
+A **discrete distribution** assigns probabilities to a **countable** set of outcomes—that is, a finite or infinite list we can enumerate (like coin flips, dice rolls, or classification classes).
 
 **Probability Mass Function (PMF)**
 
 For a discrete random variable $X$ that can take values $x_1, x_2, \ldots, x_n$, the **probability mass function** $P(X = x_i)$ gives the probability that $X$ equals $x_i$.
 
+**Why "mass"?** The term comes from a physics analogy. In mechanics, **mass** is concentrated at specific points (point masses). In a discrete distribution, probability is also concentrated at specific outcomes—each outcome gets a "lump" of probability. That lump is the **mass** at that point. The total probability is the sum of all these masses, and for a valid distribution that total equals 1. So we *sum* masses (discrete) rather than *integrate* a density (continuous); the word "mass" reminds us we're dealing with discrete lumps of probability.
+
 **Properties:**
 1. **Non-negativity**: $P(X = x_i) \geq 0$ for all $i$
-2. **Normalization**: $\sum_{i=1}^{n} P(X = x_i) = 1$ (all probabilities sum to 1)
+2. **Normalization**: $\sum_{i=1}^{n} P(X = x_i) = 1$ (all probability masses sum to 1)
 
 **Example: Fair Coin PMF**
 
@@ -255,11 +260,15 @@ This is a uniform distribution; see [*Uniform Distribution*](#uniform-distributi
 
 A **continuous distribution** assigns probabilities to intervals of real numbers (like heights, weights, or neural network weights). For continuous distributions, we use **probability density functions (PDF)** instead of probability mass functions.
 
+**Mass vs. density:** With a PMF we have *mass* at discrete points (we *sum* to get total probability). With a continuous variable there is no probability "lump" at any single real number—so we speak of **density** (probability per unit length). We *integrate* the density over an interval to get the probability of that interval; the total "mass" is still 1, but it's spread continuously, so we need density and integration instead of mass and summation.
+
 **Probability Density Function (PDF)**
 
 For a continuous random variable $X$, the **probability density function** $f(x)$ gives the relative likelihood of $X$ taking a value near $x$. The probability that $X$ falls in an interval $[a, b]$ is:
 
 $$P(a \leq X \leq b) = \int_{a}^{b} f(x) \, dx$$
+
+**Important:** $f(x)$ is *not* a probability—it is a density (probability per unit length). For a small interval of length $\Delta x$ around $x$, the probability is approximately $f(x) \cdot \Delta x$. Only when we *integrate* $f$ over an interval do we get a probability. That's why $P(X = x) = 0$ for any single point $x$: a single point has zero "length," so the probability assigned to it is zero.
 
 **Properties:**
 1. **Non-negativity**: $f(x) \geq 0$ for all $x$
@@ -269,7 +278,7 @@ $$P(a \leq X \leq b) = \int_{a}^{b} f(x) \, dx$$
 
 **Cumulative Distribution Function (CDF)**
 
-The **cumulative distribution function** $F(x) = P(X \leq x)$ gives the probability that the random variable is less than or equal to $x$.
+The **cumulative distribution function** $F(x) = P(X \leq x)$ gives the probability that the random variable is less than or equal to $x$. So $F(x)$ is "how much probability mass has accumulated up to and including $x$." As $x$ increases, $F(x)$ never decreases (it only stays the same or goes up), and it goes from 0 (no probability below the smallest value) to 1 (all probability by the largest value).
 
 For discrete distributions:
 $$F(x) = \sum_{x_i \leq x} P(X = x_i)$$
@@ -292,6 +301,8 @@ $$F(x) = \int_{-\infty}^{x} f(t) \, dt$$
 - $F(5) = P(X \leq 5) = \frac{5}{6} \approx 0.833$
 - $F(6) = P(X \leq 6) = \frac{6}{6} = 1.0$
 - $F(7) = P(X \leq 7) = 1.0$ (all outcomes are $\leq 7$)
+
+For values between outcomes (e.g. $F(2.5)$): no outcome lies strictly between 2 and 3, so $F(2.5) = F(2) = \frac{2}{6}$. The CDF stays constant between discrete outcomes and jumps at each outcome.
 
 | |
 |:---:|
@@ -345,7 +356,7 @@ $$E[X] = \sum_{i=1}^{6} x_i \cdot P(X = x_i) = \sum_{i=1}^{6} x_i \cdot \frac{1}
 
 **Result:** $E[X] = 3.5$
 
-**Interpretation:** The expected value of a fair die roll is 3.5. This is the long-run average if we roll the die many times.
+**Interpretation:** The expected value of a fair die roll is 3.5. Note that 3.5 is not a possible outcome of a single roll—it's the *average* we'd get if we rolled the die many times.
 
 | |
 |:---:|
@@ -370,7 +381,7 @@ $$E[X] = 1 \times 0.7 + 0 \times 0.3 = 0.7 + 0 = 0.7$$
 
 ### Variance
 
-The **variance** $\text{Var}(X)$ (also written as $\sigma^2$) measures how spread out the values are around the mean. It's the expected value of the squared deviation from the mean:
+The **variance** $\text{Var}(X)$ (also written as $\sigma^2$) measures how spread out the values are around the mean. In other words: on average, how far (squared) are outcomes from the mean? It's the expected value of the squared deviation from the mean:
 
 $$\text{Var}(X) = E[(X - \mu)^2]$$
 
@@ -418,6 +429,8 @@ $$\text{Var}(X) = \sum_{i=1}^{6} (x_i - 3.5)^2 \cdot \frac{1}{6}$$
 **Alternative formula:** Variance can also be computed as:
 $$\text{Var}(X) = E[X^2] - (E[X])^2$$
 
+This form is often easier to use (compute $E[X]$ and $E[X^2]$, then subtract). It's equivalent to the definition above.
+
 **Verification using alternative formula:**
 
 1. **Compute $E[X^2]$:**
@@ -450,7 +463,7 @@ $$\sigma = \sqrt{2.92} \approx 1.71$$
 
 **Result:** $\sigma \approx 1.71$
 
-**Interpretation:** The standard deviation of 1.71 means that, on average, die roll outcomes deviate from the mean (3.5) by about 1.71 units.
+**Interpretation:** The standard deviation of 1.71 gives a typical scale for how far outcomes are from the mean (3.5). Roughly speaking, many outcomes will lie within about 1.71 of the mean (see the 68-95-99.7 rule for the normal distribution).
 
 ---
 
@@ -501,6 +514,8 @@ $$E[X] = 1 \cdot p + 0 \cdot (1-p) = p$$
 **Variance:**
 $$\text{Var}(X) = p(1-p)$$
 
+*Why?* For $X \in \{0, 1\}$ we have $X^2 = X$, so $E[X^2] = E[X] = p$. Thus $\text{Var}(X) = E[X^2] - (E[X])^2 = p - p^2 = p(1-p)$.
+
 **Example: Biased Coin (Bernoulli)**
 
 **Given:**
@@ -547,7 +562,7 @@ $$P(X = i) = p_i \text{ for } i \in \{1, 2, \ldots, n\}$$
 
 **One-Hot Encoding as Degenerate Categorical**
 
-**One-hot encoding** is a special case of categorical distribution where one class has probability 1 and all others have probability 0.
+**One-hot encoding** is a special case of categorical distribution where one class has probability 1 and all others have probability 0. ("Degenerate" here means all the probability mass is on a single outcome—no uncertainty.)
 
 **Example: One-Hot for Class C**
 
@@ -572,12 +587,14 @@ The **normal distribution** (also called **Gaussian**) is a continuous distribut
 **Probability Density Function:**
 $$f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$$
 
+**Intuition:** The formula has an exponential: $e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}$. When $x$ is far from $\mu$, the exponent is large and negative, so $f(x)$ is small. When $x$ is close to $\mu$, the exponent is near 0, so $f(x)$ is large. So most probability sits near the mean, and the density falls off smoothly as we move away—giving the familiar bell shape. The factor $\frac{1}{\sigma\sqrt{2\pi}}$ ensures the total area under the curve is 1.
+
 **Notation:** $X \sim \mathcal{N}(\mu, \sigma^2)$ means "$X$ follows a normal distribution with mean $\mu$ and variance $\sigma^2$."
 
 **Properties:**
 - **Symmetric:** The distribution is symmetric around the mean $\mu$
 - **Bell-shaped:** The PDF has a characteristic bell curve shape
-- **68-95-99.7 Rule:** Approximately 68% of values fall within 1 standard deviation of the mean, 95% within 2 standard deviations, and 99.7% within 3 standard deviations
+- **68-95-99.7 Rule:** Approximately 68% of the probability mass lies in $[\mu - \sigma, \mu + \sigma]$, about 95% in $[\mu - 2\sigma, \mu + 2\sigma]$, and about 99.7% in $[\mu - 3\sigma, \mu + 3\sigma]$. So "within 1 standard deviation" means in that interval around the mean.
 
 **Example: Standard Normal Distribution**
 
@@ -627,9 +644,11 @@ Neural network weights are typically initialized by sampling from a normal distr
 **Definition:**
 $$H(P) = -\sum_{i=1}^{n} P(i) \log P(i)$$
 
-where $P(i)$ is the probability of outcome $i$, and $\log$ is the natural logarithm (base $e$).
+where $P(i)$ is the probability of outcome $i$, and $\log$ is the natural logarithm (base $e$). By convention, we take $0 \log 0 = 0$ (the limit of $p \log p$ as $p \to 0^+$ is 0, so outcomes with probability 0 don't contribute). In information theory, base-2 logarithm is also common (then entropy is in "bits"); we use natural log here for consistency with calculus and with how loss is computed in neural networks.
 
-**Why is this an average?** Entropy is the **expected value** (weighted average) of the "surprise" function $-\log P(i)$:
+**Why "surprise"?** We define the **surprise** of outcome $i$ as $-\log P(i)$. Rare outcomes (small $P(i)$) have large surprise; common outcomes (large $P(i)$) have small surprise. This choice makes the math work out so that entropy is the expected value of surprise and has nice properties (e.g., it's maximized by the uniform distribution).
+
+**Why is this an average?** Entropy is the **expected value** (weighted average) of the surprise $-\log P(i)$:
 
 1. **Surprise function:** For outcome $i$ with probability $P(i)$, the surprise is $-\log P(i)$
    - Rare events (low $P(i)$) have high surprise (large $-\log P(i)$)
@@ -754,7 +773,7 @@ This is exactly the cross-entropy loss formula used in neural networks!
 |:---:|
 | ![Cross-Entropy: Comparing True vs Predicted Distribution](images/probability-statistics/probability-cross-entropy.svg) |
 
-**Connection to Neural Networks:** Cross-entropy loss compares the true one-hot distribution with the model's predicted categorical distribution (from softmax). Lower cross-entropy means the distributions are more similar, which means better predictions.
+**Connection to Neural Networks:** Cross-entropy loss compares the true one-hot distribution with the model's predicted categorical distribution (from softmax). Lower cross-entropy means the distributions are more similar—i.e., better predictions. During training we *minimize* this loss so the model's output gets closer to the true distribution.
 
 ### KL Divergence
 
@@ -768,7 +787,7 @@ $$D_{KL}(P || Q) = H(P, Q) - H(P)$$
 
 where $H(P)$ is the entropy of $P$ and $H(P, Q)$ is the cross-entropy.
 
-**Interpretation:** KL divergence measures the "extra information" needed to encode samples from $P$ using a code optimized for $Q$ instead of $P$.
+**Interpretation:** KL divergence is the "extra cost" of using distribution $Q$ when the true distribution is $P$. If we design a code (or model) assuming outcomes follow $Q$, but they actually follow $P$, we need more bits on average than if we had used $P$. KL divergence is that extra amount. So it's a natural measure of how wrong $Q$ is when the truth is $P$; the larger the divergence, the more $Q$ differs from $P$.
 
 ---
 
@@ -776,7 +795,7 @@ where $H(P)$ is the entropy of $P$ and $H(P, Q)$ is the cross-entropy.
 
 ### Computing Mean and Variance from Data
 
-In practice, we often compute mean and variance from a dataset (sample) rather than from a known probability distribution.
+In practice, we often compute mean and variance from a **dataset** (a sample of observed values) rather than from a known probability distribution. For example, we might have heights of 100 people and want to estimate the average height and how spread out the heights are—we use the sample mean and sample variance as estimates of the (unknown) population mean and variance.
 
 **Sample Mean**
 
@@ -807,6 +826,8 @@ $$\bar{x} = \frac{1}{5}\sum_{i=1}^{5} x_i$$
 Given $n$ data points with sample mean $\bar{x}$, the **sample variance** is:
 
 $$s^2 = \frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2$$
+
+**Note:** Some texts use $n-1$ in the denominator (Bessel's correction) to get an *unbiased* estimate of the population variance when the mean is estimated from the same sample. Here we use $n$ for simplicity and consistency with the "average squared deviation" interpretation; both definitions are common in practice.
 
 **Example: Computing Sample Variance**
 
@@ -856,7 +877,7 @@ A **z-score** (also called **standard score**) measures how many standard deviat
 
 $$z = \frac{x - \mu}{\sigma}$$
 
-where $\mu$ is the mean and $\sigma$ is the standard deviation.
+where $\mu$ is the mean and $\sigma$ is the standard deviation. When we have a *sample* of data (not a known population), we use the sample mean $\bar{x}$ and sample standard deviation $s$ in place of $\mu$ and $\sigma$: $z_i = (x_i - \bar{x}) / s$.
 
 **Example: Computing Z-Scores**
 
@@ -918,10 +939,12 @@ Normalization (computing z-scores) helps neural network training because:
 
 ### How Softmax Creates Probability Distributions
 
-**Softmax** converts a vector of logits (raw scores) into a probability distribution (categorical distribution).
+**Softmax** converts a vector of **logits**—the raw, unnormalized scores from the last layer of a neural network—into a probability distribution (categorical distribution).
 
 **Softmax Formula:**
 $$\text{softmax}(x_i) = \frac{e^{x_i}}{\sum_{j=1}^{n} e^{x_j}}$$
+
+**Why exponentiate?** Using $e^{x_i}$ does two things: (1) it makes every output positive (so we get valid probabilities), and (2) it amplifies differences—larger logits get much higher probability and smaller logits get pushed toward zero. So the model's preferred class (highest logit) gets the lion's share of the probability.
 
 **Properties:**
 1. **Non-negativity:** All outputs are $\geq 0$
